@@ -4,7 +4,6 @@ import Link from "next/link";
 import Syllabus from "./syllabus";
 import LearningPlans from "./learningPlans";
 import Testimonials from "./testimonials";
-import TalentsTrained from "./talentsTrained";
 import CohortSignup from "./cohortSignup";
 import Footer from "@/app/(home)/footer";
 
@@ -26,7 +25,6 @@ const ScrumMasteryCourse = ()=>{
       </section>
       <LearningPlans />
       <Testimonials />
-      <TalentsTrained />
       <CohortSignup />
       <Footer showqalink={true} />
     </main>

@@ -5,7 +5,6 @@ import Footer from "@/app/(home)/footer";
 import Syllabus from "./syllabus";
 import LearningPlans from "./learningPlans";
 import Testimonials from "./testimonials";
-import TalentsTrained from "./talentsTrained";
 import CohortSignup from "./cohortSignup";
 
 
@@ -25,7 +24,6 @@ const QualityAssuranceCourse = () => {
       </section>
       <LearningPlans />
       <Testimonials showButton={false} />
-      <TalentsTrained />
       <CohortSignup />
       <Footer showScrumMasterLink={true} />
     </main>

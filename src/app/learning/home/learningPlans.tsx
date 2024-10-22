@@ -6,7 +6,7 @@ import Image from "next/image";
 import Slider from "@ant-design/react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { CustomPrevArrow, CustomNextArrow } from "../../about-us/customArrows";
+/* import { CustomPrevArrow, CustomNextArrow } from "../../about-us/customArrows"; */
 import { useState } from "react";
 
 
@@ -22,8 +22,8 @@ const LearningPlans = () => {
     speed: 900,
     slidesToShow: 1,
     slidesToScroll: 1,
-    prevArrow: <CustomPrevArrow onClick={()=>{}} additionalClasses="invisible" id="learningPlanPrevArrow" />,
-    nextArrow: <CustomNextArrow onClick={()=>{}} additionalClasses="invisible" id="learningPlanNextArrow"/>,
+    /* prevArrow: <CustomPrevArrow onClick={()=>{}} additionalClasses="invisible" id="learningPlanPrevArrow" />,
+    nextArrow: <CustomNextArrow onClick={()=>{}} additionalClasses="invisible" id="learningPlanNextArrow"/>, */
     arrows: true,
     afterChange: ()=>{
       console.log("carousel was swipped")
@@ -151,49 +151,6 @@ const LearningPlans = () => {
           </div>
         </Slider>
       </div>
-      {/* <div className="grid grid-cols-1 md:grid-cols-3 px-5 lg:px-20 xl:px-28 gap-10 md:gap-3 lg:gap-10 py-10 md:mt-14 w-full">
-        <article className="text-primary flex flex-col p-5 lg:p-7 border-2 border-primary rounded-3xl max-w-96 mx-auto md:max-w-full md:mx-0">
-          <h3 className="text-left text-2xl md:text-3xl font-550 mb-5 text-primary">Basic</h3>
-
-          <ul className=" list-disc list-inside gap-4 text-sm font-light flex flex-col">
-            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </li>
-            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </li>
-            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </li>
-            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </li>
-            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </li>
-            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </li>
-            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </li>
-          </ul>
-        </article>
-
-        <article className="text-primary flex flex-col p-5 lg:p-7 border-2 border-primary rounded-3xl max-w-96 mx-auto md:max-w-full md:mx-0">
-          <h3 className="text-left text-2xl md:text-3xl font-550 mb-5 text-primary">Standard</h3>
-
-          <ul className=" list-disc list-inside gap-4 text-sm font-light flex flex-col">
-            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </li>
-            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </li>
-            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </li>
-            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </li>
-            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </li>
-            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </li>
-            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </li>
-          </ul>
-        </article>
-
-        <article className="text-primary flex flex-col p-5 lg:p-7 border-2 border-primary rounded-3xl max-w-96 mx-auto md:max-w-full md:mx-0">
-          <h3 className="text-left text-2xl md:text-3xl font-550 mb-5 text-primary">Premium</h3>
-
-          <ul className=" list-disc list-inside gap-4 text-sm font-light flex flex-col">
-            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </li>
-            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </li>
-            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </li>
-            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </li>
-            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </li>
-            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </li>
-            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </li>
-          </ul>
-        </article>
-      </div> */}
 
       <div className={`flex justify-center ${currentPackage === "QA Learning Package" && "-mt-64 xl:-mt-0"}`}>
         <Link href="/learning/learningplans" className="btn bg-primary text-white text-xs md:text-sm rounded-full px-9 mx-auto md:mx-0" >View More</Link>

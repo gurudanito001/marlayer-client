@@ -13,7 +13,7 @@ const Testimonials = ({showButton = true}: {showButton?: boolean}) => {
         <div className=" flex flex-col items-center xl:items-end">
           <div className="w-64 md:w-56 lg:w-300 xl:w-336 h-full flex flex-col items-center bg-white p-4 xl:p-12 rounded-3xl mb-5 shadow-md">
             <p className="text-primary mt-3 text-center text-xs md:text-sm font-light">
-              My experience at Quales was the best. Initially I was sceptical about trying because people says they’ll do something and they don’t, but it’s the fact that what Quales tells you is what you will get. So, if they tell you that they will teach you, make you the best, and further you in your career path, you will get that!
+              My experience at Quales was the best. Initially I was sceptical about trying because people says they&apos;ll do something and they don&apos;t, but it&apos;s the fact that what Quales tells you is what you will get. So, if they tell you that they will teach you, make you the best, and further you in your career path, you will get that!
             </p>
             <h5 className="text-primary mt-7 text-center font-550">Adaeze Atusuba</h5>
             <h6 className="text-primary mt-1 text-center text-xs">Cohort 2</h6>
