@@ -6,7 +6,7 @@ const Footer = ({showScrumMasterLink = false, showqalink = false}: { showScrumMa
 
   return(
     <section className="text-white py-8 lg:py-12 bg-primary">
-      <div className=" grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-4 px-5 lg:px-28 border-t py-8">
+      <div className=" grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-4 px-5 xl:px-28 border-t py-8">
         <div>
           <h6 className="text-sm font-550 mb-5">Contact Us</h6>
           <article className="flex items-start mb-4">

@@ -12,10 +12,10 @@ const StudentDiscount = () => {
           <h1 className=" text-4xl md:text-5xl font-semibold">Enjoy special discounts</h1>
           <h1 className=" text-4xl md:text-5xl font-semibold">for students today!</h1>
           <Image src="/images/student.jpg" className="lg:hidden mb-3 rounded-md w-full max-w-600 my-5" width={400} height={250} objectFit="contain" alt="computer basics" />  
-          <p className=" text-xl md:text-2xl mt-7 max-w-2xl text-white font-normal">We offer up to 50% discount for students in universities. Offer lasts till November 2024</p>
+          <p className=" text-xl md:text-2xl mt-7 max-w-2xl text-white font-normal">We offer up to 50% discount for students. Offer lasts till November 2024</p>
 
           <div className="mt-5">
-          <button className=" btn md:btn-lg text-md bg-secondary text-white border-primary shadow-sm rounded-lg">Register Now</button>
+          <button className=" btn btn-lg bg-secondary text-white border-primary shadow-sm rounded-lg px-10">Register Now</button>
         </div>
         </article>
 

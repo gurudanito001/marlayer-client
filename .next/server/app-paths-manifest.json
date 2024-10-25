@@ -1,5 +1,9 @@
 {
+  "/_not-found/page": "app/_not-found/page.js",
+  "/(home)/page": "app/(home)/page.js",
   "/learning/page": "app/learning/page.js",
   "/learning/faqs/page": "app/learning/faqs/page.js",
-  "/privacyandpolicy/page": "app/privacyandpolicy/page.js"
+  "/learning/courses/computer-basics/page": "app/learning/courses/computer-basics/page.js",
+  "/learning/plans/page": "app/learning/plans/page.js",
+  "/favicon.ico/route": "app/favicon.ico/route.js"
 }

@@ -18,8 +18,8 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <main className="bg-white w-full overflow-x-hidden">
-    <NavBar/>
+    <main className="bg-white">
+    <NavBar />
     <HeroSection />
     <CoursePackages />
     <StudentDiscount />

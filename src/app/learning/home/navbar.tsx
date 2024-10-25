@@ -7,9 +7,9 @@ const NavBar = ({ darkTheme }: { darkTheme?: boolean }) => {
 
 
   return (
-    <nav className={`navbar ${darkTheme ? "bg-primary text-white" : "bg-white text-primary"} sticky top-0 px-3 lg:px-14 xl:px-28 py-4 z-50`}>
+    <nav className={`navbar ${darkTheme ? "bg-primary text-white" : "bg-white text-primary"} sticky top-0 px-5 lg:px-14 xl:px-28 py-4 z-50`}>
       <div className="navbar-start w-auto">
-        <Link href="/" className="flex items-center gap-3">
+        <Link href="/learning" className="flex items-center gap-3">
           <h1 className="font-bold text-xl">Marlayer</h1>
         </Link>
       </div>
@@ -20,22 +20,15 @@ const NavBar = ({ darkTheme }: { darkTheme?: boolean }) => {
             <details>
               <summary className="text-md font-semibold">Courses</summary>
               <ul className={`bg-white text-primary rounded-t-none p-2 w-72`}>
-                <li><Link href="/learning">Computer Basics</Link></li>
+                <li><Link href="/learning/courses/computer-basics">Computer Basics</Link></li>
                 <li><Link href="/learning">Responsive Web Design</Link></li>
               </ul>
             </details>
           </li>
-          <li className="font-semibold"><Link href="/learning">Learning Plans</Link></li>
+          <li className="font-semibold"><Link href="/learning/plans">Learning Plans</Link></li>
           <li className="font-semibold"><Link href="/learning/faqs">FAQs</Link></li>
-          <li>
-            <details>
-              <summary className={`text-md font-semibold ${darkTheme ? "bg-primary-2 text-white" : "bg-primary text-white"} rounded-md`}>Register</summary>
-              <ul className="rounded-t-none p-2 w-72 bg-white text-primary">
-                <li><Link href="/learning">Register as Individual</Link></li>
-                <li><Link href="/learning">Register as Company</Link></li>
-              </ul>
-            </details>
-          </li>
+
+          <li className={`font-semibold ${darkTheme ? "bg-primary-2": "bg-primary"} text-white rounded-md`}><Link href="/learning">Register</Link></li>
 
           <li className="font-semibold bg-secondary text-white rounded-md"><Link href="/learning">Sign In</Link></li>
         </ul>
@@ -52,35 +45,32 @@ const NavBar = ({ darkTheme }: { darkTheme?: boolean }) => {
             </div>
             <div className="drawer-side text-lg">
               <label htmlFor="my-drawer-4" aria-label="close sidebar" className="drawer-overlay"></label>
-              <ul className="menu min-h-full w-80 px-0 py-0 bg-primary text-white text-lg">
+              <ul className="menu min-h-full w-full px-0 sm:px-5 md:px-10 py-0 bg-primary text-white text-lg">
                 {/* Sidebar content here */}
-                <li className="h-16 m-0 flex">
+                <li className=" m-0 py-5 flex flex-row justify-center">
+                  <Link href="/learning">
+                    <h1 className="font-bold text-2xl">Marlayer</h1>
+                  </Link>
                   <label htmlFor="my-drawer-4" aria-label="close sidebar" className="inline-block ml-auto my-auto">
-                    <XMarkIcon className="w-6 text-white p-0" />
+                    <XMarkIcon className="h-6 text-white p-0" />
                   </label>
                 </li>
-                <li>
+                <li className="mb-2">
                   <details>
-                    <summary className={`font-semibold`}>Courses</summary>
-                    <ul className={`rounded-t-none p-2 w-72 bg-white text-primary`}>
-                      <li><Link href="/learning">Computer Basics</Link></li>
-                      <li><Link href="/learning">Responsive Web Design</Link></li>
+                    <summary className={`font-semibold text-xl`}>Courses</summary>
+                    <ul className={`rounded-t-none w-full bg-white text-primary ml-0 px-0 py-3`}>
+                      <li><Link className="p-4 font-550" href="/learning/courses/computer-basics">Computer Basics</Link></li>
+                      <li><Link className="p-4 font-550" href="/learning">Responsive Web Design</Link></li>
                     </ul>
                   </details>
                 </li>
-                <li className="font-semibold"><Link href="/learning">Learning Plans</Link></li>
-                <li className="font-semibold"><Link href="/learning/faqs">FAQs</Link></li>
-                <li className="mx-3 max-w-44 mb-3">
-                  <details>
-                    <summary className={`font-semibold bg-primary-2 text-white rounded-md`}>Register</summary>
-                    <ul className={`rounded-t-none p-2 w-72 bg-white text-primary`}>
-                      <li><Link href="/learning">Register as Individual</Link></li>
-                      <li><Link href="/learning">Register as Company</Link></li>
-                    </ul>
-                  </details>
+                <li className="font-semibold mb-2 text-xl"><Link href="/learning/plans">Learning Plans</Link></li>
+                <li className="font-semibold mb-2 text-xl"><Link href="/learning/faqs">FAQs</Link></li>
+                
+                <li className="flex flex-col mt-auto gap-4 px-3 py-8">
+                  <Link className="btn btn-lg font-semibold bg-primary-2 text-white rounded-md" href="/learning">Register</Link>
+                  <Link className="btn btn-lg font-semibold bg-secondary text-white rounded-md" href="/learning">Sign In</Link>
                 </li>
-
-                <li className="font-semibold bg-secondary text-white rounded-md max-w-44 mx-3"><Link href="/learning">Sign In</Link></li>
               </ul>
             </div>
           </div>

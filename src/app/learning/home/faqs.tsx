@@ -5,7 +5,7 @@ const FAQs = () => {
   return (
     <section id="faqs" className="bg-white py-14 lg:py-28 px-5 xl:px-28 flex flex-col">
       <header className="flex mb-5 lg:mb-12">
-        <h2 className="text-xl md:text-2xl mx-auto font-550 bg-gradient-to-r max-w-550 text-primary">Frequently Asked Questions</h2>
+        <h2 className="text-2xl mx-auto font-semibold bg-gradient-to-r max-w-550 text-primary">Frequently Asked Questions</h2>
       </header>
 
       <div className="collapse collapse-arrow bg-base-200 mb-4 border border-primary rounded-xl max-w-5xl mx-auto">
@@ -61,7 +61,7 @@ const FAQs = () => {
 
 
       <div className="flex justify-center">
-        <Link href="/learning/faqs" className="btn bg-primary text-white text-xs md:text-sm rounded-lg px-9 mx-auto md:mx-0 mt-8" >View More</Link>
+        <Link href="/learning/faqs" className="btn btn-link btn-lg text-primary rounded-lg px-10 mx-auto md:mx-0 mt-8" >View More </Link>
       </div>
 
     </section>

@@ -6,9 +6,8 @@ import { CheckCircleIcon, UserPlusIcon, ArrowRightStartOnRectangleIcon } from "@
 const HowToEnroll =()=>{
 
   return(
-    <section id="howToEnroll" className=" bg-white  py-14 lg:py-28 px-5 xl:px-28">
-      <h2 className="text-center text-3xl mb-5 font-bold text-primary">Begin Your Learning Journey</h2>
-      {/* <p className="text-md md:text-lg text-center text-primary">Complete your Registration / Enrollment in no time.</p> */}
+    <section id="howToEnroll" className=" bg-white py-14 lg:py-28 px-5 xl:px-28">
+      <h2 className="text-center text-2xl font-semibold text-primary">Begin Your Learning Journey</h2>
 
       <div className="flex flex-col mt-14">
         <div className="flex flex-col md:flex-row md:gap-3 justify-center w-full">
