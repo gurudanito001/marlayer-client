@@ -1,25 +1,20 @@
 {
   "pages": {
-    "/(home)/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/(home)/page.js"
-    ],
     "/layout": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/css/app/layout.css",
       "static/chunks/app/layout.js"
     ],
+    "/learning/plans/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/learning/plans/page.js"
+    ],
     "/learning/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/learning/page.js"
-    ],
-    "/learning/faqs/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/learning/faqs/page.js"
     ],
     "/learning/courses/computer-basics/page": [
       "static/chunks/webpack.js",
@@ -27,15 +22,30 @@
       "static/css/app/learning/courses/computer-basics/page.css",
       "static/chunks/app/learning/courses/computer-basics/page.js"
     ],
-    "/learning/plans/page": [
+    "/(home)/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/learning/plans/page.js"
+      "static/chunks/app/(home)/page.js"
     ],
-    "/_not-found/page": [
+    "/learning/sign-up/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/_not-found/page.js"
+      "static/chunks/app/learning/sign-up/page.js"
+    ],
+    "/learning/sign-in/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/learning/sign-in/page.js"
+    ],
+    "/learning/contact-sales/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/learning/contact-sales/page.js"
+    ],
+    "/learning/faqs/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/learning/faqs/page.js"
     ]
   }
 }

@@ -26,7 +26,7 @@ const JoinACohort = () => {
             <li>Empower yourself with industry needed skills.</li>
           </ul>
           <div className="mt-7">
-            <button className=" btn btn-lg bg-gray-950 text-white shadow-sm rounded-lg px-10">Register Now</button>
+            <Link href="/learning/sign-up" className=" btn btn-lg bg-gray-950 text-white shadow-sm rounded-lg px-10">Register Now</Link>
           </div>
         </article>
 

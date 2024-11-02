@@ -27,21 +27,21 @@ const Pricing = ()=>{
 
             <ul className=" list-none list-outside flex flex-col gap-3">
               <li className="flex items-center text-black"> <span><CheckIcon className="w-5 text-primary-2 mr-3" /></span> Access to Core Curriculum: Comprehensive coverage of essential tech skills</li>
-              <li className="flex items-center"> <span><CheckIcon className="w-5 text-primary-2 mr-3" /></span>Live Q&A Sessions: Weekly sessions to address questions and clarify concepts.</li>
-              <li className="flex items-center">  <span><CheckIcon className="w-5 text-primary-2 mr-3" /></span>Basic Course Materials: Downloadable resources, including slides and notes.</li>
+              {/* <li className="flex items-center"> <span><CheckIcon className="w-5 text-primary-2 mr-3" /></span>Live Q&A Sessions: Weekly sessions to address questions and clarify concepts.</li> */}
+              <li className="flex items-center">  <span><CheckIcon className="w-5 text-primary-2 mr-3" /></span>Lifetime Access: Permanent access to course materials and updates.</li>
               <li className="flex items-center">  <span><CheckIcon className="w-5 text-primary-2 mr-3" /></span>Community Access: Join a basic forum or group for peer support and networking.</li>
               <li className="flex items-center">  <span><CheckIcon className="w-5 text-primary-2 mr-3" /></span>Completion Certificate: Official certificate upon finishing the course.</li>
-              <li className="flex items-center">  <span><CheckIcon className="w-5 text-primary-2 mr-3" /></span>Networking Events: Access to exclusive virtual</li>
+              {/* <li className="flex items-center">  <span><CheckIcon className="w-5 text-primary-2 mr-3" /></span>Networking Events: Access to exclusive virtual</li> */}
 
 
               <li className="flex items-center opacity-30">  <span><CheckIcon className="w-5 text-primary-2 mr-3" /></span>Personalized Feedback: One-on-one feedback on assignments and projects.</li>
-              <li className="flex items-center opacity-30">  <span><CheckIcon className="w-5 text-primary-2 mr-3" /></span>Recorded Sessions: Access to recorded lectures for review and study.</li>
+              {/* <li className="flex items-center opacity-30">  <span><CheckIcon className="w-5 text-primary-2 mr-3" /></span>Recorded Sessions: Access to recorded lectures for review and study.</li> */}
               <li className="flex items-center opacity-30">  <span><CheckIcon className="w-5 text-primary-2 mr-3" /></span>Monthly Reviews: Your progress will be reviewed monthly and you&apos;ll be assisted where needed</li>
 
               <li className="flex items-center opacity-30">  <span><CheckIcon className="w-5 text-primary-2 mr-3" /></span>Unlimited Mentorship: Ongoing access to one-on-one mentorship sessions.</li>
-              <li className="flex items-center opacity-30">  <span><CheckIcon className="w-5 text-primary-2 mr-3" /></span>Exclusive Content: Advanced workshops and tutorials on emerging technologies.</li>
+              {/* <li className="flex items-center opacity-30">  <span><CheckIcon className="w-5 text-primary-2 mr-3" /></span>Exclusive Content: Advanced workshops and tutorials on emerging technologies.</li> */}
               <li className="flex items-center opacity-30">  <span><CheckIcon className="w-5 text-primary-2 mr-3" /></span>Priority Support: Fast-track responses to inquiries and technical support.</li>
-              <li className="flex items-center opacity-30">  <span><CheckIcon className="w-5 text-primary-2 mr-3" /></span>Lifetime Access: Permanent access to course materials and updates.</li>
+              
             </ul>
           </article>
         </div>
@@ -63,21 +63,21 @@ const Pricing = ()=>{
 
             <ul className=" list-none list-outside flex flex-col gap-3">
               <li className="flex items-center text-black"> <span><CheckIcon className="w-5 text-primary mr-3" /></span> Access to Core Curriculum: Comprehensive coverage of essential tech skills</li>
-              <li className="flex items-center"> <span><CheckIcon className="w-5 text-primary mr-3" /></span>Live Q&A Sessions: Weekly sessions to address questions and clarify concepts.</li>
-              <li className="flex items-center"> <span><CheckIcon className="w-5 text-primary mr-3" /></span>Basic Course Materials: Downloadable resources, including slides and notes.</li>
+              {/* <li className="flex items-center"> <span><CheckIcon className="w-5 text-primary mr-3" /></span>Live Q&A Sessions: Weekly sessions to address questions and clarify concepts.</li> */}
+              <li className="flex items-center"> <span><CheckIcon className="w-5 text-primary mr-3" /></span>Lifetime Access: Permanent access to course materials and updates.</li>
               <li className="flex items-center"> <span><CheckIcon className="w-5 text-primary mr-3" /></span>Community Access: Join a basic forum or group for peer support and networking.</li>
               <li className="flex items-center"> <span><CheckIcon className="w-5 text-primary mr-3" /></span>Completion Certificate: Official certificate upon finishing the course.</li>
-              <li className="flex items-center"> <span><CheckIcon className="w-5 text-primary mr-3" /></span>Networking Events: Access to exclusive virtual</li>
+              {/* <li className="flex items-center"> <span><CheckIcon className="w-5 text-primary mr-3" /></span>Networking Events: Access to exclusive virtual</li> */}
 
 
               <li className="flex items-center"> <span><CheckIcon className="w-5 text-primary mr-3" /></span>Personalized Feedback: One-on-one feedback on assignments and projects.</li>
-              <li className="flex items-center"> <span><CheckIcon className="w-5 text-primary mr-3" /></span>Recorded Sessions: Access to recorded lectures for review and study.</li>
+              {/* <li className="flex items-center"> <span><CheckIcon className="w-5 text-primary mr-3" /></span>Recorded Sessions: Access to recorded lectures for review and study.</li> */}
               <li className="flex items-center"> <span><CheckIcon className="w-5 text-primary mr-3" /></span>Monthly Reviews: Your progress will be reviewed monthly and you&apos;ll be assisted where needed</li>
 
               <li className="flex items-center opacity-30"><span><CheckIcon className="w-5 text-primary mr-3" /></span>Unlimited Mentorship: Ongoing access to one-on-one mentorship sessions.</li>
-              <li className="flex items-center opacity-30"> <span><CheckIcon className="w-5 text-primary mr-3" /></span>Exclusive Content: Advanced workshops and tutorials on emerging technologies.</li>
+              {/* <li className="flex items-center opacity-30"> <span><CheckIcon className="w-5 text-primary mr-3" /></span>Exclusive Content: Advanced workshops and tutorials on emerging technologies.</li> */}
               <li className="flex items-center opacity-30"> <span><CheckIcon className="w-5 text-primary mr-3" /></span>Priority Support: Fast-track responses to inquiries and technical support.</li>
-              <li className="flex items-center opacity-30"> <span><CheckIcon className="w-5 text-primary mr-3" /></span>Lifetime Access: Permanent access to course materials and updates.</li>
+              
             </ul>
           </article>
         </div>
@@ -97,21 +97,21 @@ const Pricing = ()=>{
 
             <ul className=" list-none list-outside flex flex-col gap-3">
               <li className="flex items-center text-black"> <span><CheckIcon className="w-5 text-secondary mr-3" /></span> Access to Core Curriculum: Comprehensive coverage of essential tech skills</li>
-              <li className="flex items-center"> <span><CheckIcon className="w-5 text-secondary mr-3" /></span>Live Q&A Sessions: Weekly sessions to address questions and clarify concepts.</li>
-              <li className="flex items-center"> <span><CheckIcon className="w-5 text-secondary mr-3" /></span>Basic Course Materials: Downloadable resources, including slides and notes.</li>
+              {/* <li className="flex items-center"> <span><CheckIcon className="w-5 text-secondary mr-3" /></span>Live Q&A Sessions: Weekly sessions to address questions and clarify concepts.</li> */}
+              <li className="flex items-center"> <span><CheckIcon className="w-5 text-secondary mr-3" /></span>Lifetime Access: Permanent access to course materials and updates.</li>
               <li className="flex items-center"> <span><CheckIcon className="w-5 text-secondary mr-3" /></span>Community Access: Join a basic forum or group for peer support and networking.</li>
               <li className="flex items-center"> <span><CheckIcon className="w-5 text-secondary mr-3" /></span>Completion Certificate: Official certificate upon finishing the course.</li>
-              <li className="flex items-center"> <span><CheckIcon className="w-5 text-secondary mr-3" /></span>Networking Events: Access to exclusive virtual</li>
+              {/* <li className="flex items-center"> <span><CheckIcon className="w-5 text-secondary mr-3" /></span>Networking Events: Access to exclusive virtual</li> */}
 
 
               <li className="flex items-center"> <span><CheckIcon className="w-5 text-secondary mr-3" /></span>Personalized Feedback: One-on-one feedback on assignments and projects.</li>
-              <li className="flex items-center"> <span><CheckIcon className="w-5 text-secondary mr-3" /></span>Recorded Sessions: Access to recorded lectures for review and study.</li>
+              {/* <li className="flex items-center"> <span><CheckIcon className="w-5 text-secondary mr-3" /></span>Recorded Sessions: Access to recorded lectures for review and study.</li> */}
               <li className="flex items-center"> <span><CheckIcon className="w-5 text-secondary mr-3" /></span>Monthly Reviews: Your progress will be reviewed monthly and you&apos;ll be assisted where needed</li>
 
               <li className="flex items-center"> <span><CheckIcon className="w-5 text-secondary mr-3" /></span>Unlimited Mentorship: Ongoing access to one-on-one mentorship sessions.</li>
-              <li className="flex items-center"> <span><CheckIcon className="w-5 text-secondary mr-3" /></span>Exclusive Content: Advanced workshops and tutorials on emerging technologies.</li>
+              {/* <li className="flex items-center"> <span><CheckIcon className="w-5 text-secondary mr-3" /></span>Exclusive Content: Advanced workshops and tutorials on emerging technologies.</li> */}
               <li className="flex items-center"> <span><CheckIcon className="w-5 text-secondary mr-3" /></span>Priority Support: Fast-track responses to inquiries and technical support.</li>
-              <li className="flex items-center"> <span><CheckIcon className="w-5 text-secondary mr-3" /></span>Lifetime Access: Permanent access to course materials and updates.</li>
+              
             </ul>
           </article>
         </div>

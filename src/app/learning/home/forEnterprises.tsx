@@ -16,7 +16,7 @@ const ForEnterprises = () => {
           </p>
 
           <div className="mt-7">
-            <button className="btn btn-lg bg-secondary text-white shadow-sm rounded-lg px-10">Contact Sales Team</button>
+            <Link href="/learning/contact-sales" className="btn btn-lg bg-secondary text-white shadow-sm rounded-lg px-10">Contact Sales Team</Link>
           </div>
         </article>
 

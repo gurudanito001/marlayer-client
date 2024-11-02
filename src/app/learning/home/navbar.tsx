@@ -28,9 +28,9 @@ const NavBar = ({ darkTheme }: { darkTheme?: boolean }) => {
           <li className="font-semibold"><Link href="/learning/plans">Learning Plans</Link></li>
           <li className="font-semibold"><Link href="/learning/faqs">FAQs</Link></li>
 
-          <li className={`font-semibold ${darkTheme ? "bg-primary-2": "bg-primary"} text-white rounded-md`}><Link href="/learning">Register</Link></li>
+          <li className={`font-semibold ${darkTheme ? "bg-primary-2": "bg-primary"} text-white rounded-md`}><Link href="/learning/sign-up">Register</Link></li>
 
-          <li className="font-semibold bg-secondary text-white rounded-md"><Link href="/learning">Sign In</Link></li>
+          <li className="font-semibold bg-secondary text-white rounded-md"><Link href="/learning/sign-in">Sign In</Link></li>
         </ul>
 
         <div className="dropdown dropdown-end lg:hidden">
@@ -68,8 +68,8 @@ const NavBar = ({ darkTheme }: { darkTheme?: boolean }) => {
                 <li className="font-semibold mb-2 text-xl"><Link href="/learning/faqs">FAQs</Link></li>
                 
                 <li className="flex flex-col mt-auto gap-4 px-3 py-8">
-                  <Link className="btn btn-lg font-semibold bg-primary-2 text-white rounded-md" href="/learning">Register</Link>
-                  <Link className="btn btn-lg font-semibold bg-secondary text-white rounded-md" href="/learning">Sign In</Link>
+                  <Link className="btn btn-lg font-semibold bg-primary-2 text-white rounded-md" href="/learning/sign-up">Register</Link>
+                  <Link className="btn btn-lg font-semibold bg-secondary text-white rounded-md" href="/learning/sign-in">Sign In</Link>
                 </li>
               </ul>
             </div>

@@ -1,4 +1,4 @@
-// File: C:\Users\user\Desktop\Projects\Marlayer-Client\src\app\learning\plans\page.tsx
+// File: /Users/damiadeh/Desktop/Projects/marlayer-client/src/app/learning/plans/page.tsx
 import * as entry from '../../../../../src/app/learning/plans/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

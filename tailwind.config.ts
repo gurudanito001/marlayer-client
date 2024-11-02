@@ -56,6 +56,11 @@ const config: Config = {
         "800": "800px",
         "1000": "1000px"
       },
+      margin: {
+        "500": "500px",
+        "600": "600px",
+        "700": "700px"
+      }
     },
     keyframes: {
       shimmer: {

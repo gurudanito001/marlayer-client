@@ -1,9 +1,7 @@
 {
-  "/_not-found/page": "app/_not-found/page.js",
-  "/(home)/page": "app/(home)/page.js",
-  "/learning/page": "app/learning/page.js",
+  "/learning/sign-in/page": "app/learning/sign-in/page.js",
   "/learning/faqs/page": "app/learning/faqs/page.js",
-  "/learning/courses/computer-basics/page": "app/learning/courses/computer-basics/page.js",
-  "/learning/plans/page": "app/learning/plans/page.js",
-  "/favicon.ico/route": "app/favicon.ico/route.js"
+  "/learning/page": "app/learning/page.js",
+  "/learning/sign-up/page": "app/learning/sign-up/page.js",
+  "/learning/contact-sales/page": "app/learning/contact-sales/page.js"
 }
