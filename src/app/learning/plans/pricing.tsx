@@ -6,7 +6,7 @@ import Link from "next/link";
 
 
 
-const Pricing = ()=>{
+const Pricing = ({standard, premium, platinum}: {standard?: number, premium?: number, platinum?: number})=>{
 
   return (
     <section id="coursePackages" className="bg-white py-14 lg:py-28 px-5 xl:px-28 flex flex-col">
@@ -21,8 +21,8 @@ const Pricing = ()=>{
             </header>
 
             <div className="flex flex-col mb-10 gap-2">
-              <span className="text-4xl font-bold text-primary-2">$20 <span className="text-lg ">USD/mo</span></span>
-              <Link className="btn btn-lg px-10 hover:border-2 border-primary-2 bg-primary-2 text-white font-bold w-full rounded-lg" href="">Get Started</Link>
+              {standard && <span className="text-4xl font-bold text-primary-2">${standard} <span className="text-lg ">USD/mo</span></span>}
+              <Link className="btn btn-lg px-10 hover:border-2 border-primary-2 bg-primary-2 text-white font-bold w-full rounded-lg" href="/learning/sign-up">Get Started</Link>
             </div>
 
             <ul className=" list-none list-outside flex flex-col gap-3">
@@ -57,8 +57,8 @@ const Pricing = ()=>{
             </header>
             
             <div className="flex flex-col mb-10 gap-2">
-              <span className="text-4xl font-bold text-primary">$30 <span className="text-lg ">USD/mo</span></span>
-              <Link className="btn btn-lg px-10 hover:border-2 border-primary bg-primary text-white font-bold w-full rounded-lg" href="">Get Started</Link>
+              {premium && <span className="text-4xl font-bold text-primary">${premium}  <span className="text-lg ">USD/mo</span></span>}
+              <Link className="btn btn-lg px-10 hover:border-2 border-primary bg-primary text-white font-bold w-full rounded-lg" href="/learning/sign-up">Get Started</Link>
             </div>
 
             <ul className=" list-none list-outside flex flex-col gap-3">
@@ -91,8 +91,8 @@ const Pricing = ()=>{
             </header>
             
             <div className="flex flex-col mb-10 gap-2">
-              <span className="text-4xl font-bold text-secondary">$40 <span className="text-lg ">USD/mo</span></span>
-              <Link className="btn btn-lg px-10 hover:border-2 border-secondary text-white font-bold w-full bg-secondary rounded-lg" href="">Get Started</Link>
+              {platinum && <span className="text-4xl font-bold text-secondary">${platinum}  <span className="text-lg ">USD/mo</span></span>}
+              <Link className="btn btn-lg px-10 hover:border-2 border-secondary text-white font-bold w-full bg-secondary rounded-lg" href="/learning/sign-up">Get Started</Link>
             </div>
 
             <ul className=" list-none list-outside flex flex-col gap-3">

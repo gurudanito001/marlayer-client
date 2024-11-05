@@ -20,8 +20,8 @@ const NavBar = ({ darkTheme }: { darkTheme?: boolean }) => {
             <details>
               <summary className="text-md font-semibold">Courses</summary>
               <ul className={`bg-white text-primary rounded-t-none p-2 w-72`}>
-                <li><Link href="/learning/courses/computer-basics">Computer Basics</Link></li>
-                <li><Link href="/learning">Responsive Web Design</Link></li>
+                <li><Link href="/learning/courses/computer-basics">Computer Fundamentals</Link></li>
+                <li><Link href="/learning/courses/responsive-web-design">Responsive Web Design</Link></li>
               </ul>
             </details>
           </li>
@@ -59,8 +59,8 @@ const NavBar = ({ darkTheme }: { darkTheme?: boolean }) => {
                   <details>
                     <summary className={`font-semibold text-xl`}>Courses</summary>
                     <ul className={`rounded-t-none w-full bg-white text-primary ml-0 px-0 py-3`}>
-                      <li><Link className="p-4 font-550" href="/learning/courses/computer-basics">Computer Basics</Link></li>
-                      <li><Link className="p-4 font-550" href="/learning">Responsive Web Design</Link></li>
+                      <li><Link className="p-4 font-550" href="/learning/courses/computer-basics">Computer Fundamentals</Link></li>
+                      <li><Link className="p-4 font-550" href="/learning/courses/responsive-web-design">Responsive Web Design</Link></li>
                     </ul>
                   </details>
                 </li>

@@ -182,7 +182,6 @@ const ContactSalesForm = () => {
         <div className="mt-7">
           <button className="btn btn-lg bg-primary text-white border-primary shadow-sm rounded-lg px-20">Submit</button>
         </div>
-
       </form>
 
     </section>

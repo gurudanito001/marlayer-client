@@ -25,7 +25,7 @@ const ScrumMasteryCourse = ()=>{
         </div>
         <Syllabus />
       </section>
-      <Pricing />
+      <Pricing standard={20} premium={30} platinum={40} />
       <ForEnterprises />
       <Footer showqalink={true} />
     </main>

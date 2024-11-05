@@ -1,7 +1,9 @@
 {
-  "/learning/sign-in/page": "app/learning/sign-in/page.js",
+  "/learning/courses/responsive-web-design/page": "app/learning/courses/responsive-web-design/page.js",
   "/learning/faqs/page": "app/learning/faqs/page.js",
   "/learning/page": "app/learning/page.js",
+  "/learning/courses/computer-basics/page": "app/learning/courses/computer-basics/page.js",
+  "/learning/plans/page": "app/learning/plans/page.js",
   "/learning/sign-up/page": "app/learning/sign-up/page.js",
-  "/learning/contact-sales/page": "app/learning/contact-sales/page.js"
+  "/learning/sign-in/page": "app/learning/sign-in/page.js"
 }

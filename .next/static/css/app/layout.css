@@ -1922,6 +1922,17 @@ details.collapse summary::-webkit-details-marker {
 .join-item:focus {
   isolation: isolate;
 }
+.loading {
+  pointer-events: none;
+  display: inline-block;
+  aspect-ratio: 1 / 1;
+  width: 1.5rem;
+  background-color: currentColor;
+  mask-size: 100%;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-image: url("data:image/svg+xml,%3Csvg width='24' height='24' stroke='%23000' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cstyle%3E.spinner_V8m1%7Btransform-origin:center;animation:spinner_zKoa 2s linear infinite%7D.spinner_V8m1 circle%7Bstroke-linecap:round;animation:spinner_YpZS 1.5s ease-out infinite%7D%40keyframes spinner_zKoa%7B100%25%7Btransform:rotate(360deg)%7D%7D%40keyframes spinner_YpZS%7B0%25%7Bstroke-dasharray:0 150;stroke-dashoffset:0%7D47.5%25%7Bstroke-dasharray:42 150;stroke-dashoffset:-16%7D95%25%2C100%25%7Bstroke-dasharray:42 150;stroke-dashoffset:-59%7D%7D%3C%2Fstyle%3E%3Cg class='spinner_V8m1'%3E%3Ccircle cx='12' cy='12' r='9.5' fill='none' stroke-width='3'%3E%3C%2Fcircle%3E%3C%2Fg%3E%3C%2Fsvg%3E");
+}
 :where(.menu li:empty) {
   --tw-bg-opacity: 1;
   background-color: var(--fallback-bc,oklch(var(--bc)/var(--tw-bg-opacity)));
@@ -2915,18 +2926,6 @@ html:has(.drawer-toggle:checked) {
 .mt-auto {
   margin-top: auto;
 }
-.mt-28 {
-  margin-top: 7rem;
-}
-.-mt-44 {
-  margin-top: -11rem;
-}
-.-mt-24 {
-  margin-top: -6rem;
-}
-.-mt-12 {
-  margin-top: -3rem;
-}
 .block {
   display: block;
 }
@@ -2983,9 +2982,6 @@ html:has(.drawer-toggle:checked) {
 }
 .max-h-screen {
   max-height: 100vh;
-}
-.max-h-850 {
-  max-height: 850px;
 }
 .min-h-full {
   min-height: 100%;
@@ -3482,6 +3478,9 @@ html:has(.drawer-toggle:checked) {
 .pl-6 {
   padding-left: 1.5rem;
 }
+.pt-10 {
+  padding-top: 2.5rem;
+}
 .pt-4 {
   padding-top: 1rem;
 }
@@ -3490,9 +3489,6 @@ html:has(.drawer-toggle:checked) {
 }
 .pt-8 {
   padding-top: 2rem;
-}
-.pt-10 {
-  padding-top: 2.5rem;
 }
 .text-left {
   text-align: left;
@@ -3613,10 +3609,6 @@ html:has(.drawer-toggle:checked) {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
-.text-red-500 {
-  --tw-text-opacity: 1;
-  color: rgb(239 68 68 / var(--tw-text-opacity));
-}
 .underline {
   text-decoration-line: underline;
 }
@@ -3632,11 +3624,6 @@ html:has(.drawer-toggle:checked) {
 .shadow {
   --tw-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
   --tw-shadow-colored: 0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);
-  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
-}
-.shadow-lg {
-  --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-  --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 .shadow-md {
@@ -3993,6 +3980,10 @@ body {
     margin-bottom: 0px;
   }
 
+  .md\:-mt-12 {
+    margin-top: -3rem;
+  }
+
   .md\:-mt-24 {
     margin-top: -6rem;
   }
@@ -4031,10 +4022,6 @@ body {
 
   .md\:mt-auto {
     margin-top: auto;
-  }
-
-  .md\:-mt-12 {
-    margin-top: -3rem;
   }
 
   .md\:inline {
@@ -4344,16 +4331,16 @@ body {
     gap: 1.25rem;
   }
 
+  .lg\:p-10 {
+    padding: 2.5rem;
+  }
+
   .lg\:p-2 {
     padding: 0.5rem;
   }
 
   .lg\:p-7 {
     padding: 1.75rem;
-  }
-
-  .lg\:p-10 {
-    padding: 2.5rem;
   }
 
   .lg\:px-0 {
@@ -4406,6 +4393,11 @@ body {
     padding-bottom: 9rem;
   }
 
+  .lg\:py-14 {
+    padding-top: 3.5rem;
+    padding-bottom: 3.5rem;
+  }
+
   .lg\:pb-14 {
     padding-bottom: 3.5rem;
   }
@@ -4424,6 +4416,11 @@ body {
     line-height: 2.5rem;
   }
 
+  .lg\:text-6xl {
+    font-size: 3.75rem;
+    line-height: 1;
+  }
+
   .lg\:text-7xl {
     font-size: 4.5rem;
     line-height: 1;
@@ -4437,11 +4434,6 @@ body {
   .lg\:text-xl {
     font-size: 1.25rem;
     line-height: 1.75rem;
-  }
-
-  .lg\:text-6xl {
-    font-size: 3.75rem;
-    line-height: 1;
   }
 }
 
@@ -4461,18 +4453,6 @@ body {
     margin-top: -0px;
   }
 
-  .xl\:-mt-96 {
-    margin-top: -24rem;
-  }
-
-  .xl\:-mt-500 {
-    margin-top: -500px;
-  }
-
-  .xl\:-mt-700 {
-    margin-top: -700px;
-  }
-
   .xl\:-mt-600 {
     margin-top: -600px;
   }
@@ -4489,12 +4469,12 @@ body {
     width: 100%;
   }
 
-  .xl\:max-w-lg {
-    max-width: 32rem;
-  }
-
   .xl\:max-w-3xl {
     max-width: 48rem;
+  }
+
+  .xl\:max-w-lg {
+    max-width: 32rem;
   }
 
   .xl\:grid-cols-2 {
@@ -4511,14 +4491,6 @@ body {
 
   .xl\:items-end {
     align-items: flex-end;
-  }
-
-  .xl\:gap-44 {
-    gap: 11rem;
-  }
-
-  .xl\:gap-20 {
-    gap: 5rem;
   }
 
   .xl\:gap-14 {
