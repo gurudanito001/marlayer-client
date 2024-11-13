@@ -1,6 +1,6 @@
 
 import NavBar from "../home/navbar";
-import Footer from "@/app/(home)/footer";
+import Footer from "../footer";
 import Pricing from "./pricing";
 import { CheckIcon } from "@heroicons/react/24/solid";
 import FAQs from "../home/faqs";

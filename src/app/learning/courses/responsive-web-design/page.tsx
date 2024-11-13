@@ -5,7 +5,7 @@ import Link from "next/link";
 import Syllabus from "./syllabus";
 import Pricing from "../../plans/pricing";
 import ForEnterprises from "../../home/forEnterprises";
-import Footer from "@/app/(home)/footer";
+import Footer from "../../footer";
 
 
 
@@ -19,7 +19,7 @@ const ScrumMasteryCourse = ()=>{
         <div className="breadcrumbs text-sm mb-10">
           <ul>
             <li><Link href="" className="text-primary text-sm lg:text-xl font-normal">Courses</Link></li>
-            <li><Link href="" className="text-primary font-semibold text-sm lg:text-xl capitalize">Computer Fundamentals and Microsoft Office Training
+            <li><Link href="" className="text-primary font-semibold text-sm lg:text-xl capitalize">Responsive Web Design
             </Link></li>
           </ul>
         </div>

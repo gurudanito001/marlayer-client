@@ -7,7 +7,7 @@ import JoinACohort from "./home/join-a-cohort";
 import StudentDiscount from "./home/studentDiscount";
 import ForEnterprises from "./home/forEnterprises";
 import FAQs from "./home/faqs";
-import Footer from "../(home)/footer";
+import Footer from "./footer"
 import { Metadata } from 'next';
  
 export const metadata: Metadata = {

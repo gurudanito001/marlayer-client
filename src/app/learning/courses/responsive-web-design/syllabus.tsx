@@ -242,7 +242,47 @@ const Week9 = () => {
   )
 }
 
-const Week10and11 = () => {
+
+const Week10 = ()=>{
+  return (
+    <ul className="timeline timeline-snap-icon max-md:timeline-compact timeline-vertical mx-3">
+      <header className="flex">
+        <h6 className="text-primary relative -ml-2 text-lg sm:text-xl font-550 items-center">
+            <span className="inline-block w-4 h-4 mr-2 lg:mr-6 rounded-full bg-primary"></span>
+          <strong className="mr-3">Week 10:</strong>Version Control (Git & Github) Fundamentals
+        </h6>
+      </header>
+      <li className="border-l border-dashed border-l-primary flex flex-row items-start px-3 xl:px-10 pt-4">
+        <div className="timeline-start mb-5 text-primary">
+          <h4 className="font-bold">Introduction to Version Control and Git Basics:</h4>
+
+          <ul className=" list-disc list-outside flex flex-col gap-3 text-lg pl-4 md:pl-5 mt-5">
+            <li>What is Version Control and Why it is Important</li>
+            <li>Introduction to Git and GitHub</li>
+            <li>Installing Git and Setting Up GitHub Account</li>
+            <li>Setting up user identity (git config)</li>
+            <li>Configuring aliases</li>
+            <li>Basic Git Workflow with VS Code</li>
+            <li>Branching and Merging</li>
+          </ul>
+
+          <h4 className="font-bold mt-4">Introduction to GitHub</h4>
+
+          <ul className=" list-disc list-outside flex flex-col gap-3 text-lg pl-4 md:pl-5 mt-5">
+            <li>Understanding GitHub Repositories</li>
+            <li>Creating and cloning a GitHub repository</li>
+            <li>Pushing to a remote repository (git push)</li>
+            <li>Setting up a GitHub Pages site</li>
+            <li>Introduction to GitHub Pages</li>
+            <li>Exercise</li>
+          </ul>
+        </div>
+      </li>
+    </ul>
+  )
+}
+
+const Week11and12 = () => {
   return (
     <ul className="timeline timeline-snap-icon max-md:timeline-compact timeline-vertical mx-3">
       <header className="flex">
@@ -391,7 +431,8 @@ const Syllabus = () => {
     <Week7 key="week7" />,
     <Week8 key="week8" />,
     <Week9 key="week9" />,
-    <Week10and11 key="week10and11" />
+    <Week10 key="week10" />,
+    <Week11and12 key="week11and12" />
   ]
 
 
@@ -627,7 +668,38 @@ const Syllabus = () => {
         <div className={`collapse collapse-arrow bg-base-200 mb-4 border border-primary rounded-xl max-w-5xl`}>
           <input type="checkbox" name="my-accordion-1" />
           <div className={`collapse-title md:text-lg font-semibold  ${weekIndex === 9 ? "bg-primary text-white" : "bg-neutral text-primary"}`}>
-            <strong className="mr-3">Week 10 - 11:</strong>Capstone Project
+            <strong className="mr-3">Week 10:</strong>Version Control (Git & Github) Fundamentals
+          </div>
+          <div className="collapse-content bg-white border-t border-t-primary">
+            <h4 className="font-bold mt-4">Introduction to Version Control and Git Basics:</h4>
+
+            <ul className=" list-disc list-outside flex flex-col gap-3 text-lg pl-4 md:pl-5 mt-5">
+              <li>What is Version Control and Why it is Important</li>
+              <li>Introduction to Git and GitHub</li>
+              <li>Installing Git and Setting Up GitHub Account</li>
+              <li>Setting up user identity (git config)</li>
+              <li>Configuring aliases</li>
+              <li>Basic Git Workflow with VS Code</li>
+              <li>Branching and Merging</li>
+            </ul>
+
+            <h4 className="font-bold mt-4">Introduction to GitHub</h4>
+
+            <ul className=" list-disc list-outside flex flex-col gap-3 text-lg pl-4 md:pl-5 mt-5">
+              <li>Understanding GitHub Repositories</li>
+              <li>Creating and cloning a GitHub repository</li>
+              <li>Pushing to a remote repository (git push)</li>
+              <li>Setting up a GitHub Pages site</li>
+              <li>Introduction to GitHub Pages</li>
+              <li>Exercise</li>
+            </ul>
+          </div>
+        </div>
+
+        <div className={`collapse collapse-arrow bg-base-200 mb-4 border border-primary rounded-xl max-w-5xl`}>
+          <input type="checkbox" name="my-accordion-1" />
+          <div className={`collapse-title md:text-lg font-semibold  ${weekIndex === 10 ? "bg-primary text-white" : "bg-neutral text-primary"}`}>
+            <strong className="mr-3">Week 11 - 12:</strong>Capstone Project
           </div>
           <div className="collapse-content bg-white border-t border-t-primary">
             <h4 className="font-bold mt-4">Overview:</h4>

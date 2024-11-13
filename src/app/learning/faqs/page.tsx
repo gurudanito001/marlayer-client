@@ -1,6 +1,6 @@
 
 import NavBar from "../home/navbar";
-import Footer from "@/app/(home)/footer";
+import Footer from "../footer";
 
 
 const Faq = () => {
@@ -12,7 +12,7 @@ const Faq = () => {
         <section className="flex flex-col py-14 lg:py-24 px-3 lg:px-14 xl:px-28 bg-primary text-white mb-8">
           <div className="max-w-4xl">
             <h2 className="text-5xl lg:text-7xl font-semibold mb-3 p-0">Frequently Asked Questions </h2>
-            <p className="text-xl md:text-2xl font-light mt-5">Welcome to our FAQ page! Here, you&apos;ll find answers to some of the most common questions about our learning platform. Feel free to reach out to support if you have any additional questions! </p>
+            <p className="text-lg md:text-xl font-light mt-5">Welcome to our FAQ page! Here, you&apos;ll find answers to some of the most common questions about our learning platform. Feel free to reach out to support if you have any additional questions! </p>
             <div className="mt-7">
             <button className=" btn md:btn-lg text-md bg-secondary text-white rounded-lg">Contact Support</button>
           </div>

@@ -26,15 +26,13 @@ const CoursePackages = ()=>{
           <span className="italic text-secondary text-sm">12 weeks</span>
         </Link>
 
-        {/* <article className="text-primary flex flex-col p-10">
-          <Image src="/images/scrumMaster.svg" className="mx-auto w-24 h-24 mb-3" width={150} height={150} objectFit="contain" alt="Scrum Master Icon" />
-          <h3 className="text-center text-xl font-550 text-primary mb-5 md:mb-7 px-5">SCRUM MASTERY</h3>
-          <p className="max-w-md text-center mx-auto">Become a certified Scrum Master and lead agile teams to success. Learn the principles of Scrum, effective team management, and the strategies needed to drive project excellence in dynamic environments. </p>
+        <Link href="/learning/courses/dynamic-web-development" className="text-primary flex flex-col p-3 border border-primary rounded-lg hover:shadow-xl max-w-md">
+          <Image src="/images/dynamic-web-developer.jpg" className="mb-3 rounded-md" width={400} height={250} objectFit="contain" alt="computer basics" />  
+          <h3 className="font-550 mb-3 leading-5"><span className="font-bold text-lg">Dynamic Web Development:</span> <br/><span className="font-normal">Use powerful frontend frameworks to develop web applications</span></h3>
+          <span className="flex items-center text-sm"><Image src="/images/certificate-icon.png" className="mr-1 w-4 inline text-primary" width={100} height={100} alt="certificate icon" />  Includes Professional Certificate</span>
+          <span className="italic text-secondary text-sm">16 weeks</span>
+        </Link>
 
-          <div className="flex justify-center">
-            <Link href="/learning/scrummaster" className="btn bg-primary text-white text-xs md:text-sm rounded-full px-9 mx-auto md:mx-0 mt-8" >View Course</Link>
-          </div>
-        </article> */}
       </div>
     </section>
   )

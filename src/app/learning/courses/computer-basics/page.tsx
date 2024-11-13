@@ -5,11 +5,11 @@ import Link from "next/link";
 import Syllabus from "./syllabus";
 import Pricing from "../../plans/pricing";
 import ForEnterprises from "../../home/forEnterprises";
-import Footer from "@/app/(home)/footer";
+import Footer from "../../footer";
 
 
 
-const ScrumMasteryCourse = ()=>{
+const ComputerBasics = ()=>{
 
   return (
     <main className="bg-white">
@@ -32,4 +32,4 @@ const ScrumMasteryCourse = ()=>{
   )
 }
 
-export default ScrumMasteryCourse
+export default ComputerBasics

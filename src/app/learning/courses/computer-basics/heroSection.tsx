@@ -1,5 +1,4 @@
 
-import Footer from "@/app/(home)/footer";
 import { CheckIcon } from "@heroicons/react/24/solid";
 import Link from "next/link";
 
@@ -15,7 +14,7 @@ const HeroSection = () => {
           This course introduces students to essential computer skills and teaches them how to use the core Microsoft Office applications. Students will gain hands-on experience in creating documents, spreadsheets, presentations, and managing emails, which are vital for everyday office tasks.
         </p>
         <h4 className="font-550 text-xl mb-3">Course Objectives:</h4>
-        <ul className=" list-none list-outside flex flex-col gap-3 lg:gap-5 text-lg">
+        <ul className=" list-none list-outside flex flex-col gap-3 lg:gap-5 text-lg mb-5">
           <li className="flex items-center"> <CheckIcon className="w-5 text-secondary mr-3" /> Understand basic computer operations and file management.</li>
 
 
@@ -24,7 +23,13 @@ const HeroSection = () => {
           <li className="flex items-center"> <CheckIcon className="w-5 text-secondary mr-3" />Create, format, and edit documents, spreadsheets, and presentations.</li>
           <li className="flex items-center"> <CheckIcon className="w-5 text-secondary mr-3" />Use email, calendar, and contacts efficiently in Microsoft Outlook.</li>
         </ul>
-        <div className="mt-7">
+
+        <h4 className="font-550 text-xl mb-2">Prerequisites:</h4>
+        <p className="text-lg font-light mb-4">
+          Willingness to learn
+        </p>
+
+        <div className="mt-10">
           <Link href="/learning/sign-up" className=" btn btn-lg bg-secondary text-white rounded-lg px-10">Enroll Now</Link>
         </div>
       </div>
