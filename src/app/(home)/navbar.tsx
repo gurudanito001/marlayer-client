@@ -10,16 +10,16 @@ const NavBar = () => {
     <nav className="navbar bg-white text-primary px-3 lg:px-28 sticky top-0 shadow-sm z-50">
       <div className="navbar-start w-auto">
         <Link href="/" className="flex items-center gap-3">
-          <Image src="/images/logo.svg" className="" alt="Quales Consulting LOGO" width={50} height={50} />
+          <Image src="/images/logo.svg" className="" alt="Marlayer LOGO" width={50} height={50} />
         </Link>
       </div>
 
       <div className="navbar-end w-auto ml-auto">
         <ul className="menu menu-horizontal px-1 hidden md:flex gap-8">
-          <li><Link href="/learning">Quales Academy</Link></li>
-          <li><Link href="/usecases">Use Cases</Link></li>
+          <li><Link href="/learning">Marlayer Academy</Link></li>
+          {/* <li><Link href="/usecases">Use Cases</Link></li>
           <li><Link href="/thought-leadership">Thought Leadership</Link></li>
-          <li><Link href="/about-us">About Us</Link></li>
+          <li><Link href="/about-us">About Us</Link></li> */}
         </ul>
 
         <div className="dropdown dropdown-end md:hidden">
@@ -42,10 +42,10 @@ const NavBar = () => {
                   </label>
                   
                 </li>
-                <li><Link href="/learning" className="py-3 px-5 text-lg">Quales Academy</Link></li>
-                <li><Link href="/usecases" className="py-3 px-5 text-lg" >Use Cases</Link></li>
+                <li><Link href="/learning" className="py-3 px-5 text-lg">Marlayer Academy</Link></li>
+                {/* <li><Link href="/usecases" className="py-3 px-5 text-lg" >Use Cases</Link></li>
                 <li><Link href="/thought-leadership" className="py-3 px-5 text-lg">Thought Leadership</Link></li>
-                <li><Link href="/about-us" className="py-3 px-5 text-lg">About Us</Link></li>
+                <li><Link href="/about-us" className="py-3 px-5 text-lg">About Us</Link></li> */}
               </ul>
             </div>
           </div>

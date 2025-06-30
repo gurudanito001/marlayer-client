@@ -1,4 +1,4 @@
-// File: /Users/damiadeh/Desktop/Projects/marlayer-client/src/app/learning/courses/computer-basics/page.tsx
+// File: /Applications/Projects/marlayer-client/src/app/learning/courses/computer-basics/page.tsx
 import * as entry from '../../../../../../src/app/learning/courses/computer-basics/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

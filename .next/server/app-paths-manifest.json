@@ -1,8 +1,6 @@
 {
-  "/_not-found/page": "app/_not-found/page.js",
-  "/learning/courses/dynamic-web-development/page": "app/learning/courses/dynamic-web-development/page.js",
-  "/learning/page": "app/learning/page.js",
-  "/learning/faqs/page": "app/learning/faqs/page.js",
-  "/learning/sign-up/page": "app/learning/sign-up/page.js",
-  "/learning/sign-in/page": "app/learning/sign-in/page.js"
+  "/privacyandpolicy/page": "app/privacyandpolicy/page.js",
+  "/learning/courses/responsive-web-design/page": "app/learning/courses/responsive-web-design/page.js",
+  "/(home)/page": "app/(home)/page.js",
+  "/learning/page": "app/learning/page.js"
 }
