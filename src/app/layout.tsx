@@ -9,8 +9,8 @@ const font= Source_Sans_3({
 
 
 export const metadata: Metadata = {
-  title: "QUALES",
-  description: "Engage the best talent around the globe",
+  title: "Marlayer",
+  description: "",
 };
 
 export const viewport: Viewport = {
