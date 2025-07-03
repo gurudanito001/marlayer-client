@@ -5,19 +5,19 @@ import Link from "next/link";
 const Footer = ({showScrumMasterLink = false, showqalink = false}: { showScrumMasterLink?: boolean, showqalink?: boolean})=>{
 
   return(
-    <section className="text-white py-8 lg:py-12 bg-primary">
+    <section className="text-gray-600 py-8 lg:py-12 bg-neutral">
       <div className=" grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-4 px-5 xl:px-28 border-t py-8">
         <div>
           <h6 className="text-sm font-550 mb-5">Contact Us</h6>
           <article className="flex items-start mb-4">
-            <MapPinIcon className="w-5 text-white" />
+            <MapPinIcon className="w-5 text-gray-600" />
             <p className="text-xs ml-4">
               6 Oremeta Street Oregun, Ikeja, Lagos <br/>
               12 Jogunosimi Street Alausa, Ikeja, Lagos
             </p>
           </article>
           <article className="flex items-start">
-            <EnvelopeIcon className="w-5 text-white" />
+            <EnvelopeIcon className="w-5 text-gray-600" />
             <p className="text-xs ml-4">
               <a href="mailto:daniel.marlayer@gmail.com">daniel.marlayer@gmail.com</a>
             </p>

@@ -22,7 +22,7 @@ const config: Config = {
         "neutral": "#EBEBEB",
         "neutral2": "#D9D9D9",
         "base": "rgba(55, 92, 113, 0.15)",
-        "overlay": "rgba(0, 0, 0, 0.4)",
+        "overlay": "rgba(0, 0, 0, 0.8)",
         "section-blue": "#C6D9F1",
         "section-red": "#800020",
         "form-input-bg": "#FFFBFB",

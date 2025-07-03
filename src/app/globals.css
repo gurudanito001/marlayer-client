@@ -7,11 +7,14 @@
   font-optical-sizing: auto;
 }
 
-body {
+/* body {
   font-family: "Source Sans 3", sans-serif;
   font-optical-sizing: auto;
+} */
+body {
+  font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-optical-sizing: auto;
 }
-
 @layer utilities {
   .text-balance {
     text-wrap: balance;

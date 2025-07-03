@@ -1,6 +1,4 @@
 {
-  "/privacyandpolicy/page": "app/privacyandpolicy/page.js",
-  "/learning/courses/responsive-web-design/page": "app/learning/courses/responsive-web-design/page.js",
   "/(home)/page": "app/(home)/page.js",
   "/learning/page": "app/learning/page.js"
 }

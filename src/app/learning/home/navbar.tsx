@@ -3,7 +3,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { Bars3BottomRightIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import { DM_Sans } from "next/font/google";
-
 const dmSans = DM_Sans({ subsets: ['latin'] });
 
 const NavBar = ({ darkTheme }: { darkTheme?: boolean }) => {
