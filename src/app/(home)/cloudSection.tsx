@@ -3,6 +3,7 @@
 
 import React from 'react';
 import Image from 'next/image';
+import ComingSoonModal from '../components/comingSoon';
 
 const CloudServicesSection: React.FC = () => {
   return (
@@ -27,9 +28,10 @@ const CloudServicesSection: React.FC = () => {
               <p className="text-lg text-gray-700 mb-6">
                 From robust backend-as-a-service to reliable blog hosting, Marlayer Cloud Services provides the infrastructure you need to scale your applications securely and efficiently, letting you focus on your core business.
               </p>
-              <button className="btn text-white bg-primary-2 rounded-sm shadow-md hover:shadow-lg transition-all duration-300">
+              {/* <button className="btn text-white bg-primary-2 rounded-sm shadow-md hover:shadow-lg transition-all duration-300">
                 Get Cloud Access
-              </button>
+              </button> */}
+              <ComingSoonModal linkText="Get Cloud Access" linkClasses="btn text-white bg-primary-2 rounded-sm shadow-md hover:shadow-lg transition-all duration-300" btnClasses="bg-sky-800 border-sky-800 min-w-40" modalTitle="Marlayer Cloud is Coming Soon ..." modalDescription="Marlayer Cloud is currently under development, meticulously crafted to bring you the most robust and seamless solutions. We&apos;re building something truly powerful!" modalImage="cloud-services.jpg" />
             </div>
           </div>
         </section>

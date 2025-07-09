@@ -27,18 +27,18 @@ const Footer = ({showScrumMasterLink = false, showqalink = false}: { showScrumMa
           <div>
             <h6 className="text-sm font-550 mb-5">Company</h6>
             <ul className="text-xs flex flex-col gap-2">
-              <li><Link href="/">About Us</Link></li>
+              {/* <li><Link href="/">About Us</Link></li>
               <li><Link href="/">How It Works </Link></li>
-              <li><Link href="/">Reviews</Link></li>
-              <li><Link href="/">FAQ&apos;s</Link></li>
+              <li><Link href="/">Reviews</Link></li> */}
+              <li><Link href="/learning/faqs">FAQs</Link></li>
             </ul>
           </div>
 
           <div>
             <h6 className="text-sm font-550 mb-5">Support</h6>
             <ul className="text-xs flex flex-col gap-2">
-              <li><Link href="/privacyandpolicy">Privacy Policy</Link></li>
-              <li>Help</li>
+              {/* <li><Link href="/privacyandpolicy">Privacy Policy</Link></li>
+              <li>Help</li> */}
             </ul>
           </div>
         </div>

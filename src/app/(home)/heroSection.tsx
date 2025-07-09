@@ -1,3 +1,4 @@
+// components/HeroSection.tsx
 "use client"
 
 import React, { useRef, useState, useEffect } from 'react';
@@ -5,6 +6,7 @@ import Slider from '@ant-design/react-slick';
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import ComingSoonModal from '../components/comingSoon';
 
 // Define the type for a single slide's data
 interface SlideData {
@@ -34,7 +36,7 @@ const HeroSection = () => {
   const [isPlaying, setIsPlaying] = useState(true); // State to manage autoplay (play/pause)
   const [currentSlide, setCurrentSlide] = useState(0); // State to track current slide index
 
- 
+
   // Data for each slide
   const slidesData: SlideData[] = [
     {
@@ -45,7 +47,7 @@ const HeroSection = () => {
       description: "Dive into comprehensive courses from software development to basic computer usage. Our expert-led programs are designed to equip you with in-demand skills for tomorrow's digital world.",
       buttonText: "Explore Courses",
       buttonColorClass: "bg-primary border-primary",
-      link: "#"
+      link: "/learning"
     },
     {
       imageClass: `bg-[url('/images/homepage/software-meeting.jpg')] bg-secondary/20 bg-blend-darken`,
@@ -55,7 +57,7 @@ const HeroSection = () => {
       description: "Partner with Marlayer to bring your innovative ideas to life. Our agency specializes in building bespoke, high-quality tech products tailored to your organization's unique needs.",
       buttonText: "View Our Work",
       buttonColorClass: "bg-secondary border-secondary",
-      link: "#" // Placeholder link
+      link: "" // Placeholder link
     },
     {
       imageClass: `bg-[url('/images/homepage/cloud-services.jpg')] bg-accent/20 bg-blend-darken`,
@@ -65,7 +67,7 @@ const HeroSection = () => {
       description: "Experience easy-to-integrate cloud services, from robust Backend-as-a-Service to reliable blog hosting. Focus on building your product, we'll handle the infrastructure.",
       buttonText: "Discover Cloud",
       buttonColorClass: "bg-sky-800 border-sky-800",
-      link: "#" // Placeholder link
+      link: "" // Placeholder link
     },
   ];
 
@@ -94,7 +96,7 @@ const HeroSection = () => {
     pauseOnHover: false, // Pause autoplay on hover
     // Callback before slide changes to update currentSlide state
     beforeChange: (oldIndex: number, newIndex: number) => setCurrentSlide(newIndex),
-    
+
   };
 
   return (
@@ -113,9 +115,16 @@ const HeroSection = () => {
                 <p className="text-gray-700 md:text-lg font-normal mb-7 max-w-xl text-left leading-snug">
                   {slide.description}
                 </p>
+                {slide.link ?
                 <a href={slide.link} className={`btn ${slide.buttonColorClass} text-white w-full max-w-40 mx-0`}>
                   {slide.buttonText}
-                </a>
+                </a> :
+                  index === 1 ?
+                  <ComingSoonModal linkText="Bespoke Software" linkClasses={`btn ${slide.buttonColorClass} text-white w-full max-w-40 mx-0`} btnClasses="bg-secondary border-secondary min-w-40" modalTitle="Bespoke Software page is under maintanence" modalDescription="If you need this service and want to discuss about building a software solution, send an email to daniel.marlayer@gmail.com" modalImage="software-meeting.jpg" /> :
+
+                  <ComingSoonModal linkText="Cloud Services" linkClasses={`btn ${slide.buttonColorClass} text-white w-full max-w-40 mx-0`} btnClasses="bg-sky-800 border-sky-800 min-w-40" modalTitle="Marlayer Cloud is Coming Soon ..." modalDescription="Marlayer Cloud is currently under development, meticulously crafted to bring you the most robust and seamless solutions. We&apos;re building something truly powerful!" modalImage="cloud-services.jpg" />
+                }
+
               </article>
               {/* Image Content Area */}
               <figure className={`h-full w-full lg:w-1/2 ${slide.imageClass} bg-no-repeat bg-cover bg-center`}>
@@ -148,26 +157,17 @@ const HeroSection = () => {
           </svg>
         </ArrowButton>
 
-        {/* Dots */}
-        <button
-          className={`w-2 h-2 rounded-full mx-1 transition-all duration-300 ${0 === currentSlide ? 'scale-110' : 'bg-white bg-opacity-50 border border-primary'
-            }`}
-          style={{ backgroundColor: 0 === currentSlide ? "#000000" : undefined }}
-          aria-label={`Go to slide ${0 + 1}`}
-        ></button>
-        <button
-          className={`w-2 h-2 rounded-full mx-1 transition-all duration-300 ${1 === currentSlide ? 'scale-110' : 'bg-white bg-opacity-50 border border-primary'
-            }`}
-          style={{ backgroundColor: 1 === currentSlide ? "#000000" : undefined }}
-          aria-label={`Go to slide ${1 + 1}`}
-        ></button>
-        <button
-          className={`w-2 h-2 rounded-full mx-1 transition-all duration-300 ${2 === currentSlide ? 'scale-110' : 'bg-white bg-opacity-50 border border-primary'
-            }`}
-          style={{ backgroundColor: 2 === currentSlide ? "#000000" : undefined }}
-          aria-label={`Go to slide ${2 + 1}`}
-        ></button>
-
+        {/* Dots - Added onClick handlers */}
+        {slidesData.map((_, index) => (
+          <button
+            key={index} // Added key for list rendering
+            onClick={() => sliderRef.current?.slickGoTo(index)} // <-- THIS IS THE CHANGE
+            className={`w-2 h-2 rounded-full mx-1 transition-all duration-300 ${index === currentSlide ? 'scale-110' : 'bg-white bg-opacity-50 border border-primary'
+              }`}
+            style={{ backgroundColor: index === currentSlide ? "#000000" : undefined }}
+            aria-label={`Go to slide ${index + 1}`}
+          ></button>
+        ))}
 
         {/* Next Arrow */}
         <ArrowButton onClick={() => sliderRef.current?.slickNext()} ariaLabel="Next Slide">

@@ -12,11 +12,11 @@ const CallToAction: React.FC = () => {
           Ready to Build Your Next Big Idea?
         </h2>
         <p className="text-lg md:text-xl mb-10 max-w-3xl mx-auto">
-          We are ready to partner with you to provide either technical training, or cloud infrastructure, or high-quality tech products tailored to your vision.
+          We are ready to partner with you to provide technical training, cloud infrastructure, or high-quality tech products tailored to your vision.
         </p>
-        <button className="btn btn-lg shadow-sm text-white bg-primary-2 border-0 rounded-sm  transition-all duration-300">
+        <a href='mailto:daniel.marlayer@gmail.com' className="btn btn-lg shadow-sm text-white bg-primary-2 border-0 rounded-sm  transition-all duration-300">
           Get in Touch
-        </button>
+        </a>
       </div>
     </section>
   );

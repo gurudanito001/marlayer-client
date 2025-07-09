@@ -84,9 +84,9 @@ const BespokeSoftware: React.FC = () => {
         </div>
 
         {/* Call to Action Button for this section */}
-        <button className="btn btn-lg text-white rounded-sm shadow-lg hover:shadow-xl transition-all duration-300 mt-12" style={{ backgroundColor: primaryColor, borderColor: primaryColor }}>
+        {/* <button className="btn btn-lg text-white rounded-sm shadow-lg hover:shadow-xl transition-all duration-300 mt-12" style={{ backgroundColor: primaryColor, borderColor: primaryColor }}>
           Start Your Project
-        </button>
+        </button> */}
       </div>
     </section>
   );

@@ -31,7 +31,7 @@ const HeroSection = () => {
           This course is ideal for those looking to build beautiful and functional websites.
         </p>
         <div className="mt-10">
-          <Link href="/learning/sign-up" className=" btn btn-lg bg-secondary text-white rounded-lg px-10">Enroll Now</Link>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSeiNN8Y4g7MpvCxE8jGdHfgMvaXOkIehmuDVR9exZI8u7_Kcw/viewform" className=" btn btn-lg bg-secondary text-white rounded-lg px-10">Enroll Now</a>
         </div>
       </div>
     </section>

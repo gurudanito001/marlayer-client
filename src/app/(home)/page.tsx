@@ -1,3 +1,4 @@
+
 import NavBar from "./navbar";
 import Footer from "./footer";
 import HeroSection from "./heroSection";
@@ -6,6 +7,7 @@ import CloudServicesSection from "./cloudSection";
 import BespokeSoftware from "./bespokeSoftware";
 import MarlayerAcademy from "./marlayerAcademy";
 import CallToAction from "./callToAction";
+import ComingSoonModal from "../components/comingSoon";
 
 export const metadata: Metadata = {
   title: 'Home | Marlayer',
@@ -18,14 +20,14 @@ export default function Home() {
   return (
     <main className="bg-white">
       <NavBar />
-      <div className="min-h-screen bg-gray-50 font-inter text-gray-800 antialiased">
         <HeroSection />
         <BespokeSoftware />
         <MarlayerAcademy />
         <CloudServicesSection />
         <CallToAction />
-      </div>
+        
       <Footer />
+      
     </main>
   );
 }
