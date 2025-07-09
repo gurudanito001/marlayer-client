@@ -1,20 +1,35 @@
 // components/ComingSoonModal.tsx
 "use client"
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 
-const ComingSoonModal = ({ linkClasses, btnClasses, linkText, btnText = "Close", modalTitle, modalDescription, modalImage }: { linkClasses: string, btnClasses?: string, linkText: string, btnText?: string, modalTitle: string, modalDescription: string, modalImage: string }) => {
+const ComingSoonModal = ({ linkClasses, btnClasses, linkText, btnText = "Close", modalTitle, modalDescription, modalImage, btnLink, instantOpen }: { linkClasses: string, btnClasses?: string, linkText: string, btnText?: string, modalTitle: string, modalDescription: string, modalImage: string, btnLink?: string, instantOpen?: boolean }) => {
   // Marlayer's primary brand color
   const primaryColor = '#003C3C';
+  const router = useRouter()
 
   const [isOpen, setIsOpen] = useState(false);
   const handleOpen = () => {
     console.log("handleopem")
     setIsOpen(true)
   }
-  const handleClose = () => {
-    setIsOpen(false)
+  const handleClickButton = () => {
+    if(!btnLink){
+      setIsOpen(false)
+    }else{
+      router.push(`${btnLink}`)
+    }
   }
+
+  useEffect(()=>{
+    setTimeout( ()=>{
+      if(instantOpen){
+        setIsOpen(true)
+      }
+    }, 1500)
+  },[])
 
   return (
     <section>
@@ -28,7 +43,7 @@ const ComingSoonModal = ({ linkClasses, btnClasses, linkText, btnText = "Close",
           <div className="bg-white rounded-lg shadow-2xl p-8 max-w-5xl w-full mx-auto relative transform transition-all duration-300 scale-100 opacity-100">
             {/* Close Button: Absolute positioned at top right */}
             <button
-              onClick={handleClose}
+              onClick={()=>setIsOpen(false)}
               className="absolute top-4 right-4 text-gray-500 hover:text-gray-800 transition-colors duration-200"
               aria-label="Close modal"
             >
@@ -37,10 +52,19 @@ const ComingSoonModal = ({ linkClasses, btnClasses, linkText, btnText = "Close",
               </svg>
             </button>
 
-            {/* Modal Image */}
+            {/* Modal Image - Replaced figure with a div containing next/image */}
             <div className="flex justify-center my-6">
-              <figure className={`h-420 w-full bg-[url('/images/homepage/${modalImage}')] bg-no-repeat bg-cover bg-center`}>
-              </figure>
+              {/* The parent div needs relative positioning and a defined height */}
+              <div className="relative h-[420px] w-full overflow-hidden rounded-lg"> {/* Added rounded-lg for consistency */}
+                <Image
+                  src={`/images/homepage/${modalImage}`} // Path to your image in the public folder
+                  alt={modalTitle} // Important for accessibility
+                  fill // Makes the image fill the parent container
+                  style={{ objectFit: 'contain' }} // Ensures the image covers the area without distortion
+                  priority // Consider adding priority if this image is above the fold
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" // Optimize image loading for different viewports
+                />
+              </div>
             </div>
 
             {/* Modal Title */}
@@ -59,7 +83,7 @@ const ComingSoonModal = ({ linkClasses, btnClasses, linkText, btnText = "Close",
             {/* Modal Button */}
             <div className="text-center">
               <button
-                onClick={handleClose}
+                onClick={handleClickButton}
                 className={`btn text-white rounded-md shadow-md hover:shadow-lg transition-all duration-300 ${btnClasses}`}
               >
                 {btnText}

@@ -1,6 +1,7 @@
 import { MapPinIcon, EnvelopeIcon } from "@heroicons/react/24/solid";
 import Image from "next/image";
 import Link from "next/link";
+import ComingSoonModal from "../components/comingSoon";
 
 const Footer = ({showScrumMasterLink = false, showqalink = false}: { showScrumMasterLink?: boolean, showqalink?: boolean})=>{
 
@@ -50,6 +51,8 @@ const Footer = ({showScrumMasterLink = false, showqalink = false}: { showScrumMa
       <p className="text-center mx-5 lg:mx-28 border-t pt-8 text-sm lg:text-lg">
         Copyright © {new Date().getFullYear()}  Marlayer. All rights reserved.
       </p>
+
+      
 
     </section>
   )

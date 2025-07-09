@@ -177,7 +177,17 @@ const HeroSection = () => {
         </ArrowButton>
       </div>
 
-
+      <ComingSoonModal
+        instantOpen={true}
+        linkClasses='fixed bottom-10 right-10 '
+        linkText=''
+        btnText='View Course Details'
+        modalTitle='Do you want to Join the Bootcamp?'
+        modalDescription='Please click on the button below to view course details and syllabus. When you are in the course details page, click on the Enroll button to Register.'
+        modalImage="bootcamp-flyer.png"
+        btnLink="/learning/courses/responsive-web-design"
+        btnClasses="bg-primary text-white"
+      />
     </section>
   );
 };

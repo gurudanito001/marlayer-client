@@ -6,7 +6,7 @@ import Link from "next/link";
 
 
 
-const Pricing = ({standard, premium, platinum}: {standard?: number, premium?: number, platinum?: number})=>{
+const Pricing = ({standard, premium, platinum, promo}: {standard?: number, premium?: number, platinum?: number, promo?: boolean})=>{
 
   return (
     <section id="coursePackages" className="bg-white py-14 lg:py-28 px-5 xl:px-28 flex flex-col">
@@ -22,7 +22,7 @@ const Pricing = ({standard, premium, platinum}: {standard?: number, premium?: nu
 
             <div className="flex flex-col mb-10 gap-2">
               {standard && <span className="text-4xl font-bold text-primary-2">${standard} <span className="text-lg ">USD/mo</span></span>}
-              <Link className="btn btn-lg px-10 hover:border-2 border-primary-2 bg-primary-2 text-white font-bold w-full rounded-lg" href="/learning/sign-up">Enroll Now</Link>
+              {/* <Link className="btn btn-lg px-10 hover:border-2 border-primary-2 bg-primary-2 text-white font-bold w-full rounded-lg" href="/learning/sign-up">Enroll Now</Link> */}
             </div>
 
             <ul className=" list-none list-outside flex flex-col gap-3">
@@ -41,7 +41,6 @@ const Pricing = ({standard, premium, platinum}: {standard?: number, premium?: nu
               <li className="flex items-center opacity-30">  <span><CheckIcon className="w-5 text-primary-2 mr-3" /></span>Unlimited Mentorship: Ongoing access to one-on-one mentorship sessions.</li>
               {/* <li className="flex items-center opacity-30">  <span><CheckIcon className="w-5 text-primary-2 mr-3" /></span>Exclusive Content: Advanced workshops and tutorials on emerging technologies.</li> */}
               <li className="flex items-center opacity-30">  <span><CheckIcon className="w-5 text-primary-2 mr-3" /></span>Priority Support: Fast-track responses to inquiries and technical support.</li>
-              
             </ul>
           </article>
         </div>
@@ -58,7 +57,7 @@ const Pricing = ({standard, premium, platinum}: {standard?: number, premium?: nu
             
             <div className="flex flex-col mb-10 gap-2">
               {premium && <span className="text-4xl font-bold text-primary">${premium}  <span className="text-lg ">USD/mo</span></span>}
-              <Link className="btn btn-lg px-10 hover:border-2 border-primary bg-primary text-white font-bold w-full rounded-lg" href="/learning/sign-up">Enroll Now</Link>
+              {/* <Link className="btn btn-lg px-10 hover:border-2 border-primary bg-primary text-white font-bold w-full rounded-lg" href="/learning/sign-up">Enroll Now</Link> */}
             </div>
 
             <ul className=" list-none list-outside flex flex-col gap-3">
@@ -92,7 +91,7 @@ const Pricing = ({standard, premium, platinum}: {standard?: number, premium?: nu
             
             <div className="flex flex-col mb-10 gap-2">
               {platinum && <span className="text-4xl font-bold text-secondary">${platinum}  <span className="text-lg ">USD/mo</span></span>}
-              <Link className="btn btn-lg px-10 hover:border-2 border-secondary text-white font-bold w-full bg-secondary rounded-lg" href="/learning/sign-up">Enroll Now</Link>
+              {/* <Link className="btn btn-lg px-10 hover:border-2 border-secondary text-white font-bold w-full bg-secondary rounded-lg" href="/learning/sign-up">Enroll Now</Link> */}
             </div>
 
             <ul className=" list-none list-outside flex flex-col gap-3">
