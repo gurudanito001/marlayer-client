@@ -181,11 +181,11 @@ const HeroSection = () => {
         instantOpen={true}
         linkClasses='fixed bottom-10 right-10 '
         linkText=''
-        btnText='View Course Details'
+        btnText='Register Now'
         modalTitle='Do you want to Join the Bootcamp?'
         modalDescription='Please click on the button below to view course details and syllabus. When you are in the course details page, click on the Enroll button to Register.'
-        modalImage="bootcamp-flyer.png"
-        btnLink="/learning/courses/responsive-web-design"
+        modalImage="kids-bootcamp.png"
+        btnLink="https://docs.google.com/forms/d/e/1FAIpQLSeiNN8Y4g7MpvCxE8jGdHfgMvaXOkIehmuDVR9exZI8u7_Kcw/viewform"
         btnClasses="bg-primary text-white"
       />
     </section>

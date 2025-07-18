@@ -38,7 +38,7 @@ const ComingSoonModal = ({ linkClasses, btnClasses, linkText, btnText = "Close",
 
       {isOpen &&
         // Modal Overlay: Added w-screen and h-screen explicitly to ensure full coverage
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-[1000] w-screen h-screen">
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-[1000] w-screen h-screen overflow-y-auto">
           {/* Modal Content: White background, rounded corners, shadow, responsive width */}
           <div className="bg-white rounded-lg shadow-2xl p-8 max-w-5xl w-full mx-auto relative transform transition-all duration-300 scale-100 opacity-100">
             {/* Close Button: Absolute positioned at top right */}
