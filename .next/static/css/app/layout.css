@@ -3133,6 +3133,9 @@ html:has(.drawer-toggle:checked) {
 .mt-auto {
   margin-top: auto;
 }
+.ml-5 {
+  margin-left: 1.25rem;
+}
 .block {
   display: block;
 }
