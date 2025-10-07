@@ -9,7 +9,7 @@ import Footer from "../../footer";
 
 
 
-const ScrumMasteryCourse = ()=>{
+const ResponsiveWebDesignCourse = ()=>{
 
   return (
     <main className="bg-white">
@@ -25,11 +25,11 @@ const ScrumMasteryCourse = ()=>{
         </div>
         <Syllabus />
       </section>
-      <Pricing standard={40} premium={50} platinum={60} />
+      <Pricing standard={50} premium={60} platinum={70} />
       <ForEnterprises />
       <Footer showqalink={true} />
     </main>
   )
 }
 
-export default ScrumMasteryCourse
+export default ResponsiveWebDesignCourse

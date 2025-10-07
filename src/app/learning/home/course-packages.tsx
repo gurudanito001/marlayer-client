@@ -33,6 +33,20 @@ const CoursePackages = ()=>{
           <span className="italic text-secondary text-sm">16 weeks</span>
         </Link>
 
+        <Link href="/learning/courses/backend-development" className="text-primary flex flex-col p-3 border border-primary rounded-lg hover:shadow-xl max-w-md">
+          <Image src="/images/dynamic-web-developer.jpg" className="mb-3 rounded-md" width={400} height={250} objectFit="contain" alt="backend development" />
+          <h3 className="font-550 mb-3 leading-5"><span className="font-bold text-lg">Backend Development for Beginners:</span> <br /><span className="font-normal">Build and deploy server-side applications</span></h3>
+          <span className="flex items-center text-sm"><Image src="/images/certificate-icon.png" className="mr-1 w-4 inline text-primary" width={100} height={100} alt="certificate icon" />  Includes Professional Certificate</span>
+          <span className="italic text-secondary text-sm">12 weeks</span>
+        </Link>
+
+        <Link href="/learning/courses/mobile-app-development" className="text-primary flex flex-col p-3 border border-primary rounded-lg hover:shadow-xl max-w-md">
+          <Image src="/images/dynamic-web-developer.jpg" className="mb-3 rounded-md" width={400} height={250} objectFit="contain" alt="mobile app development" />
+          <h3 className="font-550 mb-3 leading-5"><span className="font-bold text-lg">Mobile App Development:</span> <br /><span className="font-normal">Create cross-platform mobile apps for iOS and Android</span></h3>
+          <span className="flex items-center text-sm"><Image src="/images/certificate-icon.png" className="mr-1 w-4 inline text-primary" width={100} height={100} alt="certificate icon" />  Includes Professional Certificate</span>
+          <span className="italic text-secondary text-sm">24 weeks</span>
+        </Link>
+
       </div>
     </section>
   )

@@ -25,7 +25,7 @@ const ComputerBasics = ()=>{
         </div>
         <Syllabus />
       </section>
-      <Pricing standard={20} premium={30} platinum={40} />
+      <Pricing standard={30} premium={40} platinum={50} />
       <ForEnterprises />
       <Footer showqalink={true} />
     </main>

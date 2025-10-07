@@ -26,6 +26,8 @@ const NavBar = ({ darkTheme }: { darkTheme?: boolean }) => {
                 <li><Link href="/learning/courses/computer-basics">Computer Fundamentals</Link></li>
                 <li><Link href="/learning/courses/responsive-web-design">Responsive Web Design</Link></li>
                 <li><Link href="/learning/courses/dynamic-web-development">Dynamic Web Development</Link></li>
+                <li><Link href="/learning/courses/backend-development">Backend Development</Link></li>
+                <li><Link href="/learning/courses/mobile-app-development">Mobile App Development</Link></li>
               </ul>
             </details>
           </li>
@@ -63,6 +65,8 @@ const NavBar = ({ darkTheme }: { darkTheme?: boolean }) => {
                       <li><Link className="p-4 font-550" href="/learning/courses/computer-basics">Computer Fundamentals</Link></li>
                       <li><Link className="p-4 font-550" href="/learning/courses/responsive-web-design">Responsive Web Design</Link></li>
                       <li><Link className="p-4 font-550" href="/learning/courses/dynamic-web-development">Dynamic Web Development</Link></li>
+                      <li><Link className="p-4 font-550" href="/learning/courses/backend-development">Backend Development</Link></li>
+                      <li><Link className="p-4 font-550" href="/learning/courses/mobile-app-development">Mobile App Development</Link></li>
                     </ul>
                   </details>
                 </li>

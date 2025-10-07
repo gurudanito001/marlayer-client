@@ -373,6 +373,16 @@ eval("\nObject.defineProperty(exports, \"__esModule\", ({\n    value: true\n}));
 
 /***/ }),
 
+/***/ "(rsc)/./node_modules/next/font/google/target.css?{\"path\":\"src/app/learning/footer.tsx\",\"import\":\"DM_Sans\",\"arguments\":[{\"subsets\":[\"latin\"]}],\"variableName\":\"dmSans\"}":
+/*!************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/next/font/google/target.css?{"path":"src/app/learning/footer.tsx","import":"DM_Sans","arguments":[{"subsets":["latin"]}],"variableName":"dmSans"} ***!
+  \************************************************************************************************************************************************************************/
+/***/ ((module) => {
+
+eval("// Exports\nmodule.exports = {\n\t\"style\": {\"fontFamily\":\"'__DM_Sans_0d7163', '__DM_Sans_Fallback_0d7163'\",\"fontStyle\":\"normal\"},\n\t\"className\": \"__className_0d7163\"\n};\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiKHJzYykvLi9ub2RlX21vZHVsZXMvbmV4dC9mb250L2dvb2dsZS90YXJnZXQuY3NzP3tcInBhdGhcIjpcInNyYy9hcHAvbGVhcm5pbmcvZm9vdGVyLnRzeFwiLFwiaW1wb3J0XCI6XCJETV9TYW5zXCIsXCJhcmd1bWVudHNcIjpbe1wic3Vic2V0c1wiOltcImxhdGluXCJdfV0sXCJ2YXJpYWJsZU5hbWVcIjpcImRtU2Fuc1wifSIsIm1hcHBpbmdzIjoiQUFBQTtBQUNBO0FBQ0EsV0FBVyxvRkFBb0Y7QUFDL0Y7QUFDQSIsInNvdXJjZXMiOlsid2VicGFjazovL21hcmxheWVyLWNsaWVudC8uL25vZGVfbW9kdWxlcy9uZXh0L2ZvbnQvZ29vZ2xlL3RhcmdldC5jc3M/MTc0NyJdLCJzb3VyY2VzQ29udGVudCI6WyIvLyBFeHBvcnRzXG5tb2R1bGUuZXhwb3J0cyA9IHtcblx0XCJzdHlsZVwiOiB7XCJmb250RmFtaWx5XCI6XCInX19ETV9TYW5zXzBkNzE2MycsICdfX0RNX1NhbnNfRmFsbGJhY2tfMGQ3MTYzJ1wiLFwiZm9udFN0eWxlXCI6XCJub3JtYWxcIn0sXG5cdFwiY2xhc3NOYW1lXCI6IFwiX19jbGFzc05hbWVfMGQ3MTYzXCJcbn07XG4iXSwibmFtZXMiOltdLCJzb3VyY2VSb290IjoiIn0=\n//# sourceURL=webpack-internal:///(rsc)/./node_modules/next/font/google/target.css?{\"path\":\"src/app/learning/footer.tsx\",\"import\":\"DM_Sans\",\"arguments\":[{\"subsets\":[\"latin\"]}],\"variableName\":\"dmSans\"}\n");
+
+/***/ }),
+
 /***/ "(ssr)/./node_modules/next/dist/api/image.js":
 /*!*********************************************!*\
   !*** ./node_modules/next/dist/api/image.js ***!

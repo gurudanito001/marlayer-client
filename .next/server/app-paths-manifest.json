@@ -1,4 +1,7 @@
 {
-  "/_not-found/page": "app/_not-found/page.js",
-  "/(home)/page": "app/(home)/page.js"
+  "/(home)/page": "app/(home)/page.js",
+  "/learning/page": "app/learning/page.js",
+  "/learning/courses/responsive-web-design/page": "app/learning/courses/responsive-web-design/page.js",
+  "/learning/courses/backend-development/page": "app/learning/courses/backend-development/page.js",
+  "/learning/courses/mobile-app-development/page": "app/learning/courses/mobile-app-development/page.js"
 }
