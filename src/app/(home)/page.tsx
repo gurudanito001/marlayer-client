@@ -6,6 +6,7 @@ import { Metadata } from 'next';
 import CloudServicesSection from "./cloudSection";
 import BespokeSoftware from "./bespokeSoftware";
 import MarlayerAcademy from "./marlayerAcademy";
+import MarlayerGadgets from "./marlayerGadgets";
 import CallToAction from "./callToAction";
 import ComingSoonModal from "../components/comingSoon";
 
@@ -24,7 +25,9 @@ export default function Home() {
         <BespokeSoftware />
         <MarlayerAcademy />
         <CloudServicesSection />
+        <MarlayerGadgets/>
         <CallToAction />
+        
         
       <Footer />
       

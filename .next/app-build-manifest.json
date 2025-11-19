@@ -11,36 +11,6 @@
       "static/chunks/main-app.js",
       "static/css/app/layout.css",
       "static/chunks/app/layout.js"
-    ],
-    "/learning/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/learning/page.css",
-      "static/chunks/app/learning/page.js"
-    ],
-    "/learning/courses/responsive-web-design/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/learning/courses/responsive-web-design/page.css",
-      "static/chunks/app/learning/courses/responsive-web-design/page.js"
-    ],
-    "/learning/courses/computer-basics/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/learning/courses/computer-basics/page.css",
-      "static/chunks/app/learning/courses/computer-basics/page.js"
-    ],
-    "/learning/courses/backend-development/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/learning/courses/backend-development/page.css",
-      "static/chunks/app/learning/courses/backend-development/page.js"
-    ],
-    "/learning/courses/mobile-app-development/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/learning/courses/mobile-app-development/page.css",
-      "static/chunks/app/learning/courses/mobile-app-development/page.js"
     ]
   }
 }
