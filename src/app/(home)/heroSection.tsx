@@ -60,8 +60,8 @@ const HeroSection = () => {
       link: "" // Placeholder link
     },
     {
-      imageClass: `bg-[url('/images/gadgets.png')] bg-accent/20 bg-blend-darken`,
-      bgColorClass: `bg-accent/30`, // Assuming 'secondary' is defined in Tailwind config
+      imageClass: `bg-[url('/images/gadgets.png')] `,
+      bgColorClass: ` bg-[#B4B4B4]`, // Assuming 'secondary' is defined in Tailwind config
       title: "Marlayer Gadgets",
       subTitle: "",
       description: "Marlayer delivers trusted, authentic devices sourced directly from verified suppliers. From laptops and tablets to premium accessories, we provide the gadgets you need for work, learning, business, and everyday productivity — all with fast delivery and reliable after-sales support.",
@@ -122,7 +122,7 @@ const HeroSection = () => {
                   index === 1 ?
                   <ComingSoonModal linkText="Learn More" linkClasses={`btn ${slide.buttonColorClass} text-white w-full max-w-40 mx-0`} btnClasses="bg-secondary border-secondary min-w-40" modalTitle="Bespoke Software page is under maintanence" modalDescription="If you need this service and want to discuss about building a software solution, send an email to daniel.marlayer@gmail.com" modalImage="software-meeting.jpg" /> :
 
-                  <ComingSoonModal linkText="Cloud Services" linkClasses={`btn ${slide.buttonColorClass} text-white w-full max-w-40 mx-0`} btnClasses="bg-sky-800 border-sky-800 min-w-40" modalTitle="Marlayer Cloud is Coming Soon ..." modalDescription="Marlayer Cloud is currently under development, meticulously crafted to bring you the most robust and seamless solutions. We&apos;re building something truly powerful!" modalImage="cloud-services.jpg" />
+                  <ComingSoonModal linkText="Learn More" linkClasses={`btn ${slide.buttonColorClass} text-white w-full max-w-40 mx-0 bg-neutral-900 border-neutral-900`} btnClasses="bg-sky-800 border-sky-800 min-w-40" modalTitle="Marlayer Cloud is Coming Soon ..." modalDescription="Marlayer Cloud is currently under development, meticulously crafted to bring you the most robust and seamless solutions. We&apos;re building something truly powerful!" modalImage="cloud-services.jpg" />
                 }
 
               </article>

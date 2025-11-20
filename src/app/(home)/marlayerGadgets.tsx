@@ -7,15 +7,17 @@ const MarlayerGadgets: React.FC = () => {
     return (
         <section className="w-full py-16 px-6 bg-white">
             <div className="max-w-5xl mx-auto">
+
+                <h3 className="text-sm md:text-lg font-bold mb-4 text-center" style={{ color: "#003C3C" }}>Marlayer Gadgets</h3>
                 
-                <h1 className="text-xl md:text-4xl font-bold text-center mb-12" style={{ color: "#003C3C" }}>
+                <h1 className="text-xl md:text-3xl lg:text-4xl font-bold text-center mb-12" style={{ color: "#003C3C" }}>
                     Gadgets for Work, Learning & Creativity
                 </h1>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
 
                     {/* Card 1 */}
-                    <div className="flex flex-col border border-gray-200 rounded-2xl overflow-hidden hover:shadow-lg transition-shadow duration-300">
+                    <div className="flex flex-col border border-gray-200 rounded-2xl overflow-hidden transition-shadow duration-300">
                         {/* Image Container */}
                         <div className="relative w-full h-64 bg-gray-100">
                             <Image
