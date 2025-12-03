@@ -23,7 +23,10 @@ const NavBar = () => {
   
             <ComingSoonModal linkText="Software" linkClasses="hover:text-gray-600 font-medium transition-colors duration-200 py-1 text-sm border-b-white border-b-2 hover:border-b-gray-800" btnClasses="bg-secondary border-secondary min-w-40" modalTitle="Bespoke Software page is under maintanence" modalDescription="If you need this service and want to discuss about building a software solution, send an email to daniel.marlayer@gmail.com" modalImage="software-meeting.jpg" />
   
-            <ComingSoonModal linkText="Gadgets" linkClasses="hover:text-gray-600 font-medium transition-colors duration-200 py-1 text-sm border-b-white border-b-2 hover:border-b-gray-800" btnClasses="bg-sky-800 border-sky-800 min-w-40" modalTitle="Marlayer Cloud is Coming Soon ..." modalDescription="Marlayer Cloud is currently under development, meticulously crafted to bring you the most robust and seamless solutions. We&apos;re building something truly powerful!" modalImage="cloud-services.jpg" />
+            {/* <ComingSoonModal linkText="Gadgets" linkClasses="hover:text-gray-600 font-medium transition-colors duration-200 py-1 text-sm border-b-white border-b-2 hover:border-b-gray-800" btnClasses="bg-sky-800 border-sky-800 min-w-40" modalTitle="Marlayer Cloud is Coming Soon ..." modalDescription="Marlayer Cloud is currently under development, meticulously crafted to bring you the most robust and seamless solutions. We&apos;re building something truly powerful!" modalImage="cloud-services.jpg" /> */}
+
+
+            <Link href="/Gadget" className="hover:text-gray-600 font-medium transition-colors duration-200 py-1 text-sm border-b-white border-b-2 hover:border-b-gray-800">Gadgets</Link>
           </div>
           {/* Right-aligned icons (Search, Cart, User) - simplified for this example */}
           {/* <button className="btn btn-ghost btn-circle">
@@ -56,7 +59,7 @@ const NavBar = () => {
               </li>
 
               <li>
-                <ComingSoonModal linkText="Gadgets" linkClasses="hover:text-gray-600 font-medium transition-colors duration-200 py-1 text-sm border-b-white border-b-2 hover:border-b-gray-800" btnClasses="bg-sky-800 border-sky-800 min-w-40" modalTitle="Marlayer Cloud is Coming Soon ..." modalDescription="Marlayer Cloud is currently under development, meticulously crafted to bring you the most robust and seamless solutions. We&apos;re building something truly powerful!" modalImage="cloud-services.jpg" />
+                <Link href="/Gadget" className="hover:text-gray-600 font-medium transition-colors duration-200 py-1 text-sm border-b-white border-b-2 hover:border-b-gray-800">Gadgets</Link>
               </li>
             </ul>
           </div>
