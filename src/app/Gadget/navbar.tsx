@@ -22,32 +22,16 @@ export default function Navbar() {
             <Image src="/images/marlayer-logo.svg" width={30} height={30} alt="Marlayer Logo" />
           </Link>
           <div className="hidden lg:flex items-center gap-8">
-          <Link href="/phones" className="text-gray-700 hover:text-blue-600 transition">
+          <Link href="/Phones" className="text-gray-700 hover:text-blue-600 transition">
             Phones
           </Link>
 
-          <Link href="/earbuds" className="text-gray-700 hover:text-blue-600 transition">
-            Earbuds
-          </Link>
-
-          <Link href="/watches-trackers" className="text-gray-700 hover:text-blue-600 transition">
-            Watches & Trackers
-          </Link>
-
-          <Link href="/smart-home" className="text-gray-700 hover:text-blue-600 transition">
-            Smart Home
+          <Link href="/Laptops" className="text-gray-700 hover:text-blue-600 transition">
+            Laptops
           </Link>
 
           <Link href="/accessories" className="text-gray-700 hover:text-blue-600 transition">
             Accessories
-          </Link>
-
-          <Link href="/offers" className="text-gray-700 hover:text-blue-600 transition">
-            Offers
-          </Link>
-
-          <Link href="/support" className="text-gray-700 hover:text-blue-600 transition">
-            Support
           </Link>
           </div>
         </div>
@@ -90,12 +74,9 @@ export default function Navbar() {
             <ul className="menu p-4">
               {/* Links for mobile dropdown */}
               <li><Link href="/phones" className="text-base text-gray-800 py-3" onClick={toggleMenu}>Phones</Link></li>
-              <li><Link href="/earbuds" className="text-base text-gray-800 py-3" onClick={toggleMenu}>Earbuds</Link></li>
-              <li><Link href="/watches-trackers" className="text-base text-gray-800 py-3" onClick={toggleMenu}>Watches & Trackers</Link></li>
-              <li><Link href="/smart-home" className="text-base text-gray-800 py-3" onClick={toggleMenu}>Smart Home</Link></li>
+              <li><Link href="/laptops" className="text-base text-gray-800 py-3" onClick={toggleMenu}>Laptops</Link></li>
               <li><Link href="/accessories" className="text-base text-gray-800 py-3" onClick={toggleMenu}>Accessories</Link></li>
-              <li><Link href="/offers" className="text-base text-gray-800 py-3" onClick={toggleMenu}>Offers</Link></li>
-              <li><Link href="/support" className="text-base text-gray-800 py-3" onClick={toggleMenu}>Support</Link></li>
+              
             </ul>
           </div>
         </div>
