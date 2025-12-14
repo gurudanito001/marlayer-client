@@ -1,6 +1,7 @@
 {
-  "/Gadget/page": "app/Gadget/page.js",
-  "/Phones/page": "app/Phones/page.js",
-  "/Laptops/page": "app/Laptops/page.js",
-  "/(home)/page": "app/(home)/page.js"
+  "/Software/About/page": "app/Software/About/page.js",
+  "/Software/Projects/page": "app/Software/Projects/page.js",
+  "/Software/Contact/page": "app/Software/Contact/page.js",
+  "/Software/page": "app/Software/page.js",
+  "/Software/Services/page": "app/Software/Services/page.js"
 }

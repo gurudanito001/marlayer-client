@@ -1,9 +1,9 @@
 {
   "pages": {
-    "/Gadget/page": [
+    "/Software/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/Gadget/page.js"
+      "static/chunks/app/Software/page.js"
     ],
     "/layout": [
       "static/chunks/webpack.js",
@@ -17,15 +17,30 @@
       "static/css/app/(home)/page.css",
       "static/chunks/app/(home)/page.js"
     ],
-    "/Phones/page": [
+    "/Software/About/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/Phones/page.js"
+      "static/chunks/app/Software/About/page.js"
     ],
-    "/Laptops/page": [
+    "/Software/Services/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/Laptops/page.js"
+      "static/chunks/app/Software/Services/page.js"
+    ],
+    "/Software/Projects/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/Software/Projects/page.js"
+    ],
+    "/Software/Contact/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/Software/Contact/page.js"
+    ],
+    "/Software/ProjectDetails/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/Software/ProjectDetails/page.js"
     ]
   }
 }

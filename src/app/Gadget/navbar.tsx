@@ -26,7 +26,7 @@ export default function Navbar() {
             Phones
           </Link>
 
-          <Link href="/Laptops" className="text-gray-700 hover:text-blue-600 transition">
+          <Link href="/Phones/Laptops" className="text-gray-700 hover:text-blue-600 transition">
             Laptops
           </Link>
 

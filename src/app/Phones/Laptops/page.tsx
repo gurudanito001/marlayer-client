@@ -4,7 +4,7 @@ import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import { ChevronRight } from "lucide-react";
 import Link from "next/link";
-import Footer from "../Gadget/footer";
+import Footer from "../../Gadget/footer";
 
 // MOCK DATA
 const products = [
