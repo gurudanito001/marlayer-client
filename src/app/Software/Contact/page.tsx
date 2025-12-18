@@ -42,7 +42,7 @@ const ContactPage = () => {
                 <div className="max-w-4xl mx-auto px-6">
                     
                    
-                    <h1 className="text-xl lg:text-6xl font-extrabold text-center mb-16">
+                    <h1 className="text-2xl md:text-3xl lg:text-4xl font-extrabold text-center mb-16">
                         Have Any Project In Mind?
                     </h1>
 

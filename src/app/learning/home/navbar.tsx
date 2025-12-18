@@ -9,11 +9,11 @@ const NavBar = ({ darkTheme }: { darkTheme?: boolean }) => {
 
 
   return (
-    <nav className={`navbar ${darkTheme ? "bg-primary text-white" : "bg-white text-primary"} sticky top-0 px-5 lg:px-14 xl:px-28 py-4 z-50`}>
+    <nav className={`navbar ${darkTheme ? "bg-primary text-white" : "bg-white text-primary"} shadow-sm py-4 lg:py-4 px-3 md:px-8 lg:px-16 sticky top-0 z-50`}>
       <div className="navbar-start w-auto">
-        <Link href="/learning" className="flex items-center gap-3">
-          <Image src="/images/marlayer-logo.svg" width={30} height={30} alt="Marlayer Logo"/>
-          <span className={`font-bold text-xl`}>Marlayer Academy</span>
+        <Link href="/" className="flex items-center">
+          <Image src="/images/marlayer-logo.svg" width={25} height={25} alt="Marlayer Logo"/>
+          <span className={`font-bold text-xl`}>arlayer Academy</span>
         </Link>
       </div>
 

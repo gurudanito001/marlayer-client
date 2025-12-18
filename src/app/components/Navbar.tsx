@@ -20,13 +20,13 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="flex justify-between items-center px-8 md:px-16 py-6 bg-white w-full z-40 relative">
+      <nav className="flex justify-between items-center bg-white shadow-sm py-4 lg:py-6 px-0 md:px-8 lg:px-16 sticky top-0 z-50 relative">
         
         {/* Logo Section */}
-        <div className="text-2xl font-bold text-gray-800 tracking-tight">
-          <Link href="/" className="flex items-center gap-3 ml-3">
-            <Image src="/images/marlayer-logo.svg" width={30} height={30} alt="Marlayer Logo" />
-            <span className="font-bold text-primary text-xl">Marlayer</span>
+        <div className="text-2xl font-bold text-gray-800">
+          <Link href="/" className="flex items-center ml-3">
+            <Image src="/images/marlayer-logo.svg" width={25} height={25} alt="Marlayer Logo" />
+            <span className="font-extrabold text-primary text-xl">arlayer Software</span>
           </Link>
         </div>
 

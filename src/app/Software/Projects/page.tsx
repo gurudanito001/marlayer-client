@@ -16,7 +16,7 @@ const Projects = () => {
                 <div className=" max-w-[1400px] mx-auto bg-[#1C1B20] text-white pt-28 pb-24 px-6 lg:px-16 rounded mt-20">
 
 
-                    <h3 className="text-xl lg:text-5xl font-bold mb-16">Latest Projects</h3>
+                    <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-16">Latest Projects</h3>
 
 
                     <div className="flex flex-col lg:flex-row items-center gap-10 mb-20">
@@ -33,14 +33,14 @@ const Projects = () => {
 
 
                         <div className="max-w-sm ">
-                            <h4 className="text-2xl font-bold mb-2">
+                            <h4 className="text-sm md:text-lg font-bold mb-2">
                                 eCommerce Website Design For Fashion Brand
                             </h4>
                             <p className="text-gray-500 text-sm mb-6 uppercase tracking-wider">
                                 — UI/UX & Dev
                             </p>
 
-                            <p className="text-gray-400 text-base leading-relaxed mb-8 max-w-lg">
+                            <p className="text-gray-400 text-sm leading-relaxed mb-8 max-w-lg">
                                 Our company was dedicated to building professional and 100%
                                 responsive eCommerce websites for the newest online business trends...
                             </p>
@@ -67,14 +67,14 @@ const Projects = () => {
 
 
                         <div className=" max-w-sm">
-                            <h4 className="text-2xl font-bold mb-2">
+                            <h4 className="text-sm md:text-lg font-bold mb-2">
                                 eCommerce Website Design For Fashion Brand
                             </h4>
                             <p className="text-gray-500 text-sm mb-6 uppercase tracking-wider">
                                 — UI/UX & Dev
                             </p>
 
-                            <p className="text-gray-400 text-base leading-relaxed mb-8 max-w-lg">
+                            <p className="text-gray-400 text-sm leading-relaxed mb-8 max-w-lg">
                                 Our company was dedicated to building professional and 100%
                                 responsive eCommerce websites for the newest online business trends...
                             </p>
@@ -101,14 +101,14 @@ const Projects = () => {
 
 
                         <div className=" max-w-sm">
-                            <h4 className="text-2xl font-bold mb-2">
+                            <h4 className="text-sm md:text-lg font-bold mb-2">
                                 AI-Powered Software For Digital Recruitment
                             </h4>
                             <p className="text-gray-500 text-sm mb-6 uppercase tracking-wider">
                                 — Development
                             </p>
 
-                            <p className="text-gray-400 text-base leading-relaxed mb-8 max-w-lg">
+                            <p className="text-gray-400 text-sm leading-relaxed mb-8 max-w-lg">
                                 We have recently created innovative, top-class AI-powered technology
                                 for the purpose of digital recruitment for this company fast hire...
                             </p>

@@ -10,12 +10,12 @@ export default function Footer() {
       <div className="max-w-6xl mx-auto">
 
         {/* Logo */}
-        <div className="mb-10">
+        {/* <div className="mb-10">
           <div className="flex items-center gap-2 text-lg font-semibold">
             <Image src="/images/marlayer-logo.svg" width={30} height={30} alt="Marlayer Logo" />
             <span className={`font-bold text-primary text-xl`}>Marlayer Gadgets</span>
           </div>
-        </div>
+        </div> */}
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 mb-20">
 

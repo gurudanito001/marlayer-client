@@ -10,7 +10,7 @@ const MarlayerGadgets: React.FC = () => {
 
                 <h3 className="text-sm md:text-lg font-bold mb-4 text-center" style={{ color: "#003C3C" }}>Marlayer Gadgets</h3>
                 
-                <h1 className="text-xl md:text-3xl lg:text-4xl font-bold text-center mb-12" style={{ color: "#003C3C" }}>
+                <h1 className="text-2xl lg:text-3xl xl:text-4xl font-bold text-center mb-12" style={{ color: "#003C3C" }}>
                     Gadgets for Work, Learning & Creativity
                 </h1>
 
@@ -33,7 +33,7 @@ const MarlayerGadgets: React.FC = () => {
                             <h3 className="text-sm md:text-lg font-semibold text-primary mb-3">
                                 Laptops, Phones and Tablets
                             </h3>
-                            <p className="text-sm leading-relaxed text-gray-700 mb-6 flex-grow">
+                            <p className="text-sm md:text-lg leading-relaxed text-gray-700 mb-6 flex-grow">
                                 Power your work and stay connected with our curated selection of laptops and smartphones. 
                                 We handpick devices for performance, battery life, and reliability — from lightweight 
                                 ultrabooks for remote work to powerful machines for creators and developers.
@@ -61,7 +61,7 @@ const MarlayerGadgets: React.FC = () => {
                             <h3 className="text-sm md:text-lg font-semibold text-primary mb-3">
                                 Accessories
                             </h3>
-                            <p className="text-sm leading-relaxed text-gray-700 mb-6 flex-grow">
+                            <p className="text-sm md:text-lg leading-relaxed text-gray-700 mb-6 flex-grow">
                                 Complete your setup with accessories that make a real difference — fast chargers, 
                                 power banks, headphones, webcams, keyboards, and creator gear. We focus on dependable 
                                 brands so your devices perform at their best.

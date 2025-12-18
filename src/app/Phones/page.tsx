@@ -4,6 +4,7 @@ import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import { ChevronRight } from "lucide-react";
 import Link from "next/link";
+import Navbar from "../Gadget/navbar";
 import Footer from "../Gadget/footer";
 
 // MOCK DATA
@@ -39,7 +40,9 @@ export default function PhonesPage() {
   }, [activeTab, tabs]);
 
   return (
-    <main className="min-h-screen bg-white py-12 px-6 md:px-10 lg:px-20">
+    <div className="bg-white">
+      <Navbar />
+      <main className="min-h-screen bg-white py-12 px-6 md:px-10 lg:px-20">
       <h1 className="text-3xl font-semibold text-black mb-8">Phones</h1>
 
 
@@ -95,6 +98,7 @@ export default function PhonesPage() {
       <div className="mt-6">
         <Footer />
       </div>
-    </main>
+      </main>
+    </div>
   );
 }

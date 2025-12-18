@@ -12,9 +12,9 @@ const Footer = () => {
         
         {/* 1. Logo */}
         <div className="">
-         <Link href="/" className="flex items-center gap-3">
+         <Link href="/" className="flex items-center">
             <Image src="/images/marlayer-logo.svg" width={30} height={30} alt="Marlayer Logo" />
-            <span className="font-bold text-primary text-xl">Marlayer</span>
+            <span className="font-bold text-primary text-xl">arlayer Software</span>
           </Link>
         </div>
 

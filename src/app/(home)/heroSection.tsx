@@ -61,7 +61,7 @@ const HeroSection = () => {
     },
     {
       imageClass: `bg-[url('/images/gadgets.png')] `,
-      bgColorClass: ` bg-[#B4B4B4]`, // Assuming 'secondary' is defined in Tailwind config
+      bgColorClass: ` bg-[#DFDFE5]`, // Assuming 'secondary' is defined in Tailwind config
       title: "Marlayer Gadgets",
       subTitle: "",
       description: "Marlayer delivers trusted, authentic devices sourced directly from verified suppliers. From laptops and tablets to premium accessories, we provide the gadgets you need for work, learning, business, and everyday productivity — all with fast delivery and reliable after-sales support.",
@@ -109,10 +109,10 @@ const HeroSection = () => {
             <div className="w-full h-full flex flex-col-reverse lg:flex-row">
               {/* Text Content Area */}
               <article className={`h-full w-full lg:w-1/2 ${slide.bgColorClass} flex flex-col lg:justify-center p-5 md:pl-10 lg:pl-14 xl:pl-20`}>
-                <h3 className="text-2xl lg:text-3xl xl:text-4xl text-gray-900 font-semibold mb-5 text-left">
+                <h3 className="text-2xl lg:text-3xl text-gray-900 font-semibold mb-5 text-left">
                   {slide.title}
                 </h3>
-                <p className="text-gray-700 md:text-lg font-normal mb-7 max-w-xl text-left leading-snug">
+                <p className="text-gray-700 text-sm md:text-lg font-normal mb-7 max-w-xl text-left leading-snug">
                   {slide.description}
                 </p>
                 {slide.link ?

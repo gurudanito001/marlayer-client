@@ -9,7 +9,7 @@ const Projects = () => {
 
             <div>
 
-                <h1 className="text-xl lg:text-5xl text-center font-bold mt-10">Project Details</h1>
+                <h1 className="text-xl md:text-3xl lg:text-4xl text-center font-bold mt-10">Project Details</h1>
 
                 <div className=" max-w-[1400px] mx-auto bg-[#1C1B20] text-white pt-20 pb-24 px-6 lg:px-16 rounded mt-20">
 
@@ -26,7 +26,7 @@ const Projects = () => {
 
                     <div className="flex flex-col md:flex-row items-center gap-10 mb-16">
                         <div>
-                            <h4 className="lg:text-3xl text-xl font-bold mb-2">
+                            <h4 className="text-sm md:text-lg font-bold mb-2">
                                 AI-Powered Software For Digital Recruitment
                             </h4>
 
@@ -36,7 +36,7 @@ const Projects = () => {
                             </p>
 
 
-                            <p className="text-gray-400  leading-relaxed max-w-4xl">
+                            <p className="text-gray-400  leading-relaxed max-w-4xl text-sm md:text-md">
                                 We have recently created innovative, top-class AI-powered technology
                                 for the purpose of digital recruitment for this company fast hire.
                                 Our aim is to implement and establish their digital needs for the
@@ -50,10 +50,10 @@ const Projects = () => {
 
 
                         <div className="w-full md:w-1/2">
-                            <h5 className="text-xl lg:text-2xl font-bold mb-4 max-w-sm">
+                            <h5 className="text-sm md:text-lg font-bold mb-4 max-w-sm">
                                 Recruitment With AI For Startup Businesses
                             </h5>
-                            <p className="text-gray-400 leading-relaxed max-w-lg">
+                            <p className="text-gray-400 leading-relaxed max-w-lg text-sm md:text-md">
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
                             </p>
                         </div>
@@ -72,7 +72,7 @@ const Projects = () => {
 
                     <div className="flex flex-col md:flex-row items-center gap-10 mb-28">
                         <div>
-                            <p className="text-gray-400 leading-relaxed mb-6 max-w-4xl">
+                            <p className="text-gray-400 leading-relaxed mb-6 max-w-4xl text-sm md:text-md">
                                 Lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.
                             </p>
 

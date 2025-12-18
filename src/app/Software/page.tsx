@@ -9,11 +9,11 @@ const Home = () => {
             <Navbar />
             <section className="pt-24 lg:pt-32 pb-10 text-center px-4">
                 <div className="max-w-5xl mx-auto">
-                    <p className="text-xl text-gray-600 mb-4 font-medium">
+                    <p className="text-sm md:text-lg text-gray-600 mb-4 font-medium">
                         One-Stop Solution For All Your Business Needs
                     </p>
-                    <h1 className="text-xl lg:text-6xl font-bold leading-tight mb-8 text-black">
-                        Creating <span className="text-[#564AF7]">Softwares</span><br />
+                    <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold leading-tight mb-8 text-black">
+                        Creating <span className="text-[#564AF7]">Softwares </span> 
                         & Digital Excellence
                     </h1>
 
@@ -51,7 +51,7 @@ const Home = () => {
 
                    
                     <div className="max-w-2xl mb-10 lg:mb-24 pt-20 lg:pt-32">
-                        <h2 className="text-xl lg:text-5xl font-bold leading-tight">
+                        <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold leading-tight">
                             Turning Your Ideas Into Cutting-edge Technologies
                         </h2>
                     </div>
@@ -62,8 +62,8 @@ const Home = () => {
                         {/* ---------- 01: Software Design ---------- */}
                         <div className="flex items-center justify-between py-10">
                             <div className="flex items-center gap-2 lg:gap-6">
-                                <span className="text-lg lg:text-2xl text-purple-200 font-light">01/</span>
-                                <span className="text-lg lg:text-3xl font-bold">Software Design</span>
+                                <span className="text-sm md:text-lg text-purple-200 font-light">01/</span>
+                                <span className="text-sm md:text-lg font-bold">Software Design</span>
                             </div>
 
                             <span className="text-sm font-semibold underline underline-offset-4 decoration-purple-300 hover:decoration-white transition cursor-pointer whitespace-nowrap">
@@ -79,8 +79,8 @@ const Home = () => {
                                 
                                 <div className="flex flex-col max-w-lg">
                                     <div className="flex items-center gap-2 lg:gap-6 mb-6">
-                                        <span className="text-lg lg:text-2xl text-purple-200 font-light">02/</span>
-                                        <span className="text-lg lg:text-3xl font-bold">
+                                        <span className="text-sm md:text-lg text-purple-200 font-light">02/</span>
+                                        <span className="text-sm md:text-lg font-bold">
                                             Software Development
                                         </span>
                                     </div>
@@ -115,8 +115,8 @@ const Home = () => {
                         {/* ---------- 03: Website Development ---------- */}
                         <div className="flex items-center justify-between py-10 border-t border-purple-300/40 w-full">
                             <div className="flex items-center gap-2 lg:gap-6">
-                                <span className="text-lg lg:text-2xl text-purple-200 font-light">03/</span>
-                                <span className="text-lg lg:text-3xl font-bold">Website Development</span>
+                                <span className="text-sm md:text-lg text-purple-200 font-light">03/</span>
+                                <span className="text-sm md:text-lg font-bold">Website Development</span>
                             </div>
 
                             <span className="text-sm font-semibold underline underline-offset-4 decoration-purple-300 hover:decoration-white transition cursor-pointer whitespace-nowrap">
@@ -127,8 +127,8 @@ const Home = () => {
                         {/* ---------- 04: Apps & Games Development ---------- */}
                         <div className="flex items-center justify-between py-10 border-t border-purple-300/40 w-full">
                             <div className="flex items-center gap-2 lg:gap-6">
-                                <span className="text-lg lg:text-2xl text-purple-200 font-light">04/</span>
-                                <span className="text-lg lg:text-3xl font-bold">
+                                <span className="text-sm md:text-lg text-purple-200 font-light">04/</span>
+                                <span className="text-sm md:text-lg font-bold">
                                     Apps & Games Development
                                 </span>
                             </div>
@@ -146,7 +146,7 @@ const Home = () => {
             <div className=" bg-white pb-20">
 
                 <div className="w-[90%]  mx-auto mt-24 mb-16 text-center">
-                    <h1 className="text-xl lg:text-5xl font-bold max-w-2xl mx-auto text-center leading-tight">
+                    <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold max-w-2xl mx-auto text-center leading-tight">
                         <span className="text-blue-600">Powerful Software</span> At The Forefront Of Digital Excellence & Technology
                     </h1>
                 </div>
@@ -204,16 +204,16 @@ const Home = () => {
 
                     <div className="px-6 lg:px-16">
 
-                        <h3 className="text-xl lg:text-4xl font-bold mb-16">Latest Projects</h3>
+                        <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-16">Latest Projects</h3>
 
                         <div className="flex flex-col lg:flex-row items-center lg:items-start gap-10 mb-20">
                             <div className="relative w-full lg:w-[35%] aspect-[4/3] rounded">
                                 <Image src="/images/lastestProjectImg1.webp" alt="Project 1" fill className="object-cover" />
                             </div>
                             <div className="">
-                                <h4 className="text-xl lg:text-2xl font-bold mb-2 max-w-md">eCommerce Website Design For Fashion Brand</h4>
+                                <h4 className="text-sm md:text-lg font-bold mb-2 max-w-md">eCommerce Website Design For Fashion Brand</h4>
                                 <p className="text-gray-500 text-sm mb-6 uppercase tracking-wider">— UI/UX & Dev</p>
-                                <p className="text-gray-400 text-base leading-relaxed mb-8 max-w-lg">
+                                <p className="text-gray-400 text-sm leading-relaxed mb-8 max-w-lg">
                                     Our company was dedicated to building professional and 100% responsive eCommerce websites...
                                 </p>
                                 <button className="px-8 py-3 rounded-full border border-gray-600 text-sm font-semibold hover:bg-white hover:text-black transition duration-300">
@@ -228,9 +228,9 @@ const Home = () => {
                                 <Image src="/images/lastestProjectImg2.webp" alt="Project 2" fill className="object-cover" />
                             </div>
                             <div className="">
-                                <h4 className="text-xl lg:text-2xl font-bold mb-2 max-w-md">AI-Powered Software For Digital Recruitment</h4>
+                                <h4 className="text-sm lg:text-lg font-bold mb-2 max-w-md">AI-Powered Software For Digital Recruitment</h4>
                                 <p className="text-gray-500 text-sm mb-6 uppercase tracking-wider">— Development</p>
-                                <p className="text-gray-400 text-base leading-relaxed mb-8 max-w-lg">
+                                <p className="text-gray-400 text-sm leading-relaxed mb-8 max-w-lg">
                                     We have recently created innovative, top-class AI-powered technology for digital recruitment...
                                 </p>
                                 <button className="px-8 py-3 rounded-full border border-gray-600 text-sm font-semibold hover:bg-white hover:text-black transition duration-300">
@@ -253,7 +253,7 @@ const Home = () => {
 
                     
                     <div className="px-6 lg:px-16 text-center w-full max-w-3xl mx-auto">
-                        <h3 className="text-xl lg:text-4xl font-bold mb-4">
+                        <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4">
                             Subscribe To Our Newsletter
                         </h3>
                         <p className="text-gray-400 mb-10 text-sm">

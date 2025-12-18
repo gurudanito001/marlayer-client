@@ -9,7 +9,7 @@ const Services = () => {
 
             <div className="relative mt-32 lg:mt-40 mx-auto max-w-[1400px] bg-[#564AF7] text-white rounded px-6 lg:px-20 pt-16 lg:pt-24 pb-32">
                 <div className="max-w-2xl mb-16 lg:mb-24">
-                    <h2 className="text-xl lg:text-5xl font-bold text-center lg:text-left">
+                    <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-center lg:text-left">
                         Get the best, cost-effective digital services for your software.
                     </h2>
                 </div>
@@ -18,8 +18,8 @@ const Services = () => {
                     {/* 01: Software Design*/}
                     <div className="flex items-center justify-between py-10">
                         <div className="flex items-center gap-2 lg:gap-6">
-                            <span className="text-lg lg:text-2xl text-purple-200 font-light">01/</span>
-                            <span className="text-lg lg:text-3xl font-bold">Software Design</span>
+                            <span className="text-sm md:text-lg text-purple-200 font-light">01/</span>
+                            <span className="text-sm md:text-lg font-bold">Software Design</span>
                         </div>
 
                         <span className="text-sm font-semibold underline underline-offset-4 decoration-purple-300 hover:decoration-white transition cursor-pointer whitespace-nowrap">
@@ -30,8 +30,8 @@ const Services = () => {
                     {/* ---------- 02: Software Development ---------- */}
                     <div className="flex items-center justify-between py-10 border-t border-purple-300/40 w-full">
                         <div className="flex items-center gap-2 lg:gap-6">
-                            <span className="text-lg lg:text-2xl text-purple-200 font-light">02/</span>
-                            <span className="text-lg lg:text-3xl font-bold">Software Development</span>
+                            <span className="text-sm md:text-lg text-purple-200 font-light">02/</span>
+                            <span className="text-sm md:text-lg font-bold">Software Development</span>
                         </div>
 
                         <span className="text-sm font-semibold underline underline-offset-4 decoration-purple-300 hover:decoration-white transition cursor-pointer whitespace-nowrap">
@@ -42,8 +42,8 @@ const Services = () => {
                     {/* ---------- 03: Website Development ---------- */}
                     <div className="flex items-center justify-between py-10 border-t border-purple-300/40 w-full">
                         <div className="flex items-center gap-2 lg:gap-6">
-                            <span className="text-lg lg:text-2xl text-purple-200 font-light">03/</span>
-                            <span className="text-lg lg:text-3xl font-bold">Website Development</span>
+                            <span className="text-sm md:text-lg text-purple-200 font-light">03/</span>
+                            <span className="text-sm md:text-lg font-bold">Website Development</span>
                         </div>
 
                         <span className="text-sm font-semibold underline underline-offset-4 decoration-purple-300 hover:decoration-white transition cursor-pointer whitespace-nowrap">
@@ -57,10 +57,10 @@ const Services = () => {
                            
                             <div className="flex flex-col max-w-lg">
                                 <div className="flex items-center gap-2 lg:gap-6 mb-6">
-                                    <span className="text-lg lg:text-2xl text-purple-200 font-light">
+                                    <span className="text-sm md:text-lg text-purple-200 font-light">
                                         04/
                                     </span>
-                                    <span className="text-lg lg:text-3xl font-bold">
+                                    <span className="text-sm md:text-lg font-bold">
                                         Apps and Games Development
                                     </span>
                                 </div>
@@ -95,8 +95,8 @@ const Services = () => {
                     {/* ---------- 05, 06, 07, 08 ---------- */}
                     <div className="flex items-center justify-between py-10 border-t border-purple-300/40 w-full">
                         <div className="flex items-center gap-2 lg:gap-6">
-                            <span className="text-lg lg:text-2xl text-purple-200 font-light">05/</span>
-                            <span className="text-lg lg:text-3xl font-bold">Software Design</span>
+                            <span className="text-sm md:text-lg text-purple-200 font-light">05/</span>
+                            <span className="text-sm md:text-lg font-bold">Software Design</span>
                         </div>
                         <span className="text-sm font-semibold underline underline-offset-4 decoration-purple-300 hover:decoration-white transition cursor-pointer whitespace-nowrap">
                             More Information
@@ -105,8 +105,8 @@ const Services = () => {
 
                     <div className="flex items-center justify-between py-10 border-t border-purple-300/40 w-full">
                         <div className="flex items-center gap-2 lg:gap-6">
-                            <span className="text-lg lg:text-2xl text-purple-200 font-light">06/</span>
-                            <span className="text-lg lg:text-3xl font-bold">Software Development</span>
+                            <span className="text-sm md:text-lg text-purple-200 font-light">06/</span>
+                            <span className="text-sm md:text-lg font-bold">Software Development</span>
                         </div>
                         <span className="text-sm font-semibold underline underline-offset-4 decoration-purple-300 hover:decoration-white transition cursor-pointer whitespace-nowrap">
                             More Information
@@ -115,8 +115,8 @@ const Services = () => {
 
                     <div className="flex items-center justify-between py-10 border-t border-purple-300/40 w-full">
                         <div className="flex items-center gap-2 lg:gap-6">
-                            <span className="text-lg lg:text-2xl text-purple-200 font-light">07/</span>
-                            <span className="text-lg lg:text-3xl font-bold">Website Development</span>
+                            <span className="text-sm md:text-lg text-purple-200 font-light">07/</span>
+                            <span className="text-sm md:text-lg font-bold">Website Development</span>
                         </div>
                         <span className="text-sm font-semibold underline underline-offset-4 decoration-purple-300 hover:decoration-white transition cursor-pointer whitespace-nowrap">
                             More Information
@@ -126,8 +126,8 @@ const Services = () => {
                     {/* 08/  */}
                     <div className="flex items-center justify-between py-10 border-t border-purple-300/40 w-full">
                         <div className="flex items-center gap-2 lg:gap-6">
-                            <span className="text-lg lg:text-2xl text-purple-200 font-light">08/</span>
-                            <span className="text-lg lg:text-3xl font-bold">
+                            <span className="text-sm md:text-lg text-purple-200 font-light">08/</span>
+                            <span className="text-sm md:text-lg font-bold">
                                 Apps and Games Development
                             </span>
                         </div>

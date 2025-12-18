@@ -18,7 +18,7 @@ export default function UpdatesSection() {
         </div>
 
         {/* Title */}
-        <h2 className="text-xl md:text-3xl font-semibold leading-snug max-w-2xl">
+        <h2 className="text-2xl lg:text-4xl font-semibold leading-snug max-w-2xl">
           Keep me updated about devices, news, tips, and offers from Google Store.
         </h2>
 

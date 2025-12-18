@@ -1,3 +1,4 @@
+// components/Navbar.tsx
 "use client";
 
 import Link from "next/link"; 
@@ -16,31 +17,38 @@ export default function Navbar() {
     <nav className="bg-white shadow-sm py-1 lg:py-2 px-6 md:px-8 lg:px-16 sticky top-0 z-50">
       <div className="w-full py-4 flex items-center justify-between">
 
-       
+        {/* --- Logo and Desktop Links --- */}
         <div className="flex items-center gap-8">
-          <Link href="/">
-            <Image src="/images/marlayer-logo.svg" width={30} height={30} alt="Marlayer Logo" />
+          {/* Reverting to original logo structure using Image component */}
+          <Link href="/" className="flex items-center ml-3">
+            <Image src="/images/marlayer-logo.svg" width={25} height={25} alt="Marlayer Logo" />
+            <span className="font-extrabold text-primary text-xl">arlayer Gadgets</span>
           </Link>
+          
+          {/* Desktop Links */}
           <div className="hidden lg:flex items-center gap-8">
-          <Link href="/Phones" className="text-gray-700 hover:text-blue-600 transition">
-            Phones
-          </Link>
+            <Link href="/Phones" className="text-gray-700 hover:text-blue-600 transition">
+              Phones
+            </Link>
 
-          <Link href="/Phones/Laptops" className="text-gray-700 hover:text-blue-600 transition">
-            Laptops
-          </Link>
+            <Link href="/Phones/Laptops" className="text-gray-700 hover:text-blue-600 transition">
+              Laptops
+            </Link>
 
-          <Link href="/accessories" className="text-gray-700 hover:text-blue-600 transition">
-            Accessories
-          </Link>
+            <Link href="/accessories" className="text-gray-700 hover:text-blue-600 transition">
+              Accessories
+            </Link>
           </div>
         </div>
 
+        {/* --- Mobile/Desktop Icons & Menu --- */}
         <div className="flex items-center gap-6">
-          <Search className="w-5 h-5 text-gray-700 hover:text-blue-600 cursor-pointer transition" />
-          <ShoppingCart className="w-5 h-5 text-gray-700 hover:text-blue-600 cursor-pointer transition" />
           
-          {/* Mobile Menu Button (Hamburger Icon) */}
+          {/* Desktop Search & Cart - Hidden on small screens */}
+          <Search className="hidden lg:block w-5 h-5 text-gray-700 hover:text-blue-600 cursor-pointer transition" />
+          <ShoppingCart className="hidden lg:block w-5 h-5 text-gray-700 hover:text-blue-600 cursor-pointer transition" />
+          
+          {/* Mobile Menu Button (Hamburger Icon) - Only visible icon on small screens */}
           <button
             onClick={toggleMenu}
             className="btn btn-ghost btn-circle avatar lg:hidden"
@@ -61,22 +69,29 @@ export default function Navbar() {
           )}
 
          
+          {/* Mobile Menu Pane */}
           <div
             className={`fixed top-0 right-0 h-full w-64 bg-white shadow-lg transform transition-transform duration-300 ease-in-out z-[60] lg:hidden
               ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}
           >
             <div className="flex items-center justify-between p-4 border-b border-gray-200">
               <h2 className="text-lg font-semibold">Menu</h2>
-              <button onClick={toggleMenu} aria-label="Close mobile menu">
-                <X className="w-6 h-6 text-gray-700" />
-              </button>
+              
+              {/* MOVED: Search and Cart icons inside the menu pane (mobile) */}
+              <div className="flex items-center gap-4">
+                <Search className="w-5 h-5 text-gray-700 hover:text-blue-600 cursor-pointer transition" />
+                <ShoppingCart className="w-5 h-5 text-gray-700 hover:text-blue-600 cursor-pointer transition" />
+                <button onClick={toggleMenu} aria-label="Close mobile menu">
+                  <X className="w-6 h-6 text-gray-700" />
+                </button>
+              </div>
             </div>
+            
             <ul className="menu p-4">
               {/* Links for mobile dropdown */}
-              <li><Link href="/phones" className="text-base text-gray-800 py-3" onClick={toggleMenu}>Phones</Link></li>
-              <li><Link href="/laptops" className="text-base text-gray-800 py-3" onClick={toggleMenu}>Laptops</Link></li>
+              <li><Link href="/Phones" className="text-base text-gray-800 py-3" onClick={toggleMenu}>Phones</Link></li>
+              <li><Link href="/Phones/Laptops" className="text-base text-gray-800 py-3" onClick={toggleMenu}>Laptops</Link></li>
               <li><Link href="/accessories" className="text-base text-gray-800 py-3" onClick={toggleMenu}>Accessories</Link></li>
-              
             </ul>
           </div>
         </div>

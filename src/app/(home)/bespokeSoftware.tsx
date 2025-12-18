@@ -1,104 +1,157 @@
-
-
-
 // components/CloudServicesSection.tsx
 "use client"
 
-import React from 'react';
-import Image from 'next/image';
+import React, { useRef } from 'react';
 
 const BespokeSoftware: React.FC = () => {
   const primaryColor = '#003C3C';
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+
+  const scroll = (direction: 'left' | 'right') => {
+    if (scrollContainerRef.current) {
+      const { current } = scrollContainerRef;
+      const scrollAmount = 420; // Width of card + gap
+      current.scrollBy({
+        left: direction === 'left' ? -scrollAmount : scrollAmount,
+        behavior: 'smooth',
+      });
+    }
+  };
+
+  // Extracting data to make the render clean and loopable
+  const values = [
+    {
+      title: "Integrity",
+      desc: "We deliver only what we can stand behind. Whether it’s a piece of software, a gadget, or a training program, honesty and transparency guide every interaction.",
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="h-10 w-10">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75 11.25 15 15 9.75M12 3.75l8.25 4.5v5.25c0 4.28-3.18 7.98-8.25 9C8.88 21.48 5 17.78 5 13.5V8.25L12 3.75z" />
+        </svg>
+      )
+    },
+    {
+      title: "Quality",
+      desc: "We never compromise on standards. Every product we sell, every platform we build, and every course we create is crafted to meet high-performance and reliability expectations.",
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="h-10 w-10">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v2m0 14v2m9-9h-2M5 12H3m15.364 6.364l-1.414-1.414m-9.9-9.9L5.636 5.636m12.728 0l-1.414 1.414m-9.9 9.9L5.636 18.364M12 8a4 4 0 100 8 4 4 0 000-8z" />
+        </svg>
+      )
+    },
+    {
+      title: "Innovation",
+      desc: "Technology evolves fast — and so do we. We continuously experiment, learn, and adopt new ideas to ensure our customers always receive modern solutions.",
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="h-10 w-10">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M12 2.25a6.75 6.75 0 00-3.472 12.53c.497.302.972.86.972 1.47v2.25h4.5v-2.25c0-.61.475-1.168.972-1.47A6.75 6.75 0 0012 2.25zM9.75 21h4.5" />
+        </svg>
+      )
+    },
+    {
+      title: "Customer-Centricity",
+      desc: "Your success is our priority. We listen, understand your needs, and tailor our services to deliver real value. We don’t just offer solutions — we partner with you.",
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="h-10 w-10">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M12 21s8-4.5 8-10.5A4.5 4.5 0 0012 6a4.5 4.5 0 00-8 4.5C4 16.5 12 21 12 21z" />
+        </svg>
+      )
+    },
+    {
+      title: "Excellence in Execution",
+      desc: "Great ideas matter, but execution matters more. We focus on precision, efficiency, and consistency to ensure every project or service is delivered at the highest level.",
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="h-10 w-10">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75 11.25 15 15 9.75m6 2.91a8.25 8.25 0 11-16.5 0 8.25 8.25 0 0116.5 0z" />
+        </svg>
+      )
+    },
+    {
+      title: "Growth & Learning",
+      desc: "We believe in empowering people through knowledge. Our academy, our internal processes, and our culture all reflect our commitment to continuous learning.",
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="h-10 w-10">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M3 3v18h18M7 13v5m4-10v10m4-6v6" />
+        </svg>
+      )
+    }
+  ];
+
   return (
-    <section className="py-24 md:py-36 bg-neutral-100">
-      <div className="container mx-auto px-4 md:px-8 lg:px-16 text-center">
-        {/* Section Title */}
-        <h2 className="text-xl md:text-3xl font-semibold text-primary mb-5">About Marlayer</h2>
-        {/* <h3 className="text-3xl xl:text-4xl font-bold mb-6 text-primary">
-          Bring your ideas to life.
-        </h3> */}
-        {/* Section Description */}
-        <p className="text-sm md:text-lg text-gray-700 mb-12 mx-auto max-w-3xl">
-          At Marlayer, we believe technology should empower people — not overwhelm them. We build digital solutions, deliver authentic gadgets, and provide practical training designed to help individuals and businesses grow. Our ecosystem is built on reliability, innovation, and a deep commitment to helping our customers succeed.
+    <section className="py-24 bg-[#F5F5F7] overflow-hidden">
+      <div className="container mx-auto px-4 md:px-8 lg:px-16">
+        
 
-        </p>
-
-
-        <h3 className="text-xl xl:text-2xl font-bold mb-6 text-primary">
-          Our Core Values
-        </h3>
-
-        {/* Features Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {/* Feature Card 1 */}
-          <div className="bg-gray-50 p-6 rounded-sm shadow-md hover:shadow-lg transition-shadow duration-300 flex flex-col items-center text-center">
-
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-              strokeWidth={1.5} stroke="currentColor" className="h-12 w-12 mb-4" style={{ color: primaryColor }}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75 11.25 15 15 9.75M12 3.75l8.25 4.5v5.25c0 4.28-3.18 7.98-8.25 9C8.88 21.48 5 17.78 5 13.5V8.25L12 3.75z" />
-            </svg>
-
-            <h3 className="text-xl font-semibold mb-2" style={{ color: primaryColor }}>Integrity</h3>
-            <p className="text-gray-700">We deliver only what we can stand behind. Whether it’s a piece of software, a gadget, or a training program, honesty and transparency guide every interaction with our clients, students, and partners.</p>
-          </div>
-
-          {/* Feature Card 2 */}
-          <div className="bg-gray-50 p-6 rounded-sm shadow-md hover:shadow-lg transition-shadow duration-300 flex flex-col items-center text-center">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-              strokeWidth={1.5} stroke="currentColor" className="h-12 w-12 mb-4" style={{ color: primaryColor }}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v2m0 14v2m9-9h-2M5 12H3m15.364 6.364l-1.414-1.414m-9.9-9.9L5.636 5.636m12.728 0l-1.414 1.414m-9.9 9.9L5.636 18.364M12 8a4 4 0 100 8 4 4 0 000-8z" />
-            </svg>
-            <h3 className="text-xl font-semibold mb-2" style={{ color: primaryColor }}>Quality</h3>
-            <p className="text-gray-700">We never compromise on standards. Every product we sell, every platform we build, and every course we create is crafted to meet high-performance, reliability, and usability expectations.</p>
-          </div>
-
-          {/* Feature Card 3 */}
-          <div className="bg-gray-50 p-6 rounded-sm shadow-md hover:shadow-lg transition-shadow duration-300 flex flex-col items-center text-center">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-              strokeWidth={1.5} stroke="currentColor" className="h-12 w-12 mb-4" style={{ color: primaryColor }}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M12 2.25a6.75 6.75 0 00-3.472 12.53c.497.302.972.86.972 1.47v2.25h4.5v-2.25c0-.61.475-1.168.972-1.47A6.75 6.75 0 0012 2.25zM9.75 21h4.5" />
-            </svg>
-            <h3 className="text-xl font-semibold mb-2" style={{ color: primaryColor }}>Innovation</h3>
-            <p className="text-gray-700">Technology evolves fast — and so do we. We continuously experiment, learn, and adopt new ideas to ensure our customers always receive modern and forward-thinking solutions.</p>
-          </div>
-
-          {/* Feature Card 4 */}
-          <div className="bg-gray-50 p-6 rounded-sm shadow-md hover:shadow-lg transition-shadow duration-300 flex flex-col items-center text-center">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-              strokeWidth={1.5} stroke="currentColor" className="h-12 w-12 mb-4" style={{ color: primaryColor }}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M12 21s8-4.5 8-10.5A4.5 4.5 0 0012 6a4.5 4.5 0 00-8 4.5C4 16.5 12 21 12 21z" />
-            </svg>
-            <h3 className="text-xl font-semibold mb-2" style={{ color: primaryColor }}>Customer-Centricity</h3>
-            <p className="text-gray-700">Your success is our priority. We listen, understand your needs, and tailor our services to deliver the real value you’re looking for. We don’t just offer solutions — we partner with you.</p>
-          </div>
-
-          {/* Feature Card 5 */}
-          <div className="bg-gray-50 p-6 rounded-sm shadow-md hover:shadow-lg transition-shadow duration-300 flex flex-col items-center text-center">
-
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-              strokeWidth={1.5} stroke="currentColor" className="h-12 w-12 mb-4" style={{ color: primaryColor }}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75 11.25 15 15 9.75m6 2.91a8.25 8.25 0 11-16.5 0 8.25 8.25 0 0116.5 0z" />
-            </svg>
-
-            <h3 className="text-xl font-semibold mb-2" style={{ color: primaryColor }}>Excellence in Execution</h3>
-            <p className="text-gray-700">Great ideas matter, but execution matters more. We focus on precision, efficiency, and consistency to ensure every project or service is delivered at the highest level.</p>
-          </div>
-
-          {/* Feature Card 6 */}
-          <div className="bg-gray-50 p-6 rounded-sm shadow-md hover:shadow-lg transition-shadow duration-300 flex flex-col items-center text-center">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-              strokeWidth={1.5} stroke="currentColor" className="h-12 w-12 mb-4" style={{ color: primaryColor }}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M3 3v18h18M7 13v5m4-10v10m4-6v6" />
-            </svg>
-            <h3 className="text-xl font-semibold mb-2" style={{ color: primaryColor }}>Growth & Learning</h3>
-            <p className="text-gray-700">We believe in empowering people through knowledge. Our academy, our internal processes, and our culture all reflect our commitment to continuous learning and improvement.</p>
-          </div>
+        {/* Section Header - mimicking "Why Apple..." */}
+        <div className=" mb-10 mt-16">
+          <h3 className="text-2xl lg:text-3xl xl:text-4xl font-bold text-gray-900 leading-tight text-center">
+            What Makes Us Different
+          </h3>
         </div>
 
-        {/* Call to Action Button for this section */}
-        {/* <button className="btn btn-lg text-white rounded-sm shadow-lg hover:shadow-xl transition-all duration-300 mt-12" style={{ backgroundColor: primaryColor, borderColor: primaryColor }}>
-          Start Your Project
-        </button> */}
+        {/* Carousel Container */}
+        <div className="relative group">
+          <div 
+            ref={scrollContainerRef}
+            className="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory scrollbar-hide -mx-4 px-4 md:mx-0 md:px-0"
+            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+          >
+            {values.map((item, index) => (
+              <div 
+                key={index}
+                className="flex-none w-[310px] md:w-[380px] snap-center bg-white rounded-3xl p-6 flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow duration-300 h-[320px]"
+              >
+                <div>
+                  {/* Icon Top Left */}
+                  <div className="mb-6" style={{ color: primaryColor }}>
+                    {item.icon}
+                  </div>
+                  
+                  {/* Title & Description */}
+                  <h4 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-3">{item.title}</h4>
+                  <p className="text-sm md:text-lg font-medium text-gray-500 leading-relaxed">
+                    {item.desc}
+                  </p>
+                </div>
+
+                {/* Bottom Plus Icon */}
+                <div className="flex justify-end mt-4">
+                  <div className="bg-black text-white rounded-full p-1.5 w-8 h-8 flex items-center justify-center cursor-pointer hover:bg-gray-800 transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
+                      <path fillRule="evenodd" d="M12 3.75a.75.75 0 01.75.75v6.75h6.75a.75.75 0 010 1.5h-6.75v6.75a.75.75 0 01-1.5 0v-6.75H4.5a.75.75 0 010-1.5h6.75V4.5a.75.75 0 01.75-.75z" clipRule="evenodd" />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+          
+          {/* Navigation Controls (Arrows) */}
+          <div className="flex justify-end items-center gap-4 mt-4">
+             {/* Left Arrow */}
+             <button 
+                onClick={() => scroll('left')}
+                className="w-10 h-10 rounded-full bg-gray-200 hover:bg-gray-300 flex items-center justify-center transition-colors focus:outline-none"
+                aria-label="Previous"
+             >
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5 text-gray-600">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+                </svg>
+             </button>
+
+             {/* Right Arrow */}
+             <button 
+                onClick={() => scroll('right')}
+                className="w-10 h-10 rounded-full bg-gray-200 hover:bg-gray-300 flex items-center justify-center transition-colors focus:outline-none"
+                aria-label="Next"
+             >
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5 text-gray-600">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                </svg>
+             </button>
+          </div>
+
+        </div>
+
       </div>
     </section>
   );

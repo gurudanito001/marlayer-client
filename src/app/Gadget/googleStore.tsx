@@ -66,8 +66,8 @@ const GoogleStore = () => {
   };
 
   return (
-    <div className="w-full max-w-[1280px] mx-auto px-6 lg:px-12 py-8 font-sans mt-20">
-      <h1 className="text-xl md:text-4xl text-black text-center font-semibold mb-8">
+    <div className="w-full max-w-[1280px] mx-auto px-6 lg:px-12 py-8 mt-20">
+      <h1 className="text-2xl md:text-3xl lg:text-4xl text-black text-center font-semibold mb-8">
         Popular on the Google Store
       </h1>
 

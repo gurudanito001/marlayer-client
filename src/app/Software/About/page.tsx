@@ -19,12 +19,12 @@ const About = () => {
                     />
                 </div>
 
-                <h1 className="text-xl lg:text-5xl font-bold leading-tight max-w-3xl mx-auto mb-6 mt-20">
+                <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold leading-tight max-w-3xl mx-auto mb-6 mt-20">
                     <span className="text-purple-600">Leading Company</span> In Creating Powerful Software & Technology
                 </h1>
 
 
-                <p className="text-gray-600 max-w-3xl mx-auto mb-20 text-sm">
+                <p className="text-gray-600 max-w-3xl mx-auto mb-20 text-sm md:text-lg">
                     Starting from small requests, we design and execute seamless development processes that
                     bring your digital ideas to life. We prioritize a user-centric approach to deliver
                     exceptional and sustainable technology solutions.
@@ -88,14 +88,14 @@ const About = () => {
                     <div className="px-6 lg:px-16">
 
 
-                        <h3 className="text-xl lg:text-4xl font-bold mb-16">What We Offer</h3>
+                        <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-16">What We Offer</h3>
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-20 gap-y-12 mb-28">
 
                             {/* 1. Software Design */}
                             <div>
                                 <h4 className="text-xl lg:text-2xl font-bold mb-2">Software Design</h4>
-                                <p className="text-gray-400 text-base leading-relaxed max-w-lg">
+                                <p className="text-gray-400 text-sm md:text-lg leading-relaxed max-w-lg">
                                     Design expertise in UI/UX and powerful back-end architecture to create seamless, scalable software that drives technology forward.
                                 </p>
                             </div>
@@ -103,7 +103,7 @@ const About = () => {
                             {/* 2. Software Development */}
                             <div>
                                 <h4 className="text-xl lg:text-2xl font-bold mb-2">Software Development</h4>
-                                <p className="text-gray-400 text-base leading-relaxed max-w-lg">
+                                <p className="text-gray-400 text-sm md:text-lg leading-relaxed max-w-lg">
                                     Full-cycle software development, agile sprints, API services, and infrastructure setup using modern frameworks like React, Node, and Python.
                                 </p>
                             </div>
@@ -111,7 +111,7 @@ const About = () => {
                             {/* 3. Website Development */}
                             <div>
                                 <h4 className="text-xl lg:text-2xl font-bold mb-2">Website Development</h4>
-                                <p className="text-gray-400 text-base leading-relaxed max-w-lg">
+                                <p className="text-gray-400 text-sm md:text-lg leading-relaxed max-w-lg">
                                     Professional and 100% responsive eCommerce websites and custom business sites built for performance and modern online business trends.
                                 </p>
                             </div>
@@ -119,7 +119,7 @@ const About = () => {
                             {/* 4. Games Development */}
                             <div>
                                 <h4 className="text-xl lg:text-2xl font-bold mb-2">Games Development</h4>
-                                <p className="text-gray-400 text-base leading-relaxed max-w-lg">
+                                <p className="text-gray-400 text-sm md:text-lg leading-relaxed max-w-lg">
                                     Immersive game logic and stunning graphic creation, using engines like Unity and Unreal, for both mobile and PC environments.
                                 </p>
                             </div>
@@ -127,7 +127,7 @@ const About = () => {
                             {/* 5. SEO Optimization */}
                             <div>
                                 <h4 className="text-xl lg:text-2xl font-bold mb-2">SEO Optimization</h4>
-                                <p className="text-gray-400 text-base leading-relaxed max-w-lg">
+                                <p className="text-gray-400 text-sm md:text-lg leading-relaxed max-w-lg">
                                     Comprehensive on-page and technical SEO strategies that ensure maximum organic visibility and high-ranking search engine results.
                                 </p>
                             </div>
@@ -151,7 +151,7 @@ const About = () => {
 
 
                     <div className="px-6 lg:px-16 text-center w-full max-w-3xl mx-auto">
-                        <h3 className="text-xl lg:text-4xl font-bold mb-4">
+                        <h3 className="text-xl md:text-4xl font-bold mb-4">
                             Subscribe To Our Newsletter
                         </h3>
                         <p className="text-gray-400 mb-10 text-sm">

@@ -5,7 +5,7 @@ import Image from "next/image";
 
 const GadgetDisplay = () => {
   return (
-    <div className="w-full px-6 py-12 max-w-6xl mx-auto font-sans">
+    <div className="w-full px-6 py-12 max-w-6xl mx-auto">
       
       {/* FIRST ROW */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
@@ -13,7 +13,7 @@ const GadgetDisplay = () => {
         {/* CARD 1 */}
         <div className="bg-[#eff1f4] rounded-3xl pt-14 flex flex-col items-center text-center h-[500px] lg:h-[550px] overflow-hidden relative">
           <div className="px-6 flex flex-col items-center z-10">
-            <h2 className="text-xl md:text-3xl leading-tight font-medium mb-3">
+            <h2 className="text-2xl md:text-3xl leading-tight font-medium mb-3">
               Google Pixel 10 Pro and Pro XL
             </h2>
             <p className="text-gray-600 text-sm mb-4 font-medium">
@@ -37,7 +37,7 @@ const GadgetDisplay = () => {
         {/* CARD 2 */}
         <div className="bg-[#E6E8EC] rounded-3xl pt-14 flex flex-col items-center text-center h-[500px] lg:h-[550px] overflow-hidden relative">
           <div className="px-6 flex flex-col items-center z-10">
-            <h2 className="text-xl md:text-3xl leading-tight font-medium mb-3">
+            <h2 className="text-2xl md:text-3xl leading-tight font-medium mb-3">
               Google Pixel 10 Pro Fold
             </h2>
             <p className="text-gray-600 text-sm mb-4 font-medium">
@@ -61,7 +61,7 @@ const GadgetDisplay = () => {
         {/* CARD 3 */}
         <div className="bg-[#eff1f4] rounded-3xl pt-14 flex flex-col items-center text-center h-[500px] lg:h-[550px] overflow-hidden relative">
           <div className="px-6 flex flex-col items-center z-10">
-            <h2 className="text-xl md:text-3xl leading-tight font-medium mb-3">
+            <h2 className="text-2xl md:text-3xl leading-tight font-medium mb-3">
               Google Pixel 10
             </h2>
             <p className="text-gray-600 text-sm mb-4 font-medium">
@@ -90,7 +90,7 @@ const GadgetDisplay = () => {
         {/* WATCH */}
         <div className="bg-gray-300 rounded-3xl pt-14 flex flex-col items-center text-center h-[500px] lg:h-[600px] overflow-hidden relative">
           <div className="px-6 flex flex-col items-center z-10">
-            <h2 className="text-xl lg:text-4xl leading-tight font-medium mb-3">
+            <h2 className="text-2xl lg:text-4xl leading-tight font-medium mb-3">
               Google Pixel Watch 4
             </h2>
             <p className="text-gray-600 text-sm mb-4">
@@ -115,7 +115,7 @@ const GadgetDisplay = () => {
         {/* BUDS */}
         <div className="bg-gray-300 rounded-3xl pt-14 flex flex-col items-center text-center h-[500px] lg:h-[600px] overflow-hidden relative">
           <div className="px-6 flex flex-col items-center z-10">
-            <h2 className="text-xl lg:text-4xl leading-tight font-medium mb-3">
+            <h2 className="text-2xl lg:text-4xl leading-tight font-medium mb-3">
               Google Pixel Buds Pro 2
             </h2>
             <p className="text-gray-600 text-sm mb-4">

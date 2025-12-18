@@ -29,11 +29,11 @@ const MarlayerAcademy: React.FC = () => {
           </h2>
           
           {/* Removed mt-auto so this sits directly under the H2 above */}
-          <h3 className="text-xl md:text-3xl xl:text-4xl font-extrabold text-black lg:text-white max-w-600">
+          <h3 className="text-2xl lg:text-3xl xl:text-4xl font-extrabold text-black lg:text-white max-w-600">
             Shaping Next-Gen Innovators
           </h3>
 
-          <p className="md:text-xl font-normal mt-4 text-gray-700 lg:text-gray-100 max-w-550 xl:max-w-600"> 
+          <p className="text-sm md:text-lg font-normal mt-4 text-gray-700 lg:text-gray-100 max-w-550 xl:max-w-600"> 
             We prepare students for the new tech age, empowering them to be innovators who solve real-world problems and bridge societal gaps with their skills.
           </p>
 

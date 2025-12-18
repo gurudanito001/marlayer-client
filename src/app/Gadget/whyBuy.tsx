@@ -24,7 +24,7 @@ export default function WhyBuySection() {
     <div className="w-full px-6 py-20">
 
       {/* Heading */}
-      <h2 className="text-xl md:text-4xl font-semibold text-center mb-14">
+      <h2 className="text-2xl lg:text-4xl font-semibold text-center mb-14">
         Why buy on the Google Store?
       </h2>
 
@@ -39,7 +39,7 @@ export default function WhyBuySection() {
             <div className="mb-6">{f.icon}</div>
 
             {/* TITLE */}
-            <h3 className="text-lg font-medium leading-snug max-w-[220px]">
+            <h3 className="text-sm font-medium leading-snug max-w-[220px]">
               {f.title}
             </h3>
 
@@ -52,7 +52,7 @@ export default function WhyBuySection() {
       </div>
 
      {/* Footnotes */}
-<div className="max-w-4xl mx-auto mt-12 text-xs text-gray-700 space-y-2 leading-relaxed">
+<div className="max-w-4xl mx-auto mt-12 text-sm text-gray-700 space-y-2 leading-relaxed">
   <p className="flex items-start gap-1">
     <span className="flex-shrink-0 pt-[2px]">
       <Plus size={10} className="text-gray-700" />

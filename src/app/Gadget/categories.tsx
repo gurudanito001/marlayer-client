@@ -36,8 +36,8 @@ const featuredProducts = [
 
 const CategoriesSection: React.FC = () => {
   return (
-    <div className="w-full px-6 py-20 font-sans">
-      <h2 className="text-xl md:text-4xl font-bold text-center mb-12">
+    <div className="w-full px-6 py-20">
+      <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-center mb-12">
         Shop popular categories.
       </h2>
 
@@ -67,7 +67,7 @@ const CategoriesSection: React.FC = () => {
           >
             {/* Text Content */}
             <div className="">
-              <h3 className="text-xl font-semibold lg:text-4xl max-w-sm">{item.title}</h3>
+              <h3 className="text-2xl lg:text-4xl max-w-sm">{item.title}</h3>
               <p className="text-sm mt-3">{item.description}</p>
               <button className="mt-5 text-sm border border-gray-800 rounded-full px-6 py-2 hover:bg-gray-100 transition">
                 Learn more

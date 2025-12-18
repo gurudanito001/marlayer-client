@@ -6,7 +6,7 @@ const HeroSection = () => {
     <div className="flex flex-col items-center text-center">
 
       <div className="bg-black w-full py-16 px-4 flex flex-col items-center">
-        <h1 className="text-xl md:text-5xl font-semibold text-white mb-6 mt-10">
+        <h1 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-white mb-6 mt-10">
           Now's your chance to save big.
         </h1>
 
