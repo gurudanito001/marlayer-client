@@ -7,6 +7,7 @@ import { Search, ShoppingCart, X } from "lucide-react";
 import { useState } from "react"; 
 
 export default function Navbar() {
+  const logoTeal = "#45B1A0";
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -20,9 +21,16 @@ export default function Navbar() {
         {/* --- Logo and Desktop Links --- */}
         <div className="flex items-center gap-8">
           {/* Reverting to original logo structure using Image component */}
-          <Link href="/" className="flex items-center ml-3">
-            <Image src="/images/marlayer-logo.svg" width={25} height={25} alt="Marlayer Logo" />
-            <span className="font-extrabold text-primary text-xl">arlayer Gadgets</span>
+          <Link href="/" className="flex items-baseline ml-3">
+            <div className="">
+             <Image src="/images/marlayer-logo.svg" width={24} height={24} alt="Marlayer Logo" />
+            </div>
+            <span 
+              className="font-extrabold text-2xl"
+              style={{ color: logoTeal }}
+            >
+              ARLAYER
+            </span>
           </Link>
           
           {/* Desktop Links */}

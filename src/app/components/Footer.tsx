@@ -8,15 +8,15 @@ const Footer = () => {
   return (
     <footer className="bg-white text-gray-700 w-full">
       
-      <div className="max-w-7xl mx-auto px-6 py-16 grid grid-cols-1 md:grid-cols-4 gap-8 border-b border-gray-200">
+      <div className="max-w-6xl mx-auto px-6 py-16 grid grid-cols-1 md:grid-cols-3 gap-8 border-b border-gray-200">
         
         {/* 1. Logo */}
-        <div className="">
+        {/* <div className="">
          <Link href="/" className="flex items-center">
             <Image src="/images/marlayer-logo.svg" width={30} height={30} alt="Marlayer Logo" />
             <span className="font-bold text-primary text-xl">arlayer Software</span>
           </Link>
-        </div>
+        </div> */}
 
         {/* 2. About Column */}
         <div>

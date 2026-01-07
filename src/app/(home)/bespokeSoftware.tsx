@@ -52,7 +52,7 @@ const BespokeSoftware: React.FC = () => {
       desc: "Your success is our priority. We listen, understand your needs, and tailor our services to deliver real value. We don’t just offer solutions — we partner with you.",
       icon: (
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="h-10 w-10">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M12 21s8-4.5 8-10.5A4.5 4.5 0 0012 6a4.5 4.5 0 00-8 4.5C4 16.5 12 21 12 21z" />
+          <path strokeLinecap="round" strokeLinejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z" />
         </svg>
       )
     },
@@ -98,7 +98,7 @@ const BespokeSoftware: React.FC = () => {
             {values.map((item, index) => (
               <div 
                 key={index}
-                className="flex-none w-[310px] md:w-[380px] snap-center bg-white rounded-3xl p-6 flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow duration-300 h-[320px]"
+                className="flex-none w-[310px] md:w-[380px] snap-center bg-white rounded-3xl p-6 flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow duration-300 min-h-[320px]"
               >
                 <div>
                   {/* Icon Top Left */}
@@ -108,14 +108,14 @@ const BespokeSoftware: React.FC = () => {
                   
                   {/* Title & Description */}
                   <h4 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-3">{item.title}</h4>
-                  <p className="text-sm md:text-lg font-medium text-gray-500 leading-relaxed">
+                  <p className="text-sm md:text-lg text-gray-500 leading-relaxed">
                     {item.desc}
                   </p>
                 </div>
 
                 {/* Bottom Plus Icon */}
                 <div className="flex justify-end mt-4">
-                  <div className="bg-black text-white rounded-full p-1.5 w-8 h-8 flex items-center justify-center cursor-pointer hover:bg-gray-800 transition-colors">
+                  <div className="bg-black text-white rounded-full w-8 h-8 flex items-center justify-center cursor-pointer hover:bg-gray-800 transition-colors">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
                       <path fillRule="evenodd" d="M12 3.75a.75.75 0 01.75.75v6.75h6.75a.75.75 0 010 1.5h-6.75v6.75a.75.75 0 01-1.5 0v-6.75H4.5a.75.75 0 010-1.5h6.75V4.5a.75.75 0 01.75-.75z" clipRule="evenodd" />
                     </svg>

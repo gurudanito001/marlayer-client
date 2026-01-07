@@ -23,25 +23,15 @@
       "static/chunks/main-app.js",
       "static/chunks/app/Software/page.js"
     ],
-    "/Software/Projects/page": [
+    "/Gadget/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/Software/Projects/page.js"
-    ],
-    "/Software/ProjectDetails/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/Software/ProjectDetails/page.js"
+      "static/chunks/app/Gadget/page.js"
     ],
     "/Software/About/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/Software/About/page.js"
-    ],
-    "/Gadget/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/Gadget/page.js"
     ],
     "/Phones/page": [
       "static/chunks/webpack.js",
@@ -52,39 +42,6 @@
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/Phones/Laptops/page.js"
-    ],
-    "/Software/Services/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/Software/Services/page.js"
-    ],
-    "/Software/Contact/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/Software/Contact/page.js"
-    ],
-    "/learning/sign-up/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/learning/sign-up/page.css",
-      "static/chunks/app/learning/sign-up/page.js"
-    ],
-    "/learning/sign-in/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/learning/sign-in/page.css",
-      "static/chunks/app/learning/sign-in/page.js"
-    ],
-    "/learning/faqs/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/learning/faqs/page.css",
-      "static/chunks/app/learning/faqs/page.js"
-    ],
-    "/_not-found/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/_not-found/page.js"
     ]
   }
 }

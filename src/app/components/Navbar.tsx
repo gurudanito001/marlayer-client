@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { useState } from 'react';
 
 const Navbar = () => {
+  const logoTeal = "#45B1A0";
   const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -24,9 +25,16 @@ const Navbar = () => {
         
         {/* Logo Section */}
         <div className="text-2xl font-bold text-gray-800">
-          <Link href="/" className="flex items-center ml-3">
-            <Image src="/images/marlayer-logo.svg" width={25} height={25} alt="Marlayer Logo" />
-            <span className="font-extrabold text-primary text-xl">arlayer Software</span>
+          <Link href="/" className="flex items-baseline ml-3">
+            <div className="">
+             <Image src="/images/marlayer-logo.svg" width={24} height={24} alt="Marlayer Logo" />
+            </div>
+            <span 
+              className="font-extrabold text-2xl"
+              style={{ color: logoTeal }}
+            >
+              ARLAYER
+            </span>
           </Link>
         </div>
 

@@ -1,10 +1,11 @@
 import type { Metadata, Viewport } from "next";
-import {Source_Sans_3} from "next/font/google"
+import {Poppins} from "next/font/google"
 import "./globals.css";
 
 
-const font= Source_Sans_3({
+const font= Poppins({
   subsets:["latin"] ,
+  weight:["100","200","300","400","500","600","700","800","900"],
 })
 
 

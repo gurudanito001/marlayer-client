@@ -1,9 +1,7 @@
 {
-  "/_not-found/page": "app/_not-found/page.js",
-  "/Software/page": "app/Software/page.js",
-  "/Phones/page": "app/Phones/page.js",
-  "/Gadget/page": "app/Gadget/page.js",
   "/(home)/page": "app/(home)/page.js",
-  "/Phones/Laptops/page": "app/Phones/Laptops/page.js",
-  "/learning/page": "app/learning/page.js"
+  "/learning/page": "app/learning/page.js",
+  "/Gadget/page": "app/Gadget/page.js",
+  "/Phones/page": "app/Phones/page.js",
+  "/Software/page": "app/Software/page.js"
 }
