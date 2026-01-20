@@ -1,7 +1,6 @@
 {
   "/(home)/page": "app/(home)/page.js",
-  "/gadgets/page": "app/gadgets/page.js",
-  "/gadgets/accessories/page": "app/gadgets/accessories/page.js",
+  "/Software/page": "app/Software/page.js",
   "/academy/page": "app/academy/page.js",
-  "/gadgets/Phones/page": "app/gadgets/Phones/page.js"
+  "/gadgets/page": "app/gadgets/page.js"
 }
