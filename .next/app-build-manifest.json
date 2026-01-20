@@ -11,49 +11,6 @@
       "static/chunks/main-app.js",
       "static/css/app/layout.css",
       "static/chunks/app/layout.js"
-    ],
-    "/academy/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/academy/page.css",
-      "static/chunks/app/academy/page.js"
-    ],
-    "/Software/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/Software/page.js"
-    ],
-    "/gadgets/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/gadgets/page.js"
-    ],
-    "/gadgets/Phones/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/gadgets/Phones/page.js"
-    ],
-    "/gadgets/Laptops/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/gadgets/Laptops/page.js"
-    ],
-    "/gadgets/accessories/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/gadgets/accessories/page.js"
-    ],
-    "/academy/faqs/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/academy/faqs/page.css",
-      "static/chunks/app/academy/faqs/page.js"
-    ],
-    "/privacyandpolicy/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/privacyandpolicy/page.css",
-      "static/chunks/app/privacyandpolicy/page.js"
     ]
   }
 }
