@@ -73,7 +73,7 @@ const Projects = () => {
                     <div className="flex flex-col md:flex-row items-center gap-10 mb-28">
                         <div>
                             <p className="text-gray-400 leading-relaxed mb-6 max-w-4xl text-sm md:text-md">
-                                Lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.
+                                Lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.
                             </p>
 
 
@@ -81,7 +81,7 @@ const Projects = () => {
                                 href="#"
                                 className="text-white text-sm font-semibold border-b border-white hover:text-[#564AF7] hover:border-[#564AF7] transition duration-300"
                             >
-                                Let's Work Together
+                                Let&apos;s Work Together
                             </a>
                         </div>
                     </div>
