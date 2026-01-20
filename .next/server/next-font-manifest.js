@@ -1,1 +1,0 @@
-self.__NEXT_FONT_MANIFEST="{\"pages\":{},\"app\":{\"/Users/danielnwokocha/Documents/projects/marlayer-client/src/app/layout\":[\"static/media/9cf9c6e84ed13b5e-s.p.woff2\"]},\"appUsingSizeAdjust\":true,\"pagesUsingSizeAdjust\":false}"
