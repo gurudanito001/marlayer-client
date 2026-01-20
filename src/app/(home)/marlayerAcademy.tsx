@@ -38,7 +38,7 @@ const MarlayerAcademy: React.FC = () => {
           </p>
 
           <div className="mt-7">
-            <Link href="/learning" className="btn bg-secondary text-white w-full max-w-40 mx-0 border-0">
+            <Link href="/academy" className="btn bg-secondary text-white w-full max-w-40 mx-0 border-0">
               Learn More
             </Link>
           </div>

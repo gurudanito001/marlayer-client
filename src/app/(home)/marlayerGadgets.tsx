@@ -33,10 +33,11 @@ const MarlayerGadgets: React.FC = () => {
                             <h3 className="text-sm md:text-lg font-semibold text-primary mb-3">
                                 Laptops, Phones and Tablets
                             </h3>
-                            <p className="text-sm md:text-lg leading-relaxed text-gray-700 mb-6 flex-grow">
-                                Power your work and stay connected with our curated selection of laptops and smartphones. 
+                            <p className="text-sm md:text-lg text-gray-700 mb-6 flex-grow">
+                                Stay connected with handpicked laptops and smartphones built for performance. From lightweight ultrabooks to creative powerhouses, we have the perfect device for your workflow.
+                                {/* Power your work and stay connected with our curated selection of laptops and smartphones. 
                                 We handpick devices for performance, battery life, and reliability — from lightweight 
-                                ultrabooks for remote work to powerful machines for creators and developers.
+                                ultrabooks for remote work to powerful machines for creators and developers. */}
                             </p>
                             <a className="text-blue-600 font-medium hover:underline inline-block mt-auto" href="#">
                                 Learn More
@@ -45,7 +46,7 @@ const MarlayerGadgets: React.FC = () => {
                     </div>
 
                     {/* Card 2 */}
-                    <div className="flex flex-col border border-gray-200 rounded-2xl overflow-hidden hover:shadow-lg transition-shadow duration-300">
+                    <div className="flex flex-col border border-gray-200 rounded-2xl overflow-hidden hover:shadow-lg">
                         {/* Image Container */}
                         <div className="relative w-full h-64 bg-gray-100">
                             <Image
@@ -62,9 +63,10 @@ const MarlayerGadgets: React.FC = () => {
                                 Accessories
                             </h3>
                             <p className="text-sm md:text-lg leading-relaxed text-gray-700 mb-6 flex-grow">
-                                Complete your setup with accessories that make a real difference — fast chargers, 
+                                Complete your setup with essential gear—from fast chargers to creator tools. We stock dependable brands to ensure your devices perform at their peak.
+                                {/* Complete your setup with accessories that make a real difference — fast chargers, 
                                 power banks, headphones, webcams, keyboards, and creator gear. We focus on dependable 
-                                brands so your devices perform at their best.
+                                brands so your devices perform at their best. */}
                             </p>
                             <a className="text-blue-600 font-medium hover:underline inline-block mt-auto" href="#">
                                 Learn More

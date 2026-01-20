@@ -36,7 +36,7 @@ const NavBar = () => {
           {/* Desktop Navigation Links */}
           <div className="hidden md:flex items-center space-x-8">
             <Link 
-              href="/learning" 
+              href="/academy" 
               className="hover:text-gray-900 font-medium text-gray-600 transition-colors duration-200 py-1 text-[15px] border-b-2 border-transparent hover:border-gray-800"
             >
               Academy
@@ -50,7 +50,7 @@ const NavBar = () => {
             </Link>
   
             <Link 
-              href="/Gadget" 
+              href="/gadgets" 
               className="hover:text-gray-900 font-medium text-gray-600 transition-colors duration-200 py-1 text-[15px] border-b-2 border-transparent hover:border-gray-800"
             >
               Gadgets
@@ -71,20 +71,13 @@ const NavBar = () => {
               className="menu menu-sm dropdown-content bg-base-100 rounded-md z-10 mt-3 w-52 p-2 shadow-lg"
             >
               <li>
-                <Link href="/learning" className="py-2">Academy</Link>
+                <Link href="/academy" className="py-2">Academy</Link>
               </li>
               <li>
-                <ComingSoonModal 
-                  linkText="Software" 
-                  linkClasses="py-2" 
-                  btnClasses="bg-secondary border-secondary min-w-40" 
-                  modalTitle="Bespoke Software page is under maintenance" 
-                  modalDescription="If you need this service and want to discuss about building a software solution, send an email to daniel.marlayer@gmail.com" 
-                  modalImage="software-meeting.jpg" 
-                />
+                <Link href="/Software" className="py-2">Software</Link>
               </li>
               <li>
-                <Link href="/Gadget" className="py-2">Gadgets</Link>
+                <Link href="/gadgets" className="py-2">Gadgets</Link>
               </li>
             </ul>
           </div>

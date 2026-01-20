@@ -11,7 +11,6 @@ import ComingSoonModal from '../components/comingSoon';
 // Define the type for a single slide's data
 interface SlideData {
   imageClass: string;
-  bgColorClass: string;
   title: string;
   subTitle: string;
   description: string;
@@ -40,18 +39,16 @@ const HeroSection = () => {
   // Data for each slide
   const slidesData: SlideData[] = [
     {
-      imageClass: `bg-[url('/images/homepage/student-group.jpg')] bg-primary-2/20 bg-blend-darken`,
-      bgColorClass: `bg-primary-2/30`, // Assuming 'primary' is defined in Tailwind config
+      imageClass: `url('/images/homepage/student-group.jpg')`,
       title: "Marlayer Academy",
       subTitle: "",
       description: "Dive into comprehensive courses from software development to basic computer usage. Our expert-led programs are designed to equip you with in-demand skills for tomorrow's digital world.",
       buttonText: "Explore Courses",
       buttonColorClass: "bg-primary border-primary",
-      link: "/learning"
+      link: "/academy"
     },
     {
-      imageClass: `bg-[url('/images/homepage/software-meeting.jpg')] bg-secondary/20 bg-blend-darken`,
-      bgColorClass: `bg-secondary/30`, // Assuming 'neutral' is defined in Tailwind config
+      imageClass: `url('/images/homepage/software-meeting.jpg')`,
       title: "Marlayer Software",
       subTitle: "",
       description: "Partner with Marlayer to bring your innovative ideas to life. Our agency specializes in building bespoke, high-quality Software Applications tailored to your organization's unique needs.",
@@ -60,13 +57,12 @@ const HeroSection = () => {
       link: "" // Placeholder link
     },
     {
-      imageClass: `bg-[url('/images/gadgets.png')] `,
-      bgColorClass: ` bg-[#DFDFE5]`, // Assuming 'secondary' is defined in Tailwind config
+      imageClass: `url('/images/gadgets.png')`,
       title: "Marlayer Gadgets",
       subTitle: "",
       description: "Marlayer delivers trusted, authentic devices sourced directly from verified suppliers. From laptops and tablets to premium accessories, we provide the gadgets you need for work, learning, business, and everyday productivity — all with fast delivery and reliable after-sales support.",
       buttonText: "Discover Cloud",
-      buttonColorClass: "bg-[#5A5A5A] border-[#5A5A5A] text-white",
+      buttonColorClass: "bg-[#C4C4C4] border-[#C4C4C4] text-neutral-900",
       link: "" // Placeholder link
     },
   ];
@@ -102,17 +98,20 @@ const HeroSection = () => {
   return (
     <section className="relative w-screen overflow-x-clip">
       {/* The Slider component now takes full height of its parent section */}
-      <Slider ref={sliderRef} {...settings} className="h-screen max-h-[600px]">
+      <Slider ref={sliderRef} {...settings} className="h-[500px] md:h-screen max-h-[700px]">
         {slidesData.map((slide, index) => (
           // Each carousel item also takes full height of the slider
-          <div key={index} className={`carousel-item h-screen max-h-[600px]`}>
-            <div className="w-full h-full flex flex-col-reverse lg:flex-row">
+          <div key={index} className={`carousel-item h-[500px] md:h-screen max-h-[700px]`}>
+            <div
+              className="w-full h-full relative bg-no-repeat bg-cover bg-center"
+              style={{ backgroundImage: `linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.3)), ${slide.imageClass}` }}
+            >
               {/* Text Content Area */}
-              <article className={`h-full w-full lg:w-1/2 ${slide.bgColorClass} flex flex-col lg:justify-center p-5 md:pl-10 lg:pl-14 xl:pl-20`}>
-                <h3 className="text-2xl lg:text-3xl text-gray-900 font-semibold mb-5 text-left">
+              <article className={`h-full w-full relative z-10 flex flex-col justify-center p-5 md:pl-10 lg:pl-14 xl:pl-20`}>
+                <h3 className="text-2xl lg:text-3xl text-white font-semibold mb-5 text-left">
                   {slide.title}
                 </h3>
-                <p className="text-gray-700 text-sm md:text-lg font-normal mb-7 max-w-xl text-left leading-snug">
+                <p className="text-white text-sm md:text-lg font-normal mb-7 max-w-xl text-left leading-snug">
                   {slide.description}
                 </p>
                 {slide.link ?
@@ -126,9 +125,6 @@ const HeroSection = () => {
                 }
 
               </article>
-              {/* Image Content Area */}
-              <figure className={`h-full w-full lg:w-1/2 ${slide.imageClass} bg-no-repeat bg-cover bg-center`}>
-              </figure>
             </div>
           </div>
         ))}
