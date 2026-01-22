@@ -138,8 +138,8 @@ export default function ContactPage() {
             {/* Content */}
             <div className="relative z-10">
               <h3 className="text-xl font-semibold text-teal-200 mb-2 uppercase text-sm">Contact Us</h3>
-              <h1 className="text-4xl font-bold leading-tight mb-6">How can we help you today?</h1>
-              <p className="text-teal-100/80 text-lg leading-relaxed mb-12">
+              <h1 className="text-2xl lg:text-4xl font-bold mb-6">How can we help you today?</h1>
+              <p className="text-teal-100/80 text-md lg:text-lg mb-12">
                 From software solutions to tech education and premium gadgets - let us know what you need, and we'll get it done.
               </p>
 
@@ -323,7 +323,7 @@ export default function ContactPage() {
                 <textarea 
                   rows={3} 
                   className="w-full border-b border-gray-300 py-3 text-gray-900 focus:border-[#003C3C] focus:outline-none transition-colors bg-transparent placeholder:text-gray-400 resize-none"
-                  placeholder="Tell us about your project needs..."
+                  placeholder="Type your message here..."
                 ></textarea>
               </div>
 

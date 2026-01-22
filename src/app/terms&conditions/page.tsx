@@ -50,10 +50,10 @@ export default function TermsAndConditions() {
       {/* --- HERO HEADER --- */}
       <header className="bg-[#003C3C] text-white py-20 px-6">
         <div className="container mx-auto max-w-[1400px]"> 
-           <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight">
+           <h1 className="text-3xl md:text-6xl font-bold mb-6">
              Terms of Service
            </h1>
-           <p className="text-lg md:text-xl text-teal-100/80 max-w-3xl leading-relaxed">
+           <p className="text-md md:text-xl text-teal-100/80 max-w-3xl">
              Please read these terms carefully. They govern your use of Marlayer's software solutions, gadget sales, and educational services.
            </p>
         </div>
@@ -66,7 +66,7 @@ export default function TermsAndConditions() {
           {/* --- LEFT SIDEBAR (Sticky Navigation) --- */}
           <aside className="hidden lg:block w-[30%] shrink-0">
             <div className="sticky top-10 h-full max-h-[calc(100vh-80px)] overflow-y-auto pr-4">
-              <h3 className="text-sm font-bold text-gray-900 uppercase tracking-widest mb-6 pb-2 border-b border-gray-100">
+              <h3 className="text-sm font-bold text-gray-900 uppercase mb-6 pb-2 border-b border-gray-100">
                 Table of Contents
               </h3>
               <nav className="space-y-2 border-l-2 border-gray-100 ml-2">
@@ -102,8 +102,8 @@ export default function TermsAndConditions() {
               
               {/* 1. INTRODUCTION */}
               <section id="intro" className="scroll-mt-32">
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">1. Introduction</h2>
-                <div className="space-y-4">
+                <h2 className="text-xl lg:text-3xl font-bold text-gray-900 mb-6">1. Introduction</h2>
+                <div className="space-y-4 text-sm md:text-lg">
                   <p>
                     Welcome to <strong>Marlayer</strong>. By accessing our website, engaging our software services, purchasing products, or enrolling in our academy, you agree to be bound by these Terms and Conditions ("Terms").
                   </p>
@@ -117,9 +117,9 @@ export default function TermsAndConditions() {
 
               {/* 2. SERVICES */}
               <section id="services" className="scroll-mt-32">
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">2. Scope of Services</h2>
-                <p className="mb-6">Marlayer operates as a multi-faceted technology provider offering the following services:</p>
-                <ul className="list-disc pl-6 space-y-4 marker:text-[#003C3C]">
+                <h2 className="text-xl lg:text-3xl font-bold text-gray-900 mb-6">2. Scope of Services</h2>
+                <p className="mb-6 text-sm md:text-lg">Marlayer operates as a multi-faceted technology provider offering the following services:</p>
+                <ul className="list-disc pl-6 space-y-4 marker:text-[#003C3C] text-sm md:text-lg">
                    <li>
                       <strong className="text-gray-900">Software Solutions:</strong> Custom web/app development, API integration, and technical consultancy services.
                    </li>
@@ -136,8 +136,8 @@ export default function TermsAndConditions() {
 
               {/* 3. PAYMENTS */}
               <section id="payments" className="scroll-mt-32">
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">3. Payments & Billing</h2>
-                <div className="space-y-6">
+                <h2 className="text-xl lg:text-3xl font-bold text-gray-900 mb-6">3. Payments & Billing</h2>
+                <div className="space-y-6 text-sm md:text-lg">
                   <p>
                     <strong className="text-gray-900 block mb-1">1. Currency</strong>
                     All prices are quoted in Nigerian Naira (NGN) unless otherwise stated. International payments are calculated based on the exchange rate at the time of invoicing.
@@ -157,17 +157,17 @@ export default function TermsAndConditions() {
 
               {/* 4. SOFTWARE */}
               <section id="software" className="scroll-mt-32">
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">4. Software Development</h2>
-                <div className="space-y-6">
+                <h2 className="text-xl lg:text-3xl font-bold text-gray-900 mb-6">4. Software Development</h2>
+                <div className="space-y-6 text-sm md:text-lg">
                    <div>
-                     <h3 className="text-xl font-bold text-gray-900 mb-2">Ownership</h3>
+                     <h3 className="text-sm md:text-lg font-bold text-gray-900 mb-2">Ownership</h3>
                      <p>
                        Once you have paid in full, the website or app is <strong>100% yours</strong>. You own the final design and the code. We only retain the right to reuse our standard internal tools (like basic navigation logic) to help us build future projects faster.
                      </p>
                    </div>
                    
                    <div>
-                     <h3 className="text-xl font-bold text-gray-900 mb-2">Revisions</h3>
+                     <h3 className="text-sm md:text-lg font-bold text-gray-900 mb-2">Revisions</h3>
                      <p>
                        We want you to be happy with the result, so we include <strong>two (2) of revisions</strong> in the price. This allows you to review the work and request corrections twice. If you need more changes after that, or want to add new features not in the original plan, we will charge an additional fee.
                      </p>
@@ -179,9 +179,9 @@ export default function TermsAndConditions() {
 
               {/* 5. GADGETS */}
               <section id="gadgets" className="scroll-mt-32">
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">5. Gadget Sales Policy</h2>
+                <h2 className="text-xl lg:text-3xl font-bold text-gray-900 mb-6">5. Gadget Sales Policy</h2>
                 
-                <div className="space-y-8">
+                <div className="space-y-8 text-sm md:text-lg">
                   <div>
                     <h3 className="text-xl font-bold text-gray-900 mb-2">Returns & Exchange</h3>
                     <p>
@@ -191,7 +191,7 @@ export default function TermsAndConditions() {
 
                   <div>
                     <h3 className="text-xl font-bold text-gray-900 mb-2">Warranty Coverage</h3>
-                    <ul className="list-disc pl-6 space-y-3 marker:text-[#003C3C]">
+                    <ul className="list-disc pl-6 space-y-3 marker:text-[#003C3C] text-sm md:text-lg">
                        <li>
                           <strong className="text-gray-900">New Devices:</strong> Covered strictly by the manufacturer's global warranty policy. We assist with claims where possible.
                        </li>
@@ -207,8 +207,8 @@ export default function TermsAndConditions() {
 
               {/* 6. ACADEMY */}
               <section id="academy" className="scroll-mt-32">
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">6. Marlayer Academy</h2>
-                <p>
+                <h2 className="text-xl lg:text-3xl font-bold text-gray-900 mb-6">6. Marlayer Academy</h2>
+                <p className="text-sm md:text-lg">
                   Tuition fees for the Academy are <strong>non-refundable</strong> once the course has commenced. Students are expected to adhere to our Code of Conduct. Marlayer reserves the right to dismiss any student found violating these rules without refund. Access to course materials is for the enrolled student only and must not be shared.
                 </p>
               </section>
@@ -217,11 +217,11 @@ export default function TermsAndConditions() {
 
               {/* 7. LIABILITY */}
               <section id="liability" className="scroll-mt-32">
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">7. Limitation of Liability</h2>
-                <p className="mb-6">
+                <h2 className="text-xl lg:text-3xl font-bold text-gray-900 mb-6">7. Limitation of Liability</h2>
+                <p className="mb-6 text-sm md:text-lg">
                   To the maximum extent permitted by Nigerian law, Marlayer shall not be held liable for any indirect, incidental, or consequential damages arising from the use of our software, gadgets, or training. Our total liability for any claim shall not exceed the amount paid by you for the specific service or product.
                 </p>
-                <div className="text-gray-900 font-medium">
+                <div className="text-gray-900 font-medium text-sm md:text-lg">
                   <strong>Governing Law:</strong> These Terms shall be governed by the laws of the Federal Republic of Nigeria. Any disputes shall be resolved in the courts of Lagos State.
                 </div>
               </section>
@@ -230,8 +230,8 @@ export default function TermsAndConditions() {
 
               {/* 8. CONTACT */}
               <section id="contact" className="scroll-mt-32 pb-10">
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">8. Contact Us</h2>
-                <div className="space-y-4">
+                <h2 className="text-xl lg:text-3xl font-bold text-gray-900 mb-6">8. Contact Us</h2>
+                <div className="space-y-4 text-sm md:text-lg">
                    <p>If you have any questions about these Terms, please contact us:</p>
                    
                    <div className="mt-4 space-y-2">

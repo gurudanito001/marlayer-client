@@ -1,4 +1,5 @@
 {
-  "/contactUs/page": "app/contactUs/page.js",
-  "/terms&conditions/page": "app/terms&conditions/page.js"
+  "/terms&conditions/page": "app/terms&conditions/page.js",
+  "/privacyandpolicy/page": "app/privacyandpolicy/page.js",
+  "/contactUs/page": "app/contactUs/page.js"
 }
