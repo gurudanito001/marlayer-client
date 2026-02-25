@@ -24,7 +24,7 @@ const SoftwareSection: React.FC = () => {
             </h4>
             
             <p className="text-slate-500 text-lg leading-relaxed mb-8">
-              We don't just write code, we build relationships. Our custom software solutions are crafted through close collaboration, ensuring we solve your unique challenges with intuitive dashboards and robust architecture.
+              We don&apos;t just write code, we build relationships. Our custom software solutions are crafted through close collaboration, ensuring we solve your unique challenges with intuitive dashboards and robust architecture.
             </p>
 
             {/* Statistics Cards */}
