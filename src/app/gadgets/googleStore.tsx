@@ -1,7 +1,8 @@
 "use client";
 
-import React, { useRef, useState, useEffect, useMemo } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { Tag, ChevronRight, ChevronLeft } from "lucide-react";
+import Image from "next/image";
 
 interface Product {
   id: number;
@@ -117,18 +118,22 @@ const GoogleStore = () => {
                     New
                   </div>
 
-                  <div className="flex items-center justify-center w-full h-full p-6">
+                  <div className="flex items-center justify-center w-full h-full p-6 relative">
                     {product.id === 1 || product.id === 5 ? (
-                      <img
+                      <Image
                         src={product.image}
                         alt={product.name}
-                        style={{ width: "180px", height: "180px", objectFit: "contain" }}
+                        width={180}
+                        height={180}
+                        className="object-contain"
                       />
                     ) : (
-                      <img
+                      <Image
                         src={product.image}
                         alt={product.name}
-                        style={{ width: "100%", height: "100%", objectFit: "contain" }}
+                        fill
+                        sizes="250px"
+                        className="object-contain p-6"
                       />
                     )}
                   </div>

@@ -27,12 +27,13 @@ const ComingSoonModal = ({ linkClasses, btnClasses, linkText, btnText = "Close",
   }
 
   useEffect(()=>{
-    setTimeout( ()=>{
+    const timer = setTimeout( ()=>{
       if(instantOpen){
         setIsOpen(true)
       }
     }, 1500)
-  },[])
+    return () => clearTimeout(timer);
+  },[instantOpen])
 
   return (
     <section>

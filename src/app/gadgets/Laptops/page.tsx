@@ -59,10 +59,11 @@ const products = [
   },
 ];
 
+const tabs = ["All products", "MacBook", "Windows"];
+
 export default function LaptopsPage() {
   const [activeTab, setActiveTab] = useState("All products");
   const [sliderStyle, setSliderStyle] = useState({});
-  const tabs = ["All products", "MacBook", "Windows"];
   const tabsRef = useRef<(HTMLButtonElement | null)[]>([]);
 
   const filteredProducts = activeTab === "All products"
@@ -79,7 +80,7 @@ export default function LaptopsPage() {
         transform: `translateX(${activeTabElement.offsetLeft}px)`,
       });
     }
-  }, [activeTab, tabs]);
+  }, [activeTab]);
 
   return (
     <div className="bg-white">

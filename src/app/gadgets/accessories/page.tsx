@@ -17,10 +17,11 @@ const products = [
   { id: 6, name: "Airpods", category: "Android", description: "Airpods 4 for Active Noise Cancellation", price: 179, image: "/images/airpods.png", bgColor: "#E1F5FE" },
 ];
 
+const tabs = ["All products"];
+
 export default function PhonesPage() {
   const [activeTab, setActiveTab] = useState("All products");
   const [sliderStyle, setSliderStyle] = useState({});
-  const tabs = ["All products"];
   const tabsRef = useRef<(HTMLButtonElement | null)[]>([]);
 
   const filteredProducts = activeTab === "All products"
@@ -37,7 +38,7 @@ export default function PhonesPage() {
         transform: `translateX(${activeTabElement.offsetLeft}px)`,
       });
     }
-  }, [activeTab, tabs]);
+  }, [activeTab]);
 
   return (
     <div className="bg-white">

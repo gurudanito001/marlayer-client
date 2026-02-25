@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 
 const categoryList = [
   {
@@ -45,11 +46,13 @@ const CategoriesSection: React.FC = () => {
       <div className="max-w-[800px] mx-auto grid grid-cols-3 gap-6 mb-16 text-center">
         {categoryList.map((item, index) => (
           <div key={index} className="flex flex-col items-center">
-            <div className="flex justify-center items-center bg-gray-100 rounded-3xl w-full h-20 md:h-40 p-4 mb-3">
-              <img
+            <div className="flex justify-center items-center bg-gray-100 rounded-3xl w-full h-20 md:h-40 p-4 mb-3 relative">
+              <Image
                 src={item.image}
                 alt={item.title}
-                className="max-w-full max-h-full object-contain"
+                fill
+                sizes="(max-width: 768px) 100vw, 33vw"
+                className="object-contain p-4"
               />
             </div>
             <p className="text-sm">{item.title}</p>
@@ -75,12 +78,14 @@ const CategoriesSection: React.FC = () => {
             </div>
 
             {/* Product Image */}
-            <img
+            <Image
               src={item.image}
               alt={item.title}
+              fill
+              sizes="(max-width: 768px) 100vw, 50vw"
               className={`absolute bottom-0 ${
                 index === 0 ? 'left-0' : 'right-0'
-              } w-[100%] object-contain`}
+              } object-contain object-bottom`}
             />
           </div>
         ))}

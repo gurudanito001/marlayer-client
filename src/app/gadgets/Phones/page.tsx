@@ -18,10 +18,11 @@ const products = [
   { id: 6, name: "Samsung Galaxy A54", category: "Android", description: "Premium feel with solid performance.", price: 449, image: "/images/samsung-galaxy-a54.avif" },
 ];
 
+const tabs = ["All products", "iPhone", "Android"];
+
 export default function PhonesPage() {
   const [activeTab, setActiveTab] = useState("All products");
   const [sliderStyle, setSliderStyle] = useState({});
-  const tabs = ["All products", "iPhone", "Android"];
   const tabsRef = useRef<(HTMLButtonElement | null)[]>([]);
 
   const filteredProducts = activeTab === "All products"
@@ -38,7 +39,7 @@ export default function PhonesPage() {
         transform: `translateX(${activeTabElement.offsetLeft}px)`,
       });
     }
-  }, [activeTab, tabs]);
+  }, [activeTab]);
 
   return (
     <div className="bg-white">

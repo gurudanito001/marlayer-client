@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useMemo } from "react";
 import { PauseIcon, PlayIcon } from "@heroicons/react/24/solid";
 import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
@@ -339,7 +339,7 @@ const Syllabus = () => {
     }
   }
 
-  const weeks = [
+  const weeks = useMemo(() => [
     <Week1 key="week1" />,
     <Week2 key="week2" />,
     <Week3 key="week3" />,
@@ -351,7 +351,7 @@ const Syllabus = () => {
     <Week9 key="week9" />,
     <Week10 key="week10" />,
     <Week11and12 key="week11and12" />
-  ]
+  ], []);
 
 
 
@@ -381,7 +381,7 @@ const Syllabus = () => {
         }
       })
     }
-  }, [seconds])
+  }, [seconds, weeks])
 
   const backToTop = () => {
     if (window) {

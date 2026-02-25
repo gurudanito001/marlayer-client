@@ -63,7 +63,7 @@ const AcademySection: React.FC = () => {
             </h4>
             
             <p className="text-slate-500 text-lg leading-relaxed mb-8">
-              Unlock your potential with future-ready skills. Our academy offers hands-on mentorship from industry experts in a collaborative environment. Whether it's coding, design, or AI, we guide you from novice to professional.
+              Unlock your potential with future-ready skills. Our academy offers hands-on mentorship from industry experts in a collaborative environment. Whether it&apos;s coding, design, or AI, we guide you from novice to professional.
             </p>
 
             {/* Pill Tags */}
