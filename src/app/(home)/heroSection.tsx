@@ -1,191 +1,200 @@
 // components/HeroSection.tsx
-"use client"
+"use client";
 
-import React, { useRef, useState, useEffect } from 'react';
-import Slider from '@ant-design/react-slick';
-
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import ComingSoonModal from '../components/comingSoon';
-
-// Define the type for a single slide's data
-interface SlideData {
-  imageClass: string;
-  title: string;
-  subTitle: string;
-  description: string;
-  buttonText: string;
-  buttonColorClass: string;
-  link: string;
-}
-
-// Custom Arrow/Play/Pause Button component for reusability
-const ArrowButton = ({ onClick, children, ariaLabel }: { onClick?: () => void; children: React.ReactNode; ariaLabel: string }) => (
-  <button
-    onClick={onClick}
-    className="btn btn-circle btn-sm bg-white bg-opacity-70 hover:bg-opacity-90 transition-all duration-300 shadow-md text-gray-800 mx-1"
-    aria-label={ariaLabel}
-  >
-    {children}
-  </button>
-);
+import React, { useState, useEffect } from 'react';
+import Image from "next/image";
+import Link from "next/link";
 
 const HeroSection = () => {
-  const sliderRef = useRef<Slider>(null); // Ref to control the slider
-  const [isPlaying, setIsPlaying] = useState(true); // State to manage autoplay (play/pause)
-  const [currentSlide, setCurrentSlide] = useState(0); // State to track current slide index
+  const logoTeal = "#45B1A0";
+  const [text, setText] = useState('');
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [loopNum, setLoopNum] = useState(0);
+  const [typingSpeed, setTypingSpeed] = useState(150);
+  const [isScrolled, setIsScrolled] = useState(false);
 
+  const phrases = ["Software Solutions", "Tech Education", "Flagship Gadgets"];
 
-  // Data for each slide
-  const slidesData: SlideData[] = [
-    {
-      imageClass: `url('/images/homepage/student-group.jpg')`,
-      title: "Marlayer Academy",
-      subTitle: "",
-      description: "Dive into comprehensive courses from software development to basic computer usage. Our expert-led programs are designed to equip you with in-demand skills for tomorrow's digital world.",
-      buttonText: "Explore Courses",
-      buttonColorClass: "bg-primary border-primary",
-      link: "/academy"
-    },
-    {
-      imageClass: `url('/images/homepage/software-meeting.jpg')`,
-      title: "Marlayer Software",
-      subTitle: "",
-      description: "Partner with Marlayer to bring your innovative ideas to life. Our agency specializes in building bespoke, high-quality Software Applications tailored to your organization's unique needs.",
-      buttonText: "View Our Work",
-      buttonColorClass: "bg-secondary border-secondary",
-      link: "" // Placeholder link
-    },
-    {
-      imageClass: `url('/images/gadgets.png')`,
-      title: "Marlayer Gadgets",
-      subTitle: "",
-      description: "Marlayer delivers trusted, authentic devices sourced directly from verified suppliers. From laptops and tablets to premium accessories, we provide the gadgets you need for work, learning, business, and everyday productivity — all with fast delivery and reliable after-sales support.",
-      buttonText: "Discover Cloud",
-      buttonColorClass: "bg-[#C4C4C4] border-[#C4C4C4] text-neutral-900",
-      link: "" // Placeholder link
-    },
-  ];
+  useEffect(() => {
+    const handleType = () => {
+      const i = loopNum % phrases.length;
+      const fullText = phrases[i];
 
-  // Toggle play/pause function
-  const togglePlayPause = () => {
-    if (sliderRef.current) {
-      if (isPlaying) {
-        sliderRef.current.slickPause();
-      } else {
-        sliderRef.current.slickPlay();
+      setText(isDeleting ? fullText.substring(0, text.length - 1) : fullText.substring(0, text.length + 1));
+
+      let nextSpeed = isDeleting ? 50 : 150;
+
+      if (!isDeleting && text === fullText) {
+        nextSpeed = 2000; // Pause at end of phrase
+        setIsDeleting(true);
+      } else if (isDeleting && text === '') {
+        setIsDeleting(false);
+        setLoopNum(loopNum + 1);
+        nextSpeed = 500; // Pause before starting new phrase
       }
-      setIsPlaying(!isPlaying);
-    }
-  };
 
-  // react-slick settings
-  const settings = {
-    //dots: true, // Enable dots, but we'll render custom ones
-    infinite: true,
-    speed: 600,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    autoplay: isPlaying, // Control autoplay based on state
-    autoplaySpeed: 5000, // Adjusted for a slightly longer view time
-    cssEase: "linear", // Smooth transition for fade
-    pauseOnHover: false, // Pause autoplay on hover
-    // Callback before slide changes to update currentSlide state
-    beforeChange: (oldIndex: number, newIndex: number) => setCurrentSlide(newIndex),
+      setTypingSpeed(nextSpeed);
+    };
 
-  };
+    const timer = setTimeout(handleType, typingSpeed);
+
+    return () => clearTimeout(timer);
+  }, [text, isDeleting, loopNum, typingSpeed]); // phrases is constant
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // When scrollY is greater than 10, navbar becomes sticky
+      setIsScrolled(window.scrollY > 10);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  const navLinkClasses = isScrolled 
+    ? "text-gray-600 hover:text-[#45B1A0] hover:border-[#45B1A0]" 
+    : "text-gray-300 hover:text-white hover:border-white";
 
   return (
-    <section className="relative w-screen overflow-x-clip">
-      {/* The Slider component now takes full height of its parent section */}
-      <Slider ref={sliderRef} {...settings} className="h-[500px] md:h-screen max-h-[700px]">
-        {slidesData.map((slide, index) => (
-          // Each carousel item also takes full height of the slider
-          <div key={index} className={`carousel-item h-[500px] md:h-screen max-h-[700px]`}>
-            <div
-              className="w-full h-full relative bg-no-repeat bg-cover bg-center"
-              style={{ backgroundImage: `linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.3)), ${slide.imageClass}` }}
-            >
-              {/* Text Content Area */}
-              <article className={`h-full w-full relative z-10 flex flex-col justify-center p-5 md:pl-10 lg:pl-14 xl:pl-20`}>
-                <h3 className="text-2xl lg:text-3xl text-white font-semibold mb-5 text-left">
-                  {slide.title}
-                </h3>
-                <p className="text-white text-sm md:text-lg font-normal mb-7 max-w-xl text-left leading-snug">
-                  {slide.description}
-                </p>
-                {slide.link ?
-                <a href={slide.link} className={`btn ${slide.buttonColorClass} text-white w-full max-w-40 mx-0`}>
-                  {slide.buttonText}
-                </a> :
-                  index === 1 ?
-                  <ComingSoonModal linkText="Learn More" linkClasses={`btn ${slide.buttonColorClass} text-white w-full max-w-40 mx-0`} btnClasses="bg-secondary border-secondary min-w-40" modalTitle="Bespoke Software page is under maintanence" modalDescription="If you need this service and want to discuss about building a software solution, send an email to daniel.marlayer@gmail.com" modalImage="software-meeting.jpg" /> :
+    <section className="relative w-full h-screen max-h-[800px] xl:max-h-[950px] flex items-center bg-[#45B1A0] overflow-hidden">
+      
+      {/* Integrated Navbar */}
+      <nav className={`w-full left-0 top-0 z-[999] transition-all duration-300 ${isScrolled ? 'fixed bg-white  backdrop-blur-lg shadow-lg py-4' : 'absolute py-8'}`}>
+          <div className="w-full max-w-[1900px] mx-auto px-6 md:px-12 lg:px-16 xl:px-28 flex justify-between items-center">
+            
+            <div className="flex items-center space-x-8">
+              <Link href="/" className="flex items-baseline">
+                <div className="">
+                 <Image src="/images/marlayer-logo.svg" width={24} height={24} alt="Marlayer Logo" />
+                </div>
+                <span 
+                  className="font-extrabold text-2xl ml-0.5"
+                  style={{ color: logoTeal }}
+                >
+                  ARLAYER
+                </span>
+              </Link>
 
-                  <ComingSoonModal linkText="Learn More" linkClasses={`btn ${slide.buttonColorClass} text-white w-full max-w-40 mx-0 bg-neutral-900 border-neutral-900`} btnClasses={`${slide.buttonColorClass} min-w-40`} modalTitle="Marlayer Cloud is Coming Soon ..." modalDescription="Marlayer Cloud is currently under development, meticulously crafted to bring you the most robust and seamless solutions. We&apos;re building something truly powerful!" modalImage="cloud-services.jpg" />
-                }
-
-              </article>
+              {/* Desktop Navigation Links */}
+              <div className="hidden md:flex items-center space-x-8">
+                <Link 
+                  href="/academy" 
+                  className={`${navLinkClasses} font-medium transition-colors duration-200 py-1 text-[15px] border-b-2 border-transparent`}
+                >
+                  Tech Academy
+                </Link>
+      
+                <Link 
+                  href="/software" 
+                  className={`${navLinkClasses} font-medium transition-colors duration-200 py-1 text-[15px] border-b-2 border-transparent`}
+                >
+                  Software Solutions
+                </Link>
+      
+                <Link 
+                  href="/gadgets" 
+                  className={`${navLinkClasses} font-medium transition-colors duration-200 py-1 text-[15px] border-b-2 border-transparent`}
+                >
+                  Flagship Gadgets
+                </Link>
+              </div>
+            </div>
+            
+            <div className="flex items-center">
+              {/* Mobile Menu Button */}
+              <div className="dropdown dropdown-end md:hidden">
+                <div tabIndex={0} role="button" className={`btn btn-ghost btn-circle avatar ${isScrolled ? 'text-gray-600' : 'text-white'}`}>
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
+                  </svg>
+                </div>
+                <ul
+                  tabIndex={0}
+                  className="menu menu-sm dropdown-content bg-[#0b1021] border border-white/10 text-white rounded-md z-10 mt-3 w-52 p-2 shadow-lg"
+                >
+                  <li>
+                    <Link href="/academy" className="py-2 hover:bg-white/10">Academy</Link>
+                  </li>
+                  <li>
+                    <Link href="/software" className="py-2 hover:bg-white/10">Software</Link>
+                  </li>
+                  <li>
+                    <Link href="/gadgets" className="py-2 hover:bg-white/10">Gadgets</Link>
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
-        ))}
-      </Slider>
+        </nav>
 
-      <div className="absolute mt-5 left-1/2 -translate-x-1/2 flex items-center justify-center space-x-2 z-20 w-full max-w-lg gap-2 lg:gap-5">
+      {/* Background Image Container */}
+      {/* Update the URL to point to your actual isometric background image */}
+      <div 
+        className="absolute inset-0 z-0 bg-no-repeat bg-cover bg-right lg:bg-center"
+        style={{ backgroundImage: "url('/images/homepage/glass-house-2.jpg')" }}
+      >
 
-        {/* Play/Pause Button */}
-        <ArrowButton onClick={togglePlayPause} ariaLabel={isPlaying ? "Pause Autoplay" : "Play Autoplay"}>
-          {isPlaying ? (
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-              <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zM7 8a1 1 0 012 0v4a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v4a1 1 0 102 0V8a1 1 0 00-1-1z" clipRule="evenodd" />
-            </svg>
-          ) : (
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-              <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
-            </svg>
-          )}
-        </ArrowButton>
-
-
-        {/* Previous Arrow */}
-        <ArrowButton onClick={() => sliderRef.current?.slickPrev()} ariaLabel="Previous Slide">
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" />
-          </svg>
-        </ArrowButton>
-
-        {/* Dots - Added onClick handlers */}
-        {slidesData.map((_, index) => (
-          <button
-            key={index} // Added key for list rendering
-            onClick={() => sliderRef.current?.slickGoTo(index)} // <-- THIS IS THE CHANGE
-            className={`w-2 h-2 rounded-full mx-1 transition-all duration-300 ${index === currentSlide ? 'scale-110' : 'bg-white bg-opacity-50 border border-primary'
-              }`}
-            style={{ backgroundColor: index === currentSlide ? "#000000" : undefined }}
-            aria-label={`Go to slide ${index + 1}`}
-          ></button>
-        ))}
-
-        {/* Next Arrow */}
-        <ArrowButton onClick={() => sliderRef.current?.slickNext()} ariaLabel="Next Slide">
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
-          </svg>
-        </ArrowButton>
+        {/* Gradient Overlay: Deep blue on the left fading to transparent on the right */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#001714] via-[#001700]/90 to-transparent"></div>
       </div>
 
-      {/* <ComingSoonModal
-        instantOpen={true}
-        linkClasses='fixed bottom-10 right-10 '
-        linkText=''
-        btnText='Register Now'
-        modalTitle='Do you want to Join the Bootcamp?'
-        modalDescription='Please click on the button below to view course details and syllabus. When you are in the course details page, click on the Enroll button to Register.'
-        modalImage="kids-bootcamp.png"
-        btnLink="https://docs.google.com/forms/d/e/1FAIpQLSeiNN8Y4g7MpvCxE8jGdHfgMvaXOkIehmuDVR9exZI8u7_Kcw/viewform"
-        btnClasses="bg-primary text-white"
-      /> */}
+      {/* Main Content Area */}
+      <div className="relative z-10 w-full max-w-[1900px] mx-auto px-6 md:px-12 lg:px-16 xl:px-28 flex flex-col justify-center">
+        <article className="max-w-5xl">
+          <h1 className="text-4xl md:text-5xl lg:text-[4rem] font-bold text-white mb-6 tracking-tight leading-10">
+            Leverage On World Class <br className="hidden md:block" />
+            <span style={{ color: logoTeal }}>{text}</span>
+            <span className="animate-pulse text-white">|</span>
+          </h1>
+          
+          <p className="text-gray-300 text-base md:text-lg mb-10 leading-relaxed max-w-lg font-light">
+            We train innovators, We build powerful software, We provide reliable gadgets for your business needs.
+          </p>
+
+          {/* Call to Action Buttons */}
+          <div className="flex flex-wrap items-center gap-4">
+            <a 
+              href='/#ecosystem' 
+              onClick={(e) => {
+                const element = document.getElementById('ecosystem');
+                if (element) {
+                  e.preventDefault();
+                  element.scrollIntoView({ behavior: 'smooth' });
+                }
+              }}
+              className="bg-primary hover:bg-primary-2 text-white px-8 py-2.5 rounded shadow-lg font-medium transition-colors duration-300">
+              Explore Our Services
+            </a>
+            <button className="bg-transparent border border-white text-white hover:bg-white/10 px-8 py-2.5 rounded font-medium transition-colors duration-300">
+              Get in Touch
+            </button>
+          </div>
+        </article>
+      </div>
+
+      {/* Scroll Down Indicator */}
+      {/* <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-2 cursor-pointer group">
+        <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center border border-white/20 group-hover:bg-white/10 transition-colors">
+          <svg 
+            xmlns="http://www.w3.org/2000/svg" 
+            className="h-4 w-4 text-white/70 group-hover:text-white transition-colors" 
+            fill="none" 
+            viewBox="0 0 24 24" 
+            stroke="currentColor"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+          </svg>
+        </div>
+        <span className="text-white/60 text-[10px] tracking-widest uppercase font-light group-hover:text-white/90 transition-colors">
+          Scroll Down
+        </span>
+      </div> */}
+
     </section>
   );
 };
 
-export default HeroSection
+export default HeroSection;

@@ -43,7 +43,7 @@ const NavBar = () => {
             </Link>
   
             <Link 
-              href="/Software" 
+              href="/software" 
               className="hover:text-gray-900 font-medium text-gray-600 transition-colors duration-200 py-1 text-[15px] border-b-2 border-transparent hover:border-gray-800"
             >
               Software
@@ -74,14 +74,13 @@ const NavBar = () => {
                 <Link href="/academy" className="py-2">Academy</Link>
               </li>
               <li>
-                <Link href="/Software" className="py-2">Software</Link>
+                <Link href="/software" className="py-2">Software</Link>
               </li>
               <li>
                 <Link href="/gadgets" className="py-2">Gadgets</Link>
               </li>
             </ul>
           </div>
-
         </div>
       </div>
     </nav>
