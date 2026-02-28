@@ -30,16 +30,16 @@ const NavBar = ({ darkTheme }: { darkTheme?: boolean }) => {
             <details>
               <summary className="text-md font-semibold">Courses</summary>
               <ul className={`bg-white text-primary rounded-t-none p-2 w-72`}>
-                <li><Link href="/learning/courses/computer-basics">Computer Fundamentals</Link></li>
-                <li><Link href="/learning/courses/responsive-web-design">Responsive Web Design</Link></li>
-                <li><Link href="/learning/courses/dynamic-web-development">Dynamic Web Development</Link></li>
-                <li><Link href="/learning/courses/backend-development">Backend Development</Link></li>
-                <li><Link href="/learning/courses/mobile-app-development">Mobile App Development</Link></li>
+                <li><Link href="/academy/courses/computer-basics">Computer Fundamentals</Link></li>
+                <li><Link href="/academy/courses/responsive-web-design">Responsive Web Design</Link></li>
+                <li><Link href="/academy/courses/dynamic-web-development">Dynamic Web Development</Link></li>
+                <li><Link href="/academy/courses/backend-development">Backend Development</Link></li>
+                <li><Link href="/academy/courses/mobile-app-development">Mobile App Development</Link></li>
               </ul>
             </details>
           </li>
-          <li className="font-semibold"><Link href="/learning/plans">Learning Plans</Link></li>
-          <li className="font-semibold"><Link href="/learning/faqs">FAQs</Link></li>
+          <li className="font-semibold"><Link href="/academy/plans">Learning Plans</Link></li>
+          <li className="font-semibold"><Link href="/academy/faqs">FAQs</Link></li>
         </ul>
 
         <div className="dropdown dropdown-end lg:hidden">
@@ -57,7 +57,7 @@ const NavBar = ({ darkTheme }: { darkTheme?: boolean }) => {
               <ul className="menu min-h-full w-full px-0 sm:px-5 md:px-10 py-0 bg-neutral text-gray-800 text-lg">
                 {/* Sidebar content here */}
                 <li className=" m-0 py-5 flex flex-row justify-center">
-                  <Link href="/learning" className="flex items-center gap-3">
+                  <Link href="/academy" className="flex items-center gap-3">
                     <Image src="/images/marlayer-logo.svg" width={30} height={30} alt="Marlayer Logo" />
                     <span className={`font-bold text-primary text-xl`}>Marlayer Academy</span>
                   </Link>
@@ -69,20 +69,20 @@ const NavBar = ({ darkTheme }: { darkTheme?: boolean }) => {
                   <details>
                     <summary className={`font-semibold text-lg`}>Courses</summary>
                     <ul className={`rounded-t-none w-full bg-white text-primary ml-0 px-0 py-3`}>
-                      <li><Link className="p-4 font-550" href="/learning/courses/computer-basics">Computer Fundamentals</Link></li>
-                      <li><Link className="p-4 font-550" href="/learning/courses/responsive-web-design">Responsive Web Design</Link></li>
-                      <li><Link className="p-4 font-550" href="/learning/courses/dynamic-web-development">Dynamic Web Development</Link></li>
-                      <li><Link className="p-4 font-550" href="/learning/courses/backend-development">Backend Development</Link></li>
-                      <li><Link className="p-4 font-550" href="/learning/courses/mobile-app-development">Mobile App Development</Link></li>
+                      <li><Link className="p-4 font-550" href="/academy/courses/computer-basics">Computer Fundamentals</Link></li>
+                      <li><Link className="p-4 font-550" href="/academy/courses/responsive-web-design">Responsive Web Design</Link></li>
+                      <li><Link className="p-4 font-550" href="/academy/courses/dynamic-web-development">Dynamic Web Development</Link></li>
+                      <li><Link className="p-4 font-550" href="/academy/courses/backend-development">Backend Development</Link></li>
+                      <li><Link className="p-4 font-550" href="/academy/courses/mobile-app-development">Mobile App Development</Link></li>
                     </ul>
                   </details>
                 </li>
-                <li className="font-semibold mb-2 text-lg"><Link href="/learning/plans">Learning Plans</Link></li>
-                <li className="font-semibold mb-2 text-lg"><Link href="/learning/faqs">FAQs</Link></li>
+                <li className="font-semibold mb-2 text-lg"><Link href="/academy/plans">Learning Plans</Link></li>
+                <li className="font-semibold mb-2 text-lg"><Link href="/academy/faqs">FAQs</Link></li>
                 
                 <li className="flex flex-col mt-auto gap-4 px-3 py-8">
-                  {/* <Link className="btn btn-lg font-semibold bg-primary-2 text-white rounded-md" href="/learning/sign-up">Register</Link>
-                  <Link className="btn btn-lg font-semibold bg-secondary text-white rounded-md" href="/learning/sign-in">Sign In</Link> */}
+                  {/* <Link className="btn btn-lg font-semibold bg-primary-2 text-white rounded-md" href="/academy/sign-up">Register</Link>
+                  <Link className="btn btn-lg font-semibold bg-secondary text-white rounded-md" href="/academy/sign-in">Sign In</Link> */}
                 </li>
               </ul>
             </div>

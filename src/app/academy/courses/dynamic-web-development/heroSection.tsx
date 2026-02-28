@@ -33,7 +33,7 @@ const HeroSection = () => {
           This course is ideal for those looking to build a strong foundation in JavaScript and React, and create professional, interactive web applications.
         </p>
         <div className="mt-10">
-          <Link href="/learning/sign-up" className=" btn btn-lg bg-secondary text-white rounded-lg px-10">Enroll Now</Link>
+          <Link href="/academy/sign-up" className=" btn btn-lg bg-secondary text-white rounded-lg px-10">Enroll Now</Link>
         </div>
       </div>
     </section>

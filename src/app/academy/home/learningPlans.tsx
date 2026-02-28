@@ -153,7 +153,7 @@ const LearningPlans = () => {
       </div>
 
       <div className={`flex justify-center ${currentPackage === "QA Learning Package" && "-mt-64 xl:-mt-0"}`}>
-        <Link href="/learning/learningplans" className="btn bg-primary text-white text-xs md:text-sm rounded-full px-9 mx-auto md:mx-0" >View More</Link>
+        <Link href="/academy/learningplans" className="btn bg-primary text-white text-xs md:text-sm rounded-full px-9 mx-auto md:mx-0" >View More</Link>
       </div>
     </section>
   )

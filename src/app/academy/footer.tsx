@@ -31,7 +31,7 @@ const Footer = ({showScrumMasterLink = false, showqalink = false}: { showScrumMa
             <li className="flex items-start">
               <PaperAirplaneIcon className="w-5 text-white" />
               <p className="text-xs ml-4">
-                <Link href="/learning/contact-sales">Contact Sales Team</Link>
+                <Link href="/academy/contact-sales">Contact Sales Team</Link>
               </p>
             </li>
 
@@ -42,17 +42,17 @@ const Footer = ({showScrumMasterLink = false, showqalink = false}: { showScrumMa
           <div>
             <h6 className="text-sm font-semibold mb-5">Top Courses</h6>
             <ul className="text-xs flex flex-col gap-3">
-              <li><Link href="/learning/courses/computer-basics">Computer Fundamentals</Link></li>
-              <li><Link href="/learning/courses/responsive-web-design">Responsive Web Design </Link></li>
-              <li><Link href="/learning/courses/dynamic-web-development">Dynamic Web Development</Link></li>
+              <li><Link href="/academy/courses/computer-basics">Computer Fundamentals</Link></li>
+              <li><Link href="/academy/courses/responsive-web-design">Responsive Web Design </Link></li>
+              <li><Link href="/academy/courses/dynamic-web-development">Dynamic Web Development</Link></li>
             </ul>
           </div>
 
           <div>
             <h6 className="text-sm font-semibold mb-5">Company</h6>
             <ul className="text-xs flex flex-col gap-3">
-              <li><Link href="/learning/plans">Learning Plans</Link></li>
-              <li><Link href="/learning/faqs">FAQs</Link></li>
+              <li><Link href="/academy/plans">Learning Plans</Link></li>
+              <li><Link href="/academy/faqs">FAQs</Link></li>
             </ul>
           </div>
         </div>
@@ -63,7 +63,7 @@ const Footer = ({showScrumMasterLink = false, showqalink = false}: { showScrumMa
 
       <div className="flex items-center text-center mx-5 lg:mx-28 border-t pt-8 text-sm ">
         <p className="mx-auto flex items-center">
-          Copyright &copy; {new Date().getFullYear()} <Link href="/learning" className="flex items-center gap-2 px-3">
+          Copyright &copy; {new Date().getFullYear()} <Link href="/academy" className="flex items-center gap-2 px-3">
           <Image src="/images/marlayer-logo.svg" width={20} height={20} alt="Marlayer Logo"/>
           <h1 className={`font-extrabold ${dmSans.className}`}>Marlayer Academy.</h1>
         </Link> All rights reserved.

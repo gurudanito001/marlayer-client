@@ -12,7 +12,7 @@ const RegisterForm = () => {
     <section className="bg-white lg:px-24 lg:py-24 w-full lg:w-8/12 h-full overflow-y-scroll ">
 
       <header className="py-8 bg-primary text-white px-5 lg:hidden">
-        <Link href="/learning" className="flex items-center gap-3">
+        <Link href="/academy" className="flex items-center gap-3">
           <Image src="/images/marlayer-logo.svg" width={40} height={40} alt="Marlayer Logo" />
           <h1 className={`font-extrabold text-xl ${dmSans.className}`}>Marlayer Academy</h1>
         </Link>
@@ -83,7 +83,7 @@ const RegisterForm = () => {
         </div>
 
         <div className="flex justify-center md:justify-start">
-          <span>Already have an account? <Link href="/learning/sign-in" className="btn btn-link text-secondary">Sign in</Link></span>
+          <span>Already have an account? <Link href="/academy/sign-in" className="btn btn-link text-secondary">Sign in</Link></span>
         </div>
 
       </form>

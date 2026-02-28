@@ -61,7 +61,7 @@ const FAQs = () => {
 
 
       <div className="flex justify-center">
-        <Link href="/learning/faqs" className="btn btn-link btn-lg text-primary rounded-lg px-10 mx-auto md:mx-0 mt-8" >View More </Link>
+        <Link href="/academy/faqs" className="btn btn-link btn-lg text-primary rounded-lg px-10 mx-auto md:mx-0 mt-8" >View More </Link>
       </div>
 
     </section>

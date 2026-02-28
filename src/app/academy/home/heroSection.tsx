@@ -30,7 +30,7 @@ const HeroSection = ()=>{
 
 
           <div className="mt-5">
-            <Link href="/learning/sign-up" className="btn btn-md md:btn-lg bg-primary-2 md:bg-primary text-white border-primary shadow-sm rounded-lg px-6 md:px-10">Register Now</Link>
+            <Link href="/academy/sign-up" className="btn btn-md md:btn-lg bg-primary-2 md:bg-primary text-white border-primary shadow-sm rounded-lg px-6 md:px-10">Register Now</Link>
           </div>
         </div>
 
