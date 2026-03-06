@@ -1,7 +1,7 @@
 const nextConfig = {
   // Others config...,
   images: {
-    domains: ['3diq1qcqsoxrajwb.public.blob.vercel-storage.com'], //Domain of image host
+    domains: ['3diq1qcqsoxrajwb.public.blob.vercel-storage.com', 'flagcdn.com'], //Domain of image host
   },
   // Others config...,
 };
