@@ -1,4 +1,4 @@
-// components/SoftwareSection.tsx
+// components/softwareSection.tsx
 import React from 'react';
 
 const SoftwareSection: React.FC = () => {

@@ -12,11 +12,11 @@ const Navbar = () => {
 
   // Define your navigation links here
   const navLinks = [
-    { name: 'Home', href: '/Software' },
-    { name: 'About', href: '/Software/About' },
-    { name: 'Service', href: '/Software/Services' },
-    { name: 'Project', href: '/Software/Projects' },
-    { name: 'Contact', href: '/Software/Contact' },
+    { name: 'Home', href: '/software' },
+    { name: 'About', href: '/software/About' },
+    { name: 'Service', href: '/software/Services' },
+    { name: 'Project', href: '/software/Projects' },
+    { name: 'Contact', href: '/software/Contact' },
   ];
 
   return (

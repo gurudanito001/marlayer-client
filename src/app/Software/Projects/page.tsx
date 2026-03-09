@@ -45,7 +45,7 @@ const Projects = () => {
                                 responsive eCommerce websites for the newest online business trends...
                             </p>
 
-                            <Link href="/Software/ProjectDetails"> <button className="px-8 py-3 rounded-full border border-gray-600 text-sm font-semibold hover:bg-white hover:text-black transition duration-300">
+                            <Link href="/software/ProjectDetails"> <button className="px-8 py-3 rounded-full border border-gray-600 text-sm font-semibold hover:bg-white hover:text-black transition duration-300">
                                 Explore Project
                             </button>
                             </Link>
@@ -79,7 +79,7 @@ const Projects = () => {
                                 responsive eCommerce websites for the newest online business trends...
                             </p>
 
-                            <Link href="/Software/ProjectDetails"> <button className="px-8 py-3 rounded-full border border-gray-600 text-sm font-semibold hover:bg-white hover:text-black transition duration-300">
+                            <Link href="/software/ProjectDetails"> <button className="px-8 py-3 rounded-full border border-gray-600 text-sm font-semibold hover:bg-white hover:text-black transition duration-300">
                                 Explore Project
                             </button>
                             </Link>
@@ -113,7 +113,7 @@ const Projects = () => {
                                 for the purpose of digital recruitment for this company fast hire...
                             </p>
 
-                            <Link href="/Software/ProjectDetails"> <button className="px-8 py-3 rounded-full border border-gray-600 text-sm font-semibold hover:bg-white hover:text-black transition duration-300">
+                            <Link href="/software/ProjectDetails"> <button className="px-8 py-3 rounded-full border border-gray-600 text-sm font-semibold hover:bg-white hover:text-black transition duration-300">
                                 Explore Project
                             </button>
                             </Link>

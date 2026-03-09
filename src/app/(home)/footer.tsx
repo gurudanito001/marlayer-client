@@ -27,7 +27,7 @@ const Footer = ({showScrumMasterLink = false, showqalink = false}: { showScrumMa
           <h6 className="text-gray-900 font-semibold mb-5">Services</h6>
           <ul className="flex flex-col gap-3 text-sm">
             <li><Link href="/academy" className="hover:text-gray-900 transition-colors duration-200">Academy</Link></li>
-            <li><Link href="/Software" className="hover:text-gray-900 transition-colors duration-200">Software</Link></li>
+            <li><Link href="/software" className="hover:text-gray-900 transition-colors duration-200">Software</Link></li>
             <li><Link href="/gadgets" className="hover:text-gray-900 transition-colors duration-200">Gadgets</Link></li>
           </ul>
         </div>
