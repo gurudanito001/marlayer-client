@@ -18,7 +18,6 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <main className="bg-white">
-    <NavBar />
     <HeroSection />
     <CoursePackages />
     <StudentDiscount />

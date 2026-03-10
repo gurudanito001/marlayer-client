@@ -1,7 +1,12 @@
 const nextConfig = {
   // Others config...,
   images: {
-    domains: ['3diq1qcqsoxrajwb.public.blob.vercel-storage.com'], //Domain of image host
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '3diq1qcqsoxrajwb.public.blob.vercel-storage.com',
+      }
+    ],
   },
   // Others config...,
 };

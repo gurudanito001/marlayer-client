@@ -1,55 +1,111 @@
 import Link from "next/link";
 import Image from "next/image";
 
+type Course = {
+  href: string;
+  imageSrc: string;
+  imageAlt: string;
+  title: string;
+  description: string;
+  certificate: boolean;
+  duration: string;
+};
 
+const courses: Course[] = [
+  {
+    href: "/academy/courses/computer-basics",
+    imageSrc: "/images/tech-academy/computer-basics.jpg",
+    imageAlt: "Person learning computer basics on a laptop.",
+    title: "Computer Basics",
+    description: "How to use a computer in a corporate environment.",
+    certificate: true,
+    duration: "8 - 12 weeks",
+  },
+  {
+    href: "/academy/courses/responsive-web-design",
+    imageSrc: "/images/tech-academy/responsive-web-dev.jpg",
+    imageAlt: "Web design layout shown on multiple devices.",
+    title: "Frontend Development: Part 1",
+    description: "Build compelling web pages tailored for any device.",
+    certificate: true,
+    duration: "12 weeks",
+  },
+  {
+    href: "/academy/courses/dynamic-web-development",
+    imageSrc: "/images/tech-academy/responsive-web-dev.jpg",
+    imageAlt: "Code on a screen representing dynamic web development.",
+    title: "Frontend Development: Part 2",
+    description: "Use powerful frontend frameworks to develop web applications.",
+    certificate: true,
+    duration: "16 weeks",
+  },
+  {
+    href: "/academy/courses/backend-development",
+    imageSrc: "/images/tech-academy/backend-web-development.jpg", // Using a different image for variety
+    imageAlt: "Server-side code on a dark background.",
+    title: "Backend Development",
+    description: "Build and deploy scalable server-side applications.",
+    certificate: true,
+    duration: "12 weeks",
+  },
+  {
+    href: "/academy/courses/mobile-app-development",
+    imageSrc: "/images/tech-academy/mobile-app-dev.jpg", // Using a different image for variety
+    imageAlt: "Mobile phone showing a newly developed application.",
+    title: "Mobile App Development",
+    description: "Create cross-platform mobile apps for iOS and Android.",
+    certificate: true,
+    duration: "24 weeks",
+  },
+];
 
-const CoursePackages = ()=>{
+const CourseCard = ({ course }: { course: Course }) => (
+  <Link href={course.href} className="group flex flex-col bg-white border border-gray-200 rounded-2xl overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+    <div className="relative aspect-video">
+      <Image 
+        src={course.imageSrc} 
+        className="object-cover" 
+        fill 
+        alt={course.imageAlt}
+        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+      />
+    </div>
+    <div className="p-5 flex flex-col flex-grow">
+      <h3 className="text-lg font-bold text-gray-900 group-hover:text-primary transition-colors">{course.title}</h3>
+      <p className="text-sm text-gray-600 mt-1 mb-4 flex-grow">{course.description}</p>
+      
+      {course.certificate && (
+        <span className="flex items-center text-xs text-gray-500 mb-2 font-medium">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 mr-1.5 text-primary">
+            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clipRule="evenodd" />
+          </svg>
+          Includes Professional Certificate
+        </span>
+      )}
+      
+      <span className="text-xs font-semibold text-secondary">{course.duration}</span>
+    </div>
+  </Link>
+);
 
+const CoursePackages = () => {
   return (
-    <section id="coursePackages" className="bg-white py-14 lg:py-28 px-5 xl:px-28 flex flex-col">
-      <h3 className="text-2xl max-w-550 mb-5 font-semibold text-primary">Courses on Marlayer</h3>
-
-      <p className="md:max-w-550 lg:max-w-4xl text-sm md:text-lg mb-10">Unlock your potential with our comprehensive courses! Whether you&apos;re pursuing a passion or advancing your career, our expertly designed programs offer valuable insights and skills.</p>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5  w-full rounded-3xl md:rounded-none">
-        <Link href="/academy/courses/computer-basics" className=" flex flex-col p-3 border border-primary rounded-lg hover:shadow-xl max-w-md">
-          <Image src="/images/computer-basics.jpg" className="mb-3 rounded-md" width={400} height={250} objectFit="contain" alt="computer basics" />  
-          <h3 className="font-550 mb-3 leading-5"><span className="font-bold text-sm md:text-lg">Computer Basics:</span> <br/><span className="font-normal">How to use a computer in a corporate environment</span></h3>
-          <span className="flex items-center text-sm"><Image src="/images/certificate-icon.png" className="mr-1 w-4 inline text-primary" width={100} height={100} alt="certificate icon" />  Includes Professional Certificate</span>
-          <span className="italic text-secondary text-sm">8 - 12 weeks</span>
-        </Link>
-
-        <Link href="/academy/courses/responsive-web-design" className="text-primary flex flex-col p-3 border border-primary rounded-lg hover:shadow-xl max-w-md">
-          <Image src="/images/responsive-web-dev.jpg" className="mb-3 rounded-md" width={400} height={250} objectFit="contain" alt="computer basics" />  
-          <h3 className="font-550 mb-3 leading-5"><span className="font-bold text-sm md:text-lg">Responsive Web Design:</span> <br/><span className="font-normal">How to build compelling web pages tailored for any device</span></h3>
-          <span className="flex items-center text-sm"><Image src="/images/certificate-icon.png" className="mr-1 w-4 inline text-primary" width={100} height={100} alt="certificate icon" />  Includes Professional Certificate</span>
-          <span className="italic text-secondary text-sm">12 weeks</span>
-        </Link>
-
-        <Link href="/academy/courses/dynamic-web-development" className="text-primary flex flex-col p-3 border border-primary rounded-lg hover:shadow-xl max-w-md">
-          <Image src="/images/dynamic-web-developer.jpg" className="mb-3 rounded-md" width={400} height={250} objectFit="contain" alt="computer basics" />  
-          <h3 className="font-550 mb-3 leading-5"><span className="font-bold text-sm md:text-lg">Dynamic Web Development:</span> <br/><span className="font-normal">Use powerful frontend frameworks to develop web applications</span></h3>
-          <span className="flex items-center text-sm"><Image src="/images/certificate-icon.png" className="mr-1 w-4 inline text-primary" width={100} height={100} alt="certificate icon" />  Includes Professional Certificate</span>
-          <span className="italic text-secondary text-sm">16 weeks</span>
-        </Link>
-
-        <Link href="/academy/courses/backend-development" className="text-primary flex flex-col p-3 border border-primary rounded-lg hover:shadow-xl max-w-md">
-          <Image src="/images/dynamic-web-developer.jpg" className="mb-3 rounded-md" width={400} height={250} objectFit="contain" alt="backend development" />
-          <h3 className="font-550 mb-3 leading-5"><span className="font-bold text-sm md:text-lg">Backend Development for Beginners:</span> <br /><span className="font-normal">Build and deploy server-side applications</span></h3>
-          <span className="flex items-center text-sm"><Image src="/images/certificate-icon.png" className="mr-1 w-4 inline text-primary" width={100} height={100} alt="certificate icon" />  Includes Professional Certificate</span>
-          <span className="italic text-secondary text-sm">12 weeks</span>
-        </Link>
-
-        <Link href="/academy/courses/mobile-app-development" className="text-primary flex flex-col p-3 border border-primary rounded-lg hover:shadow-xl max-w-md">
-          <Image src="/images/dynamic-web-developer.jpg" className="mb-3 rounded-md" width={400} height={250} objectFit="contain" alt="mobile app development" />
-          <h3 className="font-550 mb-3 leading-5"><span className="font-bold text-sm md:text-lg">Mobile App Development:</span> <br /><span className="font-normal">Create cross-platform mobile apps for iOS and Android</span></h3>
-          <span className="flex items-center text-sm"><Image src="/images/certificate-icon.png" className="mr-1 w-4 inline text-primary" width={100} height={100} alt="certificate icon" />  Includes Professional Certificate</span>
-          <span className="italic text-secondary text-sm">24 weeks</span>
-        </Link>
-
+    <section id="coursePackages" className="bg-gray-50 py-20 lg:py-28">
+      <div className="container mx-auto px-6 md:px-12 lg:px-16 xl:px-28 flex flex-col items-center">
+        <h2 className="text-3xl md:text-4xl font-bold text-primary text-center mb-16">
+          Popular Courses on Marlayer
+        </h2>
+        {/* <p className="max-w-3xl text-center text-gray-600 text-base md:text-lg mt-4 mb-12">
+          Unlock your potential with our comprehensive courses! Whether you&apos;re pursuing a passion or advancing your career, our expertly designed programs offer valuable insights and skills.
+        </p> */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full max-w-7xl">
+          {courses.map((course) => (
+            <CourseCard key={course.href} course={course} />
+          ))}
+        </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
 export default CoursePackages;
