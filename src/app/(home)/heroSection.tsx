@@ -165,18 +165,27 @@ const HeroSection = () => {
                   element.scrollIntoView({ behavior: 'smooth' });
                 }
               }}
-              className="bg-primary hover:bg-primary-2 text-white px-8 py-2.5 rounded shadow-lg font-medium transition-colors duration-300">
-              Explore Our Services
+              className="bg-primary border border-primary hover:bg-primary-2 text-white px-8 py-2.5 rounded shadow-lg font-medium transition-colors duration-300">
+              Learn More
             </a>
-            <button className="bg-transparent border border-white text-white hover:bg-white/10 px-8 py-2.5 rounded font-medium transition-colors duration-300">
+            <Link href="/contact" className="bg-transparent border border-white text-white hover:bg-white/10 px-8 py-2.5 rounded font-medium transition-colors duration-300">
               Get in Touch
-            </button>
+            </Link>
           </div>
         </article>
       </div>
 
       {/* Scroll Down Indicator */}
-      {/* <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-2 cursor-pointer group">
+      <button 
+        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-2 cursor-pointer group"
+        onClick={(e) => {
+            const element = document.getElementById('ecosystem');
+            if (element) {
+              e.preventDefault();
+              element.scrollIntoView({ behavior: 'smooth' });
+            }
+          }}
+      >
         <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center border border-white/20 group-hover:bg-white/10 transition-colors">
           <svg 
             xmlns="http://www.w3.org/2000/svg" 
@@ -191,7 +200,7 @@ const HeroSection = () => {
         <span className="text-white/60 text-[10px] tracking-widest uppercase font-light group-hover:text-white/90 transition-colors">
           Scroll Down
         </span>
-      </div> */}
+      </button>
 
     </section>
   );
