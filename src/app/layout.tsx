@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   title: "Marlayer",
   description: "",
   icons: {
-    icon: '/images/marlayer-logo.svg', // Path relative to the public directory
+    icon: '/favicon-new.ico', // Path relative to the public directory
     apple: '/apple-touch-icon.png', // For Apple devices
     shortcut: '/images/marlayer-logo.svg',
     other: [

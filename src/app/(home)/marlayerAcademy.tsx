@@ -50,17 +50,19 @@ const AcademySection: React.FC = () => {
           {/* Right Side: Content */}
           <div className="w-full lg:w-5/12 flex flex-col items-start">
             
-            {/* Light Orange Icon Box */}
-            <div className="w-14 h-14 bg-[#ffedd5] rounded-full flex items-center justify-center mb-6">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-7 h-7 text-[#A33900]">
-                <path d="M11.7 2.805a.75.75 0 01.6 0A60.65 60.65 0 0122.83 8.72a.75.75 0 01-.231 1.337 49.949 49.949 0 00-9.902 3.912l-.003.002c-.114.06-.227.119-.343.18-.114.06-.229.119-.343.18a.75.75 0 01-.607 0 49.904 49.904 0 00-10.589-4.272.75.75 0 01-.23-1.337A60.65 60.65 0 0111.7 2.805z" />
-                <path d="M13.06 15.473a48.45 48.45 0 017.666-3.282c.134 1.414.22 2.843.255 4.284a.75.75 0 01-.46.711 47.87 47.87 0 00-8.105 4.342.75.75 0 01-.832 0 47.87 47.87 0 00-8.104-4.342.75.75 0 01-.461-.71c.035-1.442.121-2.87.255-4.286A48.56 48.56 0 0013.06 15.473z" />
-              </svg>
-            </div>
+            <div className="flex items-center gap-4 mb-5">
+              {/* Light Orange Icon Box */}
+              <div className="w-14 h-14 bg-[#ffedd5] rounded-full flex items-center justify-center flex-shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-7 h-7 text-[#A33900]">
+                  <path d="M11.7 2.805a.75.75 0 01.6 0A60.65 60.65 0 0122.83 8.72a.75.75 0 01-.231 1.337 49.949 49.949 0 00-9.902 3.912l-.003.002c-.114.06-.227.119-.343.18-.114.06-.229.119-.343.18a.75.75 0 01-.607 0 49.904 49.904 0 00-10.589-4.272.75.75 0 01-.23-1.337A60.65 60.65 0 0111.7 2.805z" />
+                  <path d="M13.06 15.473a48.45 48.45 0 017.666-3.282c.134 1.414.22 2.843.255 4.284a.75.75 0 01-.46.711 47.87 47.87 0 00-8.105 4.342.75.75 0 01-.832 0 47.87 47.87 0 00-8.104-4.342.75.75 0 01-.461-.71c.035-1.442.121-2.87.255-4.286A48.56 48.56 0 0013.06 15.473z" />
+                </svg>
+              </div>
 
-            <h4 className="text-3xl md:text-4xl font-bold text-slate-900 mb-5">
-              Marlayer Academy
-            </h4>
+              <h4 className="text-3xl md:text-4xl font-bold text-slate-900">
+                Tech Academy
+              </h4>
+            </div>
             
             <p className="text-slate-500 text-lg leading-relaxed mb-8">
               Unlock your potential with future-ready skills. Our academy offers hands-on mentorship from industry experts in a collaborative environment. Whether it&apos;s coding, design, or AI, we guide you from novice to professional.

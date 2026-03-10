@@ -1,4 +1,4 @@
-// components/SoftwareSection.tsx
+// components/softwareSection.tsx
 import React from 'react';
 
 const SoftwareSection: React.FC = () => {
@@ -12,16 +12,18 @@ const SoftwareSection: React.FC = () => {
           {/* Left Side: Content */}
           <div className="w-full lg:w-5/12 flex flex-col items-start">
             
-            {/* Light Purple Icon Box */}
-            <div className="w-14 h-14 bg-[#752900]/15 rounded-full flex items-center justify-center mb-6">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-7 h-7 text-[#752900]">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12l-3.75 3.75M6.75 8.25L3 12l3.75 3.75" />
-              </svg>
-            </div>
+            <div className="flex items-center gap-4 mb-5">
+              {/* Light Purple Icon Box */}
+              <div className="w-14 h-14 bg-[#752900]/15 rounded-full flex items-center justify-center flex-shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-7 h-7 text-[#752900]">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12l-3.75 3.75M6.75 8.25L3 12l3.75 3.75" />
+                </svg>
+              </div>
 
-            <h4 className="text-3xl md:text-4xl font-bold text-slate-900 mb-5">
-              Software Solutions
-            </h4>
+              <h4 className="text-3xl md:text-4xl font-bold text-slate-900">
+                Software Solutions
+              </h4>
+            </div>
             
             <p className="text-slate-500 text-lg leading-relaxed mb-8">
               We don&apos;t just write code, we build relationships. Our custom software solutions are crafted through close collaboration, ensuring we solve your unique challenges with intuitive dashboards and robust architecture.
