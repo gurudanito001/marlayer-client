@@ -11,7 +11,6 @@ import { Metadata } from 'next';
 import VideoSection from "./intro-video";
 import TestimonialsSection from "./testimonials";
 import CTASection from "./ctaSection";
-import Pricing from "../plans/pricing";
  
 export const metadata: Metadata = {
   title: 'Learning | Marlayer',
