@@ -1,61 +1,13 @@
 "use client"
 
-import { useEffect, useRef, useState } from "react";
-import { PauseIcon, PlayIcon } from "@heroicons/react/24/solid";
-import { CircularProgressbar } from 'react-circular-progressbar';
-import 'react-circular-progressbar/dist/styles.css';
-
-interface SyllabusWeekProps {
-  week: number | string;
-  title: string;
-  overview: (string | JSX.Element)[];
-}
-
-const SyllabusWeek: React.FC<SyllabusWeekProps> = ({ week, title, overview }) => {
-  return (
-    <ul className="timeline timeline-snap-icon max-md:timeline-compact timeline-vertical mx-3">
-      <header className="flex">
-        <h6 className="text-primary relative -ml-2 text-lg sm:text-xl font-550 items-center">
-          <span className="inline-block w-4 h-4 mr-2 lg:mr-6 rounded-full bg-primary"></span>
-          <strong className="mr-3">{typeof week === 'number' ? `Week ${week}:` : `${week}:`}</strong> {title}
-        </h6>
-      </header>
-      <li className="border-l border-dashed border-l-primary flex flex-row items-start px-3 xl:px-10 pt-4">
-        <div className="timeline-start mb-5 text-primary">
-          <h4 className="font-semibold">Overview:</h4>
-          <ul className={`list-disc list-outside flex flex-col gap-3 text-lg pl-4 md:pl-5 mt-5 ${typeof week === 'number' ? 'lg:gap-5' : ''}`}>
-            {overview.map((item, index) => (
-              <li key={index}>{item}</li>
-            ))}
-          </ul>
-        </div>
-      </li>
-    </ul>
-  );
-}
+import { useState } from "react";
 
 const Syllabus = () => {
-  const [weekIndex, setWeekIndex] = useState(0)
-  const [seconds, setSeconds] = useState(1);
-  const [status, setStatus] = useState("play");
-  let interval: any = useRef();
+  const [openIndex, setOpenIndex] = useState<number | null>(0);
 
-  const pauseSecondsCounter = () => {
-    clearInterval(interval.current)
-    setStatus("pause");
-  }
-
-  const continueSecondsCounter = () => {
-    setStatus("play");
-  }
-
-  const handleClickPausePlayBtn = () => {
-    if (status === "play") {
-      pauseSecondsCounter()
-    } else {
-      continueSecondsCounter()
-    }
-  }
+  const toggleWeek = (index: number) => {
+    setOpenIndex(openIndex === index ? null : index);
+  };
 
   const syllabusData = [
     {
@@ -180,84 +132,55 @@ const Syllabus = () => {
     { week: "22-24", title: "Final Capstone Project", overview: ["Choose a simple app idea (e.g., Expense Tracker, Journal, or Fitness Tracker).", "AI helps plan, generate, and refine the project code.", "You’ll integrate navigation, data, and local storage.", <><strong className="font-semibold">Outcome:</strong> You complete and present a working mobile app built with AI assistance.</>] }
   ];
 
-
-
-  useEffect(() => {
-    if (status === "play") {
-      interval.current = setInterval(() => {
-        setSeconds(prevSeconds => {
-          if (prevSeconds === 10) {
-            return 0
-          } else {
-            return prevSeconds + 1
-          }
-        });
-      }, 1000);
-    }
-
-    return () => clearInterval(interval.current);
-  }, [status]);
-
-  useEffect(() => {
-    if (seconds === 0) {
-      setWeekIndex(prevIndex => {
-        if (prevIndex < syllabusData.length - 1) {
-          return prevIndex + 1
-        } else {
-          return 0
-        }
-      })
-    }
-  }, [seconds])
-
-  const backToTop = () => {
-    if (window) {
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-      });
-    }
-  }
-
-  const setCurrentWeek = (index: number) => {
-    setWeekIndex(index);
-    setSeconds(1);
-    //backToTop();
-  }
-
-
   return (
-    <section className="mb-14">
-      <header className="flex items-center mb-5">
-        <h2 className="text-primary text-2xl font-semibold">Syllabus</h2>
-        <div className="w-10 h-10 ml-4 playBtnContainer">
-          <CircularProgressbar background={true} styles={{ trail: { stroke: "#ffffff" }, path: { stroke: "#45b39d" } }} value={seconds * 10} />
-          <button onClick={handleClickPausePlayBtn} className="btn btn-sm btn-circle bg-primary text-white z-30 playBtn"> {status === "play" ? <PauseIcon className="w-5" /> : <PlayIcon className="w-5" />}</button>
-        </div>
-      </header>
+    <section className="mb-14 max-w-6xl">
+      <h2 className="text-primary text-3xl font-bold mb-8">Course Syllabus</h2>
 
-      <SyllabusWeek {...syllabusData[weekIndex]} />
+      <div className="flex flex-col gap-4">
+        {syllabusData.map((item, index) => {
+          const isOpen = openIndex === index;
 
-      <h2 className="text-primary text-2xl font-semibold mt-14">Time Table</h2>
+          return (
+            <div
+              key={index}
+              className={`w-full rounded-2xl transition-all duration-300 border ${
+                isOpen
+                  ? 'bg-white border-primary shadow-md'
+                  : 'bg-white border-gray-200 hover:border-primary/50'
+              }`}
+            >
+              <button
+                onClick={() => toggleWeek(index)}
+                className="w-full flex items-center justify-between p-6 text-left focus:outline-none"
+              >
+                <span className={`text-lg transition-colors ${isOpen ? 'font-bold text-[#45B1A0]' : 'font-medium text-gray-800'}`}>
+                  {typeof item.week === 'number' ? `Week ${item.week}:` : `${item.week}:`} {item.title}
+                </span>
 
-      <section className="bg-white grid grid-cols-1 mt-5">
-        {syllabusData.map((item, index) => (
-          <div key={index} className={`collapse collapse-arrow bg-base-200 mb-4 border border-primary rounded-xl max-w-5xl`}>
-            <input type="checkbox" name="my-accordion-1" />
-            <div className={`collapse-title md:text-lg font-semibold  ${weekIndex === index ? "bg-primary text-white" : "bg-neutral text-primary"}`}>
-              <strong className="mr-3">{typeof item.week === 'number' ? `Week ${item.week}:` : item.week === 'Assessment' ? `${item.week}:` : `Weeks ${item.week}:`}</strong> {item.title}
+                <div className={`flex-shrink-0 ml-4 flex items-center justify-center w-8 h-8 rounded-full transition-transform duration-300 ${isOpen ? 'bg-[#45B1A0]/10 text-[#45B1A0] rotate-180' : 'bg-gray-100 text-gray-500'}`}>
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                  </svg>
+                </div>
+              </button>
+
+              <div
+                className={`overflow-hidden transition-all duration-500 ease-in-out ${
+                  isOpen ? 'max-h-[1000px] opacity-100' : 'max-h-0 opacity-0'
+                }`}
+              >
+                <div className="p-6 pt-0 text-gray-600 leading-relaxed">
+                  <ul className="list-disc list-outside flex flex-col gap-3 pl-5">
+                    {item.overview.map((point, i) => (
+                      <li key={i}>{point}</li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
             </div>
-            <div className="collapse-content bg-white border-t border-t-primary">
-              <ul className=" list-disc list-outside flex flex-col gap-3 lg:gap-5 text-lg pl-4 md:pl-5 mt-5">
-                {item.overview.map((point, i) => (
-                  <li key={i}>{point}</li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        ))}
-      </section>
-
+          );
+        })}
+      </div>
     </section>
   )
 }

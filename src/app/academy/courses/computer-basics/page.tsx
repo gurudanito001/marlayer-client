@@ -1,11 +1,9 @@
 
-import NavBar from "../../home/navbar";
 import HeroSection from "./heroSection";
 import Link from "next/link";
 import Syllabus from "./syllabus";
-import Pricing from "../../plans/pricing";
-import ForEnterprises from "../../home/forEnterprises";
-import Footer from "../../footer";
+import ForEnterprises from "../../(home)/forSchools";
+import Footer from "../../(home)/footer";
 
 
 
@@ -13,7 +11,6 @@ const ComputerBasics = ()=>{
 
   return (
     <main className="bg-white">
-      <NavBar darkTheme />
       <HeroSection />
       <section className="flex flex-col bg-white px-3 sm:px-5 xl:px-28 mt-10">
         <div className="breadcrumbs text-sm mb-10">
@@ -25,9 +22,8 @@ const ComputerBasics = ()=>{
         </div>
         <Syllabus />
       </section>
-      <Pricing standard={30} premium={40} platinum={50} />
       <ForEnterprises />
-      <Footer showqalink={true} />
+      <Footer />
     </main>
   )
 }

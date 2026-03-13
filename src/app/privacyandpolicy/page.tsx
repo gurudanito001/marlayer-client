@@ -1,4 +1,4 @@
-import NavBar from "../academy/home/navbar";
+import NavBar from "../academy/(home)/navbar";
 import Footer from "../(home)/footer";
 
 import { Metadata } from 'next';

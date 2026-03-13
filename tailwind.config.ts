@@ -27,7 +27,9 @@ const config: Config = {
         "section-red": "#800020",
         "form-input-bg": "#FFFBFB",
         "btn-blue": "#1877F2",
-        "gray-black": "rgba(0, 0, 0, .8)"
+        "gray-black": "rgba(0, 0, 0, .8)",
+        "orange": "#A33900",
+        "brown": "#471900E6",
       },
       fontSize: {
         "10px": "10px"

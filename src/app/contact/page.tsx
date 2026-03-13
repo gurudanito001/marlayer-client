@@ -4,6 +4,7 @@ import ContactServices from './ourServices';
 import FaqSection from './faq';
 import Footer from '../(home)/footer';
 import CtaSection from './bookMeeting';
+import AboutUs from './aboutUs';
 
 
 export default function Contact() {
