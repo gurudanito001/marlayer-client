@@ -1,35 +1,31 @@
 
-import NavBar from "../../home/navbar";
 import HeroSection from "./heroSection";
 import Link from "next/link";
 import Syllabus from "./syllabus";
-import Pricing from "../../plans/pricing";
-import ForEnterprises from "../../home/forEnterprises";
-import Footer from "../../footer";
+import ForEnterprises from "../../(home)/forSchools";
+import Footer from "../../(home)/footer";
 
 
 
-const ScrumMasteryCourse = ()=>{
+const ResponsiveWebDesignCourse = ()=>{
 
   return (
     <main className="bg-white">
-      <NavBar darkTheme />
       <HeroSection />
       <section className="flex flex-col bg-white px-3 sm:px-5 xl:px-28 mt-10">
         <div className="breadcrumbs text-sm mb-10">
           <ul>
             <li><Link href="" className="text-primary text-sm lg:text-xl font-normal">Courses</Link></li>
-            <li><Link href="" className="text-primary font-semibold text-sm lg:text-xl capitalize">JavaScript and React Development: Building Dynamic Web Applications
+            <li><Link href="" className="text-primary font-semibold text-sm lg:text-xl capitalize">Frontend Development: 1
             </Link></li>
           </ul>
         </div>
         <Syllabus />
       </section>
-      <Pricing standard={50} premium={60} platinum={70} />
       <ForEnterprises />
-      <Footer showqalink={true} />
+      <Footer />
     </main>
   )
 }
 
-export default ScrumMasteryCourse
+export default ResponsiveWebDesignCourse

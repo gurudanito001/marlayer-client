@@ -97,25 +97,28 @@ const HeroSection = () => {
 
       {/* Main Content */}
       <div className="max-w-5xl mt-8">
-        <h2 className="text-4xl lg:text-7xl font-semibold mb-3 p-0">Mobile App Development with React Native
+        <h2 className="text-4xl lg:text-7xl font-semibold mb-3 p-0">Frontend Development: 1
         </h2>
-        <p className="text-xl font-light mt-5 mb-4">
-          This course introduces beginners to mobile app development using React Native — the framework used to build apps for Android and iOS with JavaScript. You’ll learn how apps work, how screens connect, and how to manage data and state. With the help of AI, you’ll build real mobile apps faster, understand every step, and gain confidence as a developer.
+        <p className="text-lg font-light mt-5 mb-4">
+          This course teaches students how to build websites that are functional, aesthetically pleasing, and optimized for multiple screen sizes. Students will learn the principles of responsive design, the technical tools to implement it, and how to ensure that websites provide a seamless experience on different devices, including desktops, tablets, and smartphones.
         </p>
         <h4 className="font-550 text-xl mb-3">Course Objectives:</h4>
-        <ul className=" list-none list-outside flex flex-col gap-3 lg:gap-5 text-lg mb-5">
-          <li className="flex items-center"> <CheckIcon className="w-5 text-secondary mr-3" /> Understand how mobile apps are structured and how React Native works.</li>
-          <li className="flex items-center"> <CheckIcon className="w-5 text-secondary mr-3" /> Learn the basics of JavaScript and React for app development.</li>
-          <li className="flex items-center"> <CheckIcon className="w-5 text-secondary mr-3" /> Design and build functional mobile apps with navigation and data.</li>
-          <li className="flex items-center"> <CheckIcon className="w-5 text-secondary mr-3" /> Use AI to generate, explain, and debug code.</li>
-          <li className="flex items-center"> <CheckIcon className="w-5 text-secondary mr-3" /> Publish a simple mobile app by the end of the course.</li>
+        <ul className=" list-none list-outside flex flex-col gap-1 text-lg mb-4">
+          <li className="flex items-center"> <CheckIcon className="w-5 text-secondary mr-3" /> Understand the fundamentals of responsive web design.</li>
+          <li className="flex items-center"> <CheckIcon className="w-5 text-secondary mr-3" /> Utilize HTML, CSS to create responsive layouts.</li>
+          <li className="flex items-center"> <CheckIcon className="w-5 text-secondary mr-3" /> Implement CSS media queries for different screen sizes.</li>
+          <li className="flex items-center"> <CheckIcon className="w-5 text-secondary mr-3" />Use responsive frameworks like Bootstrap.</li>
+          <li className="flex items-center"> <CheckIcon className="w-5 text-secondary mr-3" />Optimize images and assets for better performance on mobile devices.</li>
+          <li className="flex items-center"> <CheckIcon className="w-5 text-secondary mr-3" /> Design fluid and flexible layouts using grid and flexbox techniques.</li>
+          <li className="flex items-center"> <CheckIcon className="w-5 text-secondary mr-3" />Test and debug responsive designs across multiple devices.</li>
+          <li className="flex items-center"> <CheckIcon className="w-5 text-secondary mr-3" />Create a fully responsive website from scratch as a final project.</li>
         </ul>
 
         <h4 className="font-550 text-xl mb-2">Prerequisites:</h4>
         <p className="text-lg font-light mb-4">
-          No programming experience required. You only need a laptop, internet connection, and interest in mobile apps. Basic computer skills are enough — all coding and setup steps will be guided with AI assistance.
+          Basic computer skills is necessary. No prior programming experience is necessary. Familiarity with the how to browse the internet will be beneficial.
+          This course is ideal for those looking to build beautiful and functional websites.
         </p>
-
         <div className="mt-10">
           <a href="https://docs.google.com/forms/d/e/1FAIpQLSeiNN8Y4g7MpvCxE8jGdHfgMvaXOkIehmuDVR9exZI8u7_Kcw/viewform" className=" btn btn-lg bg-secondary text-white rounded-lg px-10">Enroll Now</a>
         </div>

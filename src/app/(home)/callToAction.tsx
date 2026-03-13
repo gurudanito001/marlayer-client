@@ -13,10 +13,10 @@ export default function CallToAction() {
         </h2>
         
         <p className="text-sm md:text-lg mb-10 max-w-3xl mx-auto">
-          We are ready to partner with you to provide technical training, cloud infrastructure, or high-quality tech products tailored to your vision.
+          We are ready to partner with you to provide technical training, bespoke software solutions, or high-quality tech gadgets tailored to your vision.
         </p>
         
-        <Link href='/contact' className="btn btn-lg shadow-sm text-white bg-primary-2 border-0 rounded-sm transition-all duration-300 hover:bg-opacity-90">
+        <Link href='/contact' className="btn btn-lg shadow-sm text-white bg-primary-2 border-0 rounded-xl transition-all duration-300 hover:bg-opacity-90">
           Get in Touch
         </Link>
         
