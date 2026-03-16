@@ -69,7 +69,7 @@ const Footer = () => {
               <h6 className="text-white text-base font-medium">Company</h6>
               <ul className="flex flex-col gap-5 text-[15px] font-light">
                 <li><Link href="/academy/faqs" className="hover:text-white transition-colors duration-200">FAQs</Link></li>
-                <li><Link href="/privacyandpolicy" className="hover:text-white transition-colors duration-200">Privacy Policy</Link></li>
+                <li><Link href="/privacy-policy" className="hover:text-white transition-colors duration-200">Privacy Policy</Link></li>
                 <li><Link href="/contact" className="hover:text-white transition-colors duration-200">Contact Us</Link></li>
               </ul>
             </div>
