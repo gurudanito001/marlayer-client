@@ -53,9 +53,7 @@ const HeroSection = () => {
 
           {/* Desktop Centered Pill Navigation */}
           <div className="hidden md:flex items-center space-x-6 bg-white/5 border border-white/10 rounded-full px-8 py-2.5 backdrop-blur-sm">
-            <Link href="/academy" className="text-white hover:text-primary-2 text-sm font-medium transition-colors">
-              Home
-            </Link>
+            
             <a 
               href="/academy#coursePackages"
               onClick={(e) => {
@@ -126,24 +124,24 @@ const HeroSection = () => {
         <div className="flex items-center gap-3 bg-primary-2/50 border border-white/10 rounded-full pl-2 pr-4 py-1.5 mb-8 backdrop-blur-sm">
           <div className="flex -space-x-2">
             {/* Placeholder avatars to match the design - swap with real images later */}
-            <div className="w-7 h-7 rounded-full bg-gray-500 border-2 border-[#030614] overflow-hidden"><img src="https://i.pravatar.cc/100?img=11" alt="student" /></div>
-            <div className="w-7 h-7 rounded-full bg-gray-400 border-2 border-[#030614] overflow-hidden"><img src="https://i.pravatar.cc/100?img=32" alt="student" /></div>
-            <div className="w-7 h-7 rounded-full bg-gray-300 border-2 border-[#030614] overflow-hidden"><img src="https://i.pravatar.cc/100?img=12" alt="student" /></div>
-            <div className="w-7 h-7 rounded-full bg-blue-600 border-2 border-[#030614] flex items-center justify-center text-[10px] font-bold text-white">5k+</div>
+            <div className="w-7 h-7 rounded-full bg-gray-500 border-2 border-[#030614] overflow-hidden"><Image src="/images/tech-academy/damilare.png" alt="student" width={20} height={20} /></div>
+            <div className="w-7 h-7 rounded-full bg-gray-400 border-2 border-[#030614] overflow-hidden"><Image src="/images/tech-academy/david.jpeg" alt="student" width={20} height={20} /></div>
+            <div className="w-7 h-7 rounded-full bg-gray-300 border-2 border-[#030614] overflow-hidden"><Image src="/images/tech-academy/sis-johnson.png" alt="student" width={20} height={20} /></div>
+            <div className="w-7 h-7 rounded-full bg-blue-600 border-2 border-[#030614] flex items-center justify-center text-[7px] font-bold text-white">500+</div>
           </div>
           <div className="flex items-center text-xs text-gray-300 font-medium">
-            <span className="text-yellow-400 mr-1">★</span> 4.9 <span className="opacity-60 ml-1">( 5k+ Students Reviews )</span>
+            <span className="text-yellow-400 mr-1">★</span> 4.6 <span className="opacity-60 ml-1">( Based on Student Reviews )</span>
           </div>
         </div>
 
         {/* Headlines */}
         <h1 className="text-4xl md:text-6xl lg:text-[4rem] font-bold text-white mb-6 tracking-tight leading-[1.15]">
-          Unlock Your Potential <br className="hidden md:block" />
-          Through Learning
+          Build Products. Launch Careers.  <br className="hidden md:block" />
+          Find Your Tribe.
         </h1>
         
         <p className="text-gray-300 md:text-lg mb-10 leading-relaxed max-w-2xl mx-auto font-light">
-          Explore a world of knowledge with engaging courses designed to inspire and empower your growth. Master new skills and take your career to the next level with ease.
+          Master the skills to build your own startup or stand out to employers with real-world product experience. At Marlayer Academy, you don't just learn to code—you grow alongside a community dedicated to your success.
         </p>
 
         {/* Centered Call to Action Buttons */}
@@ -200,11 +198,7 @@ const HeroSection = () => {
           </header>
 
           <ul className="flex flex-col space-y-6">
-            <li>
-              <Link href="/academy" className="text-xl font-medium text-gray-800 hover:text-primary-2 transition-colors" onClick={() => setMobileMenuOpen(false)}>
-                Home
-              </Link>
-            </li>
+            
             <li>
               <a 
                 href="#coursePackages" 

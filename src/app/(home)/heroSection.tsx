@@ -56,14 +56,14 @@ const HeroSection = () => {
   }, []);
 
   const navLinkClasses = isScrolled 
-    ? "text-gray-600 hover:text-[#45B1A0] hover:border-[#45B1A0]" 
+    ? "text-gray-300 hover:text-[#45B1A0] hover:border-[#45B1A0]" 
     : "text-gray-300 hover:text-white hover:border-white";
 
   return (
     <section className="relative w-full h-screen max-h-[800px] xl:max-h-[950px] flex items-center bg-[#45B1A0] overflow-hidden">
       
       {/* Integrated Navbar */}
-      <nav className={`w-full left-0 top-0 z-[999] transition-all duration-300 ${isScrolled ? 'fixed bg-white  backdrop-blur-lg shadow-lg py-4' : 'absolute py-8'}`}>
+      <nav className={`w-full left-0 top-0 z-[999] transition-all duration-300 ${isScrolled ? 'fixed bg-[#0E1F18]  backdrop-blur-lg shadow-lg py-2 lg:py-4' : 'absolute py-8'}`}>
           <div className="w-full max-w-[1900px] mx-auto px-6 md:px-12 lg:px-16 xl:px-28 flex justify-between items-center relative">
             
             <div className="flex items-center">
@@ -172,7 +172,7 @@ const HeroSection = () => {
       </div>
 
       {/* Scroll Down Indicator */}
-      <button 
+      {/* <button 
         className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-2 cursor-pointer group"
         onClick={(e) => {
             const element = document.getElementById('ecosystem');
@@ -196,7 +196,7 @@ const HeroSection = () => {
         <span className="text-white/60 text-[10px] tracking-widest uppercase font-light group-hover:text-white/90 transition-colors">
           Scroll Down
         </span>
-      </button>
+      </button> */}
 
       {/* Mobile Sidebar Overlay */}
       <div className={`fixed inset-0 z-[1000] md:hidden ${mobileMenuOpen ? 'pointer-events-auto' : 'pointer-events-none'}`}>
@@ -207,7 +207,7 @@ const HeroSection = () => {
         ></div>
         
         {/* Sidebar Content */}
-        <div className={`absolute right-0 top-0 h-full w-[85%] max-w-sm bg-white shadow-2xl transform transition-transform duration-300 ease-out flex flex-col p-6 ${mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}>
+        <div className={`absolute right-0 top-0 h-full w-[85%] max-w-sm bg-white shadow-2xl transform transition-transform duration-300 ease-out flex flex-col px-6 py-4 ${mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}>
           <header className="flex justify-between items-center mb-10 border-b border-gray-100 pb-4">
             <Link href="/" className="flex items-baseline">
               <div className="">
