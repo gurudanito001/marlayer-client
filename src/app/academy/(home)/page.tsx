@@ -11,6 +11,7 @@ import { Metadata } from 'next';
 import VideoSection from "./intro-video";
 import TestimonialsSection from "./testimonials";
 import CTASection from "./ctaSection";
+import TutorsSlider from "./ourTutors";
  
 export const metadata: Metadata = {
   title: 'Learning | Marlayer',
@@ -20,13 +21,13 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <main className="bg-primary">
+    <main>
     <HeroSection />
     <VideoSection />
     <CoursePackages />
     <TestimonialsSection />
+    <TutorsSlider />
     <FAQs />
-    <CTASection />
     <Footer />
     </main>
   );

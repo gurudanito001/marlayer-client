@@ -58,6 +58,8 @@ const Footer = () => {
                 <li><Link href="/academy/courses/computer-basics" className="hover:text-white transition-colors duration-200">Computer Fundamentals</Link></li>
                 <li><Link href="/academy/courses/frontend-development-1" className="hover:text-white transition-colors duration-200">Frontend Development: 1</Link></li>
                 <li><Link href="/academy/courses/frontend-development-2" className="hover:text-white transition-colors duration-200">Frontend Development: 2</Link></li>
+                <li><Link href="/academy/courses/backend-development" className="hover:text-white transition-colors duration-200">Backend Development</Link></li>
+                <li><Link href="/academy/courses/mobile-app-development" className="hover:text-white transition-colors duration-200">Mobile App Development</Link></li>
               </ul>
             </div>
 
@@ -65,8 +67,9 @@ const Footer = () => {
             <div className="flex flex-col gap-6">
               <h6 className="text-white text-base font-medium">Company</h6>
               <ul className="flex flex-col gap-5 text-[15px] font-light">
-                <li><Link href="/academy/plans" className="hover:text-white transition-colors duration-200">Learning Plans</Link></li>
-                <li><Link href="/academy/faqs" className="hover:text-white transition-colors duration-200">FAQs</Link></li>
+                <li><Link href="/academy" className="hover:text-white transition-colors duration-200">Tech Academy</Link></li>
+                <li><Link href="/software" className="hover:text-white transition-colors duration-200">Software Solutions</Link></li>
+                <li><Link href="/gadgets" className="hover:text-white transition-colors duration-200">Flagship Gadgets</Link></li>
               </ul>
             </div>
 

@@ -1,6 +1,5 @@
 import React from 'react';
-// In a real Next.js project, you would likely use the next/image component for optimization:
-// import Image from 'next/image';
+import Image from 'next/image';
 
 export default function AboutUs() {
   const stats = [
@@ -56,11 +55,12 @@ export default function AboutUs() {
 
         {/* Right Column: Image */}
         <div className="relative h-[400px] sm:h-[500px] lg:h-[600px] w-full rounded-2xl overflow-hidden shadow-sm">
-          {/* Note: Swap out standard <img> for Next.js <Image> in production for better performance */}
-          <img
+          <Image
             src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
             alt="Team collaborating around a whiteboard"
             className="absolute inset-0 w-full h-full object-cover object-center"
+            fill
+            sizes="(max-width: 1024px) 100vw, 50vw"
           />
         </div>
 
