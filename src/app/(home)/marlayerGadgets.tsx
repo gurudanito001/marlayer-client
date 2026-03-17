@@ -1,5 +1,6 @@
 // components/EcosystemSection.tsx
 import React from 'react';
+import Image from 'next/image';
 
 const EcosystemSection: React.FC = () => {
   return (
@@ -14,10 +15,12 @@ const EcosystemSection: React.FC = () => {
             {/* Main Image Container */}
             <div className="relative rounded-3xl overflow-hidden shadow-2xl bg-gray-200 aspect-[4/3] w-full">
               {/* Replace the src with your actual image path */}
-              <img 
+              <Image
                 src="/images/homepage/gadgets.jpg" 
                 alt="Image of Marlayer Gadgets" 
                 className="object-cover w-full h-full transform transition-transform duration-700 group-hover:scale-105"
+                fill
+                sizes="(max-width: 1024px) 100vw, 58vw"
               />
             </div>
 

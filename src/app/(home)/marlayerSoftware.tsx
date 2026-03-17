@@ -1,12 +1,13 @@
 // components/softwareSection.tsx
 import React from 'react';
+import Image from 'next/image';
 
 const SoftwareSection: React.FC = () => {
   return (
     <section className="py-24 bg-[#FAFAFA] overflow-hidden">
       <div className="container mx-auto px-6 md:px-12 lg:px-16 xl:px-40 max-w-full">
         
-        {/* Feature Layout - Alternating: Text Left, Image Right */}
+        {/* Feature Layout - Alternating: Image Right */}
         <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
           
           {/* Left Side: Content */}
@@ -55,14 +56,16 @@ const SoftwareSection: React.FC = () => {
           </div>
 
           {/* Right Side: Image & Mockup Overlay */}
-          <div className="w-full lg:w-7/12 relative group">
+          <div className="w-full lg:w-7/12 relative group order-first lg:order-none">
             {/* Main Image Container */}
             <div className="relative rounded-3xl overflow-hidden shadow-2xl bg-gray-200 aspect-[4/3] w-full">
               {/* Replace the src with your actual image path */}
-              <img 
+              <Image 
                 src="/images/homepage/marlayerSoftware.jpg" 
                 alt="Colleagues discussing software on a tablet" 
                 className="object-cover w-full h-full transform transition-transform duration-700 group-hover:scale-105"
+                fill
+                sizes="(max-width: 1024px) 100vw, 58vw"
               />
               
               {/* Subtle Overlay to make the floating UI pop slightly more */}
@@ -85,5 +88,6 @@ const SoftwareSection: React.FC = () => {
     </section>
   );
 };
+
 
 export default SoftwareSection;
