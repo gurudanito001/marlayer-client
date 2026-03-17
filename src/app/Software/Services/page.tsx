@@ -278,6 +278,9 @@ const Services = () => {
       {/* --- HERO SECTION --- */}
       <div className="relative w-full min-h-[95vh] bg-[#0A1A18] flex items-center justify-center overflow-hidden pt-32 pb-24 lg:pt-40">
         
+        {/* Vertical Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0A1A18] via-[#0A1A18]/80 to-transparent z-5"></div>
+
         <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none z-0">
           <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
             <defs>
