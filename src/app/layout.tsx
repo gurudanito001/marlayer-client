@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   icons: {
     icon: '/favicon-new.ico', // Path relative to the public directory
     apple: '/apple-touch-icon.png', // For Apple devices
-    shortcut: '/favicon-32x32.png',
+    shortcut: '/images/marlayer-logo.svg',
     other: [
      { rel: 'android-chrome-192x192', url: '/android-chrome-192x192.png' },
     ],
