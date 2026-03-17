@@ -23,8 +23,8 @@ const Projects = () => {
                 </div>
 
                 {/* Green Gradient Overlay */}
-                {/* <div className="absolute inset-0 z-10 bg-gradient-to-r from-[#0A1A18] via-[#0A1A18]/90 to-transparent"></div>
-                <div className="absolute inset-0 z-10 bg-gradient-to-t from-[#0A1A18]/50 to-transparent lg:hidden"></div> */}
+                <div className="absolute inset-0 z-10 bg-gradient-to-r from-[#0A1A18] via-[#0A1A18]/90 to-transparent"></div>
+                <div className="absolute inset-0 z-10 bg-gradient-to-t from-[#0A1A18]/50 to-transparent lg:hidden"></div>
 
                 <div className=" max-w-[1400px] mx-auto bg-[#1C1B20] text-white pt-28 pb-24 px-6 lg:px-16 rounded mt-20 mb-20">
 
