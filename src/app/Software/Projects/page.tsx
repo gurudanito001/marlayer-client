@@ -23,10 +23,9 @@ const Projects = () => {
                 </div>
 
                 {/* Green Gradient Overlay */}
-                <div className="absolute inset-0 z-10 bg-gradient-to-r from-[#0A1A18] via-[#0A1A18]/90 to-transparent"></div>
-                <div className="absolute inset-0 z-10 bg-gradient-to-t from-[#0A1A18]/50 to-transparent lg:hidden"></div>
+                {/* <div className="absolute inset-0 z-10 bg-gradient-to-r from-[#0A1A18] via-[#0A1A18]/90 to-transparent"></div>
+                <div className="absolute inset-0 z-10 bg-gradient-to-t from-[#0A1A18]/50 to-transparent lg:hidden"></div> */}
 
-<<<<<<< HEAD
                 <div className=" max-w-[1400px] mx-auto bg-[#1C1B20] text-white pt-28 pb-24 px-6 lg:px-16 rounded mt-20 mb-20">
 
 
@@ -149,22 +148,6 @@ const Projects = () => {
                         <p className="text-white mb-10 text-sm">
                             Stay in touch with our expert team and get updates on our latest
                             creations and projects from our agency newsletter.
-=======
-                {/* Hero Content */}
-                <div className="relative z-20 w-full max-w-[1900px] mx-auto px-6 md:px-12 lg:px-16 xl:px-20 flex items-center">
-                    <div className="max-w-2xl text-left">
-                        {/* Eyebrow Text */}
-                        <p className="text-[#45B1A0] font-bold text-sm mb-4 uppercase tracking-widest flex items-center gap-2">
-                            <span className="w-8 h-[2px] bg-[#45B1A0]"></span> Our Portfolio
-                        </p>
-                        
-                        <h1 className="text-2xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-6">
-                            Where Vision Meets Execution
-                        </h1>
-                        
-                        <p className="text-gray-300 text-base md:text-lg leading-relaxed max-w-xl mb-10">
-                            Explore how we transform complex challenges into elegant, scalable software solutions. From robust mobile applications to secure enterprise platforms.
->>>>>>> d544639 (Finished with the software page)
                         </p>
 
                         {/* CTA Button */}
