@@ -32,7 +32,7 @@ const Footer = () => {
           
           {/* Left Side: Brand Info */}
           <div className="flex flex-col gap-6 max-w-xs xl:max-w-sm">
-            <Link href="/academy" className="flex items-baseline">
+            <Link href="/" className="flex items-baseline">
               <div className="">
                 <Image src="/images/marlayer-logo.svg" width={24} height={24} alt="Marlayer Logo" />
               </div>

@@ -49,6 +49,7 @@ const HeroSection = () => {
             >
               ARLAYER
             </span>
+            <span className='font-extrabold text-2xl text-white ml-2'>ACADEMY</span>
           </Link>
 
           {/* Desktop Centered Pill Navigation */}
