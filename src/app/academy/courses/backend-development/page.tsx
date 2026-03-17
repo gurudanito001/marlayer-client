@@ -13,10 +13,9 @@ const BackendDevelopmentCourse = ()=>{
     <main className="bg-white">
       <HeroSection />
       <section className="flex flex-col bg-white px-3 sm:px-5 xl:px-28 mt-10">
-        
         <Syllabus />
       </section>
-      <ForEnterprises />
+      {/* <ForEnterprises /> */}
       <Footer />
     </main>
   )

@@ -103,37 +103,36 @@ const BackgroundIcons = () => {
 // --- 2. Dummy Data & Component ---
 const faqsData = [
   {
-    question: "What is the purpose of your online academy?",
-    answer: "Our academy helps teenagers, young adults, and working professionals become technologically literate. We offer beginner-friendly courses that teach essential computer skills, web development, and data analysis, empowering you to use technology effectively in daily life or work."
+    question: "What is the primary focus of the academy?",
+    answer: "Our academy bridges the gap between having an idea and bringing it to life. We provide hands-on, beginner-friendly training in software development, design, and data analysis to help you build real-world products and launch a successful career in tech."
   },
   {
-    question: "Who are your courses designed for?",
-    answer: "Our courses are perfect for individuals who have little to no experience using technology beyond basic entertainment, as well as professionals looking to catch up on how to use tech for office tasks."
+    question: "Who are these courses designed for?",
+    answer: "Our programs are tailored for complete beginners, aspiring entrepreneurs wanting to build their own tech products, and professionals looking to future-proof their careers. If you have the drive to learn, you belong here—no matter your background."
   },
   {
-    question: "Do I need any prior technical knowledge to enroll?",
-    answer: "No prior technical knowledge is required! The courses are designed for complete beginners, with guidance tailored to help you develop your skills progressively."
+    question: "Do I need any prior coding experience to enroll?",
+    answer: "Not at all. Our curriculum is designed from the ground up for absolute beginners. We start with the fundamentals and progressively guide you through advanced concepts, ensuring you build confidence and practical skills every step of the way."
   },
   {
-    question: "How are the courses delivered?",
-    answer: (
-      <>
-        <p className="mb-4">We offer classes in different formats depending on your subscription plan:</p>
-        <ul className="list-disc list-outside space-y-2 pl-5">
-          <li><strong>Standard Plan:</strong> Group classes with up to 12 participants via video conferencing (Google Meet, Skype).</li>
-          <li><strong>Premium Plan:</strong> Group classes (up to 12 participants) and additional one-on-one sessions via video conferencing.</li>
-          <li><strong>Platinum Plan:</strong> In-person classes and one-on-one sessions.</li>
-        </ul>
-      </>
-    )
+    question: "What kind of support will I receive if I get stuck?",
+    answer: "You will never have to learn in isolation. Our academy offers a vibrant community platform, live Q&A sessions, and direct access to experienced mentors who are ready to help you debug code, review your projects, and guide your learning journey."
   },
   {
-    question: "Will I receive a certificate after completing a course?",
-    answer: "Yes, all students who complete a course receive a digital certificate, which can be used to showcase your new skills on your resume or online profiles."
+    question: "What equipment do I need to get started?",
+    answer: "All you need is a stable internet connection and a standard laptop or desktop computer. You don't need a high-end machine; any relatively modern Mac, Windows, or Linux computer will work perfectly for our development and data courses."
   },
   {
-    question: "How do I pay for the courses?",
-    answer: "Go to the sign-up page, fill out the form, and submit it. We will send instructions to your email on how to complete the payment process. We accept all major credit cards, PayPal, and bank transfers."
+    question: "How long does it typically take to complete a course?",
+    answer: "Course durations vary depending on the specific learning path you choose, typically ranging from 4 to 24 weeks. We design our programs with flexibility in mind, allowing you to balance your tech education with your personal and professional schedule."
+  },
+  {
+    question: "Will I receive a certificate upon completion?",
+    answer: "Yes. After successfully finishing a course and its required projects, you will receive a verifiable digital certificate. This serves as proof of your hands-on experience and can be easily showcased on your resume or LinkedIn profile for employers."
+  },
+  {
+    question: "What is the application and payment process?",
+    answer: "Simply submit your application through our enrollment page. Once reviewed, our admissions team will send you an email with your next steps and a secure payment link. We accept all major credit cards, PayPal, and direct bank transfers."
   }
 ];
 

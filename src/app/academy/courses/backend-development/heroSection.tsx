@@ -2,14 +2,15 @@
 
 import { CheckIcon, ChevronDownIcon } from "@heroicons/react/24/solid";
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
-
 
 const HeroSection = () => {
   const logoTeal = "#45B1A0";
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [coursesDropdownOpen, setCoursesDropdownOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -20,28 +21,43 @@ const HeroSection = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setCoursesDropdownOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
   const navLinkClasses = isScrolled 
     ? "text-gray-300 hover:text-[#45B1A0]" 
     : "text-gray-300 hover:text-white";
 
   return (
-    <section className="relative flex flex-col pt-32 pb-14 px-3 lg:px-14 xl:px-28 bg-primary text-white mb-8 font-sans">
+    <section className="relative flex flex-col pt-32 pb-20 px-6 md:px-12 lg:px-16 xl:px-28 bg-[#0B1A14] text-white overflow-hidden font-sans min-h-[85vh]">
+      
+      {/* Ambient Glows */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-[1000px] bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#45B1A0]/15 via-[#0B1A14]/0 to-transparent pointer-events-none"></div>
       
       {/* Integrated Navbar */}
-      <nav className={`w-full left-0 top-0 z-[999] transition-all duration-300 ${isScrolled ? 'fixed bg-[#0E1F18]/90 backdrop-blur-lg shadow-lg py-4 border-b border-white/5' : 'absolute py-6'}`}>
+      <nav className={`w-full left-0 top-0 z-[999] transition-all duration-300 ${isScrolled ? 'fixed bg-[#0B1A14]/90 backdrop-blur-lg shadow-lg py-4 border-b border-white/5' : 'absolute py-6'}`}>
         <div className="w-full max-w-[1900px] mx-auto px-6 md:px-12 lg:px-16 xl:px-28 flex justify-between items-center relative">
           
           <div className="flex items-center">
-            <Link href="/" className="flex items-baseline">
+            {/* Updated Logo Link to /academy with ACADEMY text */}
+            <Link href="/academy" className="flex items-baseline">
               <div className="">
-               <Image src="/images/marlayer-logo.svg" width={24} height={24} alt="Marlayer Logo" />
+                <Image src="/images/marlayer-logo.svg" width={24} height={24} alt="Marlayer Logo" />
               </div>
-              <span 
+              <span
                 className="font-extrabold text-2xl ml-0.5"
                 style={{ color: logoTeal }}
               >
                 ARLAYER
               </span>
+              <span className="font-extrabold text-2xl text-white ml-2">ACADEMY</span>
             </Link>
           </div>
 
@@ -55,29 +71,33 @@ const HeroSection = () => {
               </Link>
     
               {/* Courses Dropdown */}
-              <div className="relative group">
-                <button className={`${navLinkClasses} font-medium transition-colors duration-200 text-sm flex items-center gap-1 outline-none`}>
+              <div className="relative" ref={dropdownRef}>
+                <button 
+                  onClick={() => setCoursesDropdownOpen(!coursesDropdownOpen)}
+                  className={`${navLinkClasses} font-medium transition-colors duration-200 text-sm flex items-center gap-1 outline-none`}
+                >
                   Courses
-                  <ChevronDownIcon className="w-3 h-3" />
+                  <ChevronDownIcon className={`w-3 h-3 transition-transform duration-200 ${coursesDropdownOpen ? 'rotate-180' : ''}`} />
                 </button>
                 
-                <div className="absolute top-full left-1/2 -translate-x-1/2 w-64 bg-white rounded-xl shadow-xl p-2 hidden group-hover:block border border-gray-100 origin-top animate-in fade-in zoom-in-95 duration-200">
-                  <ul className="flex flex-col text-gray-800 text-sm">
-                    <li><Link href="/academy/courses/computer-basics" className="block px-4 py-2 hover:bg-gray-50 rounded-lg">Computer Fundamentals</Link></li>
-                    <li><Link href="/academy/courses/frontend-development-1" className="block px-4 py-2 hover:bg-gray-50 rounded-lg">Frontend Development: 1</Link></li>
-                    <li><Link href="/academy/courses/frontend-development-2" className="block px-4 py-2 hover:bg-gray-50 rounded-lg">Frontend Development: 2</Link></li>
-                    <li><Link href="/academy/courses/backend-development" className="block px-4 py-2 hover:bg-gray-50 rounded-lg">Backend Development</Link></li>
-                    <li><Link href="/academy/courses/mobile-app-development" className="block px-4 py-2 hover:bg-gray-50 rounded-lg">Mobile App Development</Link></li>
+                {/* Dropdown Menu */}
+                <div className={`absolute top-full left-1/2 -translate-x-1/2 w-64 bg-[#0E1F18] rounded-xl shadow-2xl p-2 border border-white/10 origin-top animate-in fade-in zoom-in-95 duration-200 mt-2 ${coursesDropdownOpen ? 'block' : 'hidden'}`}>
+                  <ul className="flex flex-col text-gray-300 text-sm">
+                    <li><Link href="/academy/courses/computer-basics" className="block px-4 py-2 hover:bg-white/5 hover:text-white rounded-lg transition-colors">Computer Fundamentals</Link></li>
+                    <li><Link href="/academy/courses/frontend-development-1" className="block px-4 py-2 hover:bg-white/5 hover:text-white rounded-lg transition-colors">Frontend Development: 1</Link></li>
+                    <li><Link href="/academy/courses/frontend-development-2" className="block px-4 py-2 hover:bg-white/5 hover:text-white rounded-lg transition-colors">Frontend Development: 2</Link></li>
+                    <li><Link href="/academy/courses/backend-development" className="block px-4 py-2 hover:bg-white/5 hover:text-white rounded-lg transition-colors">Backend Development</Link></li>
+                    <li><Link href="/academy/courses/mobile-app-development" className="block px-4 py-2 hover:bg-white/5 hover:text-white rounded-lg transition-colors">Mobile App Development</Link></li>
                   </ul>
                 </div>
               </div>
           </div>
           
           <div className="flex items-center gap-4">
-            {/* Contact Us Button (Desktop) */}
+            {/* Sign Up Button (Desktop) */}
             <Link 
               href="/academy/sign-up" 
-              className={`hidden md:inline-flex items-center justify-center px-6 py-2 border rounded-full text-sm font-medium transition-colors duration-300 ${isScrolled ? 'border-[#45B1A0] text-[#45B1A0] hover:bg-[#45B1A0] hover:text-white' : 'border-white text-white hover:bg-white hover:text-[#45B1A0]'}`}
+              className="hidden md:flex bg-orange hover:bg-orange/85 text-white px-6 py-2.5 rounded-full text-sm font-medium transition-all"
             >
               Sign Up
             </Link>
@@ -85,7 +105,7 @@ const HeroSection = () => {
             {/* Mobile Menu Button */}
             <button 
               onClick={() => setMobileMenuOpen(true)}
-              className={`md:hidden btn btn-ghost btn-circle ${isScrolled ? 'text-gray-400' : 'text-white'}`}
+              className="md:hidden text-white p-2 hover:opacity-80 transition-opacity"
             >
               <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
@@ -96,28 +116,61 @@ const HeroSection = () => {
       </nav>
 
       {/* Main Content */}
-      <div className="max-w-5xl mt-8">
-        <h2 className="text-4xl lg:text-7xl font-semibold mb-3 p-0">Backend Development for Beginners
-        </h2>
-        <p className="text-xl font-light mt-5 mb-4">
-          This course introduces beginners to backend development using JavaScript. You&apos;ll learn how the web works behind the scenes — how servers, databases, and APIs connect to power real applications. With the help of AI tools, you&apos;ll write, understand, and debug backend code faster, even with no prior programming experience.
-        </p>
-        <h4 className="font-550 text-xl mb-3">Course Objectives:</h4>
-        <ul className=" list-none list-outside flex flex-col gap-3 lg:gap-5 text-lg mb-5">
-          <li className="flex items-center"> <CheckIcon className="w-5 text-secondary mr-3" /> Understand how web servers and APIs work.</li>
-          <li className="flex items-center"> <CheckIcon className="w-5 text-secondary mr-3" /> Learn the basics of JavaScript for backend development.</li>
-          <li className="flex items-center"> <CheckIcon className="w-5 text-secondary mr-3" /> Build and test simple backend applications.</li>
-          <li className="flex items-center"> <CheckIcon className="w-5 text-secondary mr-3" /> Use AI to generate, explain, and debug code.</li>
-          <li className="flex items-center"> <CheckIcon className="w-5 text-secondary mr-3" /> Deploy a small backend project online.</li>
-        </ul>
+      <div className="relative z-10 max-w-4xl mt-12 md:mt-20 flex flex-col justify-center flex-grow">
+        
+        {/* Course Meta Tag */}
+        <div className="inline-flex items-center gap-2 bg-[#45B1A0]/20 border border-[#45B1A0]/30 rounded-full px-4 py-1.5 mb-6 self-start">
+          <span className="w-2 h-2 rounded-full bg-[#45B1A0] animate-pulse"></span>
+          <span className="text-xs font-semibold text-[#45B1A0] tracking-wide uppercase">12-Week Intensive</span>
+        </div>
 
-        <h4 className="font-550 text-xl mb-2">Prerequisites:</h4>
-        <p className="text-lg font-light mb-4">
-          No programming experience required. You only need a laptop, internet access, and curiosity to learn. Familiarity with basic computer use is enough — everything else will be guided step-by-step with AI assistance.
+        <h1 className="text-4xl md:text-6xl lg:text-[4.5rem] font-semibold mb-6 leading-[1.1] tracking-tight text-white">
+          Master Backend Dev & <br className="hidden md:block" /> AI-Driven Architecture
+        </h1>
+        
+        <p className="text-lg md:text-xl font-light text-gray-200 mb-10 max-w-3xl leading-relaxed">
+          Go from absolute beginner to deploying secure, scalable APIs. Learn Node.js, Express, and Database management while mastering AI tools to code, debug, and architect like a senior engineer.
         </p>
 
-        <div className="mt-10">
-          <a href="https://docs.google.com/forms/d/e/1FAIpQLSeiNN8Y4g7MpvCxE8jGdHfgMvaXOkIehmuDVR9exZI8u7_Kcw/viewform" className=" btn btn-lg bg-secondary text-white rounded-lg px-10">Enroll Now</a>
+        {/* Objectives Box */}
+        <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-[2rem] p-8 md:p-10 mb-10 shadow-2xl">
+          <h4 className="font-semibold text-2xl text-white mb-6">What You Will Achieve:</h4>
+          <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4 text-base md:text-lg text-gray-200">
+            <li className="flex items-start"> 
+              <CheckIcon className="w-6 h-6 text-[#45B1A0] mr-3 flex-shrink-0 mt-0.5" /> 
+              <span>Architect scalable APIs using Node.js and Express.</span>
+            </li>
+            <li className="flex items-start"> 
+              <CheckIcon className="w-6 h-6 text-[#45B1A0] mr-3 flex-shrink-0 mt-0.5" /> 
+              <span>Design and manage databases (SQL & NoSQL).</span>
+            </li>
+            <li className="flex items-start"> 
+              <CheckIcon className="w-6 h-6 text-[#45B1A0] mr-3 flex-shrink-0 mt-0.5" /> 
+              <span>Implement secure user authentication (JWT).</span>
+            </li>
+            <li className="flex items-start"> 
+              <CheckIcon className="w-6 h-6 text-[#45B1A0] mr-3 flex-shrink-0 mt-0.5" /> 
+              <span>Leverage AI for rapid debugging, testing, & schema design.</span>
+            </li>
+            <li className="flex items-start md:col-span-2"> 
+              <CheckIcon className="w-6 h-6 text-[#45B1A0] mr-3 flex-shrink-0 mt-0.5" /> 
+              <span>Deploy a complete, portfolio-ready capstone project to the cloud.</span>
+            </li>
+          </ul>
+        </div>
+
+        {/* CTA & Prerequisites */}
+        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6">
+          <Link 
+            href="/academy/sign-up" 
+            className="bg-orange hover:bg-orange/85 text-white px-10 py-4 rounded-full font-medium transition-all duration-300 shadow-[0_0_20px_rgba(255,165,0,0.3)] text-lg text-center w-full sm:w-auto"
+          >
+            Enroll Now
+          </Link>
+          <div className="flex flex-col">
+            <span className="font-semibold text-white text-lg">Prerequisites:</span>
+            <span className="text-gray-300 font-light">No prior coding experience required!</span>
+          </div>
         </div>
       </div>
 
@@ -125,48 +178,45 @@ const HeroSection = () => {
       <div className={`fixed inset-0 z-[1000] md:hidden ${mobileMenuOpen ? 'pointer-events-auto' : 'pointer-events-none'}`}>
         {/* Backdrop */}
         <div 
-          className={`absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity duration-300 ${mobileMenuOpen ? 'opacity-100' : 'opacity-0'}`} 
+          className={`absolute inset-0 bg-black/80 backdrop-blur-sm transition-opacity duration-300 ${mobileMenuOpen ? 'opacity-100' : 'opacity-0'}`} 
           onClick={() => setMobileMenuOpen(false)}
         ></div>
         
-        {/* Sidebar Content */}
-        <div className={`absolute right-0 top-0 h-full w-[85%] max-w-sm bg-white shadow-2xl transform transition-transform duration-300 ease-out flex flex-col p-6 overflow-y-auto ${mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}>
-          <header className="flex justify-between items-center mb-10 border-b border-gray-100 pb-4">
-            <Link href="/" className="flex items-baseline">
-              <div className="">
-                <Image src="/images/marlayer-logo.svg" width={24} height={24} alt="Marlayer Logo" />
+        {/* Sidebar Content (Dark matching your mobile theme) */}
+        <div className={`absolute right-0 top-0 h-full w-[85%] max-w-sm bg-[#0B1A14] border-l border-white/10 shadow-2xl transform transition-transform duration-300 ease-out flex flex-col p-6 overflow-y-auto ${mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}>
+          <header className="flex justify-between items-center mb-10 border-b border-white/10 pb-4">
+            <Link href="/academy" className="flex items-center gap-1.5">
+              <div className="relative w-6 h-6">
+                <Image src="/images/marlayer-logo.svg" fill alt="Marlayer Logo" className="object-contain" />
               </div>
-              <span
-                className="font-extrabold text-2xl ml-0.5"
-                style={{ color: logoTeal }}
-              >
-                ARLAYER
+              <span className="font-extrabold text-lg text-white">
+                M<span style={{ color: logoTeal }}>ARLAYER</span> ACADEMY
               </span>
             </Link>
-            <button onClick={() => setMobileMenuOpen(false)} className="btn btn-ghost btn-circle btn-sm">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <button onClick={() => setMobileMenuOpen(false)} className="p-2 text-gray-300 hover:text-white transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
               </svg>
             </button>
           </header>
 
           <ul className="flex flex-col space-y-4">
-            <li><Link href="/academy" className="text-xl font-medium text-gray-800" onClick={() => setMobileMenuOpen(false)}>Home</Link></li>
+            <li><Link href="/academy" className="text-lg font-medium text-gray-300 hover:text-white" onClick={() => setMobileMenuOpen(false)}>Home</Link></li>
             <li>
               <details className="group">
-                <summary className="text-xl font-medium text-gray-800 flex justify-between items-center cursor-pointer list-none">Courses <ChevronDownIcon className="w-4 h-4 transition-transform group-open:rotate-180" /></summary>
-                <ul className="mt-2 pl-4 space-y-3 border-l-2 border-gray-100 ml-1">
-                  <li><Link href="/academy/courses/computer-basics" className="text-gray-600 block py-1" onClick={() => setMobileMenuOpen(false)}>Computer Fundamentals</Link></li>
-                  <li><Link href="/academy/courses/frontend-development-1" className="text-gray-600 block py-1" onClick={() => setMobileMenuOpen(false)}>Frontend Dev 1</Link></li>
-                  <li><Link href="/academy/courses/frontend-development-2" className="text-gray-600 block py-1" onClick={() => setMobileMenuOpen(false)}>Frontend Dev 2</Link></li>
-                  <li><Link href="/academy/courses/backend-development" className="text-gray-600 block py-1" onClick={() => setMobileMenuOpen(false)}>Backend Development</Link></li>
-                  <li><Link href="/academy/courses/mobile-app-development" className="text-gray-600 block py-1" onClick={() => setMobileMenuOpen(false)}>Mobile App Dev</Link></li>
+                <summary className="text-lg font-medium text-gray-300 hover:text-white flex justify-between items-center cursor-pointer list-none">Courses <ChevronDownIcon className="w-4 h-4 transition-transform group-open:rotate-180" /></summary>
+                <ul className="mt-3 pl-4 space-y-3 border-l-2 border-white/10 ml-1">
+                  <li><Link href="/academy/courses/computer-basics" className="text-gray-400 hover:text-[#45B1A0] block py-1" onClick={() => setMobileMenuOpen(false)}>Computer Fundamentals</Link></li>
+                  <li><Link href="/academy/courses/frontend-development-1" className="text-gray-400 hover:text-[#45B1A0] block py-1" onClick={() => setMobileMenuOpen(false)}>Frontend Dev 1</Link></li>
+                  <li><Link href="/academy/courses/frontend-development-2" className="text-gray-400 hover:text-[#45B1A0] block py-1" onClick={() => setMobileMenuOpen(false)}>Frontend Dev 2</Link></li>
+                  <li><Link href="/academy/courses/backend-development" className="text-gray-400 hover:text-[#45B1A0] block py-1" onClick={() => setMobileMenuOpen(false)}>Backend Development</Link></li>
+                  <li><Link href="/academy/courses/mobile-app-development" className="text-gray-400 hover:text-[#45B1A0] block py-1" onClick={() => setMobileMenuOpen(false)}>Mobile App Dev</Link></li>
                 </ul>
               </details>
             </li>
-            <li><Link href="/academy/plans" className="text-xl font-medium text-gray-800" onClick={() => setMobileMenuOpen(false)}>Learning Plans</Link></li>
-            <li><Link href="/academy/faqs" className="text-xl font-medium text-gray-800" onClick={() => setMobileMenuOpen(false)}>FAQs</Link></li>
-            <li><Link href="/contact" className="text-xl font-medium text-[#45B1A0]" onClick={() => setMobileMenuOpen(false)}>Contact Us</Link></li>
+            <li><Link href="/academy/plans" className="text-lg font-medium text-gray-300 hover:text-white" onClick={() => setMobileMenuOpen(false)}>Learning Plans</Link></li>
+            <li><Link href="/academy/faqs" className="text-lg font-medium text-gray-300 hover:text-white" onClick={() => setMobileMenuOpen(false)}>FAQs</Link></li>
+            <li><Link href="/contact" className="text-lg font-medium text-[#45B1A0] mt-4 inline-block" onClick={() => setMobileMenuOpen(false)}>Contact Us</Link></li>
           </ul>
         </div>
       </div>
@@ -174,4 +224,4 @@ const HeroSection = () => {
   )
 }
 
-export default HeroSection
+export default HeroSection;

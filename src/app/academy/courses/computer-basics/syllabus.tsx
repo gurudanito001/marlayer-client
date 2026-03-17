@@ -1,8 +1,6 @@
 "use client"
 import { useState } from "react";
 
-
-
 const Syllabus = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
@@ -13,141 +11,80 @@ const Syllabus = () => {
   const syllabusData = [
     {
       week: 1,
-      title: "Introduction to Computers and Operating Systems",
+      title: "Computer Fundamentals & The Internet",
       overview: [
-        "Understanding hardware vs. software.",
-        "Basic computer components and their functions (CPU, RAM, storage, etc.)",
-        "Navigating the Windows/macOS interface.",
-        "File management: Creating, saving, renaming, moving, and deleting files and folders."
+        "Understanding hardware, software, and basic computer components.",
+        "Navigating the operating system and mastering file management (creating, saving, moving folders).",
+        "Web browsers, effective search techniques, and setting up email accounts.",
+        "Basic internet safety: managing passwords, avoiding phishing, and identifying malware."
       ]
     },
     {
       week: 2,
-      title: "Internet and Email Basics",
+      title: "Document Creation with Microsoft Word",
       overview: [
-        "How to connect to the internet.",
-        "Web browsers and basic search techniques.",
-        "Introduction to email: creating accounts, sending/receiving emails.",
-        "Basic internet safety and security (passwords, phishing, malware)."
+        "Overview of the Microsoft Word interface and ribbon toolbars.",
+        "Formatting mastery: fonts, alignment, line spacing, and styles.",
+        "Working with visual elements: inserting images, tables, and charts.",
+        "Professional touches: headers, footers, proofing tools, and exporting to PDF."
       ]
     },
     {
       week: 3,
-      title: "Getting Started with Microsoft Word",
+      title: "Data Management with Microsoft Excel",
       overview: [
-        "Overview of Microsoft Word interface (ribbon, toolbars).",
-        "Creating, saving, and opening documents.",
-        "Basic text formatting: fonts, styles, sizes, and colors.",
-        "Paragraph alignment, line spacing, and indentation."
+        "Navigating spreadsheets: workbooks, sheets, rows, and cells.",
+        "Entering data and utilizing basic formulas (SUM, AVERAGE, COUNT).",
+        "Visualizing data by creating and formatting simple charts and graphs.",
+        "Organizing information using sorting, filtering, and basic conditional formatting."
       ]
     },
     {
       week: 4,
-      title: "Advanced Features in Word",
+      title: "Engaging Presentations with PowerPoint",
       overview: [
-        "Working with images, tables, and charts.",
-        "Inserting headers, footers, and page numbers",
-        "Using templates, themes, and styles.",
-        "Proofing tools: Spell check, grammar check, and word count.",
-        "Printing and exporting documents to PDF."
+        "Setting up presentations, adding slides, and using master layouts.",
+        "Inserting and formatting text, images, and multimedia (audio/video).",
+        "Keeping audiences engaged with slide transitions and custom animations.",
+        "Best practices for delivering presentations and printing speaker notes."
       ]
     },
     {
       week: 5,
-      title: "Introduction to Microsoft Excel",
+      title: "Professional Communication & Cloud Integration",
       overview: [
-        "Overview of Microsoft Excel interface (ribbon, sheets, cells).",
-        "Entering and formatting data (numbers, text).",
-        "Basic formulas and functions (SUM, AVERAGE, etc.)",
-        "Creating and formatting simple charts and graphs."
+        "Mastering Microsoft Outlook: organizing emails, setting rules, and calendar management.",
+        "Task management, scheduling meetings, and professional email etiquette.",
+        "Integration: Embedding Excel charts into Word or PowerPoint seamlessly.",
+        "Cloud collaboration: Saving, sharing, and co-editing documents using OneDrive/Google Drive."
       ]
     },
     {
       week: 6,
-      title: "Advanced Excel Techniques",
+      title: "Hands-on Capstone Project & Review",
       overview: [
-        "Working with multiple worksheets.",
-        "Conditional formatting and data validation",
-        "Sorting and filtering data.",
-        "Introduction to pivot tables and basic data analysis."
-      ]
-    },
-    {
-      week: 7,
-      title: "Introduction to Microsoft PowerPoint",
-      overview: [
-        "Overview of Microsoft PowerPoint interface.",
-        "Creating and saving presentations",
-        "Adding slides and using slide layouts.",
-        "Inserting and formatting text, images, and graphics."
-      ]
-    },
-    {
-      week: 8,
-      title: "Enhancing PowerPoint Presentations",
-      overview: [
-        "Working with animations and slide transitions.",
-        "Adding multimedia (videos, audio) to presentations",
-        "Using themes, templates, and master slides.",
-        "Delivering and printing presentations (handouts, speaker notes)."
-      ]
-    },
-    {
-      week: 9,
-      title: "Introduction to Microsoft Outlook",
-      overview: [
-        "Overview of Microsoft Outlook interface",
-        "Setting up and managing email accounts",
-        "Sending, receiving, and organizing emails (folders, rules).",
-        "Attaching files and images to emails."
-      ]
-    },
-    {
-      week: 10,
-      title: "Using Outlook for Office Productivity",
-      overview: [
-        "Managing the calendar (scheduling meetings, setting reminders).",
-        "Creating and managing contacts.",
-        "Using tasks and to-do lists for time management.",
-        "Understanding email etiquette and best practices."
-      ]
-    },
-    {
-      week: 11,
-      title: "Integration and Collaboration Across Office Suite",
-      overview: [
-        "Copying and pasting data between Word, Excel, and PowerPoint.",
-        "Embedding Excel charts in Word or PowerPoint",
-        "Using Outlook with Word/Excel for emailing reports and presentations.",
-        "Sharing documents through OneDrive or other cloud storage."
-      ]
-    },
-    {
-      week: 12,
-      title: "Final Review and Hands-on Project",
-      overview: [
-        "Review of key topics from each module.",
-        "Practical projects: Create a business letter in Word, Develop a budget spreadsheet in Excel, Prepare a presentation in PowerPoint, Manage emails and tasks in Outlook.",
-        "Final assessment and feedback."
+        "Comprehensive review of the Microsoft Office Suite workflow.",
+        "Capstone Execution Part 1: Develop a budget spreadsheet (Excel) and draft a business proposal (Word).",
+        "Capstone Execution Part 2: Summarize findings in a presentation (PowerPoint) and schedule a mock review meeting (Outlook).",
+        "Final assessment, instructor feedback, and certificate issuance."
       ]
     },
     {
       week: "Assessment",
-      title: "",
+      title: "Grading Breakdown",
       overview: [
-        <><strong className="mr-3">Quizzes:</strong>After each module (10% of final grade)</>,
-        <><strong className="mr-3">Practical Assignments:</strong>Weekly assignments on Word, Excel, PowerPoint, and Outlook (40%)</>,
-        <><strong className="mr-3">Final Project:</strong>An integrated office project (30%)</>,
-        <><strong className="mr-3">Participation:</strong>Attendance and engagement in class activities (20%)</>
+        <><strong className="mr-3">Weekly Quizzes:</strong> Short reviews after each module (10% of final grade)</>,
+        <><strong className="mr-3">Practical Assignments:</strong> Hands-on tasks for Word, Excel, PowerPoint, and Outlook (40%)</>,
+        <><strong className="mr-3">Capstone Project:</strong> An integrated office workflow project demonstrating all skills (30%)</>,
+        <><strong className="mr-3">Participation:</strong> Attendance and engagement in class/community activities (20%)</>
       ]
     }
   ];
 
-
-
   return (
-    <section className="mb-14 max-w-6xl">
-      <h2 className="text-primary text-3xl font-bold mb-8">Course Syllabus</h2>
+    <section className="mb-14 max-w-6xl font-sans">
+      <h2 className="text-3xl md:text-4xl font-bold text-white mb-8">Course Syllabus</h2>
+
       <div className="flex flex-col gap-4">
         {syllabusData.map((item, index) => {
           const isOpen = openIndex === index;
@@ -164,8 +101,13 @@ const Syllabus = () => {
                 onClick={() => toggleWeek(index)}
                 className="w-full flex items-center justify-between p-6 text-left focus:outline-none"
               >
-                <span className={`text-lg transition-colors ${isOpen ? 'font-bold text-[#45B1A0]' : 'font-medium text-gray-800'}`}>
-                  {typeof item.week === 'number' ? `Week ${item.week}:` : `${item.week}:`} {item.title}
+                <span className={`text-lg transition-colors ${isOpen ? 'text-[#45B1A0]' : 'text-gray-800'}`}>
+                  <span className="font-normal opacity-70 mr-2 tracking-wide text-sm">
+                    {typeof item.week === 'number' ? `Week ${item.week}:` : `${item.week}:`}
+                  </span>
+                  <span className={isOpen ? 'font-bold' : 'font-semibold'}>
+                    {item.title}
+                  </span>
                 </span>
                 <div className={`flex-shrink-0 ml-4 flex items-center justify-center w-8 h-8 rounded-full transition-transform duration-300 ${isOpen ? 'bg-[#45B1A0]/10 text-[#45B1A0] rotate-180' : 'bg-gray-100 text-gray-500'}`}>
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
@@ -194,4 +136,4 @@ const Syllabus = () => {
   )
 }
 
-export default Syllabus
+export default Syllabus;

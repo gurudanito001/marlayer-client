@@ -123,7 +123,7 @@ type Course = {
   imageAlt: string;
   title: string;
   duration: string;
-  lectures: string;
+  timeCommitment: string;
   rating: number;
   price: string;
   isActive?: boolean;
@@ -135,43 +135,43 @@ const courses: Course[] = [
     imageSrc: "/images/tech-academy/computer-basics.jpg",
     imageAlt: "Person learning computer basics on a laptop.",
     title: "Computer Basics",
-    duration: "4 Weeks",
-    lectures: "24 Lectures",
+    duration: "6 Weeks",
+    timeCommitment: "4hrs/week",
     rating: 4.8,
-    price: "$150.00",
+    price: "₦65,000",
     isActive: true
   },
   {
     href: "/academy/courses/frontend-development-1",
-    imageSrc: "/images/tech-academy/responsive-web-dev.jpg",
-    imageAlt: "Web design layout shown on multiple devices.",
+    imageSrc: "/images/tech-academy/lady-dev.png",
+    imageAlt: "A lady who is a developer is smiling to the camera",
     title: "Frontend Development: 1",
-    duration: "6 Weeks",
-    lectures: "36 Lectures",
+    duration: "6 - 8 Weeks",
+    timeCommitment: "4hrs/week",
     rating: 4.9,
-    price: "$250.00",
+    price: "₦150,000",
     isActive: true
   },
   {
     href: "/academy/courses/frontend-development-2",
-    imageSrc: "/images/tech-academy/responsive-web-dev.jpg", 
-    imageAlt: "Code on a screen representing frontend web development.",
+    imageSrc: "/images/tech-academy/lady-dev.png", 
+    imageAlt: "A lady who is a developer is smiling to the camera",
     title: "Frontend Development: 2",
-    duration: "3 Weeks",
-    lectures: "18 Lectures",
+    duration: "12 Weeks",
+    timeCommitment: "4hrs/week",
     rating: 4.7,
-    price: "$200.00",
+    price: "#250,000",
     isActive: true
   },
   {
     href: "/academy/courses/backend-development",
-    imageSrc: "/images/tech-academy/backend-web-development.jpg",
-    imageAlt: "Server-side code on a dark background.",
+    imageSrc: "/images/tech-academy/guy-dev.jpg",
+    imageAlt: "Young guy who is a swe is working",
     title: "Backend Development",
     duration: "12 Weeks",
-    lectures: "48 Lectures",
+    timeCommitment: "4hrs/week",
     rating: 4.9,
-    price: "$300.00",
+    price: "#250,000",
     isActive: true
   },
   {
@@ -179,10 +179,10 @@ const courses: Course[] = [
     imageSrc: "/images/tech-academy/mobile-app-dev.jpg",
     imageAlt: "Mobile phone showing a newly developed application.",
     title: "Mobile App Development",
-    duration: "24 Weeks",
-    lectures: "82 Lectures",
+    duration: "16 Weeks",
+    timeCommitment: "4hrs/week",
     rating: 4.8,
-    price: "$450.00",
+    price: "#350,000",
     isActive: true
   },
 ];
@@ -222,7 +222,7 @@ const CourseCard = ({ course }: { course: Course }) => (
           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
           </svg>
-          {course.lectures}
+          {course.timeCommitment}
         </div>
 
         <div className="flex items-center gap-1.5 text-gray-300">
@@ -280,7 +280,7 @@ const CoursePackages = () => {
         </div>
 
         {/* Horizontal Scrolling Grid Layout */}
-        <div className="flex gap-6 overflow-x-auto -mx-6 px-6 scrollbar-hide py-14 items-stretch">
+        <div className="flex gap-6 overflow-x-auto -mx-6 px-6 py-14 items-stretch [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
           {courses.map((course) => (
             <div key={course.href} className="flex-none w-[80vw] sm:w-72 md:w-80">
               <CourseCard course={course} />

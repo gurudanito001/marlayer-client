@@ -2,10 +2,7 @@
 
 import { useState } from "react";
 
-
-
 const Syllabus = () => {
-  
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   const toggleWeek = (index: number) => {
@@ -15,178 +12,150 @@ const Syllabus = () => {
   const syllabusData = [
     {
       week: 1,
-      title: "Introduction to JavaScript",
+      title: "Core JavaScript & ES6+ Fundamentals",
       overview: [
-        "What is JavaScript?: Purpose, history, and use in web development.",
-        "Setting Up Your Environment: Using the browser console, code editors (VS Code).",
-        "Embedding JavaScript: Inline, internal, and external scripts in HTML.",
-        "Variables and Data Types: let, const, var, data types (number, string, boolean, null, undefined, symbol).",
-        "Operators: Arithmetic, assignment, comparison, logical, and conditional (? :) operators.",
-        "Conditionals: if, else if, else, and switch.",
-        "Loops: for, while, do...while, and for...of.",
-        "Exercises"
+        <><strong className="font-bold text-gray-900">Overview:</strong></>,
+        "Variables (let, const), data types, and operators.",
+        "Control flow: conditionals (if/else, switch) and loops (for, while).",
+        "Functions: Declarations, arrow functions, and scope.",
+        "ES6+ Features: Destructuring, spread/rest operators, and template literals.",
+        "Using AI to explain JavaScript logic and generate practice exercises.",
       ]
     },
     {
       week: 2,
-      title: "Objects and Arrays",
+      title: "Data Structures & The DOM",
       overview: [
-        <><strong className="font-bold text-gray-900">Javascript Objects:</strong></>,
-        "Javascript objects basics",
-        "Object Creation: Different ways to create objects (object literals, Object() constructor, Object.create()).",
-        "Properties and Methods: Understanding properties (key-value pairs) and methods (functions as values in objects).",
-        "Accessing Properties: Dot notation (object.property) and bracket notation (object['property']).",
-        "Object Manipulation: Adding properties, Updating properties, Deleting properties.",
-        "Object Methods: Object.keys(), Object.values().",
-        <><strong className="font-bold text-gray-900 mt-2 block">Javascript Arrays:</strong></>,
-        "Javascript arrays basics",
-        "Array creation, manipulation (push, pop, shift, unshift etc...)",
-        "Array Iteration: for, forEach, for...of",
-        "Searching and Filtering Arrays",
-        "Other Array methods"
+        <><strong className="font-bold text-gray-900">Working with Data:</strong></>,
+        "Arrays: Iteration (map, filter, reduce) and manipulation methods.",
+        "Objects: Creation, accessing properties, and methods.",
+        <><strong className="font-bold text-gray-900 mt-2 block">DOM Manipulation:</strong></>,
+        "Understanding the Document Object Model (DOM) tree.",
+        "Selecting, modifying, creating, and deleting HTML elements via JS.",
+        "Event Listeners: Handling clicks, form submissions, and keyboard events.",
       ]
     },
     {
       week: 3,
-      title: "Exercises",
+      title: "Asynchronous JS & API Integration",
       overview: [
         <><strong className="font-bold text-gray-900">Overview:</strong></>,
-        "Build an application that makes use of arrays and objects",
-        <><strong className="font-bold text-gray-900 mt-2 block">Possible Options:</strong></>,
-        "Todo List",
-        "Contact Book",
-        "Flashcard App",
-        "Budget Tracker",
-        "Recipe App"
+        "Understanding the Call Stack, Event Loop, and Asynchronous programming.",
+        "Callbacks, Promises, and modern async/await syntax.",
+        "Making HTTP requests using the Fetch API.",
+        "Error handling using try/catch blocks.",
+        "AI-Assisted Debugging: Using AI to trace network errors and fix async logic.",
       ]
     },
     {
       week: 4,
-      title: "DOM Manipulation",
+      title: "Introduction to React & Vite",
       overview: [
-        <><strong className="font-bold text-gray-900">Overview:</strong></>,
-        "Introduction to the Document Object Model (DOM): Understanding the DOM tree.",
-        "Selecting Elements: Using getElementById, querySelector, and querySelectorAll.",
-        "Modifying Elements: Changing text content, styles, attributes, and adding/removing classes.",
-        "Creating and Deleting Elements.",
-        "Events: Event listeners, types of events (click, mouseover, keyUp, etc.), and event propagation (bubbling vs. capturing).",
-        "Exercises"
+        <><strong className="font-bold text-gray-900">React Basics:</strong></>,
+        "Why React? Understanding the Virtual DOM and component-based architecture.",
+        "Setting up a modern, blazing-fast React project using Vite.",
+        "Understanding JSX syntax and rules.",
+        <><strong className="font-bold text-gray-900 mt-2 block">Components and Props:</strong></>,
+        "Building reusable functional components.",
+        "Passing data dynamically using Props.",
       ]
     },
     {
-      week: "5 and 6",
-      title: "JavaScript in the Browser",
+      week: 5,
+      title: "React State & Interactive UIs",
       overview: [
-        <><strong className="font-bold text-gray-900">Overview:</strong></>,
-        "Browser APIs: window, document, console, alert, confirm, prompt.",
-        "Working with Forms: Accessing form data, form validation.",
-        "Timers: setTimeout, setInterval, and clearing them.",
-        "Exercises"
+        <><strong className="font-bold text-gray-900">State Management:</strong></>,
+        "Introduction to React Hooks: Using useState to manage component state.",
+        "Handling user interactions and updating UI dynamically.",
+        <><strong className="font-bold text-gray-900 mt-2 block">Forms and Events:</strong></>,
+        "Controlled vs. Uncontrolled components.",
+        "Handling complex form submissions and validation in React.",
+      ]
+    },
+    {
+      week: 6,
+      title: "Side Effects & Data Fetching in React",
+      overview: [
+        <><strong className="font-bold text-gray-900">The useEffect Hook:</strong></>,
+        "Understanding the component lifecycle and side effects.",
+        "Fetching data from external REST APIs inside React components.",
+        "Managing loading states, empty states, and error handling.",
+        "Asking AI to generate mock APIs and explain dependency arrays.",
       ]
     },
     {
       week: 7,
-      title: "Advanced JavaScript and ES6+ Features",
+      title: "Routing & Single Page Applications (SPAs)",
       overview: [
-        <><strong className="font-bold text-gray-900">Modern JavaScript (ES6+):</strong></>,
-        "Spread and rest operators.",
-        "Template literals",
-        "Modules in JavaScript: import and export.",
-        "NPM and Packages: Installing and using external libraries with npm.",
-        "Local Storage vs Session Storage",
-        "Exercises"
+        <><strong className="font-bold text-gray-900">React Router:</strong></>,
+        "Setting up React Router for seamless, page-reload-free navigation.",
+        "Implementing dynamic routes and extracting URL parameters.",
+        "Creating nested routes and 404 Not Found pages.",
+        <><strong className="font-bold text-gray-900 mt-2 block">Mini-Project:</strong></>,
+        "Build a multi-page movie discovery app fetching data from a public API."
       ]
     },
     {
       week: 8,
-      title: "Advanced JavaScript and ES6+ Features II",
+      title: "Advanced State & Performance",
       overview: [
-        <><strong className="font-bold text-gray-900">Asynchronous JavaScript:</strong></>,
-        "Introduction to callbacks, Promises, and async/await.",
-        "Making API requests with Fetch.",
-        <><strong className="font-bold text-gray-900 mt-2 block">Error Handling and Debugging:</strong></>,
-        "Using try, catch for error handling.",
-        <><strong className="font-bold text-gray-900 mt-2 block">Project:</strong> Build an app using the Fetch API.</>
+        <><strong className="font-bold text-gray-900">Global State Management:</strong></>,
+        "Prop drilling vs. The Context API.",
+        "Setting up global state for things like User Authentication or Dark Mode.",
+        <><strong className="font-bold text-gray-900 mt-2 block">Advanced Hooks:</strong></>,
+        "Using useReducer for complex state logic.",
+        "Performance optimization basics: useMemo and useCallback.",
       ]
     },
     {
       week: 9,
-      title: "Introduction to React",
+      title: "Next.js & The Modern Frontend",
       overview: [
-        <><strong className="font-bold text-gray-900">React Basics:</strong></>,
-        "Setting up a React project with Create React App.",
-        "Setting up a React project with Vite.",
-        "Understanding JSX and the component-based architecture.",
-        <><strong className="font-bold text-gray-900 mt-2 block">Components and Props:</strong></>,
-        "Building functional components and passing props.",
-        "Exercise"
+        <><strong className="font-bold text-gray-900">Introduction to Next.js:</strong></>,
+        "Why the industry moved to Next.js (Server-Side Rendering vs. Client-Side Rendering).",
+        "Setting up a Next.js app with the App Router.",
+        "File-based routing and layout structures.",
+        "Optimizing SEO and performance automatically.",
       ]
     },
     {
       week: 10,
-      title: "React State Management",
+      title: "Backend Integration & Authentication",
       overview: [
-        <><strong className="font-bold text-gray-900">State Management:</strong></>,
-        "Using useState to manage component state.",
-        "Updating state and handling user interactions.",
-        <><strong className="font-bold text-gray-900 mt-2 block">React Events and Forms:</strong></>,
-        "Handling events in React and managing forms.",
-        "Exercises"
+        <><strong className="font-bold text-gray-900">Connecting the Dots:</strong></>,
+        "Connecting your React/Next.js frontend to a Backend (Node.js or Firebase/Supabase).",
+        "Implementing user authentication workflows (Login, Register, Logout).",
+        "Protecting private routes and managing user sessions.",
+        "Using AI to quickly scaffold auth flows and securely handle tokens.",
       ]
     },
     {
       week: 11,
-      title: "React Router",
+      title: "Capstone Project: Build with AI",
       overview: [
-        <><strong className="font-bold text-gray-900">React Router Basics:</strong></>,
-        "Setting up React Router for single-page applications.",
-        "Routing between pages and components.",
-        <><strong className="font-bold text-gray-900 mt-2 block">Component Lifecycle and Side Effects:</strong></>,
-        "Using useEffect for side effects and data fetching.",
-        <><strong className="font-bold text-gray-900 mt-2 block">Project:</strong></>,
-        "Create a single-page React app with basic routing and interactive components."
+        <><strong className="font-bold text-gray-900">Full-Stack Implementation:</strong></>,
+        "Plan and architect a feature-rich web application (e.g., E-commerce, Dashboard, or SaaS interface).",
+        "Use AI as a pair-programmer to generate UI components, unblock complex logic, and write boilerplate code.",
+        "Integrate all concepts: State, Routing, API fetching, and Global Context.",
       ]
     },
     {
-      week: "12 and 13",
-      title: "Advanced React Concepts",
+      week: 12,
+      title: "Deployment, Optimization & Career Prep",
       overview: [
-        <><strong className="font-bold text-gray-900">Hooks and Advanced State Management:</strong></>,
-        "Understanding custom hooks.",
-        "Intro to useReducer for more complex state management.",
-        <><strong className="font-bold text-gray-900 mt-2 block">Context API for Global State:</strong></>,
-        "Using React Context for shared state.",
-        <><strong className="font-bold text-gray-900 mt-2 block">Advanced React Router:</strong></>,
-        "Nested routes and route parameters.",
-        <><strong className="font-bold text-gray-900 mt-2 block">Project:</strong></>,
-        "Build a feature-rich React application, such as a blog or e-commerce site, with dynamic routing and global state."
-      ]
-    },
-    {
-      week: "14 and 15",
-      title: "Project Work & Deployment",
-      overview: [
-        <><strong className="font-bold text-gray-900">Full-Stack Project:</strong></>,
-        "Front-end integration with back-end APIs (optional REST API or Firebase).",
-        <><strong className="font-bold text-gray-900 mt-2 block">Deployment and Optimization:</strong></>,
-        "Building and optimizing for production",
-        "Deployment strategies: hosting on platforms like Netlify, Vercel, or GitHub Pages.",
-        <><strong className="font-bold text-gray-900 mt-2 block">Project:</strong></>,
-        "Complete and deploy the capstone project."
-      ]
-    },
-    {
-      week: 16,
-      title: "Course Wrap-Up and Career Preparation",
-      overview: [
-        "Resume tips for front-end developers"
+        <><strong className="font-bold text-gray-900">Deployment:</strong></>,
+        "Deploying React apps to Netlify and Next.js apps to Vercel.",
+        "Environment variables and production builds.",
+        <><strong className="font-bold text-gray-900 mt-2 block">Career Readiness:</strong></>,
+        "Polishing your GitHub portfolio and writing solid README files.",
+        "Frontend developer resume tips and preparing for technical interviews.",
       ]
     }
   ];
 
   return (
-    <section className="mb-14 max-w-6xl">
-      <h2 className="text-primary text-3xl font-bold mb-8">Course Syllabus</h2>
+    <section className="mb-14 max-w-6xl font-sans">
+      <h2 className="text-3xl md:text-4xl font-bold text-white mb-8">Course Syllabus</h2>
 
       <div className="flex flex-col gap-4">
         {syllabusData.map((item, index) => {
@@ -195,20 +164,23 @@ const Syllabus = () => {
           return (
             <div
               key={index}
-              className={`w-full rounded-2xl transition-all duration-300 border ${
-                isOpen
+              className={`w-full rounded-2xl transition-all duration-300 border ${isOpen
                   ? 'bg-white border-primary shadow-md'
                   : 'bg-white border-gray-200 hover:border-primary/50'
-              }`}
+                }`}
             >
               <button
                 onClick={() => toggleWeek(index)}
                 className="w-full flex items-center justify-between p-6 text-left focus:outline-none"
               >
-                <span className={`text-lg transition-colors ${isOpen ? 'font-bold text-[#45B1A0]' : 'font-medium text-gray-800'}`}>
-                  {typeof item.week === 'number' ? `Week ${item.week}:` : `${item.week}:`} {item.title}
+                <span className={`text-lg transition-colors ${isOpen ? 'text-[#45B1A0]' : 'text-gray-800'}`}>
+                  <span className="font-normal opacity-70 mr-2 tracking-wide text-sm">
+                    {typeof item.week === 'number' ? `Week ${item.week}:` : `${item.week}:`}
+                  </span>
+                  <span className={isOpen ? 'font-bold' : 'font-semibold'}>
+                    {item.title}
+                  </span>
                 </span>
-
                 <div className={`flex-shrink-0 ml-4 flex items-center justify-center w-8 h-8 rounded-full transition-transform duration-300 ${isOpen ? 'bg-[#45B1A0]/10 text-[#45B1A0] rotate-180' : 'bg-gray-100 text-gray-500'}`}>
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
@@ -217,9 +189,8 @@ const Syllabus = () => {
               </button>
 
               <div
-                className={`overflow-hidden transition-all duration-500 ease-in-out ${
-                  isOpen ? 'max-h-[1000px] opacity-100' : 'max-h-0 opacity-0'
-                }`}
+                className={`overflow-hidden transition-all duration-500 ease-in-out ${isOpen ? 'max-h-[1000px] opacity-100' : 'max-h-0 opacity-0'
+                  }`}
               >
                 <div className="p-6 pt-0 text-gray-600 leading-relaxed">
                   <ul className="list-disc list-outside flex flex-col gap-3 pl-5">
@@ -237,4 +208,4 @@ const Syllabus = () => {
   )
 }
 
-export default Syllabus
+export default Syllabus;

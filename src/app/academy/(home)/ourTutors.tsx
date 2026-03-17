@@ -106,25 +106,24 @@ const BackgroundIcons = () => {
 const tutors = [
   {
     id: 1,
-    name: "Dr. Ted Burgess",
-    role: "Lead Software Engineering Tutor",
-    quote: "“I have completed multiple post-graduate certificates in my life and always felt relief at the end. Teaching at Marlayer, I strive to make sure students feel a sense of loss when they have no new classes to attend because the learning is that engaging.”",
-    image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=800",
+    name: "Daniel Nwokocha",
+    role: "Lead Instructor & Product Architect",
+    quote: [
+      "Daniel is a seasoned software engineer and tech entrepreneur with over seven years of industry experience. Specializing in rapid product development, he has a proven track record of helping startups architect, build, and launch Minimum Viable Products (MVPs) in record time.",
+      "A passionate educator, Daniel brings over five years of dedicated teaching experience to Marlayer Academy. Most recently, he served as a Backend Engineering Facilitator for the National Society of Black Engineers (NSBE) program in collaboration with Western Illinois University. At Marlayer, Daniel focuses on bridging the gap between writing code and launching viable, real-world businesses."
+    ],
+    image: "/images/tech-academy/daniel.jpeg", // Replace with his actual image path
   },
   {
     id: 2,
-    name: "Sarah Jenkins",
-    role: "Senior UX/UI Design Instructor",
-    quote: "“Design is more than just making things look pretty; it is about solving complex user problems. I love watching my students at Marlayer Academy have that 'aha' moment when they finally understand user empathy and flow.”",
-    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=800",
-  },
-  {
-    id: 3,
-    name: "Marcus Chen",
-    role: "Cloud Infrastructure Architect",
-    quote: "“The cloud is the backbone of modern tech. My goal is to break down complex cloud architectures into bite-sized, practical lessons so our students can confidently deploy and scale real-world applications.”",
-    image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=800",
-  },
+    name: "Nathan Omomowo",
+    role: "Senior Software Engineering Instructor",
+    quote: [
+      "Nathan is a Senior Software Engineer bringing over a decade of hands-on industry experience to the Marlayer Academy classroom. With a deep specialization in architecting robust, scalable enterprise applications, he understands exactly what top-tier tech companies look for in engineering talent.",
+      "Over his extensive career, Nathan has mentored and trained dozens of aspiring developers. He is not only an exceptional engineer but a gifted educator, renowned for his ability to break down complex software engineering principles into digestible, practical lessons that empower students to build with confidence."
+    ],
+    image: "/images/tech-academy/nathan.jpeg", // Replace with his actual image path
+  }
 ];
 
 
@@ -164,18 +163,22 @@ export default function TutorsSlider() {
           <div className="flex flex-col relative min-h-[350px] justify-center">
             <div key={currentTutor.id} className="animate-fade-in">
               {/* 5 Stars */}
-              <div className="flex gap-1 mb-8">
+              {/* <div className="flex gap-1 mb-8">
                 {[...Array(5)].map((_, i) => (
                   <svg key={i} className="w-5 h-5 text-[#ff7a00]" viewBox="0 0 20 20" fill="currentColor">
                     <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                   </svg>
                 ))}
-              </div>
+              </div> */}
 
               {/* Quote */}
-              <p className="text-xl md:text-[22px] leading-[1.7] text-gray-300 font-light mb-10 max-w-lg">
-                {currentTutor.quote}
-              </p>
+              <div className="mb-10 max-w-lg">
+                {currentTutor.quote.map((paragraph, index) => (
+                  <p key={index} className="text-xl md:text-[18px] leading-[1.7] text-gray-300 font-light mb-4 last:mb-0">
+                    {paragraph}
+                  </p>
+                ))}
+              </div>
 
               {/* Tutor Info */}
               <div>
