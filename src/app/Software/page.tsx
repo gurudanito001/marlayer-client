@@ -1,148 +1,157 @@
+"use client";
+
+import { useState } from 'react';
 import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
+import Footer from '../(home)/footer';
 import Image from 'next/image';
 
+const servicesData = [
+    {
+        id: '01',
+        title: 'UI/UX Design',
+        desc: 'Our UI/UX design process helps you visualize your software solution before development begins. Through wireframes, prototypes, and user flows, we transform ideas into interactive experiences — forming a critical phase in delivering a successful, user-centered product.',
+        img: '/images/uiux.jpg'
+    },
+    {
+        id: '02',
+        title: 'Web Development',
+        desc: 'Our web development process brings your approved designs to life with clean, scalable, and high-performance code. As a critical phase in delivering your complete software solution, we build responsive, secure, and fully functional web applications that transform your vision into a powerful digital product ready for real-world use.',
+        img: '/images/webdev.jpg'
+    },
+    {
+        id: '03',
+        title: 'Mobile Development',
+        desc: 'Our mobile development process transforms your validated designs into fast, reliable, and user-friendly mobile applications. As a key phase in delivering your complete software solution, we build scalable iOS and Android apps that extend your product’s reach and deliver seamless experiences across devices.',
+        img: '/images/mobileDev.jpg'
+    },
+    {
+        id: '04',
+        title: 'Data Analysis',
+        desc: 'Our data analysis process transforms raw data into clear, actionable insights that guide smarter decision-making. As a strategic phase in delivering your complete software solution, we collect, structure, and interpret your data to uncover patterns, optimize performance, and drive measurable business growth.',
+        img: '/images/dataAnalysis.png'
+    }
+];
+
 const Home = () => {
+    const [openSection, setOpenSection] = useState<string | null>(null);
 
     return (
         <div className="w-full bg-white">
             <Navbar />
-            <section className="pt-24 lg:pt-32 pb-10 text-center px-4">
-                <div className="max-w-5xl mx-auto">
-                    <p className="text-sm md:text-lg text-gray-600 mb-4 font-medium">
-                        One-Stop Solution For All Your Business Needs
-                    </p>
-                    <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold leading-tight mb-8 text-black">
-                        Creating <span className="text-[#564AF7]">Softwares </span> 
-                        & Digital Excellence
-                    </h1>
+            <section className="relative w-full h-[70vh] min-h-[750px] flex items-center justify-center">
 
-                    
-                    <div className="flex items-center justify-center gap-4">
-                        <button className="bg-yellow-400 text-black font-bold py-2 lg:py-3 px-5 lg:px-8 rounded-full shadow-lg hover:bg-yellow-500 transition">
-                            Explore Our Work
-                        </button>
-                        <div className="w-10 h-10 lg:w-16 lg:h-16 bg-[#564AF7] rounded-full flex items-center justify-center shadow-lg cursor-pointer hover:bg-purple-700 transition">
-                            <svg className="w-6 h-6 text-white pl-1" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M8 5v14l11-7z" />
-                            </svg>
-                        </div>
-                    </div>
+                {/* Hero Background Image */}
+                <Image
+                    src="/images/hero.jpg"
+                    alt="Hero Background"
+                    fill
+                    className="object-cover"
+                    priority
+                />
+
+                {/* Dark Overlay for text readability */}
+                <div className="absolute inset-0 bg-black/65 z-0"></div>
+
+                {/* Hero Content */}
+                <div className="relative z-10 max-w-5xl mx-auto px-4 text-center mt-10">
+                    <p className="text-sm md:text-lg text-gray-300 mb-6 font-medium tracking-widest">
+                        Your Technology Partner for Custom-Built Software Solutions
+                    </p>
+                    <h1 className="text-2xl md:text-5xl font-bold leading-tight text-white drop-shadow-lg">
+                        Transforming Ideas Into Powerful Digital Systems
+                    </h1>
                 </div>
+
             </section>
 
-           
-            <div className="relative w-full pb-20">
+            {/*ACCORDION SECTION*/}
+            <div className="relative w-full pb-20 pt-24 lg:pt-32 bg-gray-50 text-black">
+                <div className="mx-auto max-w-[1400px] px-6 lg:px-20">
 
-                {/*BLUE CARD */}
-                <div className="relative mt-32 lg:mt-40 mx-auto max-w-[1400px] bg-[#564AF7] text-white rounded px-6 lg:px-20 pt-16 lg:pt-24 pb-20">
-
-                    <div className="absolute -top-32 right-0 w-full max-w-[600px] flex justify-end">
-                        <div className="relative w-full aspect-[16/7] rounded">
-                            <Image
-                                src="/images/homeHero.avif"
-                                alt="Team Working"
-                                fill
-                                className="object-cover"
-                                
-                            />
-                        </div>
-                    </div>
-
-                   
-                    <div className="max-w-2xl mb-10 lg:mb-24 pt-20 lg:pt-32">
-                        <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold leading-tight">
-                            Turning Your Ideas Into Cutting-edge Technologies
+                    <div className="max-w-3xl mb-12 lg:mb-16">
+                        <h2 className="text-2xl md:text-4xl lg:text-4xl font-bold tracking-tight leading-tight text-gray-900 text-center lg:text-left">
+                            Turning Your Ideas Into <span className="text-[#45B1A0]">Cutting-edge</span> Technologies
                         </h2>
                     </div>
 
+                    <div className="flex flex-col">
+                        {servicesData.map((service, index) => {
+                            const isOpen = openSection === service.id;
+                            const isLast = index === servicesData.length - 1;
 
-                    <div className="flex flex-col w-full">
+                            return (
+                                <div
+                                    key={service.id}
+                                    className={`group w-full overflow-hidden transition-colors duration-500 hover:border-[#000000] ${isLast ? '' : 'border-b border-gray-200'}`}
+                                >
+                                    
+                                    <div
+                                        onClick={() => setOpenSection(isOpen ? null : service.id)}
+                                        className="flex items-center justify-between py-8 lg:py-10 cursor-pointer"
+                                    >
+                                        <div className="flex items-center gap-3 lg:gap-10">
+                                            {/* Number */}
+                                            <span className={`text-xl md:text-2xl font-light transition-colors duration-500 text-gray-900`}>
+                                                {service.id}/
+                                            </span>
+                                            {/* Title */}
+                                            <span className={`text-sm md:text-2xl font-semibold tracking-tight transition-colors duration-500 text-gray-900`}>
+                                                {service.title}
+                                            </span>
+                                        </div>
 
-                        {/* ---------- 01: Software Design ---------- */}
-                        <div className="flex items-center justify-between py-10">
-                            <div className="flex items-center gap-2 lg:gap-6">
-                                <span className="text-sm md:text-lg text-purple-200 font-light">01/</span>
-                                <span className="text-sm md:text-lg font-bold">Software Design</span>
-                            </div>
-
-                            <span className="text-sm font-semibold underline underline-offset-4 decoration-purple-300 hover:decoration-white transition cursor-pointer whitespace-nowrap">
-                                More Information
-                            </span>
-                        </div>
-
-                        {/* 02: Software Development */}
-                        <div className="py-14 border-t border-purple-300/40 w-full">
-
-                            <div className="flex flex-col lg:flex-row justify-between items-start gap-10">
-
-                                
-                                <div className="flex flex-col max-w-lg">
-                                    <div className="flex items-center gap-2 lg:gap-6 mb-6">
-                                        <span className="text-sm md:text-lg text-purple-200 font-light">02/</span>
-                                        <span className="text-sm md:text-lg font-bold">
-                                            Software Development
+                                        {/* Text Button */}
+                                        <span className={`text-sm underline tracking-widest font-semibold transition-colors duration-300 whitespace-nowrap ${isOpen ? 'text-[#45B1A0]' : 'text-[#45B1A0] group-hover:text-[#45B1A0]'
+                                            }`}>
+                                            {isOpen ? "Close Information" : "More Information"}
                                         </span>
                                     </div>
 
-                                    <div className="pl-14">
-                                        <p className="text-purple-100 text-base leading-relaxed mb-10">
-                                            We provide the best and most innovative software and mobile
-                                            app development services, tailored to your specific business needs
-                                            and requirements.
-                                        </p>
+                                    {/* Accordion Content (Revealed on Click) */}
+                                    <div
+                                        className={`grid transition-all duration-700 ease-in-out ${isOpen
+                                                ? 'grid-rows-[1fr] opacity-100 pb-10 lg:pb-12'
+                                                : 'grid-rows-[0fr] opacity-0'
+                                            }`}
+                                    >
+                                        <div className="overflow-hidden">
+                                            <div className="flex flex-col lg:flex-row justify-between gap-10 lg:pl-[5.5rem] pt-4">
 
-                                        <button className="underline text-sm font-bold hover:text-yellow-400 transition mt-28">
-                                            Let&apos;s Work Together
-                                        </button>
+                                                {/* Text Content */}
+                                                <div className="flex flex-col w-full lg:max-w-lg justify-between">
+                                                    <p className="text-gray-600 text-base lg:text-lg leading-relaxed mb-8">
+                                                        {service.desc}
+                                                    </p>
+
+                                                    <button className="flex items-center gap-2 text-sm font-bold text-[#45B1A0] transition underline w-max group/btn">
+                                                        Let&apos;s Work Together
+                                                        <svg className="w-4 h-4 transform group-hover/btn:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                                        </svg>
+                                                    </button>
+                                                </div>
+
+                                                {/* Image Content */}
+                                                <div className="relative w-full lg:w-[400px] aspect-[4/3] group/img overflow-hidden rounded-xl shadow-lg mt-6 lg:mt-0">
+                                                    <Image
+                                                        src={service.img}
+                                                        alt={service.title}
+                                                        fill
+                                                        className="object-cover transition-transform duration-700 group-hover/img:scale-105"
+                                                    />
+                                                </div>
+
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-
-                               
-                                <div className="relative w-full lg:w-auto flex justify-end mt-6 lg:mt-0">
-                                    <div className="relative w-[300px] h-[400px]">
-                                        <Image
-                                            src="/images/homeHero2.jpg"
-                                            alt="Mobile App"
-                                            fill
-                                            className="object-cover rounded shadow-2xl"
-                                        />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* ---------- 03: Website Development ---------- */}
-                        <div className="flex items-center justify-between py-10 border-t border-purple-300/40 w-full">
-                            <div className="flex items-center gap-2 lg:gap-6">
-                                <span className="text-sm md:text-lg text-purple-200 font-light">03/</span>
-                                <span className="text-sm md:text-lg font-bold">Website Development</span>
-                            </div>
-
-                            <span className="text-sm font-semibold underline underline-offset-4 decoration-purple-300 hover:decoration-white transition cursor-pointer whitespace-nowrap">
-                                More Information
-                            </span>
-                        </div>
-
-                        {/* ---------- 04: Apps & Games Development ---------- */}
-                        <div className="flex items-center justify-between py-10 border-t border-purple-300/40 w-full">
-                            <div className="flex items-center gap-2 lg:gap-6">
-                                <span className="text-sm md:text-lg text-purple-200 font-light">04/</span>
-                                <span className="text-sm md:text-lg font-bold">
-                                    Apps & Games Development
-                                </span>
-                            </div>
-
-                            <span className="text-sm font-semibold underline underline-offset-4 decoration-purple-300 hover:decoration-white transition cursor-pointer whitespace-nowrap">
-                                More Information
-                            </span>
-                        </div>
-
+                            );
+                        })}
                     </div>
                 </div>
             </div>
 
-
+           
             <div className=" bg-white pb-20">
 
                 <div className="w-[90%]  mx-auto mt-24 mb-16 text-center">
@@ -197,9 +206,6 @@ const Home = () => {
                     </div>
                 </div>
 
-
-
-
                 <div className="w-[90%] max-w-[1400px] mx-auto bg-[#1C1B20] text-white rounded pt-40 lg:pt-48 pb-16">
 
                     <div className="px-6 lg:px-16">
@@ -222,7 +228,6 @@ const Home = () => {
                             </div>
                         </div>
 
-                       
                         <div className="flex flex-col lg:flex-row items-center lg:items-start gap-10 mb-28">
                             <div className="relative w-full lg:w-[35%] aspect-[4/3] rounded">
                                 <Image src="/images/lastestProjectImg2.webp" alt="Project 2" fill className="object-cover" />
@@ -240,7 +245,6 @@ const Home = () => {
                         </div>
 
                     </div>
-                  
 
                     <div className="relative w-full aspect-[16/6] mb-20">
                         <Image
@@ -251,7 +255,6 @@ const Home = () => {
                         />
                     </div>
 
-                    
                     <div className="px-6 lg:px-16 text-center w-full max-w-3xl mx-auto">
                         <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4">
                             Subscribe To Our Newsletter

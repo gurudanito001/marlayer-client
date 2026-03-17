@@ -54,7 +54,7 @@ const NavBar = ({ darkTheme = false }: NavBarProps) => {
               Academy
             </Link>
   
-            <Link href="/Software" className={linkClasses}>
+            <Link href="/software" className={linkClasses}>
               Software
             </Link>
   
@@ -81,7 +81,7 @@ const NavBar = ({ darkTheme = false }: NavBarProps) => {
               className="menu menu-sm dropdown-content bg-white text-gray-800 rounded-md z-10 mt-3 w-52 p-2 shadow-lg"
             >
               <li><Link href="/academy" className="py-2">Academy</Link></li>
-              <li><Link href="/Software" className="py-2">Software</Link></li>
+              <li><Link href="/software" className="py-2">Software</Link></li>
               <li><Link href="/gadgets" className="py-2">Gadgets</Link></li>
             </ul>
           </div>
