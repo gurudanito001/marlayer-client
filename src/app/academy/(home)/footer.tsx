@@ -136,7 +136,7 @@ const Footer = () => {
               <Image src="/images/linkedIn.svg" width={36} height={36} alt="LinkedIn" className="opacity-80 hover:opacity-100" />
             </Link>
             <Link
-              href="https://www.instagram.com/marlayers/"
+              href="https://www.instagram.com/marlayers/s/"
               target="_blank"
               className=" rounded-full bg-white/5 flex items-center justify-center border border-white/10 hover:bg-white/20 hover:border-white/30 transition-all duration-300"
             >
