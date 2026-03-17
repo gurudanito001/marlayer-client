@@ -11,13 +11,13 @@ const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
-  // 1. Determine if we are on the Home page. 
-  // (Checks both '/' and '/software' based on your links)
-  const isHomePage = pathname === '/' || pathname === '/software';
+  // 1. Determine which pages should have the transparent-to-solid scroll effect.
+  const transparentHeaderPages = ['/', '/software', '/software/About', '/software/Services', '/software/Projects'];
+  const isTransparentHeroPage = transparentHeaderPages.includes(pathname);
 
-  // 2. The Navbar should be solid white IF we are NOT on the home page, 
-  // OR if we are on the home page and have scrolled down.
-  const showSolidNav = !isHomePage || isScrolled;
+  // 2. The Navbar should be solid white IF we are NOT on one of the pages above, 
+  // OR if we are on one of those pages and have scrolled down.
+  const showSolidNav = !isTransparentHeroPage || isScrolled;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -44,7 +44,7 @@ const Navbar = () => {
     <>
       <nav 
         className={`${
-          isHomePage ? 'fixed' : 'sticky'
+          isTransparentHeroPage ? 'fixed' : 'sticky'
         } top-0 left-0 w-full z-50 transition-all duration-300 ease-in-out flex justify-between items-center py-4 lg:py-6 px-4 md:px-8 lg:px-16 ${
           showSolidNav ? 'bg-white shadow-sm' : 'bg-transparent'
         }`}
