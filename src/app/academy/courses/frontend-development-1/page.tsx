@@ -7,12 +7,13 @@ import Footer from "../../(home)/footer";
 
 
 
-const BackendDevelopmentCourse = ()=>{
+const ResponsiveWebDesignCourse = ()=>{
 
   return (
     <main className="bg-white">
       <HeroSection />
       <section className="flex flex-col bg-white px-3 sm:px-5 xl:px-28 mt-10">
+        
         <Syllabus />
       </section>
       {/* <ForEnterprises /> */}
@@ -21,4 +22,4 @@ const BackendDevelopmentCourse = ()=>{
   )
 }
 
-export default BackendDevelopmentCourse
+export default ResponsiveWebDesignCourse

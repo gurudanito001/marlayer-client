@@ -12,6 +12,7 @@ const HeroSection = () => {
   const [loopNum, setLoopNum] = useState(0);
   const [typingSpeed, setTypingSpeed] = useState(150);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const phrases = ["Software Solutions", "Tech Education", "Flagship Gadgets"];
 
@@ -55,17 +56,17 @@ const HeroSection = () => {
   }, []);
 
   const navLinkClasses = isScrolled 
-    ? "text-gray-600 hover:text-[#45B1A0] hover:border-[#45B1A0]" 
+    ? "text-gray-300 hover:text-[#45B1A0] hover:border-[#45B1A0]" 
     : "text-gray-300 hover:text-white hover:border-white";
 
   return (
     <section className="relative w-full h-screen max-h-[800px] xl:max-h-[950px] flex items-center bg-[#45B1A0] overflow-hidden">
       
       {/* Integrated Navbar */}
-      <nav className={`w-full left-0 top-0 z-[999] transition-all duration-300 ${isScrolled ? 'fixed bg-white  backdrop-blur-lg shadow-lg py-4' : 'absolute py-8'}`}>
-          <div className="w-full max-w-[1900px] mx-auto px-6 md:px-12 lg:px-16 xl:px-28 flex justify-between items-center">
+      <nav className={`w-full left-0 top-0 z-[999] transition-all duration-300 ${isScrolled ? 'fixed bg-[#0E1F18]  backdrop-blur-lg shadow-lg py-2 lg:py-4' : 'absolute py-8'}`}>
+          <div className="w-full max-w-[1900px] mx-auto px-6 md:px-12 lg:px-16 xl:px-28 flex justify-between items-center relative">
             
-            <div className="flex items-center space-x-8">
+            <div className="flex items-center">
               <Link href="/" className="flex items-baseline">
                 <div className="">
                  <Image src="/images/marlayer-logo.svg" width={24} height={24} alt="Marlayer Logo" />
@@ -77,9 +78,10 @@ const HeroSection = () => {
                   ARLAYER
                 </span>
               </Link>
+            </div>
 
-              {/* Desktop Navigation Links */}
-              <div className="hidden md:flex items-center space-x-8">
+            {/* Desktop Navigation Links - Centered */}
+            <div className="hidden md:flex items-center space-x-8 absolute left-1/2 transform -translate-x-1/2">
                 <Link 
                   href="/academy" 
                   className={`${navLinkClasses} font-medium transition-colors duration-200 py-1 text-[15px] border-b-2 border-transparent`}
@@ -100,32 +102,26 @@ const HeroSection = () => {
                 >
                   Flagship Gadgets
                 </Link>
-              </div>
             </div>
             
-            <div className="flex items-center">
+            <div className="flex items-center gap-4">
+              {/* Contact Us Button (Desktop) */}
+              <Link 
+                href="/contact" 
+                className={`hidden md:inline-flex items-center justify-center px-6 py-2.5 border rounded-full font-medium transition-colors duration-300 ${isScrolled ? 'border-[#45B1A0] text-[#45B1A0] hover:bg-[#45B1A0] hover:text-white' : 'border-white text-white hover:bg-white hover:text-[#45B1A0]'}`}
+              >
+                Contact Us
+              </Link>
+
               {/* Mobile Menu Button */}
-              <div className="dropdown dropdown-end md:hidden">
-                <div tabIndex={0} role="button" className={`btn btn-ghost btn-circle avatar ${isScrolled ? 'text-gray-600' : 'text-white'}`}>
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
-                  </svg>
-                </div>
-                <ul
-                  tabIndex={0}
-                  className="menu menu-sm dropdown-content bg-[#0b1021] border border-white/10 text-white rounded-md z-10 mt-3 w-52 p-2 shadow-lg"
-                >
-                  <li>
-                    <Link href="/academy" className="py-2 hover:bg-white/10">Academy</Link>
-                  </li>
-                  <li>
-                    <Link href="/software" className="py-2 hover:bg-white/10">Software</Link>
-                  </li>
-                  <li>
-                    <Link href="/gadgets" className="py-2 hover:bg-white/10">Gadgets</Link>
-                  </li>
-                </ul>
-              </div>
+              <button 
+                onClick={() => setMobileMenuOpen(true)}
+                className={`md:hidden btn btn-ghost btn-circle ${isScrolled ? 'text-gray-600' : 'text-white'}`}
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+              </button>
             </div>
           </div>
         </nav>
@@ -137,13 +133,13 @@ const HeroSection = () => {
         style={{ backgroundImage: "url('/images/homepage/glass-house-2.jpg')" }}
       >
 
-        {/* Gradient Overlay: Deep blue on the left fading to transparent on the right */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#001714] via-[#001700]/90 to-transparent"></div>
+        {/* Overlay: Solid color with opacity to cover image but keep it visible */}
+        <div className="absolute inset-0 bg-[#001714]/70"></div>
       </div>
 
       {/* Main Content Area */}
-      <div className="relative z-10 w-full max-w-[1900px] mx-auto px-6 md:px-12 lg:px-16 xl:px-28 flex flex-col justify-center">
-        <article className="max-w-5xl">
+      <div className="relative z-10 w-full max-w-[1900px] mx-auto px-6 md:px-12 lg:px-16 xl:px-28 flex flex-col justify-center items-center text-center">
+        <article className="max-w-5xl flex flex-col items-center">
           <h1 className="text-4xl md:text-5xl lg:text-[4rem] font-bold text-white mb-6 tracking-tight leading-10">
             Leverage On World Class <br className="hidden md:block" />
             <span style={{ color: logoTeal }}>{text}</span>
@@ -155,7 +151,7 @@ const HeroSection = () => {
           </p>
 
           {/* Call to Action Buttons */}
-          <div className="flex flex-wrap items-center gap-4">
+          <div className="flex flex-wrap items-center justify-center gap-4">
             <a 
               href='/#ecosystem' 
               onClick={(e) => {
@@ -176,7 +172,7 @@ const HeroSection = () => {
       </div>
 
       {/* Scroll Down Indicator */}
-      <button 
+      {/* <button 
         className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-2 cursor-pointer group"
         onClick={(e) => {
             const element = document.getElementById('ecosystem');
@@ -200,7 +196,63 @@ const HeroSection = () => {
         <span className="text-white/60 text-[10px] tracking-widest uppercase font-light group-hover:text-white/90 transition-colors">
           Scroll Down
         </span>
-      </button>
+      </button> */}
+
+      {/* Mobile Sidebar Overlay */}
+      <div className={`fixed inset-0 z-[1000] md:hidden ${mobileMenuOpen ? 'pointer-events-auto' : 'pointer-events-none'}`}>
+        {/* Backdrop */}
+        <div 
+          className={`absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity duration-300 ${mobileMenuOpen ? 'opacity-100' : 'opacity-0'}`} 
+          onClick={() => setMobileMenuOpen(false)}
+        ></div>
+        
+        {/* Sidebar Content */}
+        <div className={`absolute right-0 top-0 h-full w-[85%] max-w-sm bg-white shadow-2xl transform transition-transform duration-300 ease-out flex flex-col px-6 py-4 ${mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}>
+          <header className="flex justify-between items-center mb-10 border-b border-gray-100 pb-4">
+            <Link href="/" className="flex items-baseline">
+              <div className="">
+                <Image src="/images/marlayer-logo.svg" width={24} height={24} alt="Marlayer Logo" />
+              </div>
+              <span
+                className="font-extrabold text-2xl ml-0.5"
+                style={{ color: logoTeal }}
+              >
+                ARLAYER
+              </span>
+            </Link>
+            <button onClick={() => setMobileMenuOpen(false)} className="btn btn-ghost btn-circle btn-sm">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </header>
+
+          <ul className="flex flex-col space-y-6">
+            <li>
+              <Link href="/academy" className="text-xl font-medium text-gray-800 hover:text-[#45B1A0] transition-colors" onClick={() => setMobileMenuOpen(false)}>
+                Tech Academy
+              </Link>
+            </li>
+            <li>
+              <Link href="/software" className="text-xl font-medium text-gray-800 hover:text-[#45B1A0] transition-colors" onClick={() => setMobileMenuOpen(false)}>
+                Software Solutions
+              </Link>
+            </li>
+            <li>
+              <Link href="/gadgets" className="text-xl font-medium text-gray-800 hover:text-[#45B1A0] transition-colors" onClick={() => setMobileMenuOpen(false)}>
+                Flagship Gadgets
+              </Link>
+            </li>
+          </ul>
+
+          <div className="mt-auto">
+             <Link href="/contact" className="block w-full text-center bg-[#45B1A0] text-white font-bold py-4 rounded-xl shadow-lg hover:bg-[#369b8b] transition-all transform hover:-translate-y-1" onClick={() => setMobileMenuOpen(false)}>
+                Get in Touch
+             </Link>
+             <p className="text-center text-gray-400 text-sm mt-6">© Marlayer {new Date().getFullYear()}</p>
+          </div>
+        </div>
+      </div>
 
     </section>
   );

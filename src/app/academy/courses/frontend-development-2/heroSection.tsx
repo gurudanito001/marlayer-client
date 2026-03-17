@@ -46,7 +46,7 @@ const HeroSection = () => {
         <div className="w-full max-w-[1900px] mx-auto px-6 md:px-12 lg:px-16 xl:px-28 flex justify-between items-center relative">
           
           <div className="flex items-center">
-            {/* Updated Logo Link to /academy with ACADEMY text */}
+            {/* Logo Link to /academy with ACADEMY text */}
             <Link href="/academy" className="flex items-baseline">
               <div className="">
                 <Image src="/images/marlayer-logo.svg" width={24} height={24} alt="Marlayer Logo" />
@@ -125,11 +125,11 @@ const HeroSection = () => {
         </div>
 
         <h1 className="text-4xl md:text-6xl lg:text-[4.5rem] font-semibold mb-6 leading-[1.1] tracking-tight text-white">
-          Master Backend Dev & <br className="hidden md:block" /> AI-Driven Architecture
+          Frontend Development 2: <br className="hidden md:block" /> JavaScript, React & Next.js
         </h1>
         
         <p className="text-lg md:text-xl font-light text-gray-200 mb-10 max-w-3xl leading-relaxed">
-          Go from absolute beginner to deploying secure, scalable APIs. Learn Node.js, Express, and Database management while mastering AI tools to code, debug, and architect like a senior engineer.
+          Elevate your frontend skills. Dive deep into modern JavaScript (ES6+), build highly interactive user interfaces with React, master complex state management, and step into the future of web development using Next.js and AI-assisted coding.
         </p>
 
         {/* Objectives Box */}
@@ -138,23 +138,23 @@ const HeroSection = () => {
           <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4 text-base md:text-lg text-gray-200">
             <li className="flex items-start"> 
               <CheckIcon className="w-6 h-6 text-[#45B1A0] mr-3 flex-shrink-0 mt-0.5" /> 
-              <span>Architect scalable APIs using Node.js and Express.</span>
+              <span>Write efficient, modular JavaScript and master core programming principles.</span>
             </li>
             <li className="flex items-start"> 
               <CheckIcon className="w-6 h-6 text-[#45B1A0] mr-3 flex-shrink-0 mt-0.5" /> 
-              <span>Design and manage databases (SQL & NoSQL).</span>
+              <span>Build fast, dynamic web applications from scratch using React and Vite.</span>
             </li>
             <li className="flex items-start"> 
               <CheckIcon className="w-6 h-6 text-[#45B1A0] mr-3 flex-shrink-0 mt-0.5" /> 
-              <span>Implement secure user authentication (JWT).</span>
+              <span>Fetch data from REST APIs and integrate complex third-party libraries.</span>
             </li>
             <li className="flex items-start"> 
               <CheckIcon className="w-6 h-6 text-[#45B1A0] mr-3 flex-shrink-0 mt-0.5" /> 
-              <span>Leverage AI for rapid debugging, testing, & schema design.</span>
+              <span>Manage complex application state using Hooks and the Context API.</span>
             </li>
             <li className="flex items-start md:col-span-2"> 
               <CheckIcon className="w-6 h-6 text-[#45B1A0] mr-3 flex-shrink-0 mt-0.5" /> 
-              <span>Deploy a complete, portfolio-ready capstone project to the cloud.</span>
+              <span>Build and deploy SEO-friendly, full-stack React applications using Next.js.</span>
             </li>
           </ul>
         </div>
@@ -169,7 +169,7 @@ const HeroSection = () => {
           </Link>
           <div className="flex flex-col">
             <span className="font-semibold text-white text-lg">Prerequisites:</span>
-            <span className="text-gray-300 font-light">No prior coding experience required!</span>
+            <span className="text-gray-300 font-light">Basic HTML/CSS knowledge (Frontend 1 recommended).</span>
           </div>
         </div>
       </div>
@@ -208,7 +208,7 @@ const HeroSection = () => {
                 <ul className="mt-3 pl-4 space-y-3 border-l-2 border-white/10 ml-1">
                   <li><Link href="/academy/courses/computer-basics" className="text-gray-400 hover:text-[#45B1A0] block py-1" onClick={() => setMobileMenuOpen(false)}>Computer Fundamentals</Link></li>
                   <li><Link href="/academy/courses/frontend-development-1" className="text-gray-400 hover:text-[#45B1A0] block py-1" onClick={() => setMobileMenuOpen(false)}>Frontend Dev 1</Link></li>
-                  <li><Link href="/academy/courses/frontend-development-2" className="text-gray-400 hover:text-[#45B1A0] block py-1" onClick={() => setMobileMenuOpen(false)}>Frontend Dev 2</Link></li>
+                  <li><Link href="/academy/courses/frontend-development-2" className="text-[#45B1A0] block py-1 font-semibold" onClick={() => setMobileMenuOpen(false)}>Frontend Dev 2</Link></li>
                   <li><Link href="/academy/courses/backend-development" className="text-gray-400 hover:text-[#45B1A0] block py-1" onClick={() => setMobileMenuOpen(false)}>Backend Development</Link></li>
                   <li><Link href="/academy/courses/mobile-app-development" className="text-gray-400 hover:text-[#45B1A0] block py-1" onClick={() => setMobileMenuOpen(false)}>Mobile App Dev</Link></li>
                 </ul>
