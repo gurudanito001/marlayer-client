@@ -57,8 +57,10 @@ const Footer = () => {
               <ul className="flex flex-col gap-5 text-[15px] font-light">
                 <li><Link href="/academy/courses/computer-basics" className="hover:text-white transition-colors duration-200">Computer Fundamentals</Link></li>
                 <li><Link href="/academy/courses/frontend-development-1" className="hover:text-white transition-colors duration-200">Frontend Development: 1</Link></li>
+                <li><Link href="/academy/courses/javascript" className="hover:text-white transition-colors duration-200">JavaScript</Link></li>
                 <li><Link href="/academy/courses/frontend-development-2" className="hover:text-white transition-colors duration-200">Frontend Development: 2</Link></li>
                 <li><Link href="/academy/courses/backend-development" className="hover:text-white transition-colors duration-200">Backend Development</Link></li>
+                <li><Link href="/academy/courses/c-sharp" className="hover:text-white transition-colors duration-200">C#</Link></li>
                 <li><Link href="/academy/courses/mobile-app-development" className="hover:text-white transition-colors duration-200">Mobile App Development</Link></li>
               </ul>
             </div>
