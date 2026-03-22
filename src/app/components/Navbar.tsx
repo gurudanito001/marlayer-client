@@ -13,7 +13,8 @@ const Navbar = () => {
 
   // 1. Determine which pages should have the transparent-to-solid scroll effect.
   const transparentHeaderPages = ['/', '/software', '/software/About', '/software/Services', '/software/Projects'];
-  const isTransparentHeroPage = transparentHeaderPages.includes(pathname);
+  const isTransparentHeroPage = transparentHeaderPages.includes(pathname) || 
+    pathname.startsWith('/software/Projects/');
 
   // 2. The Navbar should be solid white IF we are NOT on one of the pages above, 
   // OR if we are on one of those pages and have scrolled down.

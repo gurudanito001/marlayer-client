@@ -185,7 +185,7 @@ const Home = () => {
                                 <p className="text-gray-600 text-sm leading-snug mb-6 max-w-sm">
                                     Pardomart is a multi-vendor on-demand marketplace application developed for a client in the U.S.A that mirrors the functionality of Instacart, connecting customers with local vendors for fast and reliable product delivery. The platform consists of three dedicated mobile applications — one for customers to browse and order, one for vendors to manage inventory and sales, and one for delivery partners to handle real-time order fulfillment — all working seamlessly together to power a complete digital commerce ecosystem.
                                 </p>
-                                <Link href="/software/ProjectDetails" className="inline-block w-fit px-8 py-3 rounded-full border border-gray-300 text-sm font-semibold text-gray-900 hover:bg-[#45B1A0] hover:text-white hover:border-[#45B1A0] transition duration-300 shadow-sm">
+                                <Link href="/software/Projects/pardomart" className="inline-block w-fit px-8 py-3 rounded-full border border-gray-300 text-sm font-semibold text-gray-900 hover:bg-[#45B1A0] hover:text-white hover:border-[#45B1A0] transition duration-300 shadow-sm">
                                     Explore Project
                                 </Link>
                             </div>
@@ -202,7 +202,7 @@ const Home = () => {
                                 <p className="text-gray-600 text-sm leading-snug mb-6 max-w-sm">
                                     Peniga is a trusted online escrow platform designed to make buying and selling safe and secure. It allows users to enter into binding agreements and hold funds in escrow until the terms of a transaction are fully met — protecting both buyers and sellers from fraud and ensuring smooth completion of trades. With features like secure fund handling, contract enforcement, and 24/7 support, Peniga helps users confidently trade a wide range of goods and services online.
                                 </p>
-                                <Link href="/software/ProjectDetails" className="inline-block w-fit px-8 py-3 rounded-full border border-gray-300 text-sm font-semibold text-gray-900 hover:bg-[#45B1A0] hover:text-white hover:border-[#45B1A0] transition duration-300 shadow-sm">
+                                <Link href="/software/Projects/peniga" className="inline-block w-fit px-8 py-3 rounded-full border border-gray-300 text-sm font-semibold text-gray-900 hover:bg-[#45B1A0] hover:text-white hover:border-[#45B1A0] transition duration-300 shadow-sm">
                                     Explore Project
                                 </Link>
                             </div>
