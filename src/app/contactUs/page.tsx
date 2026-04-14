@@ -343,7 +343,7 @@ export default function ContactPage() {
 
         </div>
       </div>
-      <Footer theme="dark"/>
+      <Footer/>
     </main>
   );
 }
