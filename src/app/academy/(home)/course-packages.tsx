@@ -153,6 +153,17 @@ const courses: Course[] = [
     isActive: true
   },
   {
+    href: "/academy/courses/javascript",
+    imageSrc: "/images/javascript.webp",
+    imageAlt: "Mobile phone showing a newly developed application.",
+    title: "JavaScript",
+    duration: "6 Weeks",
+    timeCommitment: "4hrs/week",
+    rating: 4.8,
+    price: "#150,000",
+    isActive: true
+  },
+  {
     href: "/academy/courses/frontend-development-2",
     imageSrc: "/images/tech-academy/lady-dev.png", 
     imageAlt: "A lady who is a developer is smiling to the camera",
@@ -172,6 +183,17 @@ const courses: Course[] = [
     timeCommitment: "4hrs/week",
     rating: 4.9,
     price: "#250,000",
+    isActive: true
+  },
+  {
+    href: "/academy/courses/c-sharp",
+    imageSrc: "/images/c-sharp.webp",
+    imageAlt: "Mobile phone showing a newly developed application.",
+    title: "C#",
+    duration: "6 Weeks",
+    timeCommitment: "4hrs/week",
+    rating: 4.8,
+    price: "#200,000",
     isActive: true
   },
   {
@@ -281,6 +303,7 @@ const CoursePackages = () => {
 
         {/* Horizontal Scrolling Grid Layout */}
         <div className="flex gap-6 overflow-x-auto -mx-6 px-6 py-14 items-stretch [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+        
           {courses.map((course) => (
             <div key={course.href} className="flex-none w-[80vw] sm:w-72 md:w-80">
               <CourseCard course={course} />
