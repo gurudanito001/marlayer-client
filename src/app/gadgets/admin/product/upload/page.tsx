@@ -28,22 +28,24 @@ export default function UploadGadgetPage() {
 
     // Dynamically build the specs object based on the category
     if (selectedCategory === 'phones') {
+      const batteryHealth = formData.get('battery_health');
       specs = {
         storage_capacity: formData.get('storage_capacity'),
         color: formData.get('color'),
-        battery_health: Number(formData.get('battery_health')),
+        battery_health: batteryHealth ? Number(batteryHealth) : null,
         physical_condition: formData.get('physical_condition'),
         network_status: formData.get('network_status'),
         biometrics: formData.get('biometrics'),
       }
     } else if (selectedCategory === 'laptops') {
+      const batteryCycle = formData.get('battery_cycle_count');
       specs = {
         processor: formData.get('processor'),
         ram: formData.get('ram'),
         storage_drive: formData.get('storage_drive'),
         screen_size: formData.get('screen_size'),
         graphics: formData.get('graphics'),
-        battery_cycle_count: Number(formData.get('battery_cycle_count')),
+        battery_cycle_count: batteryCycle ? Number(batteryCycle) : null,
       }
     } else if (selectedCategory === 'accessories') {
       specs = {
@@ -61,6 +63,8 @@ export default function UploadGadgetPage() {
     }
 
     const rawInstallment = formData.get('installment_price')
+    const rawBaseCost = formData.get('base_cost')
+    const rawSellingPrice = formData.get('selling_price')
 
     // Construct the gadget object matching your Supabase schema
     const gadgetData = {
@@ -68,8 +72,8 @@ export default function UploadGadgetPage() {
       product_name: formData.get('product_name'),
       brand: formData.get('brand'),
       stock_qty: Number(formData.get('stock_qty')),
-      base_cost: Number(formData.get('base_cost')),
-      selling_price: Number(formData.get('selling_price')),
+      base_cost: rawBaseCost ? Number(rawBaseCost) : null,
+      selling_price: rawSellingPrice ? Number(rawSellingPrice) : null,
       installment_price: rawInstallment ? Number(rawInstallment) : null,
       description: formData.get('description'),
       primary_image: formData.get('primary_image'),
@@ -138,12 +142,12 @@ export default function UploadGadgetPage() {
 
           <div className="grid grid-cols-3 gap-4">
             <div>
-              <label className="block mb-1 font-medium">Base Cost ($)</label>
-              <input type="number" name="base_cost" min="0" step="0.01" required className="w-full border p-2 rounded" placeholder="800" />
+              <label className="block mb-1 font-medium">Base Cost ($) <span className="text-sm font-normal text-gray-500">(Optional)</span></label>
+              <input type="number" name="base_cost" min="0" step="0.01" className="w-full border p-2 rounded" placeholder="800" />
             </div>
             <div>
-              <label className="block mb-1 font-medium">Selling Price ($)</label>
-              <input type="number" name="selling_price" min="0" step="0.01" required className="w-full border p-2 rounded" placeholder="999.99" />
+              <label className="block mb-1 font-medium">Selling Price ($) <span className="text-sm font-normal text-gray-500">(Optional)</span></label>
+              <input type="number" name="selling_price" min="0" step="0.01" className="w-full border p-2 rounded" placeholder="999.99" />
             </div>
             <div>
               <label className="block mb-1 font-medium">Installment Price ($) <span className="text-sm font-normal text-gray-500">(Optional)</span></label>
@@ -186,28 +190,28 @@ export default function UploadGadgetPage() {
           {category === 'phones' && (
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block mb-1 font-medium">Storage Capacity</label>
-                <input type="text" name="storage_capacity" required className="w-full border p-2 rounded" placeholder="256GB" />
+                <label className="block mb-1 font-medium">Storage Capacity <span className="text-xs font-normal text-gray-500">(Optional)</span></label>
+                <input type="text" name="storage_capacity" className="w-full border p-2 rounded" placeholder="256GB" />
               </div>
               <div>
-                <label className="block mb-1 font-medium">Color</label>
-                <input type="text" name="color" required className="w-full border p-2 rounded" placeholder="Space Black" />
+                <label className="block mb-1 font-medium">Color <span className="text-xs font-normal text-gray-500">(Optional)</span></label>
+                <input type="text" name="color" className="w-full border p-2 rounded" placeholder="Space Black" />
               </div>
               <div>
-                <label className="block mb-1 font-medium">Battery Health (%)</label>
-                <input type="number" name="battery_health" min="1" max="100" required className="w-full border p-2 rounded" placeholder="100" />
+                <label className="block mb-1 font-medium">Battery Health (%) <span className="text-xs font-normal text-gray-500">(Optional)</span></label>
+                <input type="number" name="battery_health" min="1" max="100" className="w-full border p-2 rounded" placeholder="100" />
               </div>
               <div>
                 <label className="block mb-1 font-medium">Physical Condition</label>
                 <input type="text" name="physical_condition" required className="w-full border p-2 rounded" placeholder="Mint" />
               </div>
               <div>
-                <label className="block mb-1 font-medium">Network Status</label>
-                <input type="text" name="network_status" required className="w-full border p-2 rounded" placeholder="Factory Unlocked" />
+                <label className="block mb-1 font-medium">Network Status <span className="text-xs font-normal text-gray-500">(Optional)</span></label>
+                <input type="text" name="network_status" className="w-full border p-2 rounded" placeholder="Factory Unlocked" />
               </div>
               <div>
-                <label className="block mb-1 font-medium">Biometrics</label>
-                <input type="text" name="biometrics" required className="w-full border p-2 rounded" placeholder="Face ID Working" />
+                <label className="block mb-1 font-medium">Biometrics <span className="text-xs font-normal text-gray-500">(Optional)</span></label>
+                <input type="text" name="biometrics" className="w-full border p-2 rounded" placeholder="Face ID Working" />
               </div>
             </div>
           )}
@@ -231,12 +235,12 @@ export default function UploadGadgetPage() {
                 <input type="text" name="screen_size" required className="w-full border p-2 rounded" placeholder="14-inch" />
               </div>
               <div>
-                <label className="block mb-1 font-medium">Graphics</label>
-                <input type="text" name="graphics" required className="w-full border p-2 rounded" placeholder="Integrated" />
+                <label className="block mb-1 font-medium">Graphics <span className="text-xs font-normal text-gray-500">(Optional)</span></label>
+                <input type="text" name="graphics" className="w-full border p-2 rounded" placeholder="Integrated" />
               </div>
               <div>
-                <label className="block mb-1 font-medium">Battery Cycle Count</label>
-                <input type="number" name="battery_cycle_count" min="0" required className="w-full border p-2 rounded" placeholder="142" />
+                <label className="block mb-1 font-medium">Battery Cycle Count <span className="text-xs font-normal text-gray-500">(Optional)</span></label>
+                <input type="number" name="battery_cycle_count" min="0" className="w-full border p-2 rounded" placeholder="142" />
               </div>
             </div>
           )}

@@ -6,8 +6,8 @@ const BaseGadgetSchema = z.object({
   product_name: z.string().min(5, "Product name is required"),
   brand: z.string().min(1, "Brand is required"),
   stock_qty: z.number().int().nonnegative("Stock cannot be negative"),
-  base_cost: z.number().nonnegative(),
-  selling_price: z.number().nonnegative(),
+  base_cost: z.number().nonnegative().optional().nullable(),
+  selling_price: z.number().nonnegative().optional().nullable(),
   installment_price: z.number().nonnegative().optional().nullable(),
   description: z.string().min(10, "Description is required"),
   primary_image: z.string().url("Must be a valid image URL"),
@@ -15,12 +15,12 @@ const BaseGadgetSchema = z.object({
 
 // 2. Category-Specific Metafields (These will go into the 'specs' JSONB column)
 const PhoneSpecsSchema = z.object({
-  storage_capacity: z.string(),
-  color: z.string(),
-  battery_health: z.number().min(1).max(100),
+  storage_capacity: z.string().optional().nullable(),
+  color: z.string().optional().nullable(),
+  battery_health: z.number().min(1).max(100).optional().nullable(),
   physical_condition: z.string(),
-  network_status: z.string(),
-  biometrics: z.string(),
+  network_status: z.string().optional().nullable(),
+  biometrics: z.string().optional().nullable(),
 });
 
 const LaptopSpecsSchema = z.object({
@@ -28,8 +28,8 @@ const LaptopSpecsSchema = z.object({
   ram: z.string(),
   storage_drive: z.string(),
   screen_size: z.string(),
-  graphics: z.string(),
-  battery_cycle_count: z.number().int().nonnegative(),
+  graphics: z.string().optional().nullable(),
+  battery_cycle_count: z.number().int().nonnegative().optional().nullable(),
 });
 
 const AccessorySpecsSchema = z.object({

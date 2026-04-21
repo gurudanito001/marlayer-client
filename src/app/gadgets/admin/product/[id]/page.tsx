@@ -54,22 +54,24 @@ export default function EditGadgetPage({
 
     // Dynamically build the specs object based on the category
     if (selectedCategory === 'phones') {
+      const batteryHealth = formData.get('battery_health');
       specs = {
         storage_capacity: formData.get('storage_capacity'),
         color: formData.get('color'),
-        battery_health: Number(formData.get('battery_health')),
+        battery_health: batteryHealth ? Number(batteryHealth) : null,
         physical_condition: formData.get('physical_condition'),
         network_status: formData.get('network_status'),
         biometrics: formData.get('biometrics'),
       }
     } else if (selectedCategory === 'laptops') {
+      const batteryCycle = formData.get('battery_cycle_count');
       specs = {
         processor: formData.get('processor'),
         ram: formData.get('ram'),
         storage_drive: formData.get('storage_drive'),
         screen_size: formData.get('screen_size'),
         graphics: formData.get('graphics'),
-        battery_cycle_count: Number(formData.get('battery_cycle_count')),
+        battery_cycle_count: batteryCycle ? Number(batteryCycle) : null,
       }
     } else if (selectedCategory === 'accessories') {
       specs = {
@@ -87,13 +89,15 @@ export default function EditGadgetPage({
     }
 
     const rawInstallment = formData.get('installment_price')
+    const rawBaseCost = formData.get('base_cost')
+    const rawSellingPrice = formData.get('selling_price')
 
     const updateData = {
       product_name: formData.get('product_name'),
       brand: formData.get('brand'),
       stock_qty: Number(formData.get('stock_qty')),
-      base_cost: Number(formData.get('base_cost')),
-      selling_price: Number(formData.get('selling_price')),
+      base_cost: rawBaseCost ? Number(rawBaseCost) : null,
+      selling_price: rawSellingPrice ? Number(rawSellingPrice) : null,
       installment_price: rawInstallment ? Number(rawInstallment) : null,
       description: formData.get('description'),
       primary_image: formData.get('primary_image'),
@@ -164,12 +168,12 @@ export default function EditGadgetPage({
 
           <div className="grid grid-cols-3 gap-4">
             <div>
-              <label className="block mb-1 font-medium">Base Cost ($)</label>
-              <input type="number" name="base_cost" defaultValue={gadget.base_cost} min="0" step="0.01" required className="w-full border p-2 rounded" placeholder="800" />
+              <label className="block mb-1 font-medium">Base Cost ($) <span className="text-sm font-normal text-gray-500">(Optional)</span></label>
+              <input type="number" name="base_cost" defaultValue={gadget.base_cost ?? ''} min="0" step="0.01" className="w-full border p-2 rounded" placeholder="800" />
             </div>
             <div>
-              <label className="block mb-1 font-medium">Selling Price ($)</label>
-              <input type="number" name="selling_price" defaultValue={gadget.selling_price} min="0" step="0.01" required className="w-full border p-2 rounded" placeholder="999.99" />
+              <label className="block mb-1 font-medium">Selling Price ($) <span className="text-sm font-normal text-gray-500">(Optional)</span></label>
+              <input type="number" name="selling_price" defaultValue={gadget.selling_price ?? ''} min="0" step="0.01" className="w-full border p-2 rounded" placeholder="999.99" />
             </div>
             <div>
               <label className="block mb-1 font-medium">Installment Price ($) <span className="text-sm font-normal text-gray-500">(Optional)</span></label>
@@ -205,12 +209,12 @@ export default function EditGadgetPage({
           
           {category === 'phones' && (
             <div className="grid grid-cols-2 gap-4">
-              <div><label className="block mb-1 font-medium text-sm">Storage Capacity</label><input type="text" name="storage_capacity" defaultValue={gadget.specs?.storage_capacity} required className="w-full border p-2 rounded text-sm" placeholder="256GB" /></div>
-              <div><label className="block mb-1 font-medium text-sm">Color</label><input type="text" name="color" defaultValue={gadget.specs?.color} required className="w-full border p-2 rounded text-sm" placeholder="Space Black" /></div>
-              <div><label className="block mb-1 font-medium text-sm">Battery Health (%)</label><input type="number" name="battery_health" defaultValue={gadget.specs?.battery_health} min="1" max="100" required className="w-full border p-2 rounded text-sm" placeholder="100" /></div>
+              <div><label className="block mb-1 font-medium text-sm">Storage Capacity <span className="text-xs font-normal text-gray-400">(Optional)</span></label><input type="text" name="storage_capacity" defaultValue={gadget.specs?.storage_capacity} className="w-full border p-2 rounded text-sm" placeholder="256GB" /></div>
+              <div><label className="block mb-1 font-medium text-sm">Color <span className="text-xs font-normal text-gray-400">(Optional)</span></label><input type="text" name="color" defaultValue={gadget.specs?.color} className="w-full border p-2 rounded text-sm" placeholder="Space Black" /></div>
+              <div><label className="block mb-1 font-medium text-sm">Battery Health (%) <span className="text-xs font-normal text-gray-400">(Optional)</span></label><input type="number" name="battery_health" defaultValue={gadget.specs?.battery_health} min="1" max="100" className="w-full border p-2 rounded text-sm" placeholder="100" /></div>
               <div><label className="block mb-1 font-medium text-sm">Physical Condition</label><input type="text" name="physical_condition" defaultValue={gadget.specs?.physical_condition} required className="w-full border p-2 rounded text-sm" placeholder="Mint" /></div>
-              <div><label className="block mb-1 font-medium text-sm">Network Status</label><input type="text" name="network_status" defaultValue={gadget.specs?.network_status} required className="w-full border p-2 rounded text-sm" placeholder="Factory Unlocked" /></div>
-              <div><label className="block mb-1 font-medium text-sm">Biometrics</label><input type="text" name="biometrics" defaultValue={gadget.specs?.biometrics} required className="w-full border p-2 rounded text-sm" placeholder="Face ID Working" /></div>
+              <div><label className="block mb-1 font-medium text-sm">Network Status <span className="text-xs font-normal text-gray-400">(Optional)</span></label><input type="text" name="network_status" defaultValue={gadget.specs?.network_status} className="w-full border p-2 rounded text-sm" placeholder="Factory Unlocked" /></div>
+              <div><label className="block mb-1 font-medium text-sm">Biometrics <span className="text-xs font-normal text-gray-400">(Optional)</span></label><input type="text" name="biometrics" defaultValue={gadget.specs?.biometrics} className="w-full border p-2 rounded text-sm" placeholder="Face ID Working" /></div>
             </div>
           )}
 
@@ -220,8 +224,8 @@ export default function EditGadgetPage({
               <div><label className="block mb-1 font-medium text-sm">RAM</label><input type="text" name="ram" defaultValue={gadget.specs?.ram} required className="w-full border p-2 rounded text-sm" placeholder="16GB" /></div>
               <div><label className="block mb-1 font-medium text-sm">Storage Drive</label><input type="text" name="storage_drive" defaultValue={gadget.specs?.storage_drive} required className="w-full border p-2 rounded text-sm" placeholder="512GB SSD" /></div>
               <div><label className="block mb-1 font-medium text-sm">Screen Size</label><input type="text" name="screen_size" defaultValue={gadget.specs?.screen_size} required className="w-full border p-2 rounded text-sm" placeholder="14-inch" /></div>
-              <div><label className="block mb-1 font-medium text-sm">Graphics</label><input type="text" name="graphics" defaultValue={gadget.specs?.graphics} required className="w-full border p-2 rounded text-sm" placeholder="Integrated" /></div>
-              <div><label className="block mb-1 font-medium text-sm">Battery Cycle Count</label><input type="number" name="battery_cycle_count" defaultValue={gadget.specs?.battery_cycle_count} min="0" required className="w-full border p-2 rounded text-sm" placeholder="142" /></div>
+              <div><label className="block mb-1 font-medium text-sm">Graphics <span className="text-xs font-normal text-gray-400">(Optional)</span></label><input type="text" name="graphics" defaultValue={gadget.specs?.graphics} className="w-full border p-2 rounded text-sm" placeholder="Integrated" /></div>
+              <div><label className="block mb-1 font-medium text-sm">Battery Cycle Count <span className="text-xs font-normal text-gray-400">(Optional)</span></label><input type="number" name="battery_cycle_count" defaultValue={gadget.specs?.battery_cycle_count} min="0" className="w-full border p-2 rounded text-sm" placeholder="142" /></div>
             </div>
           )}
 
