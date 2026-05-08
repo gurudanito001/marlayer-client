@@ -43,18 +43,22 @@ const OtherSpecsSchema = z.record(z.string(), z.any()); // Catch-all for dynamic
 export const GadgetSchema = z.discriminatedUnion("category", [
   BaseGadgetSchema.extend({
     category: z.literal("phones"),
+    sub_category: z.enum(["android", "iPhone"]).optional().nullable(),
     specs: PhoneSpecsSchema,
   }),
   BaseGadgetSchema.extend({
     category: z.literal("laptops"),
+    sub_category: z.enum(["macbook", "windows"]).optional().nullable(),
     specs: LaptopSpecsSchema,
   }),
   BaseGadgetSchema.extend({
     category: z.literal("accessories"),
+    sub_category: z.string().optional().nullable(),
     specs: AccessorySpecsSchema,
   }),
   BaseGadgetSchema.extend({
     category: z.literal("other"),
+    sub_category: z.string().optional().nullable(),
     specs: OtherSpecsSchema,
   }),
 ]);

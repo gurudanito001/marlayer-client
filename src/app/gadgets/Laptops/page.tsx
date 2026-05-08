@@ -115,7 +115,7 @@ export default function LaptopsPage() {
 
               <div className="flex-grow">
                 <div className="relative w-full aspect-square mb-4">
-                  <Image src={product.image} alt={product.name} fill className="object-cover rounded-xl" />
+                  <Image src={product.image} alt={product.name} fill sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" className="object-cover rounded-xl" />
                 </div>
                 <h2 className="text-sm font-semibold text-gray-900 mb-1">{product.name}</h2>
                 <p className="text-xs text-gray-500 mb-2 line-clamp-2 h-[2.5em]">{product.description}</p>

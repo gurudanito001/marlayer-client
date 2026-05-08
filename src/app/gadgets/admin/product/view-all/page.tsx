@@ -2,9 +2,17 @@ import { fetchGadgets } from '@/app/lib/actions/gadgets'
 import Link from 'next/link'
 import DeleteButton from './DeleteButton'
 
-export default async function ViewProductsPage() {
+export default async function ViewProductsPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ page?: string }>
+}) {
+  const { page } = await searchParams
+  const currentPage = Number(page) || 1
+  const limit = 12
+
   // Fetch gadgets server-side
-  const gadgets = await fetchGadgets()
+  const { data: gadgets, totalPages, totalCount } = await fetchGadgets(currentPage, limit)
 
   return (
     <div className="max-w-6xl mx-auto p-6 animate-fade-in">
@@ -62,6 +70,9 @@ export default async function ViewProductsPage() {
                   <td className="capitalize font-medium">
                     <span className="bg-gray-100 px-2 py-1 rounded text-gray-700 text-xs border">
                       {gadget.category}
+                      {gadget.sub_category && (
+                        <span className="text-gray-400 font-normal ml-1">({gadget.sub_category})</span>
+                      )}
                     </span>
                   </td>
                   <td>
@@ -103,6 +114,32 @@ export default async function ViewProductsPage() {
           </tbody>
         </table>
       </div>
+
+      {/* Pagination Controls */}
+      {totalPages > 1 && (
+        <div className="mt-8 flex justify-center items-center gap-4">
+          <Link
+            href={`/gadgets/admin/product/view-all?page=${currentPage - 1}`}
+            className={`btn btn-sm ${currentPage === 1 ? 'btn-disabled pointer-events-none opacity-50' : 'bg-[#003C3C] text-white border-none hover:bg-teal-900'}`}
+            aria-disabled={currentPage === 1}
+          >
+            Previous
+          </Link>
+          
+          <div className="text-sm font-medium text-gray-600">
+            Page <span className="text-primary font-bold">{currentPage}</span> of {totalPages}
+            <span className="ml-2 text-gray-400">({totalCount} items)</span>
+          </div>
+
+          <Link
+            href={`/gadgets/admin/product/view-all?page=${currentPage + 1}`}
+            className={`btn btn-sm ${currentPage >= totalPages ? 'btn-disabled pointer-events-none opacity-50' : 'bg-[#003C3C] text-white border-none hover:bg-teal-900'}`}
+            aria-disabled={currentPage >= totalPages}
+          >
+            Next
+          </Link>
+        </div>
+      )}
     </div>
   )
 }

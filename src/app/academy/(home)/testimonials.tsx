@@ -233,7 +233,7 @@ export default function TestimonialsSection() {
                 <div className="flex items-center gap-3 mb-4">
                   <div className="relative w-11 h-11 rounded-full overflow-hidden bg-white/10 border border-white/10 flex items-center justify-center shrink-0">
                     {review.avatar ? (
-                      <Image src={review.avatar} alt={review.name} fill className="object-cover" />
+                      <Image src={review.avatar} alt={review.name} fill sizes="44px" className="object-cover" />
                     ) : (
                       <span className="text-white font-bold text-sm tracking-wider">
                         {getInitials(review.name)}

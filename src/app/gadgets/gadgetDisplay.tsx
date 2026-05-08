@@ -29,6 +29,7 @@ const GadgetDisplay = () => {
               src="/images/pixel10Pro.png"
               alt="Pixel 10 Pro"
               fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
               className="object-contain object-bottom"
             />
           </div>
@@ -53,6 +54,7 @@ const GadgetDisplay = () => {
               src="/images/10ProFold.png"
               alt="Pixel Fold"
               fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
               className="object-contain object-bottom"
             />
           </div>
@@ -77,6 +79,7 @@ const GadgetDisplay = () => {
               src="/images/googlePixel10.png"
               alt="Pixel 10"
               fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
               className="object-contain object-bottom"
             />
           </div>
@@ -107,6 +110,7 @@ const GadgetDisplay = () => {
               src="/images/pixelWatch4.png"
               alt="Pixel Watch 4"
               fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 50vw"
               className="object-contain object-bottom"
             />
           </div>
@@ -131,6 +135,7 @@ const GadgetDisplay = () => {
               src="/images/pixelBudsPro2.png"
               alt="Pixel Buds"
               fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 50vw"
               className="object-contain object-bottom"
             />
           </div>

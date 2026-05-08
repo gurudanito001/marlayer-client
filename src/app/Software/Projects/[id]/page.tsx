@@ -199,7 +199,7 @@ const ProjectDetails = () => {
                     {project.features.map((feature, i) => (
                         <div key={i} className={`flex flex-col ${feature.reverse ? 'lg:flex-row-reverse' : 'lg:flex-row'} items-center gap-16 group`}>
                             <div className="w-full lg:w-1/2 relative aspect-[4/3] rounded-3xl overflow-hidden bg-[#112220] border border-white/5">
-                                <Image src={feature.image} alt={feature.title} fill className="object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700" />
+                                <Image src={feature.image} alt={feature.title} fill sizes="(max-width: 768px) 100vw, 40vw" className="object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700" />
                             </div>
                             <div className="w-full lg:w-1/2">
                                 <h3 className="text-3xl font-bold text-white mb-6">{feature.title}</h3>

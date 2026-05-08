@@ -137,12 +137,13 @@ const Home = () => {
 
                                                     {/* Image Content */}
                                                     <div className="relative w-full lg:w-[400px] aspect-[4/3] group/img overflow-hidden rounded-xl shadow-lg mt-6 lg:mt-0">
-                                                        <Image
-                                                            src={service.img}
-                                                            alt={service.title}
-                                                            fill
-                                                            className="object-cover transition-transform duration-700 group-hover/img:scale-105"
-                                                        />
+                                                                                            <Image
+                                                                                                src={service.img}
+                                                                                                alt={service.title}
+                                                                                                fill
+                                                                                                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 400px"
+                                                                                                className="object-cover transition-transform duration-700 group-hover/img:scale-105"
+                                                                                            />
                                                     </div>
 
                                                 </div>
@@ -177,7 +178,7 @@ const Home = () => {
                         {/* Project 1 (Vertically Centered) */}
                         <div className="flex flex-col lg:flex-row items-center gap-20 mb-20 group">
                             <div className="relative w-full lg:w-[40%] aspect-[4/3] rounded-xl overflow-hidden shrink-0">
-                                <Image src="/images/padomart.png" alt="Project 1" fill className="object-cover group-hover:scale-105 transition duration-700" />
+                                <Image src="/images/padomart.png" alt="Project 1" fill sizes="(max-width: 768px) 100vw, 40vw" className="object-cover group-hover:scale-105 transition duration-700" />
                             </div>
                             <div className="lg:w-[60%] flex flex-col justify-center">
                                 <h4 className="text-xl md:text-2xl font-bold mb-3 max-w-md text-gray-900">Mobile App Development for Pardomart</h4>
@@ -194,7 +195,7 @@ const Home = () => {
                         {/* Project 2 (Vertically Centered) */}
                         <div className="flex flex-col lg:flex-row items-center gap-20 group">
                             <div className="relative w-full lg:w-[40%] aspect-[4/3] rounded-xl overflow-hidden shrink-0">
-                                <Image src="/images/peniga.png" alt="Project 2" fill className="object-cover group-hover:scale-105 transition duration-700" />
+                                <Image src="/images/peniga.png" alt="Project 2" fill sizes="(max-width: 768px) 100vw, 40vw" className="object-cover group-hover:scale-105 transition duration-700" />
                             </div>
                             <div className="lg:w-[60%] flex flex-col justify-center">
                                 <h4 className="text-xl md:text-2xl font-bold mb-3 max-w-md text-gray-900"> Web App Development for Peniga</h4>

@@ -78,6 +78,7 @@ export default function UploadGadgetPage() {
       description: formData.get('description'),
       primary_image: formData.get('primary_image'),
       category: selectedCategory,
+      sub_category: formData.get('sub_category') || null,
       specs
     }
 
@@ -174,11 +175,32 @@ export default function UploadGadgetPage() {
                 value={category}
                 onChange={(e) => setCategory(e.target.value)}
               >
-                <option value="phones">Phones</option>
-                <option value="laptops">Laptops</option>
-                <option value="accessories">Accessories</option>
-                <option value="other">Other</option>
+                <option value="phones">📱 Phones</option>
+                <option value="laptops">💻 Laptops</option>
+                <option value="accessories">🔌 Accessories</option>
+                <option value="other">📦 Other</option>
               </select>
+            </div>
+          </div>
+
+          <div>
+            <label className="block mb-1 font-medium">Sub-category</label>
+            {category === 'phones' ? (
+              <select name="sub_category" required className="w-full border p-2 rounded bg-white">
+                <option value="">Select Phone Type</option>
+                <option value="android">Android</option>
+                <option value="iPhone">iPhone</option>
+              </select>
+            ) : category === 'laptops' ? (
+              <select name="sub_category" required className="w-full border p-2 rounded bg-white">
+                <option value="">Select Laptop Type</option>
+                <option value="macbook">Macbook</option>
+                <option value="windows">Windows</option>
+              </select>
+            ) : (
+              <input type="text" name="sub_category" className="w-full border p-2 rounded" placeholder="e.g. Charger, Case (Optional)" />
+            )}
+            <p className="text-xs text-gray-400 mt-1 italic">Classification helps customers find products faster.</p>
             </div>
           </div>
         </div>

@@ -102,6 +102,7 @@ export default function EditGadgetPage({
       description: formData.get('description'),
       primary_image: formData.get('primary_image'),
       category: selectedCategory,
+      sub_category: formData.get('sub_category') || null,
       specs
     }
 
@@ -200,6 +201,23 @@ export default function EditGadgetPage({
                 <option value="other">Other</option>
               </select>
             </div>
+          </div>
+
+          <div>
+            <label className="block mb-1 font-medium">Sub-category</label>
+            {category === 'phones' ? (
+              <select name="sub_category" defaultValue={gadget.sub_category} className="w-full border p-2 rounded bg-white">
+                <option value="android">Android</option>
+                <option value="iPhone">iPhone</option>
+              </select>
+            ) : category === 'laptops' ? (
+              <select name="sub_category" defaultValue={gadget.sub_category} className="w-full border p-2 rounded bg-white">
+                <option value="macbook">Macbook</option>
+                <option value="windows">Windows</option>
+              </select>
+            ) : (
+              <input type="text" name="sub_category" defaultValue={gadget.sub_category} className="w-full border p-2 rounded" />
+            )}
           </div>
         </div>
 

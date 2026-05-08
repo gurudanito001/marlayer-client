@@ -186,8 +186,8 @@ const HeroSection = () => {
         <div className={`absolute right-0 top-0 h-full w-[85%] max-w-sm bg-[#0B1A14] border-l border-white/10 shadow-2xl transform transition-transform duration-300 ease-out flex flex-col p-6 overflow-y-auto ${mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}>
           <header className="flex justify-between items-center mb-10 border-b border-white/10 pb-4">
             <Link href="/academy" className="flex items-center gap-1.5">
-              <div className="relative w-6 h-6">
-                <Image src="/images/marlayer-logo.svg" fill alt="Marlayer Logo" className="object-contain" />
+                <div className="relative w-6 h-6">
+                <Image src="/images/marlayer-logo.svg" fill alt="Marlayer Logo" sizes="24px" className="object-contain" />
               </div>
               <span className="font-extrabold text-lg text-white">
                 M<span style={{ color: logoTeal }}>ARLAYER</span> ACADEMY

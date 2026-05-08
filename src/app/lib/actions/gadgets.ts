@@ -6,15 +6,30 @@ import { GadgetSchema } from '../../../../types/gadgets'
 import { z } from 'zod' // FIX 1: Imported z to prevent ReferenceError
 
 // 1. Fetch All Gadgets (Read)
-export async function fetchGadgets() {
+export async function fetchGadgets(page: number = 1, limit: number = 12) {
   const supabase = await createClient()
-  const { data, error } = await supabase
+  
+  const from = (page - 1) * limit
+  const to = from + limit - 1
+
+  const { data, error, count } = await supabase
     .from('gadgets')
-    .select('*')
+    .select('*', { count: 'exact' })
     .order('created_at', { ascending: false })
+    .range(from, to)
 
   if (error) throw new Error(error.message)
-  return data
+  
+  const totalCount = count || 0
+  const totalPages = Math.ceil(totalCount / limit)
+
+  return { 
+    data, 
+    totalCount,
+    totalPages,
+    currentPage: page,
+    hasMore: page < totalPages 
+  }
 }
 
 // 2. View One Gadget (Read)
@@ -128,16 +143,103 @@ export async function bulkUploadGadgets(rawArray: unknown[]) {
   return { success: true, count: validGadgets.length };
 }
 
-// 7. Fetch by Category
-export async function fetchGadgetsByCategory(category: string) {
+// 7. Fetch by Category & Sub-category (Paginated)
+export async function fetchGadgetsByCategory(
+  category: string, 
+  subCategory?: string, 
+  page: number = 1, 
+  limit: number = 12
+) {
   const supabase = await createClient()
-  const { data, error } = await supabase
+  
+  const from = (page - 1) * limit
+  const to = from + limit - 1
+
+  let query = supabase
     .from('gadgets')
-    .select('*')
-    .eq('category', category) 
+    .select('*', { count: 'exact' })
+    .eq('category', category)
+
+  if (subCategory) {
+    query = query.eq('sub_category', subCategory)
+  }
+
+  const { data, error, count } = await query
+    .order('created_at', { ascending: false })
+    .range(from, to)
 
   if (error) throw new Error(error.message)
-  return data
+
+  const totalCount = count || 0
+  const totalPages = Math.ceil(totalCount / limit)
+
+  return { 
+    data, 
+    totalCount,
+    totalPages,
+    currentPage: page,
+    hasMore: page < totalPages 
+  }
+}
+
+// 8. Advanced Search (Name, Description, Price Range)
+export async function searchGadgets({
+  searchTerm,
+  minPrice,
+  maxPrice,
+  category,
+  subCategory,
+  page = 1,
+  limit = 12
+}: {
+  searchTerm?: string,
+  minPrice?: number,
+  maxPrice?: number,
+  category?: string,
+  subCategory?: string,
+  page?: number,
+  limit?: number
+}) {
+  const supabase = await createClient()
+  const from = (page - 1) * limit
+  const to = from + limit - 1
+
+  let queryBuilder = supabase.from('gadgets').select('*', { count: 'exact' })
+
+  // Filter by price range
+  if (minPrice !== undefined) queryBuilder = queryBuilder.gte('selling_price', minPrice)
+  if (maxPrice !== undefined) queryBuilder = queryBuilder.lte('selling_price', maxPrice)
+  
+  // Filter by category
+  if (category) queryBuilder = queryBuilder.eq('category', category)
+  if (subCategory) queryBuilder = queryBuilder.eq('sub_category', subCategory)
+
+  // Search Logic: Name matches + Description matches
+  // Note: To rank "Name" higher with pagination, a Postgres RPC (SQL function) 
+  // using Full Text Search (FTS) weights is the world-class way to do this.
+  // For this implementation, we use an 'or' filter which matches both.
+  if (searchTerm) {
+    queryBuilder = queryBuilder.or(`product_name.ilike.%${searchTerm}%,description.ilike.%${searchTerm}%`)
+  }
+
+  const { data, error, count } = await queryBuilder
+    .order('product_name', { ascending: true }) // Default alpha sort if name matches first is desired
+    .range(from, to)
+
+  if (error) throw new Error(error.message)
+
+  // If searchTerm is present, we could manually sort in JS if the result set is small,
+  // but .range() already happens on the server.
+  const totalCount = count || 0
+  const totalPages = Math.ceil(totalCount / limit)
+
+  return { 
+    data, 
+    totalCount,
+    totalPages,
+    currentPage: page,
+    hasMore: page < totalPages 
+  }
 }
 
 // 8. Decrement Stock
