@@ -14,6 +14,14 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'images.unsplash.com',
       },
+      {
+        protocol: 'https',
+        hostname: 'nonsmanonline.com', // <--- This allows your specific image URLs!
+      },
+      {
+        protocol: 'https',
+        hostname: '*.gstatic.com', // <--- The asterisk (*) acts as a wildcard for all Google Image servers!
+      },
     ],
   },
   // Others config...,
