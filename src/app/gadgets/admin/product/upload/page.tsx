@@ -201,7 +201,6 @@ export default function UploadGadgetPage() {
               <input type="text" name="sub_category" className="w-full border p-2 rounded" placeholder="e.g. Charger, Case (Optional)" />
             )}
             <p className="text-xs text-gray-400 mt-1 italic">Classification helps customers find products faster.</p>
-            </div>
           </div>
         </div>
 
