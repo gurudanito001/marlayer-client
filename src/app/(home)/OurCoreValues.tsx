@@ -248,12 +248,8 @@ const OurCoreValues: React.FC = () => {
                     flexDirection: "column",
                     gap: 18,
                     cursor: "default",
-                    transition: "border-color 0.2s, background 0.2s",
                     opacity: inView ? 1 : 0,
                     transform: inView ? "translateY(0)" : "translateY(24px)",
-                    // @ts-ignore
-                    transitionDelay: `${i * 0.07}s`,
-                    // Merge two transitions — using the !important pattern via inline style doesn't work for animation-delay + transition
                     // so we override with a combined transition string:
                     transition: `opacity 0.5s ease ${i * 0.07}s, transform 0.5s ease ${i * 0.07}s, border-color 0.2s, background 0.2s`,
                   }}
