@@ -95,9 +95,9 @@ export default function Home() {
       />
       <HeroSection />
       <OurEcosystemHeader />
-      <MarlayerGadgets />
       <MarlayerSoftware />
       <MarlayerAcademy />
+      <MarlayerGadgets />
       <OurCoreValues />
       <CallToAction />
       <Footer />

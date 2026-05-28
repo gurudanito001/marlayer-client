@@ -1,104 +1,308 @@
-// components/AcademySection.tsx
-import React from 'react';
-import Image from 'next/image';
+"use client";
 
+// AcademySection.tsx
+// Matches the HeroSection dark/techy aesthetic
+// ─────────────────────────────────────────────────────────────────────────────
+
+import React, { useRef, useEffect, useState } from "react";
+import Link from "next/link";
+
+const TEAL = "#45B1A0";
+
+function useInView(threshold = 0.25) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [inView, setInView] = useState(false);
+  useEffect(() => {
+    const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) setInView(true); }, { threshold });
+    if (ref.current) obs.observe(ref.current);
+    return () => obs.disconnect();
+  }, [threshold]);
+  return { ref, inView };
+}
+
+// ── Course card ──────────────────────────────────────────────────────────────
+interface CourseCardProps {
+  icon: React.ReactNode;
+  title: string;
+  desc: string;
+  tag: string;
+  delay: number;
+  inView: boolean;
+}
+
+const CourseCard = ({ icon, title, desc, tag, delay, inView }: CourseCardProps) => (
+  <div
+    style={{
+      background: "rgba(69,177,160,0.04)",
+      border: "1px solid rgba(69,177,160,0.13)",
+      borderRadius: 10,
+      padding: "20px 20px",
+      display: "flex",
+      flexDirection: "column",
+      gap: 10,
+      opacity: inView ? 1 : 0,
+      transform: inView ? "translateY(0)" : "translateY(20px)",
+      transition: `opacity 0.5s ease ${delay}s, transform 0.5s ease ${delay}s`,
+    }}
+  >
+    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
+      <div style={{
+        width: 38, height: 38, borderRadius: 8,
+        background: "rgba(69,177,160,0.1)", border: "1px solid rgba(69,177,160,0.2)",
+        display: "flex", alignItems: "center", justifyContent: "center",
+        color: TEAL, flexShrink: 0,
+      }}>
+        {icon}
+      </div>
+      <span style={{
+        fontFamily: "'Space Mono', monospace", fontSize: 10,
+        color: "rgba(69,177,160,0.7)", letterSpacing: 1,
+        background: "rgba(69,177,160,0.08)", border: "1px solid rgba(69,177,160,0.15)",
+        padding: "3px 8px", borderRadius: 4,
+      }}>
+        {tag}
+      </span>
+    </div>
+    <div style={{ fontSize: 14, fontWeight: 600, color: "white", fontFamily: "'Space Grotesk', sans-serif" }}>{title}</div>
+    <div style={{ fontSize: 13, color: "rgba(255,255,255,0.4)", lineHeight: 1.6 }}>{desc}</div>
+  </div>
+);
+
+// ── Progress bar ─────────────────────────────────────────────────────────────
+const ProgressBar = ({ label, pct, inView, delay }: { label: string; pct: number; inView: boolean; delay: number }) => (
+  <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+    <div style={{ display: "flex", justifyContent: "space-between" }}>
+      <span style={{ fontSize: 12, color: "rgba(255,255,255,0.5)", fontFamily: "'Space Grotesk', sans-serif" }}>{label}</span>
+      <span style={{ fontSize: 12, color: TEAL, fontFamily: "'Space Mono', monospace" }}>{pct}%</span>
+    </div>
+    <div style={{ height: 4, background: "rgba(69,177,160,0.1)", borderRadius: 2, overflow: "hidden" }}>
+      <div style={{
+        height: "100%", borderRadius: 2,
+        background: `linear-gradient(90deg, ${TEAL}, #6fc9bb)`,
+        width: inView ? `${pct}%` : "0%",
+        transition: `width 1s ease ${delay}s`,
+      }} />
+    </div>
+  </div>
+);
+
+// ── Main component ────────────────────────────────────────────────────────────
 const AcademySection: React.FC = () => {
+  const { ref, inView } = useInView();
+
+  const courses = [
+    {
+      tag: "TRACK_01",
+      title: "Web & Mobile Development",
+      desc: "Build production-grade apps from scratch using modern frameworks.",
+      icon: (
+        <svg width={18} height={18} fill="none" stroke="currentColor" strokeWidth={1.8} viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12l-3.75 3.75M6.75 8.25L3 12l3.75 3.75M13.5 4.5l-3 15" />
+        </svg>
+      ),
+    },
+    {
+      tag: "TRACK_02",
+      title: "UI/UX Design",
+      desc: "Design intuitive interfaces and experiences that delight users.",
+      icon: (
+        <svg width={18} height={18} fill="none" stroke="currentColor" strokeWidth={1.8} viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M9.53 16.122a3 3 0 00-5.78 1.128 2.25 2.25 0 01-2.4 2.245 4.5 4.5 0 008.4-2.245c0-.399-.078-.78-.22-1.128zm0 0a15.998 15.998 0 003.388-1.62m-5.043-.025a15.994 15.994 0 011.622-3.395m3.42 3.42a15.995 15.995 0 004.764-4.648l3.876-5.814a1.151 1.151 0 00-1.597-1.597L14.146 6.32a15.996 15.996 0 00-4.649 4.763m3.42 3.42a6.776 6.776 0 00-3.42-3.42" />
+        </svg>
+      ),
+    },
+    {
+      tag: "TRACK_03",
+      title: "Data Analytics",
+      desc: "Turn raw data into business intelligence using Python and BI tools.",
+      icon: (
+        <svg width={18} height={18} fill="none" stroke="currentColor" strokeWidth={1.8} viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z" />
+        </svg>
+      ),
+    },
+  ];
+
+  const outcomes = [
+    { label: "Job Placement Rate", pct: 87 },
+    { label: "Curriculum Completion", pct: 94 },
+    { label: "Mentor Satisfaction",  pct: 96 },
+  ];
+
   return (
-    <section className="py-24 bg-[#FAFAFA] overflow-hidden">
-      <div className="container mx-auto px-6 md:px-12 lg:px-16 xl:px-40 max-w-full">
-        
-        {/* Feature Layout */}
-        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
-          
-          {/* Left Side: Image & Bottom Overlay Badge */}
-          <div className="w-full lg:w-7/12 relative group">
-            {/* Main Image Container */}
-            <div className="relative rounded-3xl overflow-hidden shadow-2xl bg-gray-200 aspect-[4/3] w-full">
-              {/* Replace the src with your actual image path */}
-              <Image
-                src="/images/homepage/academy-banner.jpg" 
-                alt="Student smiling while using a laptop" 
-                className="object-cover w-full h-full transform transition-transform duration-700 group-hover:scale-105"
-                fill
-                sizes="(max-width: 1024px) 100vw, 58vw"
-              />
-              
-              {/* Bottom Gradient Overlay for Text Readability */}
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0b1021]/90 via-[#0b1021]/20 to-transparent opacity-90 z-0"></div>
+    <>
+      <style>{`
+        @keyframes marlayer-blink { 50% { opacity: 0; } }
+        @keyframes marlayer-grid-pulse { 0%,100%{opacity:.4} 50%{opacity:.9} }
+      `}</style>
 
-              {/* "Next Batch" Info Badge */}
-              {/* <div className="absolute bottom-6 left-6 right-6 flex items-center gap-4 z-10">
-                <div className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center flex-shrink-0">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6 text-white">
-                    <path d="M11.7 2.805a.75.75 0 01.6 0A60.65 60.65 0 0122.83 8.72a.75.75 0 01-.231 1.337 49.949 49.949 0 00-9.902 3.912l-.003.002c-.114.06-.227.119-.343.18-.114.06-.229.119-.343.18a.75.75 0 01-.607 0 49.904 49.904 0 00-10.589-4.272.75.75 0 01-.23-1.337A60.65 60.65 0 0111.7 2.805z" />
-                    <path d="M13.06 15.473a48.45 48.45 0 017.666-3.282c.134 1.414.22 2.843.255 4.284a.75.75 0 01-.46.711 47.87 47.87 0 00-8.105 4.342.75.75 0 01-.832 0 47.87 47.87 0 00-8.104-4.342.75.75 0 01-.461-.71c.035-1.442.121-2.87.255-4.286.921.304 1.83.634 2.726.99v1.27a1.5 1.5 0 001.481 1.453 45.42 45.42 0 003.09-.128 1.5 1.5 0 001.481-1.452v-1.27a48.56 48.56 0 012.608-1.58zM8.25 10.12l.09.049V15a.75.75 0 01-1.5 0v-5.266c.23-.131.464-.258.702-.381c.238-.124.478-.244.72-.361v.128z" />
-                  </svg>
-                </div>
-                <div>
-                  <h5 className="text-white font-bold text-lg leading-tight">Next Batch Starting Soon</h5>
-                  <p className="text-white/80 text-sm font-medium">Join 500+ students today</p>
-                </div>
-              </div> */}
-            </div>
+      <section
+        style={{
+          background: "#030f0b",
+          padding: "96px 0",
+          overflow: "hidden",
+          position: "relative",
+          fontFamily: "'Space Grotesk', sans-serif",
+        }}
+      >
+        {/* Grid bg — slightly different tint to create section separation */}
+        <div style={{
+          position: "absolute", inset: 0, pointerEvents: "none",
+          backgroundImage: `linear-gradient(rgba(69,177,160,0.035) 1px,transparent 1px),linear-gradient(90deg,rgba(69,177,160,0.035) 1px,transparent 1px)`,
+          backgroundSize: "40px 40px",
+          animation: "marlayer-grid-pulse 7s ease-in-out infinite",
+        }} />
 
-            {/* Expert Mentorship Floating Badge */}
-            <div className="absolute top-6 right-6 bg-white/95 backdrop-blur-sm py-2.5 px-5 rounded-full shadow-lg flex items-center gap-2 z-10">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5 text-[#A33900]">
-                <path fillRule="evenodd" d="M8.603 3.799A4.49 4.49 0 0112 2.25c1.357 0 2.573.6 3.397 1.549a4.49 4.49 0 013.498 1.307 4.491 4.491 0 011.307 3.497A4.49 4.49 0 0121.75 12a4.49 4.49 0 01-1.549 3.397 4.491 4.491 0 01-1.307 3.497 4.491 4.491 0 01-3.497 1.307A4.49 4.49 0 0112 21.75a4.49 4.49 0 01-3.397-1.549 4.49 4.49 0 01-3.498-1.306 4.491 4.491 0 01-1.307-3.498A4.49 4.49 0 012.25 12c0-1.357.6-2.573 1.549-3.397a4.49 4.49 0 011.307-3.497 4.49 4.49 0 013.497-1.307zm7.007 6.387a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clipRule="evenodd" />
-              </svg>
-              <span className="text-sm font-semibold text-slate-800">Expert Mentorship</span>
-            </div>
+        {/* Horizontal divider glow at top */}
+        <div style={{
+          position: "absolute", top: 0, left: 0, right: 0, height: 1,
+          background: "linear-gradient(90deg, transparent, rgba(69,177,160,0.3), transparent)",
+          pointerEvents: "none",
+        }} />
+
+        <div
+          ref={ref}
+          style={{ maxWidth: 1280, margin: "0 auto", padding: "0 24px", display: "flex", flexDirection: "column", gap: 64 }}
+        >
+          {/* Section label */}
+          <div style={{ display: "flex", alignItems: "center", gap: 8, fontFamily: "'Space Mono', monospace", fontSize: 11, color: TEAL, letterSpacing: 2, textTransform: "uppercase" }}>
+            <span style={{ width: 20, height: 1, background: TEAL, display: "inline-block" }} />
+            Layer 02 — Academy
           </div>
 
-          {/* Right Side: Content */}
-          <div className="w-full lg:w-5/12 flex flex-col items-start">
-            
-            <div className="flex items-center gap-4 mb-5">
-              {/* Light Orange Icon Box */}
-              <div className="w-14 h-14 bg-[#ffedd5] rounded-full flex items-center justify-center flex-shrink-0">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-7 h-7 text-[#A33900]">
-                  <path d="M11.7 2.805a.75.75 0 01.6 0A60.65 60.65 0 0122.83 8.72a.75.75 0 01-.231 1.337 49.949 49.949 0 00-9.902 3.912l-.003.002c-.114.06-.227.119-.343.18-.114.06-.229.119-.343.18a.75.75 0 01-.607 0 49.904 49.904 0 00-10.589-4.272.75.75 0 01-.23-1.337A60.65 60.65 0 0111.7 2.805z" />
-                  <path d="M13.06 15.473a48.45 48.45 0 017.666-3.282c.134 1.414.22 2.843.255 4.284a.75.75 0 01-.46.711 47.87 47.87 0 00-8.105 4.342.75.75 0 01-.832 0 47.87 47.87 0 00-8.104-4.342.75.75 0 01-.461-.71c.035-1.442.121-2.87.255-4.286A48.56 48.56 0 0013.06 15.473z" />
-                </svg>
+          {/* Two-column */}
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 64, alignItems: "start" }}>
+
+            {/* Left: course cards */}
+            <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
+              {/* Header above cards */}
+              <div style={{
+                fontFamily: "'Space Mono', monospace", fontSize: 11,
+                color: "rgba(255,255,255,0.3)", letterSpacing: 2, marginBottom: 4,
+                display: "flex", alignItems: "center", gap: 8,
+              }}>
+                <span style={{ width: 6, height: 6, borderRadius: "50%", background: TEAL, animation: "marlayer-blink 1.5s ease-in-out infinite" }} />
+                ACTIVE TRACKS
               </div>
 
-              <h4 className="text-3xl md:text-4xl font-bold text-slate-900">
-                Tech Academy
-              </h4>
-            </div>
-            
-            <p className="text-slate-500 text-lg leading-relaxed mb-8">
-              Unlock your potential with future-ready skills. Our academy offers hands-on mentorship from industry experts in a collaborative environment. Whether it&apos;s coding, design, or AI, we guide you from novice to professional.
-            </p>
-
-            {/* Pill Tags */}
-            <div className="flex flex-wrap gap-3 mb-10 w-full">
-              {[
-                "Web and Mobile Development",
-                "UI/UX Design",
-                "Data Analytics",
-              ].map((tag, index) => (
-                <span 
-                  key={index} 
-                  className="px-4 py-2 bg-slate-100 text-slate-600 text-sm font-medium rounded-full"
-                >
-                  {tag}
-                </span>
+              {courses.map((c, i) => (
+                <CourseCard key={c.title} {...c} delay={i * 0.12} inView={inView} />
               ))}
+
+              {/* Outcome metrics */}
+              <div style={{
+                marginTop: 8,
+                background: "rgba(69,177,160,0.03)",
+                border: "1px solid rgba(69,177,160,0.1)",
+                borderRadius: 10,
+                padding: "20px 20px",
+                display: "flex",
+                flexDirection: "column",
+                gap: 16,
+              }}>
+                <span style={{ fontFamily: "'Space Mono', monospace", fontSize: 11, color: "rgba(255,255,255,0.3)", letterSpacing: 2 }}>OUTCOME METRICS</span>
+                {outcomes.map((o, i) => (
+                  <ProgressBar key={o.label} label={o.label} pct={o.pct} inView={inView} delay={i * 0.15 + 0.4} />
+                ))}
+              </div>
             </div>
 
-            {/* CTA Link */}
-            <a href="/academy" className="inline-flex items-center gap-2 bg-[#A33900] text-white px-8 py-3 rounded-lg font-semibold text-sm hover:bg-[#c2410c] transition-all shadow-md group">
-              View Course Catalog
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5 transform transition-transform group-hover:translate-x-1">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-              </svg>
-            </a>
+            {/* Right: copy */}
+            <div style={{ display: "flex", flexDirection: "column", gap: 0 }}>
+              <h2
+                style={{
+                  fontSize: "clamp(30px, 3.5vw, 44px)",
+                  fontWeight: 700,
+                  color: "white",
+                  lineHeight: 1.1,
+                  letterSpacing: -1,
+                  marginBottom: 16,
+                  opacity: inView ? 1 : 0,
+                  transform: inView ? "translateY(0)" : "translateY(20px)",
+                  transition: "opacity 0.6s ease 0.2s, transform 0.6s ease 0.2s",
+                }}
+              >
+                <span style={{ color: "rgba(255,255,255,0.3)" }}>Train the minds</span>
+                <br />
+                <span style={{ color: TEAL }}>that build</span>
+                <br />
+                tomorrow's tech.
+              </h2>
 
+              <p style={{ fontSize: 15, color: "rgba(255,255,255,0.45)", lineHeight: 1.8, maxWidth: 440, marginBottom: 32 }}>
+                Our academy isn't a bootcamp — it's a launchpad. Industry practitioners teach what actually works in production, mentoring students from zero knowledge to job-ready professionals.
+              </p>
+
+              {/* Highlights */}
+              <div style={{ display: "flex", flexDirection: "column", gap: 16, marginBottom: 36 }}>
+                {[
+                  { label: "Hands-on from day one", sub: "No fluff. Real projects, real feedback." },
+                  { label: "Industry mentors",      sub: "Learn from professionals actively building products." },
+                  { label: "Cohort-based learning", sub: "Grow alongside peers with shared goals." },
+                ].map(({ label, sub }, i) => (
+                  <div
+                    key={label}
+                    style={{
+                      display: "flex", gap: 14,
+                      opacity: inView ? 1 : 0,
+                      transform: inView ? "translateX(0)" : "translateX(16px)",
+                      transition: `opacity 0.5s ease ${i * 0.1 + 0.4}s, transform 0.5s ease ${i * 0.1 + 0.4}s`,
+                    }}
+                  >
+                    <div style={{
+                      width: 32, height: 32, borderRadius: 6, flexShrink: 0, marginTop: 2,
+                      background: "rgba(69,177,160,0.1)", border: "1px solid rgba(69,177,160,0.2)",
+                      display: "flex", alignItems: "center", justifyContent: "center",
+                    }}>
+                      <svg width={14} height={14} fill="none" stroke={TEAL} strokeWidth={2.5} viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                      </svg>
+                    </div>
+                    <div>
+                      <div style={{ fontSize: 14, fontWeight: 600, color: "white", marginBottom: 2 }}>{label}</div>
+                      <div style={{ fontSize: 13, color: "rgba(255,255,255,0.4)" }}>{sub}</div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Next cohort badge */}
+              <div style={{
+                display: "inline-flex", alignItems: "center", gap: 10,
+                background: "rgba(69,177,160,0.06)", border: "1px solid rgba(69,177,160,0.2)",
+                borderRadius: 8, padding: "12px 16px", marginBottom: 28,
+                alignSelf: "flex-start",
+              }}>
+                <span style={{ width: 8, height: 8, borderRadius: "50%", background: TEAL, animation: "marlayer-blink 1.4s ease-in-out infinite" }} />
+                <span style={{ fontFamily: "'Space Mono', monospace", fontSize: 11, color: TEAL, letterSpacing: 1 }}>NEXT COHORT ENROLLING NOW</span>
+              </div>
+
+              {/* CTA */}
+              <Link
+                href="/academy"
+                style={{
+                  display: "inline-flex", alignItems: "center", gap: 8,
+                  background: TEAL, color: "#020d0a",
+                  fontFamily: "'Space Grotesk', sans-serif",
+                  fontSize: 13, fontWeight: 700,
+                  padding: "12px 28px", borderRadius: 4,
+                  textDecoration: "none", letterSpacing: 0.5,
+                  transition: "background 0.2s",
+                  alignSelf: "flex-start",
+                }}
+                onMouseEnter={e => (e.currentTarget.style.background = "#5cc5b3")}
+                onMouseLeave={e => (e.currentTarget.style.background = TEAL)}
+              >
+                View Course Catalog
+                <svg width={16} height={16} fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                </svg>
+              </Link>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 };
 

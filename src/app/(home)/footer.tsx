@@ -2,11 +2,13 @@ import { MapPinIcon, EnvelopeIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import Link from "next/link";
 
+const TEAL = "#45B1A0";
+
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="relative bg-[#0E1F18] text-[#9CAFAA] overflow-hidden">
+    <footer className="relative bg-[#020d0a] text-[#9CAFAA] overflow-hidden border-t border-white/5" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
       
       {/* The Wireframe Grid Background 
         This recreates the exact faint grid pattern seen in your image. 
@@ -15,16 +17,16 @@ const Footer = () => {
         className="absolute inset-0 pointer-events-none" 
         style={{
           backgroundImage: `
-            linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-            linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px)
+            linear-gradient(to right, rgba(69, 177, 160, 0.03) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(69, 177, 160, 0.03) 1px, transparent 1px)
           `,
           backgroundSize: '120px 120px', // Adjust this to make the grid squares larger/smaller
           backgroundPosition: 'center center'
         }}
       >
         {/* Fades out the grid at the top and bottom edges for a cleaner look */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0E1F18] via-transparent to-[#0E1F18] opacity-80"></div>
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0E1F18] via-transparent to-[#0E1F18] opacity-80"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-[#020d0a] via-transparent to-[#020d0a] opacity-80"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-[#020d0a] via-transparent to-[#020d0a] opacity-80"></div>
       </div>
 
       {/* Main Content Container */}
@@ -35,16 +37,11 @@ const Footer = () => {
           
           {/* Left Side: Brand Info */}
           <div className="flex flex-col gap-6 max-w-xs xl:max-w-sm">
-            <Link href="/" className="flex items-baseline">
-              <div className="">
-                <Image src="/images/marlayer-logo.svg" width={24} height={24} alt="Marlayer Logo" />
-              </div>
-              <span
-                className="font-extrabold text-2xl ml-0.5"
-                style={{ color: '#45B1A0' }}
-              >
-                ARLAYER
-              </span>
+            <Link href="/" className="flex items-center" style={{ fontWeight: 700, fontSize: 24, letterSpacing: 2, color: "white" }}>
+              <span style={{ color: "rgba(69,177,160,0.5)" }}>[</span>
+              <span>M</span>
+              <span style={{ color: TEAL }}>ARLAYER</span>
+              <span style={{ color: "rgba(69,177,160,0.5)" }}>]</span>
             </Link>
             <p className="text-[15px] leading-relaxed font-light">
               Empowering the next generation of tech innovators and building robust software solutions.
@@ -56,39 +53,39 @@ const Footer = () => {
             
             {/* Services Column */}
             <div className="flex flex-col gap-6">
-              <h6 className="text-white text-base font-medium">Services</h6>
+              <h6 className="text-white text-xs font-bold uppercase tracking-widest" style={{ fontFamily: "'Space Mono', monospace", color: TEAL }}>Services</h6>
               <ul className="flex flex-col gap-5 text-[15px] font-light">
-                <li><Link href="/academy" className="hover:text-white transition-colors duration-200">Academy</Link></li>
-                <li><Link href="/software" className="hover:text-white transition-colors duration-200">Software</Link></li>
-                <li><Link href="/gadgets" className="hover:text-white transition-colors duration-200">Gadgets</Link></li>
+                <li><Link href="/academy" className="hover:text-[#45B1A0] transition-colors duration-200">Academy</Link></li>
+                <li><Link href="/software" className="hover:text-[#45B1A0] transition-colors duration-200">Software</Link></li>
+                <li><Link href="/gadgets" className="hover:text-[#45B1A0] transition-colors duration-200">Gadgets</Link></li>
               </ul>
             </div>
 
             {/* Company Column */}
             <div className="flex flex-col gap-6">
-              <h6 className="text-white text-base font-medium">Company</h6>
+              <h6 className="text-white text-xs font-bold uppercase tracking-widest" style={{ fontFamily: "'Space Mono', monospace", color: TEAL }}>Company</h6>
               <ul className="flex flex-col gap-5 text-[15px] font-light">
-                <li><Link href="/academy/faqs" className="hover:text-white transition-colors duration-200">FAQs</Link></li>
-                <li><Link href="/privacy-policy" className="hover:text-white transition-colors duration-200">Privacy Policy</Link></li>
-                <li><Link href="/contact" className="hover:text-white transition-colors duration-200">Contact Us</Link></li>
+                <li><Link href="/academy/faqs" className="hover:text-[#45B1A0] transition-colors duration-200">FAQs</Link></li>
+                <li><Link href="/privacy-policy" className="hover:text-[#45B1A0] transition-colors duration-200">Privacy Policy</Link></li>
+                <li><Link href="/contact" className="hover:text-[#45B1A0] transition-colors duration-200">Contact Us</Link></li>
               </ul>
             </div>
 
             {/* Contact Column (Adapted to fit the design) */}
             <div className="flex flex-col gap-6 col-span-2 md:col-span-1">
-              <h6 className="text-white text-base font-medium">Contact Us</h6>
+              <h6 className="text-white text-xs font-bold uppercase tracking-widest" style={{ fontFamily: "'Space Mono', monospace", color: TEAL }}>Contact Us</h6>
               <ul className="flex flex-col gap-5 text-[15px] font-light">
                 <li className="flex items-start gap-3">
-                  <MapPinIcon className="w-5 h-5 text-white/50 shrink-0 mt-0.5" />
+                  <MapPinIcon className="w-5 h-5 text-[#45B1A0]/60 shrink-0 mt-0.5" />
                   <span className="leading-snug">6 Oremeta Street Oregun, Ikeja, Lagos</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <MapPinIcon className="w-5 h-5 text-white/50 shrink-0 mt-0.5" />
+                  <MapPinIcon className="w-5 h-5 text-[#45B1A0]/60 shrink-0 mt-0.5" />
                   <span className="leading-snug">12 Jogunosimi Street Alausa, Ikeja, Lagos</span>
                 </li>
                 <li className="flex items-center gap-3">
-                  <EnvelopeIcon className="w-5 h-5 text-white/50 shrink-0" />
-                  <a href="mailto:daniel.marlayer@gmail.com" className="hover:text-white transition-colors duration-200">
+                  <EnvelopeIcon className="w-5 h-5 text-[#45B1A0]/60 shrink-0" />
+                  <a href="mailto:daniel.marlayer@gmail.com" className="hover:text-[#45B1A0] transition-colors duration-200">
                     daniel.marlayer@gmail.com
                   </a>
                 </li>
@@ -100,8 +97,8 @@ const Footer = () => {
 
         {/* Bottom Section: Copyright & Socials */}
         <div className="mt-24 flex flex-col-reverse sm:flex-row justify-between items-center gap-6">
-          <p className="text-sm font-light text-[#9CAFAA]/60">
-            Copyright © {currentYear} Marlayer. All rights reserved.
+          <p className="text-sm font-light text-[#9CAFAA]/60" style={{ fontFamily: "'Space Mono', monospace" }}>
+            SYSTEM_STATUS: ONLINE // © {currentYear} Marlayer. All rights reserved.
           </p>
           
           {/* Social Icons (Styled to match the circular look in the image) */}

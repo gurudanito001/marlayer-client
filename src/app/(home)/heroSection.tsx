@@ -1,260 +1,634 @@
-// components/HeroSection.tsx
 "use client";
 
-import React, { useState, useEffect } from 'react';
-import Image from "next/image";
+import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 
-const HeroSection = () => {
-  const logoTeal = "#45B1A0";
-  const [text, setText] = useState('');
-  const [isDeleting, setIsDeleting] = useState(false);
-  const [loopNum, setLoopNum] = useState(0);
-  const [typingSpeed, setTypingSpeed] = useState(150);
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+// ─── Font import ───────────────────────────────────────────────────────────────
+// Add this to your globals.css or layout.tsx <head>:
+//   @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+// And add to your tailwind.config.js fontFamily:
+//   'space-grotesk': ['Space Grotesk', 'sans-serif'],
+//   'space-mono':    ['Space Mono', 'monospace'],
 
-  const phrases = ["Software Solutions", "Tech Education", "Flagship Gadgets"];
+const PHRASES = ["your growth.", "your vision.", "your future.", "your business."];
+const TEAL = "#45B1A0";
 
-  useEffect(() => {
-    const handleType = () => {
-      const i = loopNum % phrases.length;
-      const fullText = phrases[i];
+// ─── Sub-components ────────────────────────────────────────────────────────────
 
-      setText(isDeleting ? fullText.substring(0, text.length - 1) : fullText.substring(0, text.length + 1));
+const GridBackground = () => (
+  <div
+    className="absolute inset-0 z-0 marlayer-grid-bg"
+    style={{
+      backgroundImage: `
+        linear-gradient(rgba(69,177,160,0.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(69,177,160,0.07) 1px, transparent 1px)
+      `,
+      backgroundSize: "40px 40px",
+    }}
+  />
+);
 
-      let nextSpeed = isDeleting ? 50 : 150;
+const ScanLine = () => (
+  <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+    <div className="marlayer-scan-line" />
+  </div>
+);
 
-      if (!isDeleting && text === fullText) {
-        nextSpeed = 2000; // Pause at end of phrase
-        setIsDeleting(true);
-      } else if (isDeleting && text === '') {
-        setIsDeleting(false);
-        setLoopNum(loopNum + 1);
-        nextSpeed = 500; // Pause before starting new phrase
-      }
+const CornerMarkers = () => (
+  <>
+    <div
+      className="absolute top-3 left-3 w-5 h-5 z-20 pointer-events-none"
+      style={{
+        borderTop: `1.5px solid rgba(69,177,160,0.4)`,
+        borderLeft: `1.5px solid rgba(69,177,160,0.4)`,
+      }}
+    />
+    <div
+      className="absolute bottom-3 right-3 w-5 h-5 z-20 pointer-events-none"
+      style={{
+        borderBottom: `1.5px solid rgba(69,177,160,0.4)`,
+        borderRight: `1.5px solid rgba(69,177,160,0.4)`,
+      }}
+    />
+  </>
+);
 
-      setTypingSpeed(nextSpeed);
-    };
+const GlowOrb = () => (
+  <div
+    className="absolute z-0 pointer-events-none"
+    style={{
+      width: 700,
+      height: 700,
+      borderRadius: "50%",
+      background: `radial-gradient(circle, rgba(69,177,160,0.12) 0%, transparent 70%)`,
+      left: "50%",
+      top: "50%",
+      transform: "translate(-50%, -50%)",
+    }}
+  >
+    {[600, 700, 800].map((size, i) => (
+      <div
+        key={size}
+        className="marlayer-pulse-ring"
+        style={{
+          position: "absolute",
+          borderRadius: "50%",
+          border: `1px solid rgba(69,177,160,0.2)`,
+          width: size,
+          height: size,
+          left: "50%",
+          top: "50%",
+          transform: "translate(-50%, -50%)",
+          animationDelay: `${i * 0.8}s`,
+        }}
+      />
+    ))}
+  </div>
+);
 
-    const timer = setTimeout(handleType, typingSpeed);
-
-    return () => clearTimeout(timer);
-  }, [text, isDeleting, loopNum, typingSpeed]); // phrases is constant
-
-  useEffect(() => {
-    const handleScroll = () => {
-      // When scrollY is greater than 10, navbar becomes sticky
-      setIsScrolled(window.scrollY > 10);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-
-  const navLinkClasses = isScrolled 
-    ? "text-gray-300 hover:text-[#45B1A0] hover:border-[#45B1A0]" 
-    : "text-gray-300 hover:text-white hover:border-white";
+const LayerStack = () => {
+  const layers = [
+    { label: "Software Solutions", opacity: 0.12, borderOpacity: 0.6, textColor: "#45B1A0", top: 20 },
+    { label: "Tech Academy", opacity: 0.08, borderOpacity: 0.4, textColor: "#6fc9bb", top: 95 },
+    { label: "Flagship Gadgets", opacity: 0.05, borderOpacity: 0.25, textColor: "#3a8a80", top: 170 },
+  ];
 
   return (
-    <section className="relative w-full h-screen max-h-[800px] xl:max-h-[950px] flex items-center bg-[#45B1A0] overflow-hidden">
-      
-      {/* Integrated Navbar */}
-      <nav className={`w-full left-0 top-0 z-[999] transition-all duration-300 ${isScrolled ? 'fixed bg-[#0E1F18]  backdrop-blur-lg shadow-lg py-2 lg:py-4' : 'absolute py-8'}`}>
-          <div className="w-full max-w-[1900px] mx-auto px-6 md:px-12 lg:px-16 xl:px-28 flex justify-between items-center relative">
-            
-            <div className="flex items-center">
-              <Link href="/" className="flex items-baseline">
-                <div className="">
-                 <Image src="/images/marlayer-logo.svg" width={24} height={24} alt="Marlayer Logo" />
-                </div>
-                <span 
-                  className="font-extrabold text-2xl ml-0.5"
-                  style={{ color: logoTeal }}
-                >
-                  ARLAYER
-                </span>
-              </Link>
-            </div>
-
-            {/* Desktop Navigation Links - Centered */}
-            <div className="hidden md:flex items-center space-x-8 absolute left-1/2 transform -translate-x-1/2">
-                <Link 
-                  href="/academy" 
-                  className={`${navLinkClasses} font-medium transition-colors duration-200 py-1 text-[15px] border-b-2 border-transparent`}
-                >
-                  Tech Academy
-                </Link>
-      
-                <Link 
-                  href="/software" 
-                  className={`${navLinkClasses} font-medium transition-colors duration-200 py-1 text-[15px] border-b-2 border-transparent`}
-                >
-                  Software Solutions
-                </Link>
-      
-                <Link 
-                  href="/gadgets" 
-                  className={`${navLinkClasses} font-medium transition-colors duration-200 py-1 text-[15px] border-b-2 border-transparent`}
-                >
-                  Flagship Gadgets
-                </Link>
-            </div>
-            
-            <div className="flex items-center gap-4">
-              {/* Contact Us Button (Desktop) */}
-              <Link 
-                href="/contact" 
-                className={`hidden md:inline-flex items-center justify-center px-6 py-2.5 border rounded-full font-medium transition-colors duration-300 ${isScrolled ? 'border-[#45B1A0] text-[#45B1A0] hover:bg-[#45B1A0] hover:text-white' : 'border-white text-white hover:bg-white hover:text-[#45B1A0]'}`}
-              >
-                Contact Us
-              </Link>
-
-              {/* Mobile Menu Button */}
-              <button 
-                onClick={() => setMobileMenuOpen(true)}
-                className={`md:hidden btn btn-ghost btn-circle ${isScrolled ? 'text-gray-600' : 'text-white'}`}
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
-              </button>
-            </div>
-          </div>
-        </nav>
-
-      {/* Background Image Container */}
-      {/* Update the URL to point to your actual isometric background image */}
-      <div 
-        className="absolute inset-0 z-0 bg-no-repeat bg-cover bg-right lg:bg-center"
-        style={{ backgroundImage: "url('/images/homepage/glass-house-2.jpg')" }}
-      >
-
-        {/* Overlay: Solid color with opacity to cover image but keep it visible */}
-        <div className="absolute inset-0 bg-[#001714]/70"></div>
-      </div>
-
-      {/* Main Content Area */}
-      <div className="relative z-10 w-full max-w-[1900px] mx-auto px-6 md:px-12 lg:px-16 xl:px-28 flex flex-col justify-center items-center text-center">
-        <article className="max-w-5xl flex flex-col items-center">
-          <h1 className="text-4xl md:text-5xl lg:text-[4rem] font-bold text-white mb-6 tracking-tight leading-10">
-            Leverage On World Class <br className="hidden md:block" />
-            <span style={{ color: logoTeal }}>{text}</span>
-            <span className="animate-pulse text-white">|</span>
-          </h1>
-          
-          <p className="text-gray-300 text-base md:text-lg mb-10 leading-relaxed max-w-lg font-light">
-            We train innovators, We build powerful software, We provide reliable gadgets for your business needs.
-          </p>
-
-          {/* Call to Action Buttons */}
-          <div className="flex flex-wrap items-center justify-center gap-4">
-            <a 
-              href='/#ecosystem' 
-              onClick={(e) => {
-                const element = document.getElementById('ecosystem');
-                if (element) {
-                  e.preventDefault();
-                  element.scrollIntoView({ behavior: 'smooth' });
-                }
+    <div
+      className="absolute z-10 pointer-events-none hidden lg:block"
+      style={{ 
+        right: "12%", // Adjusted from 8%
+        top: "40%", 
+        transform: "translateY(-50%) scale(clamp(1, 100vw / 1300, 1.4))", 
+        width: 400, // Increased from 280
+        height: 350, // Increased from 300
+        perspective: 1000 
+      }}
+    >
+      <GlowOrb />
+      <div className="marlayer-layer-3d" style={{ position: "relative", width: "100%", height: "100%", transformStyle: "preserve-3d" }}>
+        {layers.map(({ label, opacity, borderOpacity, textColor, top }, i) => (
+          <React.Fragment key={label}>
+            <div
+              className="layer-chip"
+              style={{
+                position: "absolute",
+                width: 400, // Increased from 350
+                height: 70, // Increased from 65
+                borderRadius: 8,
+                left: "50%",
+                transform: "translateX(-50%)",
+                top,
+                display: "flex",
+                alignItems: "center",
+                padding: "12px 20px", // Increased from 10px 18px
+                gap: 10,
+                background: `rgba(69,177,160,${opacity})`,
+                border: `1px solid rgba(69,177,160,${borderOpacity})`,
+                color: textColor,
+                fontFamily: "'Space Mono', monospace",
+                fontSize: 20, // Increased from 18
+                fontWeight: 700,
+                letterSpacing: 1,
+                textTransform: "uppercase",
+                animationDelay: `${i * 0.2}s`,
+                
               }}
-              className="bg-primary border border-primary hover:bg-primary-2 text-white px-8 py-2.5 rounded shadow-lg font-medium transition-colors duration-300">
-              Learn More
-            </a>
-            <Link href="/contact" className="bg-transparent border border-white text-white hover:bg-white/10 px-8 py-2.5 rounded font-medium transition-colors duration-300">
-              Get in Touch
-            </Link>
-          </div>
-        </article>
-      </div>
-
-      {/* Scroll Down Indicator */}
-      {/* <button 
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-2 cursor-pointer group"
-        onClick={(e) => {
-            const element = document.getElementById('ecosystem');
-            if (element) {
-              e.preventDefault();
-              element.scrollIntoView({ behavior: 'smooth' });
-            }
-          }}
-      >
-        <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center border border-white/20 group-hover:bg-white/10 transition-colors">
-          <svg 
-            xmlns="http://www.w3.org/2000/svg" 
-            className="h-4 w-4 text-white/70 group-hover:text-white transition-colors" 
-            fill="none" 
-            viewBox="0 0 24 24" 
-            stroke="currentColor"
-          >
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-          </svg>
-        </div>
-        <span className="text-white/60 text-[10px] tracking-widest uppercase font-light group-hover:text-white/90 transition-colors">
-          Scroll Down
-        </span>
-      </button> */}
-
-      {/* Mobile Sidebar Overlay */}
-      <div className={`fixed inset-0 z-[1000] md:hidden ${mobileMenuOpen ? 'pointer-events-auto' : 'pointer-events-none'}`}>
-        {/* Backdrop */}
-        <div 
-          className={`absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity duration-300 ${mobileMenuOpen ? 'opacity-100' : 'opacity-0'}`} 
-          onClick={() => setMobileMenuOpen(false)}
-        ></div>
-        
-        {/* Sidebar Content */}
-        <div className={`absolute right-0 top-0 h-full w-[85%] max-w-sm bg-white shadow-2xl transform transition-transform duration-300 ease-out flex flex-col px-6 py-4 ${mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}>
-          <header className="flex justify-between items-center mb-10 border-b border-gray-100 pb-4">
-            <Link href="/" className="flex items-baseline">
-              <div className="">
-                <Image src="/images/marlayer-logo.svg" width={24} height={24} alt="Marlayer Logo" />
-              </div>
+            >
               <span
-                className="font-extrabold text-2xl ml-0.5"
-                style={{ color: logoTeal }}
-              >
-                ARLAYER
-              </span>
-            </Link>
-            <button onClick={() => setMobileMenuOpen(false)} className="btn btn-ghost btn-circle btn-sm">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                className="marlayer-blink-dot"
+                style={{
+                  width: 8, height: 8, borderRadius: "50%", // Increased from 7x7
+                  background: textColor, flexShrink: 0,
+                  animationDelay: `${i * 0.5}s`,
+                }}
+              />
+              {label}
+            </div>
+            {/* Connector line */}
+            <div
+              style={{
+                position: "absolute",
+                left: "50%",
+                transform: "translateX(-50%)",
+                width: 1, // Keep as is
+                top: top + 70, // Adjusted to new chip height (top + chipHeight)
+                height: 20,
+                background: `linear-gradient(to bottom, rgba(69,177,160,0.6), rgba(69,177,160,0.1))`,
+              }}
+            />
+          </React.Fragment>
+        ))}
+        {/* Base layer */}
+        <div
+          style={{
+            position: "absolute",
+            width: 450, // Increased from 400
+            height: 25, // Increased from 20
+            background: "rgba(69,177,160,0.15)",
+            border: "1.5px solid rgba(69,177,160,0.7)",
+            borderRadius: 4,
+            left: "50%",
+            transform: "translateX(-50%)",
+            top: 245, // Adjusted to new stack layout (last chip top + chipHeight + spacing)
+            boxShadow: "0 0 20px rgba(69,177,160,0.3), 0 0 40px rgba(69,177,160,0.1)",
+          }}
+        />
+      </div>
+    </div>
+  );
+};
+
+const FloatingChips = () => (
+  <>
+    <div
+      className="floating-chip"
+      style={{ position: "absolute", top: 80, right: "38%", fontFamily: "'Space Mono', monospace", fontSize: 10, color: "rgba(69,177,160,0.5)", letterSpacing: 1, pointerEvents: "none", animationDelay: "0s" }}
+    >
+      SYS::ONLINE
+    </div>
+    <div
+      className="floating-chip"
+      style={{ position: "absolute", bottom: 90, right: "42%", fontFamily: "'Space Mono', monospace", fontSize: 10, color: "rgba(69,177,160,0.5)", letterSpacing: 1, pointerEvents: "none", animationDelay: "1.5s" }}
+    >
+      v2.0_STABLE
+    </div>
+  </>
+);
+
+// ─── Typewriter hook ───────────────────────────────────────────────────────────
+
+function useTypewriter(phrases: string[]) {
+  const [displayed, setDisplayed] = useState(phrases[0]);
+  const state = useRef({ phraseIdx: 0, charIdx: phrases[0].length, deleting: false });
+
+  useEffect(() => {
+    let timeout: ReturnType<typeof setTimeout>;
+
+    const tick = () => {
+      const { phraseIdx, charIdx, deleting } = state.current;
+      const phrase = phrases[phraseIdx];
+
+      if (!deleting) {
+        const next = phrase.substring(0, charIdx + 1);
+        setDisplayed(next);
+        if (charIdx + 1 >= phrase.length) {
+          state.current.deleting = true;
+          timeout = setTimeout(tick, 2000);
+        } else {
+          state.current.charIdx++;
+          timeout = setTimeout(tick, 80);
+        }
+      } else {
+        const next = phrase.substring(0, charIdx);
+        setDisplayed(next);
+        if (charIdx <= 0) {
+          state.current.deleting = false;
+          state.current.phraseIdx = (phraseIdx + 1) % phrases.length;
+          state.current.charIdx = 0;
+          timeout = setTimeout(tick, 400);
+        } else {
+          state.current.charIdx--;
+          timeout = setTimeout(tick, 40);
+        }
+      }
+    };
+
+    timeout = setTimeout(tick, 1500);
+    return () => clearTimeout(timeout);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+  return displayed;
+}
+
+// ─── Navbar ────────────────────────────────────────────────────────────────────
+
+interface NavProps {
+  isScrolled: boolean;
+  mobileOpen: boolean;
+  setMobileOpen: (v: boolean) => void;
+}
+
+const Navbar = ({ isScrolled, mobileOpen, setMobileOpen }: NavProps) => {
+  const navLinks = [
+    { label: "Tech Academy",      href: "/academy" },
+    { label: "Software",          href: "/software" },
+    { label: "Gadgets",           href: "/gadgets" },
+  ];
+
+  return (
+    <>
+      <nav
+        className="w-full left-0 top-0 z-50 transition-all duration-300"
+        style={{
+          position: isScrolled ? "fixed" : "absolute",
+          background: isScrolled ? "rgba(2,13,10,0.92)" : "transparent",
+          backdropFilter: isScrolled ? "blur(12px)" : "none",
+          borderBottom: isScrolled ? "1px solid rgba(69,177,160,0.1)" : "none",
+          padding: isScrolled ? "12px 0" : "20px 0",
+        }}
+      >
+        <div className="w-full max-w-[1900px] mx-auto px-6 md:px-12 lg:px-16 xl:px-28 flex justify-between items-center">
+          {/* Logo */}
+          <Link href="/" className="flex items-center" style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700, fontSize: 20, letterSpacing: 2, color: "white", textDecoration: "none" }}>
+            <span style={{ color: "rgba(69,177,160,0.5)" }}>[</span>
+            <span>M</span>
+            <span style={{ color: TEAL }}>ARLAYER</span>
+            <span style={{ color: "rgba(69,177,160,0.5)" }}>]</span>
+          </Link>
+
+          {/* Desktop nav */}
+          <ul className="hidden md:flex items-center gap-8" style={{ listStyle: "none" }}>
+            {navLinks.map(({ label, href }) => (
+              <li key={href}>
+                <Link
+                  href={href}
+                  style={{
+                    fontFamily: "'Space Grotesk', sans-serif",
+                    fontSize: 13,
+                    fontWeight: 500,
+                    color: "rgba(255,255,255,0.5)",
+                    textDecoration: "none",
+                    letterSpacing: 0.5,
+                    transition: "color 0.2s",
+                  }}
+                  onMouseEnter={e => (e.currentTarget.style.color = TEAL)}
+                  onMouseLeave={e => (e.currentTarget.style.color = "rgba(255,255,255,0.5)")}
+                >
+                  {label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+
+          {/* Desktop CTA */}
+          <Link
+            href="/contact"
+            className="hidden md:inline-flex items-center justify-center"
+            style={{
+              fontFamily: "'Space Mono', monospace",
+              fontSize: 12,
+              fontWeight: 700,
+              color: TEAL,
+              border: "1px solid rgba(69,177,160,0.5)",
+              padding: "8px 18px",
+              borderRadius: 4,
+              background: "rgba(69,177,160,0.05)",
+              letterSpacing: 1,
+              textTransform: "uppercase",
+              textDecoration: "none",
+              transition: "all 0.2s",
+            }}
+            onMouseEnter={e => { e.currentTarget.style.background = "rgba(69,177,160,0.15)"; e.currentTarget.style.borderColor = TEAL; }}
+            onMouseLeave={e => { e.currentTarget.style.background = "rgba(69,177,160,0.05)"; e.currentTarget.style.borderColor = "rgba(69,177,160,0.5)"; }}
+          >
+            Get in Touch
+          </Link>
+
+          {/* Mobile hamburger */}
+          <button
+            className="md:hidden"
+            onClick={() => setMobileOpen(true)}
+            style={{ background: "none", border: "none", color: "white", cursor: "pointer", padding: 4 }}
+            aria-label="Open menu"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+      </nav>
+
+      {/* Mobile Sidebar */}
+      <div className={`fixed inset-0 z-[1000] md:hidden ${mobileOpen ? "pointer-events-auto" : "pointer-events-none"}`}>
+        <div
+          className="absolute inset-0 transition-opacity duration-300"
+          style={{ background: "rgba(0,0,0,0.7)", backdropFilter: "blur(4px)", opacity: mobileOpen ? 1 : 0 }}
+          onClick={() => setMobileOpen(false)}
+        />
+        <div
+          className="absolute right-0 top-0 h-full flex flex-col px-6 py-6 transition-transform duration-300 ease-out"
+          style={{
+            width: "85%",
+            maxWidth: 340,
+            background: "#020d0a",
+            borderLeft: "1px solid rgba(69,177,160,0.2)",
+            transform: mobileOpen ? "translateX(0)" : "translateX(100%)",
+          }}
+        >
+          <div className="flex justify-between items-center mb-10 pb-4" style={{ borderBottom: "1px solid rgba(69,177,160,0.1)" }}>
+            <span style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700, fontSize: 18, letterSpacing: 2, color: "white" }}>
+              <span style={{ color: "rgba(69,177,160,0.5)" }}>[</span>M<span style={{ color: TEAL }}>ARLAYER</span><span style={{ color: "rgba(69,177,160,0.5)" }}>]</span>
+            </span>
+            <button onClick={() => setMobileOpen(false)} style={{ background: "none", border: "none", color: "rgba(255,255,255,0.5)", cursor: "pointer" }} aria-label="Close menu">
+              <svg xmlns="http://www.w3.org/2000/svg" width={22} height={22} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
               </svg>
             </button>
-          </header>
+          </div>
 
-          <ul className="flex flex-col space-y-6">
-            <li>
-              <Link href="/academy" className="text-xl font-medium text-gray-800 hover:text-[#45B1A0] transition-colors" onClick={() => setMobileMenuOpen(false)}>
-                Tech Academy
-              </Link>
-            </li>
-            <li>
-              <Link href="/software" className="text-xl font-medium text-gray-800 hover:text-[#45B1A0] transition-colors" onClick={() => setMobileMenuOpen(false)}>
-                Software Solutions
-              </Link>
-            </li>
-            <li>
-              <Link href="/gadgets" className="text-xl font-medium text-gray-800 hover:text-[#45B1A0] transition-colors" onClick={() => setMobileMenuOpen(false)}>
-                Flagship Gadgets
-              </Link>
-            </li>
+          <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: 24 }}>
+            {navLinks.map(({ label, href }) => (
+              <li key={href}>
+                <Link
+                  href={href}
+                  onClick={() => setMobileOpen(false)}
+                  style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 20, fontWeight: 600, color: "white", textDecoration: "none" }}
+                >
+                  {label}
+                </Link>
+              </li>
+            ))}
           </ul>
 
           <div className="mt-auto">
-             <Link href="/contact" className="block w-full text-center bg-[#45B1A0] text-white font-bold py-4 rounded-xl shadow-lg hover:bg-[#369b8b] transition-all transform hover:-translate-y-1" onClick={() => setMobileMenuOpen(false)}>
-                Get in Touch
-             </Link>
-             <p className="text-center text-gray-400 text-sm mt-6">© Marlayer {new Date().getFullYear()}</p>
+            <Link
+              href="/contact"
+              onClick={() => setMobileOpen(false)}
+              style={{
+                display: "block",
+                textAlign: "center",
+                background: TEAL,
+                color: "#020d0a",
+                fontFamily: "'Space Grotesk', sans-serif",
+                fontWeight: 700,
+                fontSize: 14,
+                padding: "14px",
+                borderRadius: 4,
+                textDecoration: "none",
+                letterSpacing: 1,
+              }}
+            >
+              Get in Touch
+            </Link>
+            <p style={{ textAlign: "center", color: "rgba(255,255,255,0.2)", fontSize: 12, marginTop: 20, fontFamily: "'Space Mono', monospace" }}>
+              © Marlayer {new Date().getFullYear()}
+            </p>
           </div>
         </div>
       </div>
+    </>
+  );
+};
 
-    </section>
+// ─── Main Component ────────────────────────────────────────────────────────────
+
+const HeroSection = () => {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const typedText = useTypewriter(PHRASES);
+
+  useEffect(() => {
+    const onScroll = () => setIsScrolled(window.scrollY > 10);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  const scrollToEcosystem = (e: React.MouseEvent) => {
+    const el = document.getElementById("ecosystem");
+    if (el) { e.preventDefault(); el.scrollIntoView({ behavior: "smooth" }); }
+  };
+
+  return (
+    <>
+      {/* ── Keyframe styles injected once ── */}
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+
+        @keyframes gridPulse {
+          0%, 100% { opacity: 0.6; }
+          50%       { opacity: 1; }
+        }
+        @keyframes scanMove {
+          0%   { top: 0%;   opacity: 0; }
+          10%  { opacity: 1; }
+          90%  { opacity: 1; }
+          100% { top: 100%; opacity: 0; }
+        }
+        @keyframes floatRotate {
+          0%, 100% { transform: rotateX(20deg) rotateY(-15deg) translateY(0px); }
+          50%       { transform: rotateX(20deg) rotateY(-15deg) translateY(-12px); }
+        }
+        @keyframes expandRing {
+          0%   { opacity: 0.6; transform: translate(-50%, -50%) scale(0.7); }
+          100% { opacity: 0;   transform: translate(-50%, -50%) scale(1); }
+        }
+        @keyframes blinkDot {
+          0%, 100% { opacity: 1; }
+          50%       { opacity: 0.3; }
+        }
+        @keyframes floatChip {
+          0%, 100% { transform: translateY(0);    opacity: 0.5; }
+          50%       { transform: translateY(-6px); opacity: 0.9; }
+        }
+        @keyframes cursorBlink {
+          50% { border-color: transparent; }
+        }
+
+        .marlayer-grid-bg     { animation: gridPulse 6s ease-in-out infinite; }
+        .marlayer-scan-line   { position: absolute; width: 100%; height: 2px; background: linear-gradient(90deg, transparent, rgba(69,177,160,0.4), transparent); animation: scanMove 4s linear infinite; top: 0; }
+        .marlayer-layer-3d    { animation: floatRotate 8s ease-in-out infinite; }
+        .marlayer-pulse-ring  { animation: expandRing 3s ease-out infinite; }
+        .marlayer-blink-dot   { animation: blinkDot 2s ease-in-out infinite; }
+        .marlayer-float-chip  { animation: floatChip 4s ease-in-out infinite; }
+        .marlayer-typed       { border-right: 2px solid #45B1A0; animation: cursorBlink 0.8s step-end infinite; padding-right: 3px; }
+      `}</style>
+
+      <section
+        className="relative w-full flex flex-col overflow-hidden"
+        style={{
+          minHeight: "100svh",
+          maxHeight: 950,
+          background: "#020d0a",
+          fontFamily: "'Space Grotesk', sans-serif",
+        }}
+      >
+        {/* Backgrounds */}
+        <GridBackground />
+        <ScanLine />
+        <CornerMarkers />
+
+        {/* Floating status chips */}
+        {(["SYS::ONLINE", "v2.0_STABLE"] as const).map((label, i) => (
+          <div
+            key={label}
+            className="marlayer-float-chip absolute z-10 pointer-events-none hidden lg:block"
+            style={{
+              [i === 0 ? "top" : "bottom"]: i === 0 ? 80 : 90,
+              right: i === 0 ? "38%" : "42%",
+              fontFamily: "'Space Mono', monospace",
+              fontSize: 10,
+              color: "rgba(69,177,160,0.5)",
+              letterSpacing: 1,
+              animationDelay: `${i * 1.5}s`,
+            }}
+          >
+            {label}
+          </div>
+        ))}
+
+        {/* Navbar */}
+        <Navbar isScrolled={isScrolled} mobileOpen={mobileOpen} setMobileOpen={setMobileOpen} />
+
+        {/* Hero body */}
+        <div className="relative z-10 flex-1 flex items-center w-full max-w-[1900px] mx-auto px-6 md:px-12 lg:px-16 xl:px-28">
+          {/* Left: copy */}
+          <div className="max-w-[100%] lg:max-w-[52%]">
+            {/* Tag */}
+            <div
+              className="inline-flex items-center gap-2 mb-5"
+              style={{ fontFamily: "'Space Mono', monospace", fontSize: 11, color: TEAL, letterSpacing: 2, textTransform: "uppercase" }}
+            >
+              <span style={{ display: "block", width: 20, height: 1, background: TEAL }} />
+              The Tech Foundation
+            </div>
+
+            {/* Headline */}
+            <h1
+              className="mb-4"
+              style={{ 
+                fontSize: "clamp(32px, 5vw, 68px)", 
+                fontWeight: 700, 
+                color: "white", 
+                lineHeight: 1.1, 
+                letterSpacing: -1 
+              }}
+            >
+              <span style={{ color: "rgba(255,255,255,0.35)" }}>Build on the</span>
+              <br />
+              <span style={{ color: TEAL }}>Layer that powers</span>
+              <br />
+              <span className="marlayer-typed">{typedText}</span>
+            </h1>
+
+            {/* Sub */}
+            <p
+              className="mb-8"
+              style={{ 
+                fontSize: "clamp(15px, 1.2vw, 18px)", 
+                color: "rgba(255,255,255,0.45)", 
+                lineHeight: 1.75, 
+                maxWidth: 520, 
+                fontWeight: 400 
+              }}
+            >
+              Marlayer is the technology foundation businesses rely on — delivering software solutions,
+              flagship hardware, and world-class tech training to help you scale with confidence.
+            </p>
+
+            {/* CTAs */}
+            <div className="flex flex-wrap items-center gap-3">
+              <a
+                href="/#ecosystem"
+                onClick={scrollToEcosystem}
+                style={{
+                  background: TEAL,
+                  color: "#020d0a",
+                  fontFamily: "'Space Grotesk', sans-serif",
+                  fontSize: 13,
+                  fontWeight: 700,
+                  padding: "12px 28px",
+                  borderRadius: 4,
+                  border: "none",
+                  cursor: "pointer",
+                  letterSpacing: 0.5,
+                  textDecoration: "none",
+                  transition: "background 0.2s",
+                  display: "inline-block",
+                }}
+                onMouseEnter={e => (e.currentTarget.style.background = "#5cc5b3")}
+                onMouseLeave={e => (e.currentTarget.style.background = TEAL)}
+              >
+                Explore Ecosystem
+              </a>
+              <Link
+                href="/contact"
+                style={{
+                  background: "transparent",
+                  color: "rgba(255,255,255,0.6)",
+                  fontFamily: "'Space Grotesk', sans-serif",
+                  fontSize: 13,
+                  fontWeight: 500,
+                  padding: "12px 24px",
+                  borderRadius: 4,
+                  border: "1px solid rgba(255,255,255,0.15)",
+                  textDecoration: "none",
+                  transition: "all 0.2s",
+                  display: "inline-block",
+                }}
+                onMouseEnter={e => { e.currentTarget.style.borderColor = "rgba(255,255,255,0.35)"; e.currentTarget.style.color = "white"; }}
+                onMouseLeave={e => { e.currentTarget.style.borderColor = "rgba(255,255,255,0.15)"; e.currentTarget.style.color = "rgba(255,255,255,0.6)"; }}
+              >
+                Get in Touch →
+              </Link>
+            </div>
+
+            {/* Stats */}
+            <div
+              className="flex gap-6 mt-9 pt-7"
+              style={{ borderTop: "1px solid rgba(69,177,160,0.1)" }}
+            >
+              {[
+                { num: "3",    label: "Core Layers" },
+                { num: "200+", label: "Businesses Served" },
+                { num: "100%", label: "Tech Focused" },
+              ].map(({ num, label }, i) => (
+                <React.Fragment key={label}>
+                  {i > 0 && <div style={{ width: 1, background: "rgba(255,255,255,0.08)", alignSelf: "stretch" }} />}
+                  <div style={{ display: "flex", flexDirection: "column", gap: 2 }}>
+                    <span style={{ fontSize: "clamp(22px, 2.2vw, 32px)", fontWeight: 700, color: "white", fontFamily: "'Space Grotesk', sans-serif" }}>{num}</span>
+                    <span style={{ fontSize: "clamp(10px, 0.9vw, 13px)", color: "rgba(255,255,255,0.35)", letterSpacing: 1, textTransform: "uppercase", fontFamily: "'Space Mono', monospace" }}>{label}</span>
+                  </div>
+                </React.Fragment>
+              ))}
+            </div>
+          </div>
+
+          {/* Right: Layer stack */}
+          <LayerStack />
+        </div>
+      </section>
+    </>
   );
 };
 
