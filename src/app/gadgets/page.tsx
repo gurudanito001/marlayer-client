@@ -23,8 +23,6 @@ export default function Home() {
             <GadgetsSocialProof/>
             <GadgetsCatalogue/> 
             <GadgetsCTA/>
-            {/* <UpdatesSection/>
-            <WhyBuySection/> */}
             <Footer/>
         </div>
     )
