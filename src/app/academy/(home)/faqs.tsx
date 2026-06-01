@@ -177,7 +177,7 @@ const FAQs = () => {
                   onClick={() => toggleFaq(index)}
                   className="w-full flex items-center justify-between p-6 text-left focus:outline-none"
                 >
-                  <span className={`text-lg transition-colors pr-6 ${isOpen ? 'font-semibold text-[#45B1A0]' : 'font-medium text-white'}`}>
+                  <span className={`text-lg transition-colors pr-6 !opacity-100 ${isOpen ? 'font-semibold !text-[#45B1A0]' : 'font-medium !text-white'}`}>
                     {faq.question}
                   </span>
                   

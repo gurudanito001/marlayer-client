@@ -7,62 +7,72 @@
 const problems = [
   {
     number: "01",
-    headline: "You paid for quality. You received disappointment.",
-    body: "Devices that looked great in photos arrived underpowered, incompatible, or outright fake. By the time you found out, the supplier was unreachable.",
+    headline: "You paid for premium quality. You received deep disappointment.",
+    body: "Devices that looked immaculate in digital portfolios arrived underpowered, internally degraded, or outright mismatched. By the time your team flagged the performance issues, the supplier was completely unreachable.",
   },
   {
     number: "02",
-    headline: "Your team lost days setting up new equipment.",
-    body: "Laptops and phones arrived out of the box with no software, no configuration, no accounts. Your staff spent 2 days doing IT work instead of their actual jobs.",
+    headline: "Your technical team lost critical days initializing equipment.",
+    body: "Laptops and workstations arrived blank with zero local optimization, missing profiles, and unconfigured accounts. Your senior staff wasted 48 business hours debugging infrastructure instead of executing their core roles.",
   },
   {
     number: "03",
-    headline: "A device failed. Your support window was a WhatsApp ghost.",
-    body: "Something broke 3 months in. The supplier stopped responding. You were left either absorbing the loss or starting the whole search over again.",
+    headline: "A mission-critical device failed. Your support window is a ghost.",
+    body: "Hardware glitched three months post-deployment. The vendor stopped answering calls, forcing your finance team to either fully absorb the capital loss or restart the stressful vendor search loop from scratch.",
   },
   {
     number: "04",
-    headline: "Every procurement cycle starts from scratch.",
-    body: "No vendor relationship. No device history. No upgrade plan. Every time you need equipment, it's a new risk, a new negotiation, a new gamble.",
+    headline: "Every infrastructure procurement cycle restarts from absolute zero.",
+    body: "No historical data logs. No unified warranty registry. No systematic device replacement roadmaps. Every single device purchase turns into a high-stakes corporate gamble, a new negotiation, and a fresh operational risk.",
   },
 ];
 
 export default function GadgetsProblem() {
   return (
-    <section className="bg-[#F7F8FC] border-y border-[#E4E8F0] py-20 md:py-28">
-      <div className="max-w-6xl mx-auto px-6">
+    <section className="relative bg-[#F4F9F8] border-y border-[#E2EFEB] py-20 lg:py-28 overflow-hidden">
+      
+      {/* Background Graphic Vignette */}
+      <div className="absolute top-0 right-0 w-[450px] h-[450px] rounded-full bg-[#D97706]/5 blur-[100px] pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-[#45B1A0]/5 blur-[100px] pointer-events-none" />
 
-        {/* Section header */}
-        <div className="max-w-2xl mb-16">
-          <span className="text-[#0055FF] text-xs font-semibold tracking-widest uppercase mb-3 block">
-            The Real Cost of Getting This Wrong
+      <div className="relative max-w-7xl mx-auto px-6 w-full">
+
+        {/* Section Header */}
+        <div className="max-w-3xl mb-16 lg:mb-20">
+          <span className="inline-flex items-center gap-2 bg-[#FEF3C7] text-[#D97706] text-xs font-bold tracking-wider uppercase px-4 py-2 rounded-full border border-[#FDE68A] mb-4 shadow-sm">
+            <svg className="w-3.5 h-3.5 text-[#D97706]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+            </svg>
+            The True Friction of Technology Procurement
           </span>
-          <h2 className="text-3xl md:text-4xl font-bold text-[#0A0A0A] leading-tight mb-4">
-            If any of this sounds familiar, you&apos;re not alone.
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0D2B1E] tracking-tight leading-tight mb-4">
+            If your operation has faced any of these hurdles,{" "}
+            <span className="text-[#D97706]">you are not alone.</span>
           </h2>
-          <p className="text-[#6B7280] text-lg leading-relaxed">
-            These aren&apos;t edge cases. They&apos;re the daily reality for businesses
-            that haven&apos;t found the right procurement partner yet.
+          <p className="text-[#235843] text-lg font-medium opacity-90 max-w-2xl leading-relaxed">
+            These are not rare edge cases. This is the costly, unoptimized operational baseline for 
+            growing businesses that have not consolidated their hardware layer under one verified system.
           </p>
         </div>
 
-        {/* Problem cards */}
-        <div className="grid md:grid-cols-2 gap-6">
+        {/* Problem Matrix Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 xl:gap-8">
           {problems.map((problem) => (
             <div
               key={problem.number}
-              className="group bg-white border border-[#E4E8F0] rounded-2xl p-7 hover:border-[#0055FF] hover:shadow-md transition-all duration-300"
+              className="group bg-white border border-[#E2EFEB] rounded-2xl p-6 xl:p-8 hover:border-[#D97706]/40 hover:shadow-xl hover:shadow-[#D97706]/5 transition-all duration-300 transform hover:-translate-y-0.5"
             >
-              {/* Number badge */}
-              <div className="flex items-start gap-4">
-                <span className="flex-shrink-0 w-9 h-9 rounded-lg bg-[#E8EEFF] text-[#0055FF] text-xs font-bold flex items-center justify-center group-hover:bg-[#0055FF] group-hover:text-white transition-colors duration-300">
+              <div className="flex items-start gap-5">
+                {/* Micro Number Badge */}
+                <span className="flex-shrink-0 w-10 h-10 rounded-xl bg-[#F4F9F8] text-[#557D71] text-xs font-mono font-black flex items-center justify-center border border-[#E2EFEB] group-hover:bg-[#FEF3C7] group-hover:text-[#D97706] group-hover:border-[#FDE68A] transition-all duration-300">
                   {problem.number}
                 </span>
-                <div>
-                  <h3 className="text-[#0A0A0A] font-semibold text-base mb-2 leading-snug">
+                
+                <div className="flex-1">
+                  <h3 className="text-[#0D2B1E] font-black text-base sm:text-lg mb-2.5 tracking-tight leading-snug group-hover:text-[#D97706] transition-colors duration-200">
                     {problem.headline}
                   </h3>
-                  <p className="text-[#6B7280] text-sm leading-relaxed">
+                  <p className="text-[#416B5C] text-sm leading-relaxed font-medium">
                     {problem.body}
                   </p>
                 </div>
@@ -71,26 +81,35 @@ export default function GadgetsProblem() {
           ))}
         </div>
 
-        {/* Bridge to solution */}
-        <div className="mt-14 bg-[#0A0A0A] rounded-2xl p-8 md:p-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-          <div className="max-w-xl">
-            <p className="text-white text-lg md:text-xl font-semibold leading-snug mb-2">
-              These are exactly the problems Marlayer was built to eliminate.
-            </p>
-            <p className="text-[#9CA3AF] text-sm">
-              We&apos;ve built our entire process around removing every one of these risks — before they can ever affect your business.
-            </p>
+        {/* Bridge To Solutions Hub Card Banner */}
+        <div className="mt-16 bg-[#0D2B1E] rounded-3xl p-6 md:p-8 lg:p-10 shadow-xl shadow-[#0D2B1E]/10 relative overflow-hidden">
+          
+          {/* Dynamic Top Indicator Alignment Accent */}
+          <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-[#D97706] via-[#45B1A0] to-[#2B7A6E]" />
+          
+          <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 relative z-10">
+            <div className="max-w-2xl">
+              <h4 className="text-xl sm:text-2xl font-extrabold text-white tracking-tight leading-snug mb-2">
+                Marlayer was deliberately structured to phase out these exact systemic vulnerabilities.
+              </h4>
+              <p className="text-[#A3BFB9] text-sm font-medium leading-relaxed opacity-90">
+                We engineered our end-to-end framework to intercept hardware defects, automate profile deployment, 
+                and supply ongoing local diagnostics before downtime breaks your operational workflow.
+              </p>
+            </div>
+            
+            <a
+              href="#how-it-works"
+              className="inline-flex items-center justify-center gap-2 bg-[#45B1A0] hover:bg-[#379485] text-white font-bold text-sm tracking-wide px-7 py-4 rounded-xl transition-all duration-200 shadow-md hover:shadow-xl hover:shadow-[#45B1A0]/20 hover:-translate-y-0.5 active:translate-y-0 group w-full lg:w-auto whitespace-nowrap"
+            >
+              Analyze Our Operational Framework
+              <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
+            </a>
           </div>
-          <a
-            href="#how-it-works"
-            className="flex-shrink-0 inline-flex items-center gap-2 bg-[#0055FF] hover:bg-[#0044CC] text-white font-semibold text-sm px-6 py-3 rounded-xl transition-colors whitespace-nowrap"
-          >
-            See how we solve this
-            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l7 7-7 7" />
-            </svg>
-          </a>
         </div>
+
       </div>
     </section>
   );

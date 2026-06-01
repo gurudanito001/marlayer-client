@@ -1,13 +1,12 @@
-"use client";
+'use client'
 
 import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
-import { ChevronRight } from "lucide-react";
+import { ChevronRight, Cable } from "lucide-react";
 import Link from "next/link";
-import Navbar from "../navbar";
-import Footer from "../footer";
+import Navbar from "../gadgetsNavbar";
+import Footer from "../gadgetsFooter";
 import { fetchGadgetsByCategory } from "@/app/lib/actions/gadgets";
-
 
 interface Product {
   id: string | number;
@@ -31,7 +30,6 @@ export default function AccessoriesPage() {
     async function loadAccessories() {
       setLoading(true);
       try {
-        
         const response = await fetchGadgetsByCategory("accessories", undefined, 1, 54);
 
         const mappedProducts = (response.data || []).map((item: any) => ({
@@ -54,7 +52,6 @@ export default function AccessoriesPage() {
     loadAccessories();
   }, []);
 
-  // Handle slider animation for tabs
   useEffect(() => {
     const activeTabIndex = tabs.indexOf(activeTab);
     const activeTabElement = tabsRef.current[activeTabIndex];
@@ -68,80 +65,119 @@ export default function AccessoriesPage() {
   }, [activeTab]);
 
   return (
-    <div className="bg-white">
+    <div className="bg-[#FAFDFB] min-h-screen flex flex-col antialiased">
       <Navbar />
-      <main className="min-h-screen bg-white py-12 px-6 md:px-10 lg:px-20">
-        <h1 className="text-3xl font-semibold text-black mb-8">Accessories</h1>
-
-        {/* TAB FILTER SLIDER */}
-        <div className="relative flex bg-gray-100 p-1 rounded-full mb-12 w-fit">
-          <span
-            className="absolute top-0 left-0 h-full rounded-full bg-black transition-all duration-300 p-1"
-            style={sliderStyle}
-          />
-          {tabs.map((tab, index) => (
-            <button
-              key={tab}
-              ref={(el) => { tabsRef.current[index] = el; }}
-              onClick={() => setActiveTab(tab)}
-              className={`relative z-10 px-3 sm:px-5 py-1.5 text-sm font-medium rounded-full transition ${
-                activeTab === tab ? "text-white" : "text-gray-700"
-              }`}
-            >
-              {tab}
-            </button>
-          ))}
+      
+      <main className="flex-grow max-w-7xl w-full mx-auto px-6 md:px-10 lg:px-12 py-12">
+        
+        {/* Header Block */}
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6 mb-12 border-b border-[#E2EFEB] pb-8">
+          <div>
+            <h1 className="text-3xl font-extrabold text-[#0D2B1E] tracking-tight mb-2">
+              Workspace Nodes
+            </h1>
+            <p className="text-sm text-[#416B5C]">
+              Critical peripheral interfaces and utility components calibrated for high-uptime execution environments.
+            </p>
+          </div>
+          
+          <div className="flex items-center gap-2 text-xs font-bold text-[#416B5C] bg-[#E2EFEB]/50 px-4 py-2 rounded-xl self-start sm:self-auto">
+            <Cable className="w-3.5 h-3.5 text-[#45B1A0]" />
+            <span>{accessories.length} Elements Linked</span>
+          </div>
         </div>
 
-        {/* LOADING & PRODUCT GRID */}
+        {/* Tab Selection Filter Row */}
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-10">
+          <div className="relative flex bg-[#E2EFEB]/60 p-1 rounded-xl w-fit border border-[#E2EFEB]">
+            <span
+              className="absolute top-1 bottom-1 left-0 rounded-lg bg-[#0D2B1E] shadow-sm transition-all duration-300"
+              style={sliderStyle}
+            />
+            {tabs.map((tab, index) => (
+              <button
+                key={tab}
+                ref={(el) => { tabsRef.current[index] = el; }}
+                onClick={() => setActiveTab(tab)}
+                className={`relative z-10 px-5 py-2 text-xs font-bold rounded-lg transition-colors duration-200 ${
+                  activeTab === tab ? "text-white" : "text-[#416B5C] hover:text-[#0D2B1E]"
+                }`}
+              >
+                {tab}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* LOADING & ARCHITECTURE GRID */}
         {loading ? (
-          <div className="flex justify-center items-center min-h-[300px]">
-            <p className="text-gray-500 animate-pulse">Loading accessories...</p>
+          <div className="flex flex-col justify-center items-center min-h-[400px] bg-white rounded-3xl border border-[#E2EFEB]">
+            <div className="w-8 h-8 border-2 border-[#45B1A0] border-t-transparent rounded-full animate-spin mb-4" />
+            <p className="text-sm font-semibold text-[#416B5C] animate-pulse">Syncing matrix components...</p>
           </div>
         ) : accessories.length === 0 ? (
-          <div className="flex justify-center items-center min-h-[300px]">
-            <p className="text-gray-500">No accessories found in this category.</p>
+          <div className="flex flex-col justify-center items-center min-h-[400px] bg-white rounded-3xl border border-[#E2EFEB] p-8 text-center">
+            <p className="text-sm font-bold text-[#0D2B1E] mb-1">No modular inventory detected</p>
+            <p className="text-xs text-[#416B5C]">Operational hardware catalog is currently recycling resources.</p>
           </div>
         ) : (
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 auto-rows-fr">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {accessories.map((product) => (
-              <div key={product.id} className="flex flex-col text-center">
-                <div className="flex-grow">
-                  <div className="relative w-full aspect-square mb-4 rounded-xl overflow-hidden bg-gray-50">
-                    <Image
-                      src={product.image}
-                      alt={product.name}
-                      fill
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                      className="object-contain p-6"
-                    />
-                  </div>
-                  <h2 className="text-sm font-semibold text-gray-900 mb-1">{product.name}</h2>
-                  <p className="text-xs text-gray-500 mb-2 line-clamp-2 h-[2.5em]">{product.description}</p>
-                  <p className="text-sm font-bold text-gray-900 mb-3">From ${product.price}</p>
+              <div 
+                key={product.id} 
+                className="group flex flex-col bg-white rounded-2xl border border-[#E2EFEB] p-4 transition-all duration-200 hover:shadow-md hover:border-[#45B1A0]/40"
+              >
+                {/* Visual Image Container Frame */}
+                <div className="relative w-full aspect-square mb-4 bg-[#F4F9F8] rounded-xl overflow-hidden flex items-center justify-center border border-[#E2EFEB]/40 p-6">
+                  <Image 
+                    src={product.image} 
+                    alt={product.name} 
+                    fill 
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw" 
+                    className="object-contain p-4 group-hover:scale-[1.02] transition-transform duration-300"
+                    priority={false}
+                  />
                 </div>
 
-                <div className="flex justify-center items-center gap-2 mt-2">
+                {/* Information Card Body */}
+                <div className="flex flex-col flex-grow px-1">
+                  <h2 className="text-sm font-bold text-[#0D2B1E] tracking-tight line-clamp-1 mb-1 group-hover:text-[#45B1A0] transition-colors">
+                    {product.name}
+                  </h2>
+                  <p className="text-xs text-[#416B5C] leading-relaxed line-clamp-2 min-h-[2.5rem] mb-4">
+                    {product.description || "No supplemental integration metrics specified for this peripheral layout connection."}
+                  </p>
+                  
+                  {/* Dynamic Pricing Matrix */}
+                  <div className="mt-auto pt-3 border-t border-[#F4F9F8] flex items-baseline justify-between">
+                    <span className="text-[10px] font-bold text-[#416B5C] uppercase tracking-wider">Acquisition</span>
+                    <span className="text-base font-extrabold text-[#0D2B1E]">
+                      ${Number(product.price).toLocaleString()}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Interactive Base Links */}
+                <div className="grid grid-cols-2 gap-2 mt-4 pt-2">
                   <Link
                     href={`/accessories/${product.id}`}
-                    className="py-1 px-4 rounded-full bg-blue-600 text-white text-xs text-center hover:bg-blue-700 transition"
+                    className="py-2 px-3 rounded-xl bg-[#F4F9F8] text-[#0D2B1E] font-bold text-xs text-center border border-[#E2EFEB] hover:bg-[#E2EFEB] transition-colors"
                   >
-                    Learn more
+                    Specifications
                   </Link>
-                  <button className="flex items-center text-[#1967D2] font-medium text-sm">
-                    <span className="hover:underline pr-1">Buy</span>
-                    <ChevronRight size={15} />
+                  <button className="flex items-center justify-center gap-1 py-2 px-3 rounded-xl bg-[#0D2B1E] text-white font-bold text-xs hover:bg-[#45B1A0] transition-colors shadow-sm">
+                    <span>Deploy</span>
+                    <ChevronRight size={14} />
                   </button>
                 </div>
               </div>
             ))}
           </div>
         )}
-
-        <div className="mt-6">
-          <Footer />
-        </div>
       </main>
+
+      {/* Full-bleed footer boundary placement */}
+      <Footer />
     </div>
   );
 }
