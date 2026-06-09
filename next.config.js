@@ -22,6 +22,10 @@ const nextConfig = {
         protocol: 'https',
         hostname: '*.gstatic.com', // <--- The asterisk (*) acts as a wildcard for all Google Image servers!
       },
+      {
+        protocol: 'https',
+        hostname: 'm.media-amazon.com',
+      },
     ],
   },
   // Others config...,

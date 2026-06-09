@@ -6,29 +6,40 @@ import { GadgetSchema } from '../../../../types/gadgets'
 import { z } from 'zod' // FIX 1: Imported z to prevent ReferenceError
 
 // 1. Fetch All Gadgets (Read)
-export async function fetchGadgets(page: number = 1, limit: number = 12) {
+// Fetch all gadgets (with optional search and pagination) for Admin view
+export async function fetchGadgets(
+  page: number = 1, 
+  limit: number = 12, 
+  searchQuery?: string
+) {
   const supabase = await createClient()
-  
   const from = (page - 1) * limit
   const to = from + limit - 1
 
-  const { data, error, count } = await supabase
-    .from('gadgets')
-    .select('*', { count: 'exact' })
-    .order('created_at', { ascending: false })
+  let queryBuilder = supabase.from('gadgets').select('*', { count: 'exact' })
+
+  // If a search query is passed from the admin page, apply the filters
+  if (searchQuery && searchQuery.trim() !== "") {
+    const term = searchQuery.trim()
+    queryBuilder = queryBuilder.or(`product_name.ilike.%${term}%,brand.ilike.%${term}%,sku.ilike.%${term}%`)
+  }
+
+  const { data, error, count } = await queryBuilder
+    .order('created_at', { ascending: false }) // Shows newest uploads first
     .range(from, to)
 
-  if (error) throw new Error(error.message)
-  
+  if (error) {
+    console.error("Error fetching gadgets:", error)
+    return { data: [], totalPages: 0, totalCount: 0 }
+  }
+
   const totalCount = count || 0
   const totalPages = Math.ceil(totalCount / limit)
 
   return { 
     data, 
-    totalCount,
-    totalPages,
-    currentPage: page,
-    hasMore: page < totalPages 
+    totalPages, 
+    totalCount 
   }
 }
 
@@ -57,7 +68,7 @@ export async function uploadGadget(rawInput: unknown) {
   }
 
   const validGadget = validation.data;
-  const supabase = await createClient(); // FIX 2: Added missing 'await'
+  const supabase = await createClient(); 
 
   const { data, error } = await supabase
     .from('gadgets')
@@ -183,6 +194,7 @@ export async function fetchGadgetsByCategory(
 }
 
 // 8. Advanced Search (Name, Description, Price Range)
+// 8. Advanced Search (Name, Category, Sub-category, Brand)
 export async function searchGadgets({
   searchTerm,
   minPrice,
@@ -206,30 +218,56 @@ export async function searchGadgets({
 
   let queryBuilder = supabase.from('gadgets').select('*', { count: 'exact' })
 
-  // Filter by price range
+  // 1. Filter by price range if provided
   if (minPrice !== undefined) queryBuilder = queryBuilder.gte('selling_price', minPrice)
   if (maxPrice !== undefined) queryBuilder = queryBuilder.lte('selling_price', maxPrice)
   
-  // Filter by category
-  if (category) queryBuilder = queryBuilder.eq('category', category)
-  if (subCategory) queryBuilder = queryBuilder.eq('sub_category', subCategory)
+  // 2. Normalize and check if search term itself is a category name override
+  let activeCategory = category
+  let activeSubCategory = subCategory
 
-  // Search Logic: Name matches + Description matches
-  // Note: To rank "Name" higher with pagination, a Postgres RPC (SQL function) 
-  // using Full Text Search (FTS) weights is the world-class way to do this.
-  // For this implementation, we use an 'or' filter which matches both.
   if (searchTerm) {
-    queryBuilder = queryBuilder.or(`product_name.ilike.%${searchTerm}%,description.ilike.%${searchTerm}%`)
+    const cleanTerm = searchTerm.trim().toLowerCase()
+    if (['phones', 'phone', 'telephones'].includes(cleanTerm)) {
+      activeCategory = 'phones'
+      searchTerm = undefined // Clear text search to show everything in this category
+    } else if (['laptops', 'laptop', 'computers'].includes(cleanTerm)) {
+      activeCategory = 'laptops'
+      searchTerm = undefined
+    } else if (['accessories', 'accessory'].includes(cleanTerm)) {
+      activeCategory = 'accessories'
+      searchTerm = undefined
+    }
+  }
+
+  // 3. Apply Strict Category Boundaries
+  if (activeCategory) queryBuilder = queryBuilder.eq('category', activeCategory.toLowerCase())
+  if (activeSubCategory) queryBuilder = queryBuilder.eq('sub_category', activeSubCategory.toLowerCase())
+
+  // 4. Smart Text Search Logic (No description pollution, handles split keywords)
+  if (searchTerm && searchTerm.trim() !== "") {
+    const term = searchTerm.trim()
+    
+    // Split by spaces to handle non-contiguous words (e.g., "Samsung S24" matches "Samsung Galaxy S24")
+    const words = term.split(/\s+/).filter(word => word.length > 0)
+    
+    if (words.length > 1) {
+      // Every keyword typed must be present in either the product_name, brand, or sub_category
+      words.forEach(word => {
+        queryBuilder = queryBuilder.or(`product_name.ilike.%${word}%,brand.ilike.%${word}%,sub_category.ilike.%${word}%`)
+      })
+    } else {
+      // Single word match
+      queryBuilder = queryBuilder.or(`product_name.ilike.%${term}%,brand.ilike.%${term}%,sub_category.ilike.%${term}%`)
+    }
   }
 
   const { data, error, count } = await queryBuilder
-    .order('product_name', { ascending: true }) // Default alpha sort if name matches first is desired
+    .order('product_name', { ascending: true })
     .range(from, to)
 
   if (error) throw new Error(error.message)
 
-  // If searchTerm is present, we could manually sort in JS if the result set is small,
-  // but .range() already happens on the server.
   const totalCount = count || 0
   const totalPages = Math.ceil(totalCount / limit)
 
