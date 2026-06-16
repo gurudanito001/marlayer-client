@@ -219,13 +219,11 @@ export default function LaptopsPage() {
                 >
                   {/* Image Container Aspect Frame */}
                   <div className="relative w-full aspect-square mb-4 bg-[#F4F9F8] rounded-xl overflow-hidden flex items-center justify-center border border-[#E2EFEB]/40 p-6">
-                    <Image 
+                    <img 
                       src={product.image} 
                       alt={product.name} 
-                      fill 
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw" 
                       className="object-contain p-4 group-hover:scale-[1.02] transition-transform duration-300"
-                      priority={false}
                     />
                     {product.brand && (
                       <span className="absolute top-3 left-3 text-[10px] uppercase font-bold tracking-wider text-[#416B5C] bg-white border border-[#E2EFEB] px-2 py-0.5 rounded-md">
