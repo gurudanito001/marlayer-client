@@ -1,12 +1,13 @@
 'use client'
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import Image from "next/image";
-import { ChevronRight, Cpu } from "lucide-react";
-import Link from "next/link";
+import { ChevronRight, Cpu, ShoppingCart } from "lucide-react";
 import Navbar from "../gadgetsNavbar";
 import Footer from "../gadgetsFooter";
 import { fetchGadgetsByCategory } from "@/app/lib/actions/gadgets";
+import { useCartStore } from "@/app/store/cartStore"; 
+import SpecsModal from "@/app/components/specsModal";
 
 const tabs = ["All products", "MacBook", "Windows"];
 
@@ -18,6 +19,7 @@ interface Product {
   description: string;
   price: number;
   image: string;
+  specifications: any;
 }
 
 export default function LaptopsPage() {
@@ -28,33 +30,96 @@ export default function LaptopsPage() {
   const [sliderStyle, setSliderStyle] = useState({});
   const tabsRef = useRef<(HTMLButtonElement | null)[]>([]);
 
-  useEffect(() => {
-    async function loadAllLaptops() {
+  // Infinite Scroll Pagination States
+  const [page, setPage] = useState(1);
+  const [hasMore, setHasMore] = useState(true);
+  const [isFetchingMore, setIsFetchingMore] = useState(false);
+  
+  // Specs Modal States
+  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+  const [isSpecsOpen, setIsSpecsOpen] = useState(false);
+
+  // Toast Notification State
+  const [toastProduct, setToastProduct] = useState<string | null>(null);
+
+  // Zustand Store Action
+  const addToCart = useCartStore((state) => state.addToCart);
+
+  // Core Data Fetcher Function
+  const loadLaptops = async (pageToFetch: number) => {
+    if (pageToFetch === 1) {
       setLoading(true);
-      try {
-        const response = await fetchGadgetsByCategory("laptops", undefined, 1, 27);
-
-        const mappedProducts = (response.data || []).map((item: any) => ({
-          id: item.id,
-          name: item.product_name, 
-          category: item.category,
-          brand: item.brand || "", 
-          description: item.description || "",
-          price: item.selling_price, 
-          image: item.primary_image || "/images/placeholder.jpg", 
-        }));
-
-        setAllLaptops(mappedProducts);
-        setDisplayedLaptops(mappedProducts);
-      } catch (error) {
-        console.error("Error fetching gadgets:", error);
-      } finally {
-        setLoading(false);
-      }
+    } else {
+      setIsFetchingMore(true);
     }
 
-    loadAllLaptops();
+    try {
+      const response = await fetchGadgetsByCategory("laptops", undefined, pageToFetch, 20);
+      const fetchedData = response.data || [];
+      
+      const mappedProducts = fetchedData.map((item: any) => ({
+        id: item.id,
+        name: item.product_name, 
+        category: item.category,
+        brand: item.brand || "", 
+        description: item.description || "",
+        price: item.selling_price, 
+        image: item.primary_image || "/images/placeholder.jpg", 
+        specifications: item.specifications || item.specs || {}, 
+      }));
+
+      if (pageToFetch === 1) {
+        setAllLaptops(mappedProducts);
+      } else {
+        setAllLaptops((prev) => [...prev, ...mappedProducts]);
+      }
+
+      if (fetchedData.length < 20) {
+        setHasMore(false);
+      } else {
+        setHasMore(true);
+      }
+    } catch (error) {
+      console.error("Error fetching gadgets:", error);
+    } finally {
+      setLoading(false);
+      setIsFetchingMore(false);
+    }
+  };
+
+  // Trigger initial mount page fetch
+  useEffect(() => {
+    loadLaptops(1);
   }, []);
+
+  // Trigger sequential page fetch when page state updates
+  useEffect(() => {
+    if (page > 1) {
+      loadLaptops(page);
+    }
+  }, [page]);
+
+  
+  const observer = useRef<IntersectionObserver | null>(null);
+  
+  const lastElementRef = useCallback(
+    (node: HTMLDivElement | null) => {
+      if (loading || isFetchingMore) return;
+      
+      if (observer.current) observer.current.disconnect();
+
+      observer.current = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting && hasMore) {
+          console.log("Bottom reached! Fetching page:", page + 1);
+          setPage((prevPage) => prevPage + 1);
+        }
+      });
+
+      if (node) observer.current.observe(node);
+    },
+    [loading, isFetchingMore, hasMore, page]
+  );
+  // ------------------------------------------------------------------
 
   useEffect(() => {
     if (activeTab === "All products") {
@@ -145,68 +210,118 @@ export default function LaptopsPage() {
             <p className="text-xs text-[#416B5C]">Adjust filters to inspect alternative deployment assets.</p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {displayedLaptops.map((product) => (
-              <div 
-                key={product.id} 
-                className="group flex flex-col bg-white rounded-2xl border border-[#E2EFEB] p-4 transition-all duration-200 hover:shadow-md hover:border-[#45B1A0]/40"
-              >
-                {/* Image Container Aspect Frame */}
-                <div className="relative w-full aspect-square mb-4 bg-[#F4F9F8] rounded-xl overflow-hidden flex items-center justify-center border border-[#E2EFEB]/40 p-6">
-                  <Image 
-                    src={product.image} 
-                    alt={product.name} 
-                    fill 
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw" 
-                    className="object-contain p-4 group-hover:scale-[1.02] transition-transform duration-300"
-                    priority={false}
-                  />
-                  {product.brand && (
-                    <span className="absolute top-3 left-3 text-[10px] uppercase font-bold tracking-wider text-[#416B5C] bg-white border border-[#E2EFEB] px-2 py-0.5 rounded-md">
-                      {product.brand}
-                    </span>
-                  )}
-                </div>
+          <>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+              {displayedLaptops.map((product) => (
+                <div 
+                  key={product.id} 
+                  className="group flex flex-col bg-white rounded-2xl border border-[#E2EFEB] p-4 transition-all duration-200 hover:shadow-md hover:border-[#45B1A0]/40"
+                >
+                  {/* Image Container Aspect Frame */}
+                  <div className="relative w-full aspect-square mb-4 bg-[#F4F9F8] rounded-xl overflow-hidden flex items-center justify-center border border-[#E2EFEB]/40 p-6">
+                    <img 
+                      src={product.image} 
+                      alt={product.name} 
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw" 
+                      className="object-contain p-4 group-hover:scale-[1.02] transition-transform duration-300"
+                    />
+                    {product.brand && (
+                      <span className="absolute top-3 left-3 text-[10px] uppercase font-bold tracking-wider text-[#416B5C] bg-white border border-[#E2EFEB] px-2 py-0.5 rounded-md">
+                        {product.brand}
+                      </span>
+                    )}
+                  </div>
 
-                {/* Information Card Body */}
-                <div className="flex flex-col flex-grow px-1">
-                  <h2 className="text-sm font-bold text-[#0D2B1E] tracking-tight line-clamp-1 mb-1 group-hover:text-[#45B1A0] transition-colors">
-                    {product.name}
-                  </h2>
-                  <p className="text-xs text-[#416B5C] leading-relaxed line-clamp-2 min-h-[2.5rem] mb-4">
-                    {product.description || "No configuration parameters provided for this specific machine node."}
-                  </p>
-                  
-                  {/* Dynamic Pricing Matrix */}
-                  <div className="mt-auto pt-3 border-t border-[#F4F9F8] flex items-baseline justify-between">
-                    <span className="text-[10px] font-bold text-[#416B5C] uppercase tracking-wider">Acquisition</span>
-                    <span className="text-base font-extrabold text-[#0D2B1E]">
-                      ${Number(product.price).toLocaleString()}
-                    </span>
+                  {/* Information Card Body */}
+                  <div className="flex flex-col flex-grow px-1">
+                    <h2 className="text-sm font-bold text-[#0D2B1E] tracking-tight line-clamp-1 mb-1 group-hover:text-[#45B1A0] transition-colors">
+                      {product.name}
+                    </h2>
+                    <p className="text-xs text-[#416B5C] leading-relaxed line-clamp-2 min-h-[2.5rem] mb-4">
+                      {product.description || "No layout configuration description specified for this terminal variant."}
+                    </p>
+                    
+                    {/* Dynamic Pricing Matrix */}
+                    <div className="mt-auto pt-3 border-t border-[#F4F9F8] flex items-baseline justify-between">
+                      <span className="text-[10px] font-bold text-[#416B5C] uppercase tracking-wider">Acquisition</span>
+                      <span className="text-base font-extrabold text-[#0D2B1E]">
+                        ${Number(product.price).toLocaleString()}
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Interactive Node Anchors */}
+                  <div className="grid grid-cols-2 gap-2 mt-4 pt-2">
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setSelectedProduct(product);
+                        setIsSpecsOpen(true);
+                      }}
+                      className="py-2 px-3 rounded-xl bg-[#F4F9F8] text-[#0D2B1E] font-bold text-xs text-center border border-[#E2EFEB] hover:bg-[#E2EFEB] transition-colors"
+                    >
+                      Specifications
+                    </button>
+                    <button 
+                      type="button"
+                      onClick={() => {
+                        addToCart(product);
+                        setToastProduct(product.name);
+                        setTimeout(() => setToastProduct(null), 3000);
+                      }}
+                      className="flex items-center justify-center gap-1 py-2 px-3 rounded-xl bg-[#0D2B1E] text-white font-bold text-xs hover:bg-[#45B1A0] transition-colors shadow-sm"
+                    >
+                      <span>Add to Cart</span>
+                      <ChevronRight size={14} />
+                    </button>
                   </div>
                 </div>
+              ))}
+            </div>
 
-                {/* Interactive Node Anchors */}
-                <div className="grid grid-cols-2 gap-2 mt-4 pt-2">
-                  <Link
-                    href={`/laptops/${product.id}`}
-                    className="py-2 px-3 rounded-xl bg-[#F4F9F8] text-[#0D2B1E] font-bold text-xs text-center border border-[#E2EFEB] hover:bg-[#E2EFEB] transition-colors"
-                  >
-                    Specifications
-                  </Link>
-                  <button className="flex items-center justify-center gap-1 py-2 px-3 rounded-xl bg-[#0D2B1E] text-white font-bold text-xs hover:bg-[#45B1A0] transition-colors shadow-sm">
-                    <span>Deploy</span>
-                    <ChevronRight size={14} />
-                  </button>
+            <div ref={lastElementRef} className="w-full flex justify-center items-center py-8 mt-6 min-h-[40px]">
+              {isFetchingMore && (
+                <div className="flex items-center gap-2 text-xs font-semibold text-[#416B5C]">
+                  <div className="w-4 h-4 border-2 border-[#45B1A0] border-t-transparent rounded-full animate-spin" />
+                  <span>Loading more items...</span>
                 </div>
-              </div>
-            ))}
-          </div>
+              )}
+              {!hasMore && allLaptops.length > 0 && (
+                <p className="text-xs font-medium text-[#416B5C]/60 italic">
+                  All active compute nodes cataloged.
+                </p>
+              )}
+            </div>
+          </>
         )}
       </main>
 
       {/* Full bleed rendering border anchor */}
       <Footer />
+
+      <SpecsModal 
+        product={selectedProduct} 
+        isOpen={isSpecsOpen} 
+        onClose={() => {
+          setIsSpecsOpen(false);
+          setSelectedProduct(null);
+        }} 
+      />
+
+      {/* Toast Notification */}
+      <div 
+        className={`fixed bottom-6 right-6 z-50 flex items-center gap-3 bg-[#0D2B1E] text-white px-5 py-3.5 rounded-xl shadow-2xl border border-[#1B4D3A] transition-all duration-300 transform ${
+          toastProduct ? "translate-y-0 opacity-100" : "translate-y-12 opacity-0 pointer-events-none"
+        }`}
+      >
+        <div className="flex items-center justify-center w-8 h-8 rounded-full bg-[#45B1A0]/20 text-[#45B1A0]">
+          <ShoppingCart size={16} />
+        </div>
+        <div className="flex flex-col">
+          <span className="text-sm font-bold tracking-wide">Item added to cart</span>
+          <span className="text-xs text-white/70 line-clamp-1 max-w-[200px]">{toastProduct}</span>
+        </div>
+      </div>
     </div>
   );
 }

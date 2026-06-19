@@ -5,27 +5,72 @@ import DeleteButton from './DeleteButton'
 export default async function ViewProductsPage({
   searchParams,
 }: {
-  searchParams: Promise<{ page?: string }>
+  searchParams: Promise<{ page?: string; query?: string }>
 }) {
-  const { page } = await searchParams
+  const { page, query } = await searchParams
   const currentPage = Number(page) || 1
-  const limit = 12
+  const searchQuery = query || ''
+  const limit = 20 // Increased item count from 12 to 20
 
-  // Fetch gadgets server-side
-  const { data: gadgets, totalPages, totalCount } = await fetchGadgets(currentPage, limit)
+  // Fetch gadgets server-side (passing the search query alongside page & limit)
+  const { data: gadgets, totalPages, totalCount } = await fetchGadgets(currentPage, limit, searchQuery)
+
+  // Helper to build pristine pagination and search links dynamically
+  const buildLink = (pageNumber: number) => {
+    const params = new URLSearchParams()
+    params.set('page', pageNumber.toString())
+    if (searchQuery) params.set('query', searchQuery)
+    return `/gadgets/admin/product/view-all?${params.toString()}`
+  }
+
+  // Generate numbered sequence for pagination buttons
+  const getPageNumbers = () => {
+    const pages = []
+    const startPage = Math.max(1, currentPage - 2)
+    const endPage = Math.min(totalPages, startPage + 4)
+    const adjustedStart = Math.max(1, endPage - 4)
+
+    for (let i = adjustedStart; i <= endPage; i++) {
+      pages.push(i)
+    }
+    return pages
+  }
+
+  const pageNumbers = getPageNumbers()
 
   return (
     <div className="max-w-6xl mx-auto p-6 animate-fade-in">
-      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4">
-        <h1 className="text-2xl font-bold text-primary">Manage Gadgets</h1>
+      {/* Top Bar with Header, Search Input, and Upload Link */}
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 w-full md:w-auto flex-1">
+          <h1 className="text-2xl font-bold text-primary whitespace-nowrap">Manage Gadgets</h1>
+          
+          {/* Native GET Form for clean, state-free routing search */}
+          <form method="GET" action="/gadgets/admin/product/view-all" className="w-full sm:w-72 relative">
+            <input 
+              type="text" 
+              name="query" 
+              defaultValue={searchQuery}
+              placeholder="Search gadgets by name, SKU, or brand..." 
+              className="input input-bordered w-full pr-10 rounded-lg text-sm bg-white"
+            />
+            <button type="submit" className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-primary">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+            </button>
+          </form>
+        </div>
+
         <Link 
           href="/gadgets/admin/product/upload" 
-          className="bg-primary text-white font-bold py-2 px-4 rounded-lg hover:bg-teal-900 transition-colors"
+          className="bg-primary text-white font-bold py-2 px-4 rounded-lg hover:bg-teal-900 transition-colors shrink-0"
         >
           + Upload New Gadget
         </Link>
       </div>
 
+      {/* Table Section */}
       <div className="overflow-x-auto bg-white rounded-lg shadow-sm border border-gray-200">
         <table className="table table-zebra w-full">
           <thead className="bg-gray-50 text-gray-700 text-sm">
@@ -46,7 +91,6 @@ export default async function ViewProductsPage({
                     <div className="avatar">
                       <div className="w-14 h-14 rounded-md border bg-gray-100 flex items-center justify-center overflow-hidden">
                         {gadget.primary_image ? (
-                          /* Using standard img tag instead of next/image to avoid requiring remote pattern config for external URLs */
                           <img 
                             src={gadget.primary_image} 
                             alt={gadget.product_name} 
@@ -105,9 +149,15 @@ export default async function ViewProductsPage({
               <tr>
                 <td colSpan={6} className="text-center py-10 text-gray-500">
                   <p className="text-lg">No gadgets found.</p>
-                  <Link href="/gadgets/admin/product/upload" className="text-primary font-medium hover:underline mt-2 inline-block">
-                    Upload your first gadget
-                  </Link>
+                  {searchQuery ? (
+                    <Link href="/gadgets/admin/product/view-all" className="text-primary font-medium hover:underline mt-2 inline-block">
+                      Clear search queries
+                    </Link>
+                  ) : (
+                    <Link href="/gadgets/admin/product/upload" className="text-primary font-medium hover:underline mt-2 inline-block">
+                      Upload your first gadget
+                    </Link>
+                  )}
                 </td>
               </tr>
             )}
@@ -115,29 +165,48 @@ export default async function ViewProductsPage({
         </table>
       </div>
 
-      {/* Pagination Controls */}
+      {/* Numbered Pagination Layout */}
       {totalPages > 1 && (
-        <div className="mt-8 flex justify-center items-center gap-4">
-          <Link
-            href={`/gadgets/admin/product/view-all?page=${currentPage - 1}`}
-            className={`btn btn-sm ${currentPage === 1 ? 'btn-disabled pointer-events-none opacity-50' : 'bg-[#003C3C] text-white border-none hover:bg-teal-900'}`}
-            aria-disabled={currentPage === 1}
-          >
-            Previous
-          </Link>
-          
-          <div className="text-sm font-medium text-gray-600">
-            Page <span className="text-primary font-bold">{currentPage}</span> of {totalPages}
-            <span className="ml-2 text-gray-400">({totalCount} items)</span>
+        <div className="mt-8 flex flex-col sm:flex-row justify-between items-center gap-4 border-t border-gray-100 pt-4">
+          <div className="text-sm font-medium text-gray-500">
+            Showing pages <span className="text-primary font-bold">{currentPage}</span> of {totalPages} 
+            <span className="ml-2 text-gray-400">({totalCount} records found)</span>
           </div>
 
-          <Link
-            href={`/gadgets/admin/product/view-all?page=${currentPage + 1}`}
-            className={`btn btn-sm ${currentPage >= totalPages ? 'btn-disabled pointer-events-none opacity-50' : 'bg-[#003C3C] text-white border-none hover:bg-teal-900'}`}
-            aria-disabled={currentPage >= totalPages}
-          >
-            Next
-          </Link>
+          <div className="join border border-gray-200 shadow-sm bg-white">
+            {/* Previous Button */}
+            <Link
+              href={buildLink(currentPage - 1)}
+              className={`join-item btn btn-sm bg-white border-gray-200 text-gray-700 hover:bg-gray-50 normal-case ${currentPage === 1 ? 'btn-disabled opacity-40 pointer-events-none' : ''}`}
+              aria-disabled={currentPage === 1}
+            >
+              Prev
+            </Link>
+            
+            {/* Numeric Page Buttons */}
+            {pageNumbers.map((p) => (
+              <Link
+                key={p}
+                href={buildLink(p)}
+                className={`join-item btn btn-sm border-gray-200 ${
+                  p === currentPage 
+                    ? 'bg-[#003C3C] text-white border-none hover:bg-teal-900 font-bold' 
+                    : 'bg-white text-gray-700 hover:bg-gray-50 font-normal'
+                }`}
+              >
+                {p}
+              </Link>
+            ))}
+
+            {/* Next Button */}
+            <Link
+              href={buildLink(currentPage + 1)}
+              className={`join-item btn btn-sm bg-white border-gray-200 text-gray-700 hover:bg-gray-50 normal-case ${currentPage >= totalPages ? 'btn-disabled opacity-40 pointer-events-none' : ''}`}
+              aria-disabled={currentPage >= totalPages}
+            >
+              Next
+            </Link>
+          </div>
         </div>
       )}
     </div>
