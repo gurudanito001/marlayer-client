@@ -264,7 +264,7 @@ const SoftwareSection: React.FC = () => {
 
               {/* CTA */}
               <Link
-                href="/software"
+                href="/software/projects"
                 style={{
                   display: "inline-flex", alignItems: "center", gap: 8,
                   background: TEAL, color: "#020d0a",

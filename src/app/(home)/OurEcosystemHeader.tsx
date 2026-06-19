@@ -68,7 +68,7 @@ const OurEcosystemHeader: React.FC = () => {
         id="ecosystem"
         style={{
           background: "#020d0a",
-          padding: "100px 24px 80px",
+          padding: "150px 24px",
           position: "relative",
           overflow: "hidden",
           fontFamily: "'Space Grotesk', sans-serif",
@@ -160,12 +160,14 @@ const OurEcosystemHeader: React.FC = () => {
               <div
                 key={label}
                 style={{
+                  width: "100%",
+                  maxWidth: 295,
                   display: "flex", alignItems: "center", gap: 12,
                   background: "rgba(69,177,160,0.05)",
                   border: "1px solid rgba(69,177,160,0.18)",
                   borderRadius: 10,
                   padding: "14px 20px",
-                  animation: "marlayer-pillar-glow 4s ease-in-out infinite",
+                  animation: inView ? "marlayer-pillar-glow 4s ease-in-out infinite" : "none",
                   animationDelay: `${i * 0.8}s`,
                   opacity: inView ? 1 : 0,
                   transform: inView ? "translateY(0)" : "translateY(12px)",
@@ -193,7 +195,7 @@ const OurEcosystemHeader: React.FC = () => {
           </div>
 
           {/* Scroll indicator — connects visually to the sections below */}
-          <div
+          {/* <div
             style={{
               marginTop: 56,
               display: "flex", flexDirection: "column", alignItems: "center", gap: 6,
@@ -205,7 +207,7 @@ const OurEcosystemHeader: React.FC = () => {
               Scroll to explore
             </span>
             <div style={{ width: 1, height: 36, background: "linear-gradient(to bottom, rgba(69,177,160,0.5), transparent)" }} />
-          </div>
+          </div> */}
         </div>
       </section>
     </>

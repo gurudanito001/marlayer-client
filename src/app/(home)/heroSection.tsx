@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 // ─── Font import ───────────────────────────────────────────────────────────────
 // Add this to your globals.css or layout.tsx <head>:
@@ -270,11 +271,19 @@ const Navbar = ({ isScrolled, mobileOpen, setMobileOpen }: NavProps) => {
       >
         <div className="w-full max-w-[1900px] mx-auto px-6 md:px-12 lg:px-16 xl:px-28 flex justify-between items-center">
           {/* Logo */}
-          <Link href="/" className="flex items-center" style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700, fontSize: 20, letterSpacing: 2, color: "white", textDecoration: "none" }}>
-            <span style={{ color: "rgba(69,177,160,0.5)" }}>[</span>
-            <span>M</span>
-            <span style={{ color: TEAL }}>ARLAYER</span>
-            <span style={{ color: "rgba(69,177,160,0.5)" }}>]</span>
+          <Link href="/" className="flex items-center gap-1.5 group select-none">
+            <div className="relative flex items-center  gap-1.5 justify-center">
+              <Image
+                src="/images/marlayer-logo.svg"
+                width={26}
+                height={26}
+                alt="Marlayer Logo"
+                className="object-contain"
+              />
+              <span className="font-black text-2xl tracking-tight text-[#45B1A0] flex items-baseline mt-[2px]">
+                <span className="text-[#45B1A0] font-extrabold text-xl tracking-wide leading-tight">ARLAYER</span>
+              </span>
+            </div>
           </Link>
 
           {/* Desktop nav */}
