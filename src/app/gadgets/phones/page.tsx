@@ -2,10 +2,11 @@
 
 import { useState, useRef, useEffect, useCallback } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { ChevronRight, Layers, ShoppingCart } from "lucide-react"; 
 import Navbar from "../gadgetsNavbar";
 import Footer from "../gadgetsFooter";
-import { fetchGadgetsByCategory } from "@/app/lib/actions/gadgets";
+import { fetchGadgetsWithFilters } from "@/app/lib/actions/gadgets"; 
 import { useCartStore } from "@/app/store/cartStore"; 
 import SpecsModal from "@/app/components/specsModal";
 
@@ -24,8 +25,7 @@ interface Product {
 
 export default function PhonesPage() {
   const [activeTab, setActiveTab] = useState("All products");
-  const [allPhones, setAllPhones] = useState<Product[]>([]); 
-  const [displayedPhones, setDisplayedPhones] = useState<Product[]>([]); 
+  const [phones, setPhones] = useState<Product[]>([]); 
   const [loading, setLoading] = useState(true);
   const [sliderStyle, setSliderStyle] = useState({});
   const tabsRef = useRef<(HTMLButtonElement | null)[]>([]);
@@ -39,14 +39,13 @@ export default function PhonesPage() {
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [isSpecsOpen, setIsSpecsOpen] = useState(false);
 
-  // Toast Notification State ---
+  // Toast Notification State
   const [toastProduct, setToastProduct] = useState<string | null>(null);
 
   // Zustand Store Action
   const addToCart = useCartStore((state) => state.addToCart);
 
-  // Core Data Fetcher Function
-  const loadPhones = async (pageToFetch: number) => {
+  const loadPhones = async (pageToFetch: number, tabToFetch: string) => {
     if (pageToFetch === 1) {
       setLoading(true);
     } else {
@@ -54,7 +53,13 @@ export default function PhonesPage() {
     }
 
     try {
-      const response = await fetchGadgetsByCategory("phones", undefined, pageToFetch, 20);
+      const response = await fetchGadgetsWithFilters({
+        category: "phones",
+        subCategory: tabToFetch === "All products" ? undefined : tabToFetch,
+        page: pageToFetch,
+        limit: 20
+      });
+
       const fetchedData = response.data || [];
       
       const mappedProducts = fetchedData.map((item: any) => ({
@@ -69,37 +74,38 @@ export default function PhonesPage() {
       }));
 
       if (pageToFetch === 1) {
-        setAllPhones(mappedProducts);
+        setPhones(mappedProducts);
       } else {
-        setAllPhones((prev) => [...prev, ...mappedProducts]);
+        setPhones((prev) => [...prev, ...mappedProducts]);
       }
 
-      if (fetchedData.length < 20) {
+      if (pageToFetch >= response.totalPages || fetchedData.length < 20) {
         setHasMore(false);
       } else {
         setHasMore(true);
       }
     } catch (error) {
-      console.error("Error fetching gadgets:", error);
+      console.error("Error fetching gadgets via database filters:", error);
     } finally {
       setLoading(false);
       setIsFetchingMore(false);
     }
   };
 
-  // Trigger initial mount page fetch
+  // Trigger sequence strictly when active selection tab changes
   useEffect(() => {
-    loadPhones(1);
-  }, []);
+    setPage(1);
+    setHasMore(true);
+    loadPhones(1, activeTab);
+  }, [activeTab]);
 
-  // Trigger sequential page fetch when page state updates
+  // Trigger sequential pagination requests when layout scrolls downward
   useEffect(() => {
     if (page > 1) {
-      loadPhones(page);
+      loadPhones(page, activeTab);
     }
   }, [page]);
 
-  
   const observer = useRef<IntersectionObserver | null>(null);
   
   const lastElementRef = useCallback(
@@ -110,39 +116,15 @@ export default function PhonesPage() {
 
       observer.current = new IntersectionObserver((entries) => {
         if (entries[0].isIntersecting && hasMore) {
-          console.log("Bottom reached! Fetching page:", page + 1);
           setPage((prevPage) => prevPage + 1);
         }
       });
 
       if (node) observer.current.observe(node);
     },
-    [loading, isFetchingMore, hasMore, page]
+    [loading, isFetchingMore, hasMore, page, activeTab]
   );
-  // ------------------------------------------------------------------
 
-  // Handle Local Tab Filter Updates
-  useEffect(() => {
-    if (activeTab === "All products") {
-      setDisplayedPhones(allPhones);
-    } else if (activeTab === "iPhone") {
-      const iphones = allPhones.filter(
-        (phone) => 
-          phone.brand.toLowerCase() === "apple" || 
-          phone.name.toLowerCase().includes("iphone")
-      );
-      setDisplayedPhones(iphones);
-    } else if (activeTab === "Android") {
-      const androids = allPhones.filter(
-        (phone) => 
-          phone.brand.toLowerCase() !== "apple" && 
-          !phone.name.toLowerCase().includes("iphone")
-      );
-      setDisplayedPhones(androids);
-    }
-  }, [activeTab, allPhones]);
-
-  // Animate dynamic sliding style for category tags switcher
   useEffect(() => {
     const activeTabIndex = tabs.indexOf(activeTab);
     const activeTabElement = tabsRef.current[activeTabIndex];
@@ -174,11 +156,11 @@ export default function PhonesPage() {
           
           <div className="flex items-center gap-2 text-xs font-bold text-[#416B5C] bg-[#E2EFEB]/50 px-4 py-2 rounded-xl self-start sm:self-auto">
             <Layers className="w-3.5 h-3.5 text-[#45B1A0]" />
-            <span>{displayedPhones.length} Nodes Indexed</span>
+            <span>{phones.length} Nodes Indexed</span>
           </div>
         </div>
 
-        {/* Filters and Controls */}
+        {/* Filters and Controls Menu */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-10">
           <div className="relative flex bg-[#E2EFEB]/60 p-1 rounded-xl w-fit border border-[#E2EFEB]">
             <span
@@ -200,56 +182,61 @@ export default function PhonesPage() {
           </div>
         </div>
 
-        {/* PRODUCT ARCHITECTURE LAYER */}
         {loading ? (
           <div className="flex flex-col justify-center items-center min-h-[400px] bg-white rounded-3xl border border-[#E2EFEB]">
             <div className="w-8 h-8 border-2 border-[#45B1A0] border-t-transparent rounded-full animate-spin mb-4" />
-            <p className="text-sm font-semibold text-[#416B5C] animate-pulse">Syncing device catalogs...</p>
+            <p className="text-sm font-semibold text-[#416B5C] animate-pulse">Querying database engine...</p>
           </div>
-        ) : displayedPhones.length === 0 ? (
+        ) : phones.length === 0 ? (
           <div className="flex flex-col justify-center items-center min-h-[400px] bg-white rounded-3xl border border-[#E2EFEB] p-8 text-center">
-            <p className="text-sm font-bold text-[#0D2B1E] mb-1">No hardware configurations isolated</p>
-            <p className="text-xs text-[#416B5C]">Adjust filters to inspect alternative inventory sets.</p>
+            <p className="text-sm font-bold text-[#0D2B1E] mb-1">No hardware configurations found in database</p>
+            <p className="text-xs text-[#416B5C]">No database entries match the selected filters layout matrix parameters.</p>
           </div>
         ) : (
           <>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-              {displayedPhones.map((product) => (
+              {phones.map((product) => (
                 <div 
                   key={product.id} 
                   className="group flex flex-col bg-white rounded-2xl border border-[#E2EFEB] p-4 transition-all duration-200 hover:shadow-md hover:border-[#45B1A0]/40"
                 >
-                  <div className="relative w-full aspect-square mb-4 bg-[#F4F9F8] rounded-xl overflow-hidden flex items-center justify-center border border-[#E2EFEB]/40 p-6">
-                    <Image 
-                      src={product.image} 
-                      alt={product.name} 
-                      fill 
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw" 
-                      className="object-contain p-4 group-hover:scale-[1.02] transition-transform duration-300"
-                      priority={false}
-                    />
-                    {product.brand && (
-                      <span className="absolute top-3 left-3 text-[10px] uppercase font-bold tracking-wider text-[#416B5C] bg-white border border-[#E2EFEB] px-2 py-0.5 rounded-md">
-                        {product.brand}
-                      </span>
-                    )}
-                  </div>
-
-                  <div className="flex flex-col flex-grow px-1">
-                    <h2 className="text-sm font-bold text-[#0D2B1E] tracking-tight line-clamp-1 mb-1 group-hover:text-[#45B1A0] transition-colors">
-                      {product.name}
-                    </h2>
-                    <p className="text-xs text-[#416B5C] leading-relaxed line-clamp-2 min-h-[2.5rem] mb-4">
-                      {product.description || "No layout configuration description specified for this terminal variant."}
-                    </p>
-                    
-                    <div className="mt-auto pt-3 border-t border-[#F4F9F8] flex items-baseline justify-between">
-                      <span className="text-[10px] font-bold text-[#416B5C] uppercase tracking-wider">Acquisition</span>
-                      <span className="text-base font-extrabold text-[#0D2B1E]">
-                        ${Number(product.price).toLocaleString()}
-                      </span>
+                  
+                  <Link 
+                    href={`/gadgets/phones/${encodeURIComponent(product.name)}`}
+                    className="block cursor-pointer flex-grow"
+                  >
+                    <div className="relative w-full aspect-square mb-4 bg-[#F4F9F8] rounded-xl overflow-hidden flex items-center justify-center border border-[#E2EFEB]/40 p-6">
+                      <Image 
+                        src={product.image} 
+                        alt={product.name} 
+                        fill 
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw" 
+                        className="object-contain p-4 group-hover:scale-[1.02] transition-transform duration-300"
+                        priority={false}
+                      />
+                      {product.brand && (
+                        <span className="absolute top-3 left-3 text-[10px] uppercase font-bold tracking-wider text-[#416B5C] bg-white border border-[#E2EFEB] px-2 py-0.5 rounded-md">
+                          {product.brand}
+                        </span>
+                      )}
                     </div>
-                  </div>
+
+                    <div className="flex flex-col px-1">
+                      <h2 className="text-sm font-bold text-[#0D2B1E] tracking-tight line-clamp-1 mb-1 group-hover:text-[#45B1A0] transition-colors">
+                        {product.name}
+                      </h2>
+                      <p className="text-xs text-[#416B5C] leading-relaxed line-clamp-2 min-h-[2.5rem] mb-4">
+                        {product.description || "No layout configuration description specified for this terminal variant."}
+                      </p>
+                      
+                      <div className="pt-3 border-t border-[#F4F9F8] flex items-baseline justify-between">
+                        <span className="text-[10px] font-bold text-[#416B5C] uppercase tracking-wider">Acquisition</span>
+                        <span className="text-base font-extrabold text-[#0D2B1E]">
+                          ${Number(product.price).toLocaleString()}
+                        </span>
+                      </div>
+                    </div>
+                  </Link>
 
                   <div className="grid grid-cols-2 gap-2 mt-4 pt-2">
                     <button
@@ -284,12 +271,12 @@ export default function PhonesPage() {
               {isFetchingMore && (
                 <div className="flex items-center gap-2 text-xs font-semibold text-[#416B5C]">
                   <div className="w-4 h-4 border-2 border-[#45B1A0] border-t-transparent rounded-full animate-spin" />
-                  <span>Loading more items...</span>
+                  <span>Loading additional assets...</span>
                 </div>
               )}
-              {!hasMore && allPhones.length > 0 && (
+              {!hasMore && phones.length > 0 && (
                 <p className="text-xs font-medium text-[#416B5C]/60 italic">
-                  All active device nodes cataloged.
+                  All active database items cataloged.
                 </p>
               )}
             </div>
@@ -308,7 +295,7 @@ export default function PhonesPage() {
         }} 
       />
 
-      {/* --- Toast Notification --- */}
+      {/* Toast Notification HUD */}
       <div 
         className={`fixed bottom-6 right-6 z-50 flex items-center gap-3 bg-[#0D2B1E] text-white px-5 py-3.5 rounded-xl shadow-2xl border border-[#1B4D3A] transition-all duration-300 transform ${
           toastProduct ? "translate-y-0 opacity-100" : "translate-y-12 opacity-0 pointer-events-none"
