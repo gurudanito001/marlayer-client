@@ -37,17 +37,27 @@ const Footer = () => {
           
           {/* Left Side: Brand Info */}
           <div className="flex flex-col gap-6 max-w-xs xl:max-w-sm">
-            <Link href="/" className="flex items-center" style={{ fontWeight: 700, fontSize: 24, letterSpacing: 2, color: "white" }}>
-              <span style={{ color: "rgba(69,177,160,0.5)" }}>[</span>
-              <span>M</span>
-              <span style={{ color: TEAL }}>ARLAYER</span>
-              <span style={{ color: "rgba(69,177,160,0.5)" }}>]</span>
+            <Link href="/" className="flex items-center gap-1.5 group select-none">
+              <div className="relative flex items-center  gap-1.5 justify-center">
+                <Image
+                  src="/images/marlayer-logo.svg"
+                  width={26}
+                  height={26}
+                  alt="Marlayer Logo"
+                  className="object-contain"
+                />
+                <span
+                  className="font-extrabold text-2xl ml-0.5"
+                  style={{ color: '#45B1A0' }}
+                >
+                  ARLAYER
+                </span>
+              </div>
             </Link>
             <p className="text-[15px] leading-relaxed font-light">
               Empowering the next generation of tech innovators and building robust software solutions.
             </p>
           </div>
-
           {/* Right Side: Columns Grid */}
           <div className="grid grid-cols-2 md:grid-cols-3 gap-8 md:gap-16 lg:gap-24 w-full lg:w-auto">
             
@@ -65,7 +75,7 @@ const Footer = () => {
             <div className="flex flex-col gap-6">
               <h6 className="text-white text-xs font-bold uppercase tracking-widest" style={{ fontFamily: "'Space Mono', monospace", color: TEAL }}>Company</h6>
               <ul className="flex flex-col gap-5 text-[15px] font-light">
-                <li><Link href="/academy/faqs" className="hover:text-[#45B1A0] transition-colors duration-200">FAQs</Link></li>
+                <li><Link href="/software/about" className="hover:text-[#45B1A0] transition-colors duration-200">About Us</Link></li>
                 <li><Link href="/privacy-policy" className="hover:text-[#45B1A0] transition-colors duration-200">Privacy Policy</Link></li>
                 <li><Link href="/contact" className="hover:text-[#45B1A0] transition-colors duration-200">Contact Us</Link></li>
               </ul>
@@ -78,10 +88,6 @@ const Footer = () => {
                 <li className="flex items-start gap-3">
                   <MapPinIcon className="w-5 h-5 text-[#45B1A0]/60 shrink-0 mt-0.5" />
                   <span className="leading-snug">6 Oremeta Street Oregun, Ikeja, Lagos</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <MapPinIcon className="w-5 h-5 text-[#45B1A0]/60 shrink-0 mt-0.5" />
-                  <span className="leading-snug">12 Jogunosimi Street Alausa, Ikeja, Lagos</span>
                 </li>
                 <li className="flex items-center gap-3">
                   <EnvelopeIcon className="w-5 h-5 text-[#45B1A0]/60 shrink-0" />
@@ -106,34 +112,33 @@ const Footer = () => {
             <Link
               href="https://x.com/marlayer"
               target="_blank"
-              className=" rounded-full bg-white/5 flex items-center justify-center border border-white/10 hover:bg-white/20 hover:border-white/30 transition-all duration-300"
+              className="rounded-full bg-white/5 flex items-center justify-center border border-white/10 hover:bg-white/20 hover:border-white/30 transition-all duration-300"
             >
-              {/* Assuming x.svg is white/transparent. If not, you might need a CSS filter or a different icon */}
-              <Image src="/images/x.svg" width={36} height={36} alt="X (Twitter)" className="opacity-80 hover:opacity-100" />
+              <Image src="/images/x.svg" width={36} height={36} alt="X (Twitter)" className="opacity-80 hover:opacity-100" style={{ width: 'auto', height: 'auto' }} />
             </Link>
+
             <Link
-              href="https://x.com/marlayer"
+              href="https://facebook.com/marlayer"
               target="_blank"
-              className=" rounded-full bg-white/5 flex items-center justify-center border border-white/10 hover:bg-white/20 hover:border-white/30 transition-all duration-300"
+              className="rounded-full bg-white/5 flex items-center justify-center border border-white/10 hover:bg-white/20 hover:border-white/30 transition-all duration-300"
             >
-              {/* Assuming x.svg is white/transparent. If not, you might need a CSS filter or a different icon */}
-              <Image src="/images/facebook.svg" width={36} height={36} alt="Facebook" className="opacity-80 hover:opacity-100" />
+              <Image src="/images/facebook.svg" width={36} height={36} alt="Facebook" className="opacity-80 hover:opacity-100" style={{ width: 'auto', height: 'auto' }} />
             </Link>
+
             <Link
               href="https://www.linkedin.com/company/marlayer/"
               target="_blank"
-              className=" rounded-full bg-white/5 flex items-center justify-center border border-white/10 hover:bg-white/20 hover:border-white/30 transition-all duration-300"
+              className="rounded-full bg-white/5 flex items-center justify-center border border-white/10 hover:bg-white/20 hover:border-white/30 transition-all duration-300"
             >
-              {/* Assuming x.svg is white/transparent. If not, you might need a CSS filter or a different icon */}
-              <Image src="/images/linkedIn.svg" width={36} height={36} alt="LinkedIn" className="opacity-80 hover:opacity-100" />
+              <Image src="/images/linkedIn.svg" width={36} height={36} alt="LinkedIn" className="opacity-80 hover:opacity-100" style={{ width: 'auto', height: 'auto' }} />
             </Link>
+
             <Link
               href="https://www.instagram.com/marlayers/s/"
               target="_blank"
-              className=" rounded-full bg-white/5 flex items-center justify-center border border-white/10 hover:bg-white/20 hover:border-white/30 transition-all duration-300"
+              className="rounded-full bg-white/5 flex items-center justify-center border border-white/10 hover:bg-white/20 hover:border-white/30 transition-all duration-300"
             >
-              {/* Assuming x.svg is white/transparent. If not, you might need a CSS filter or a different icon */}
-              <Image src="/images/instagram.svg" width={36} height={36} alt="Instagram" className="opacity-80 hover:opacity-100" />
+              <Image src="/images/instagram.svg" width={36} height={36} alt="Instagram" className="opacity-80 hover:opacity-100" style={{ width: 'auto', height: 'auto' }} />
             </Link>
           </div>
         </div>

@@ -5,11 +5,11 @@ import React, { useState } from 'react';
 const faqs = [
   {
     question: "What programs are offered at the Marlayer Tech Academy?",
-    answer: "We offer comprehensive training in modern frontend, backend and mobile development (including React, React Native, Next.js, and Node.js), UI/UX design, and Data Analytics to prepare you for a global tech career."
+    answer: "We offer comprehensive training in modern frontend, backend and mobile development (including React, React Native, Next.js, and Node.js, Python, .NET), UI/UX design, and Data Analytics to prepare you for a global tech career."
   },
   {
-    question: "How does the flagship gadget installment plan work?",
-    answer: "Through our hardware partnerships, businesses can acquire top-tier laptops and gadgets with flexible payment plans. Our services also include scheduled maintenance and repair services to keep your team productive."
+    question: "What benefits do I get when I buy gadgets from Marlayer?",
+    answer: "As an authorized reseller, we offer genuine warranty coverage, expert setup and configuration support, and access to curated, business-grade hardware — from flagship laptops to essential accessories. Our team also provides ongoing maintenance and repair services to keep your devices running at peak performance."
   },
   {
     question: "Do you build custom software for startups?",
@@ -44,8 +44,8 @@ export default function FaqSection() {
           </span>
           
           <h2 className="text-4xl md:text-5xl lg:text-[3.5rem] font-bold text-[#11241E] mb-6 tracking-tight leading-[1.1]">
-            Still have <br />
-            questions?
+            Popular <br />
+            questions
           </h2>
           
           <p className="text-gray-500 text-lg mb-12 max-w-md">

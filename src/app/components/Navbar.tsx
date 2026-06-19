@@ -38,7 +38,7 @@ const Navbar = () => {
     { name: 'About', href: '/software/About' },
     { name: 'Service', href: '/software/Services' },
     { name: 'Project', href: '/software/Projects' },
-    { name: 'Contact', href: '/software/Contact' },
+    { name: 'Contact', href: '/contact' },
   ];
 
   return (
@@ -55,7 +55,7 @@ const Navbar = () => {
         <div className="text-2xl font-bold">
           <Link href="/" className="flex items-baseline ml-3">
             <div>
-              <Image src="/images/marlayer-logo.svg" width={24} height={24} alt="Marlayer Logo" />
+              <Image src="/images/marlayer-logo.svg" width={24} height={24} alt="Marlayer Logo" style={{ width: 'auto', height: 'auto' }} />
             </div>
             <span 
               className="font-extrabold text-2xl"
@@ -139,7 +139,7 @@ const Navbar = () => {
         <div className="flex flex-col h-full p-8">
           <div className="flex justify-between items-center mb-12">
             <Link href="/" className="flex items-center gap-2" onClick={() => setIsMenuOpen(false)}>
-              <Image src="/images/marlayer-logo.svg" width={24} height={24} alt="Marlayer Logo" />
+              <Image src="/images/marlayer-logo.svg" width={24} height={24} alt="Marlayer Logo" style={{ width: 'auto', height: 'auto' }} />
               <span className="font-bold text-primary text-lg" style={{ color: logoTeal }}>Marlayer</span>
             </Link>
             

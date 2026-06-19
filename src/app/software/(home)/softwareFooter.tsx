@@ -93,7 +93,7 @@ export default function SoftwareFooter() {
           </div>
           <div className="flex items-center gap-3 flex-shrink-0">
             <Link
-              href="https://wa.me/2348000000000"
+              href="https://wa.me/2348140715723"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 bg-white/5 hover:bg-white/10 border border-white/10 text-white text-sm font-semibold px-5 py-2.5 rounded-xl transition-all"
@@ -142,7 +142,6 @@ export default function SoftwareFooter() {
             {/* Address */}
             <div className="mt-5 space-y-1.5">
               <p className="text-white/20 text-xs font-mono">6 Oremeta St, Oregun, Ikeja, Lagos</p>
-              <p className="text-white/20 text-xs font-mono">12 Jogunosimi St, Alausa, Ikeja, Lagos</p>
               <a
                 href="mailto:daniel.marlayer@gmail.com"
                 className="text-[#45B1A0]/50 hover:text-[#45B1A0] text-xs font-mono transition-colors block mt-2"

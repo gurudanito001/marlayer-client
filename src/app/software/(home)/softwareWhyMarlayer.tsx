@@ -65,7 +65,7 @@ export default function SoftwareWhyMarlayer() {
             <br className="hidden md:block" />
             <span className="text-[#45B1A0]"> That&apos;s not us.</span>
           </h2>
-          <p className="text-[#7AADA4] text-base leading-relaxed">
+          <p className="text-primary-2 leading-relaxed">
             We built Marlayer&apos;s approach specifically around every frustration
             businesses have with software partners.
           </p>

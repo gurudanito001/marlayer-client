@@ -12,7 +12,7 @@ const Sidebar = () =>{
  return(
     <aside className="bg-primary px-5 xl:px-14 py-16 text-white hidden lg:block lg:w-4/12 h-full rounded-xl ">
      <Link href="/academy" className="flex items-center gap-3">
-       <Image src="/images/marlayer-logo.svg" width={40} height={40} alt="Marlayer Logo" />
+       <Image src="/images/marlayer-logo.svg" width={40} height={40} alt="Marlayer Logo" style={{ width: 'auto', height: 'auto' }} />
        <h1 className={`font-extrabold text-xl ${dmSans.className}`}>Marlayer Academy</h1>
      </Link>
 

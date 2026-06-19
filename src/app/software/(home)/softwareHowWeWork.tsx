@@ -92,7 +92,7 @@ export default function SoftwareHowWeWork() {
             How we turn your problem
             <br />into a working system.
           </h2>
-          <p className="text-[#7AADA4] text-base leading-relaxed">
+          <p className="text-primary-2 leading-relaxed">
             No surprises. No going dark. No guessing if the project is on track.
             This is how every Marlayer engagement runs.
           </p>

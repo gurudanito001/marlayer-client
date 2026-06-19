@@ -6,6 +6,7 @@
 // Dark and bold — this section should feel like a decision point.
 
 import { useState } from "react";
+import Link from "next/link";
 
 export default function SoftwareCTA() {
   const [form, setForm] = useState({
@@ -42,7 +43,7 @@ export default function SoftwareCTA() {
               <br />
               <span className="text-[#45B1A0]">something real.</span>
             </h2>
-            <p className="text-[#7AADA4] text-base leading-relaxed mb-10">
+            <p className="text-primary-2 leading-relaxed mb-10">
               Whether you&apos;re a growing business ready to compete globally or an
               enterprise with a problem that needs a bespoke solution — we start
               with a free discovery conversation. No pitch. Just clarity.
@@ -63,14 +64,20 @@ export default function SoftwareCTA() {
               ))}
             </div>
 
+          </div>
+
+          {/* Right — contact methods */}
+          <div className="flex flex-col border-white/10 rounded-xl p-6">
+            
+
             {/* Direct contact alternatives */}
-            <div className="border-t border-white/[0.07] pt-8 space-y-4">
+            <div className="border-b border-white/[0.07] py-8 space-y-4 mt-auto">
               <p className="text-white/30 text-xs font-mono uppercase tracking-widest">
                 Prefer direct contact?
               </p>
 
               <a
-                href="https://wa.me/2348000000000"
+                href="https://wa.me/2348140715723"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-3 group"
@@ -102,113 +109,17 @@ export default function SoftwareCTA() {
                 </div>
               </a>
             </div>
-          </div>
 
-          {/* Right — contact form */}
-          <div>
-            {submitted ? (
-              <div className="bg-white/[0.03] border border-[#45B1A0]/30 rounded-2xl p-10 flex flex-col items-center justify-center text-center min-h-[500px]">
-                <div className="w-16 h-16 rounded-full bg-[#45B1A0]/10 border border-[#45B1A0]/30 flex items-center justify-center mb-5">
-                  <svg className="w-8 h-8 text-[#45B1A0]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                </div>
-                <p className="text-[#45B1A0] text-xs font-mono font-semibold tracking-widest uppercase mb-3">
-                  MESSAGE_RECEIVED
-                </p>
-                <h3 className="text-white font-bold text-xl mb-2">We&apos;ll be in touch shortly.</h3>
-                <p className="text-[#7AADA4] text-sm max-w-xs">
-                  Expect a response within 24 hours. If it&apos;s urgent, WhatsApp is faster.
-                </p>
-              </div>
-            ) : (
-              <div className="bg-white/[0.03] border border-white/[0.07] rounded-2xl p-7 md:p-8">
-                <h3 className="text-white font-bold text-lg mb-1">Start a conversation</h3>
-                <p className="text-white/30 text-xs font-mono mb-6">
-                  Free discovery · No commitment · Response in 24h
-                </p>
 
-                <div className="space-y-4">
-                  <div className="grid sm:grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-xs font-mono text-white/40 mb-1.5">YOUR NAME *</label>
-                      <input
-                        type="text" name="name" value={form.name} onChange={handleChange}
-                        placeholder="Full name"
-                        className="w-full bg-white/[0.04] border border-white/10 focus:border-[#45B1A0]/50 rounded-xl px-4 py-3 text-sm text-white outline-none transition-colors placeholder:text-white/20 font-mono"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-xs font-mono text-white/40 mb-1.5">COMPANY</label>
-                      <input
-                        type="text" name="company" value={form.company} onChange={handleChange}
-                        placeholder="Company name"
-                        className="w-full bg-white/[0.04] border border-white/10 focus:border-[#45B1A0]/50 rounded-xl px-4 py-3 text-sm text-white outline-none transition-colors placeholder:text-white/20 font-mono"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="grid sm:grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-xs font-mono text-white/40 mb-1.5">EMAIL *</label>
-                      <input
-                        type="email" name="email" value={form.email} onChange={handleChange}
-                        placeholder="you@company.com"
-                        className="w-full bg-white/[0.04] border border-white/10 focus:border-[#45B1A0]/50 rounded-xl px-4 py-3 text-sm text-white outline-none transition-colors placeholder:text-white/20 font-mono"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-xs font-mono text-white/40 mb-1.5">WHATSAPP / PHONE</label>
-                      <input
-                        type="tel" name="phone" value={form.phone} onChange={handleChange}
-                        placeholder="+234 800 000 0000"
-                        className="w-full bg-white/[0.04] border border-white/10 focus:border-[#45B1A0]/50 rounded-xl px-4 py-3 text-sm text-white outline-none transition-colors placeholder:text-white/20 font-mono"
-                      />
-                    </div>
-                  </div>
-
-                  <div>
-                    <label className="block text-xs font-mono text-white/40 mb-1.5">TYPE OF PROJECT *</label>
-                    <select
-                      name="type" value={form.type} onChange={handleChange}
-                      className="w-full bg-white/[0.04] border border-white/10 focus:border-[#45B1A0]/50 rounded-xl px-4 py-3 text-sm text-white outline-none transition-colors font-mono"
-                    >
-                      <option value="" className="bg-[#0D2B1E]">Select project type...</option>
-                      <option value="sme-brand" className="bg-[#0D2B1E]">Brand & web system (SME)</option>
-                      <option value="web-app" className="bg-[#0D2B1E]">Web or mobile application</option>
-                      <option value="enterprise" className="bg-[#0D2B1E]">Custom enterprise software</option>
-                      <option value="dashboard" className="bg-[#0D2B1E]">Dashboard or data platform</option>
-                      <option value="integration" className="bg-[#0D2B1E]">API design or integrations</option>
-                      <option value="retainer" className="bg-[#0D2B1E]">Ongoing maintenance retainer</option>
-                      <option value="unsure" className="bg-[#0D2B1E]">Not sure yet — let&apos;s talk</option>
-                    </select>
-                  </div>
-
-                  <div>
-                    <label className="block text-xs font-mono text-white/40 mb-1.5">TELL US ABOUT YOUR PROBLEM</label>
-                    <textarea
-                      name="message" value={form.message} onChange={handleChange} rows={4}
-                      placeholder="What are you trying to solve? What's blocking you right now?..."
-                      className="w-full bg-white/[0.04] border border-white/10 focus:border-[#45B1A0]/50 rounded-xl px-4 py-3 text-sm text-white outline-none transition-colors placeholder:text-white/20 font-mono resize-none"
-                    />
-                  </div>
-
-                  <button
-                    onClick={handleSubmit}
-                    className="w-full bg-[#45B1A0] hover:bg-[#359688] text-[#0D2B1E] font-bold text-base py-4 rounded-xl transition-colors flex items-center justify-center gap-2 group"
-                  >
-                    Send Message
-                    <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                    </svg>
-                  </button>
-
-                  <p className="text-center text-white/20 text-xs font-mono">
-                    // We respond within 24 hours. Your info stays private.
-                  </p>
-                </div>
-              </div>
-            )}
+            <Link
+              href="/contact"
+              className="w-full bg-[#45B1A0] hover:bg-[#359688] text-primary font-bold py-4 rounded-xl transition-colors flex items-center justify-center gap-2 group"
+            >
+              Book a discovery session
+              <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </Link>
           </div>
         </div>
       </div>

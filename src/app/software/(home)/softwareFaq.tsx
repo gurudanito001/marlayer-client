@@ -56,7 +56,7 @@ export default function SoftwareFAQ() {
           <h2 className="text-3xl md:text-4xl font-bold text-white leading-tight">
             Questions you&apos;re probably thinking.
           </h2>
-          <p className="text-[#7AADA4] mt-3 text-base">
+          <p className="text-primary-2 mt-3">
             Honest answers. No corporate fluff.
           </p>
         </div>

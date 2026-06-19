@@ -67,7 +67,7 @@ const GlowOrb = () => (
       transform: "translate(-50%, -50%)",
     }}
   >
-    {[600, 700, 800].map((size, i) => (
+        {[600, 700, 800].map((size, i) => (
       <div
         key={size}
         className="marlayer-pulse-ring"
@@ -184,13 +184,13 @@ const FloatingChips = () => (
   <>
     <div
       className="floating-chip"
-      style={{ position: "absolute", top: 80, right: "38%", fontFamily: "'Space Mono', monospace", fontSize: 10, color: "rgba(69,177,160,0.5)", letterSpacing: 1, pointerEvents: "none", animationDelay: "0s" }}
+      style={{ position: "absolute", top: 80, right: "38%", fontFamily: "'Space Mono', monospace", fontSize: 10, color: "rgba(69,177,160,0.5)", letterSpacing: 1, pointerEvents: "none", animation: `floatChip 4s ease-in-out 0s infinite` }}
     >
       SYS::ONLINE
     </div>
     <div
       className="floating-chip"
-      style={{ position: "absolute", bottom: 90, right: "42%", fontFamily: "'Space Mono', monospace", fontSize: 10, color: "rgba(69,177,160,0.5)", letterSpacing: 1, pointerEvents: "none", animationDelay: "1.5s" }}
+      style={{ position: "absolute", bottom: 90, right: "42%", fontFamily: "'Space Mono', monospace", fontSize: 10, color: "rgba(69,177,160,0.5)", letterSpacing: 1, pointerEvents: "none", animation: `floatChip 4s ease-in-out 1.5s infinite` }}
     >
       v2.0_STABLE
     </div>
@@ -509,7 +509,7 @@ const HeroSection = () => {
               fontSize: 10,
               color: "rgba(69,177,160,0.5)",
               letterSpacing: 1,
-              animationDelay: `${i * 1.5}s`,
+              animation: `floatChip 4s ease-in-out ${i * 1.5}s infinite`,
             }}
           >
             {label}

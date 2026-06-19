@@ -22,9 +22,13 @@ const PrivacyPolicy = () => {
   
 
   
-    const navLinkClasses = isScrolled 
+    /* const navLinkClasses = isScrolled 
       ? "text-gray-300 hover:text-[#45B1A0] hover:border-[#45B1A0]" 
-      : "text-gray-300 hover:text-white hover:border-white";
+      : "text-gray-300 hover:text-white hover:border-white"; */
+
+      const navLinkClasses = isScrolled 
+          ? "text-white shadow-none" 
+          : "text-gray-600";
   
 
   return (
@@ -33,17 +37,20 @@ const PrivacyPolicy = () => {
           <div className="w-full max-w-[1900px] mx-auto px-6 md:px-12 lg:px-16 xl:px-28 flex justify-between items-center relative">
             
             <div className="flex items-center">
-              <Link href="/" className="flex items-baseline">
-                <div className="">
-                 <Image src="/images/marlayer-logo.svg" width={24} height={24} alt="Marlayer Logo" />
-                </div>
-                <span 
-                  className="font-extrabold text-2xl ml-0.5"
-                  style={{ color: logoTeal }}
-                >
-                  ARLAYER
+            <Link href="/" className="flex items-center gap-1.5 group select-none">
+              <div className="relative flex items-center  gap-1.5 justify-center">
+                <Image
+                  src="/images/marlayer-logo.svg"
+                  width={26}
+                  height={26}
+                  alt="Marlayer Logo"
+                  className="object-contain"
+                />
+                <span className="font-black text-2xl tracking-tight text-[#45B1A0] flex items-baseline mt-[2px]">
+                  <span className="text-[#45B1A0] font-extrabold text-xl tracking-wide leading-tight">ARLAYER</span>
                 </span>
-              </Link>
+              </div>
+            </Link>
             </div>
 
             {/* Desktop Navigation Links - Centered */}
@@ -268,7 +275,6 @@ const PrivacyPolicy = () => {
                 <div>
                   <p className="text-sm font-medium text-gray-500">Office Addresses</p>
                   <p className="text-[#11241E] font-semibold">6 Oremeta Street Oregun, Ikeja, Lagos</p>
-                  <p className="text-[#11241E] font-semibold mt-1">12 Jogunosimi Street Alausa, Ikeja, Lagos</p>
                 </div>
               </div>
             </div>

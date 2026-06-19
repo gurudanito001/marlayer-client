@@ -87,7 +87,7 @@ export default function Home() {
   };
 
   return (
-    <main className="bg-white">
+    <main>
       {/* Injecting the Structured Data securely into the DOM */}
       <script
         type="application/ld+json"

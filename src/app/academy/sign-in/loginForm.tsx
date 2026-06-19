@@ -12,7 +12,7 @@ const RegisterForm = () =>{
     <section className="bg-white lg:px-24 lg:py-24 w-full lg:w-8/12 h-full overflow-y-scroll ">
       <header className="py-8 bg-primary text-white px-5 lg:hidden">
         <Link href="/academy" className="flex items-center gap-3">
-        <Image src="/images/marlayer-logo.svg" width={40} height={40} alt="Marlayer Logo" />
+        <Image src="/images/marlayer-logo.svg" width={40} height={40} alt="Marlayer Logo" style={{ width: 'auto', height: 'auto' }} />
         <h1 className={`font-extrabold text-xl ${dmSans.className}`}>Marlayer Academy</h1>
       </Link>
       </header>

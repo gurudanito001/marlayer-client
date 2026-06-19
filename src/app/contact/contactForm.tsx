@@ -46,7 +46,7 @@ export default function ContactFormSection() {
         
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-[#11241E] mb-4 tracking-tight">
-            Have any questions?
+            Reach out to us
           </h2>
           <p className="text-gray-500 text-lg max-w-2xl mx-auto">
             Whether it's a question, suggestion, or feedback, we're just a message away

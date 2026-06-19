@@ -31,6 +31,7 @@ export default function Navbar() {
                   height={26} 
                   alt="Marlayer Logo" 
                   className="object-contain"
+                  style={{ width: 'auto', height: 'auto' }}
                 />
               </div>
               <span className="font-black text-2xl tracking-tight text-[#45B1A0] flex items-baseline">

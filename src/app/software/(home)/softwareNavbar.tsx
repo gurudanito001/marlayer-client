@@ -3,17 +3,17 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import Image from "next/image";
 
 const navLinks = [
-  { label: "Software", href: "/software" },
-  { label: "Gadgets", href: "/gadgets" },
-  { label: "Academy", href: "/academy" },
+  { label: "Services", href: "/software" },
+  { label: "About Us", href: "/software/about" },
+  { label: "Projects", href: "/software/projects" },
 ];
 
 const softwareDropdown = [
   { label: "Growing Businesses", href: "/software/sme", desc: "Global brand & web systems" },
   { label: "Enterprise", href: "/software/enterprise", desc: "Custom software solutions" },
-  { label: "Case Studies", href: "/software/case-studies", desc: "Results from real clients" },
 ];
 
 export default function SoftwareNavbar() {
@@ -37,29 +37,27 @@ export default function SoftwareNavbar() {
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           scrolled
             ? "bg-[#071A10]/95 backdrop-blur-md border-b border-white/[0.07] shadow-xl shadow-black/20"
-            : "bg-transparent border-b border-transparent"
+            : "bg-[#071A10] border-b border-transparent"
         }`}
       >
         {/* Top teal accent line */}
         <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#45B1A0]/60 to-transparent" />
 
         <div className="max-w-6xl mx-auto px-6">
-          <div className="flex items-center justify-between h-16 md:h-18">
+          <div className="flex items-center justify-between h-16 md:h-20">
 
             {/* Logo */}
-            <Link
-              href="/"
-              className="flex items-center gap-2.5 group flex-shrink-0"
-            >
-              <div className="w-7 h-7 rounded-lg bg-[#45B1A0] flex items-center justify-center">
-                <span className="text-[#0D2B1E] text-xs font-black font-mono">M</span>
+            <Link href="/" className="flex items-baseline">
+              <div className="">
+                <Image src="/images/marlayer-logo.svg" width={24} height={24} alt="Marlayer Logo" />
               </div>
-              <span className="text-white font-bold text-base tracking-tight group-hover:text-[#45B1A0] transition-colors">
-                MARLAYER
+              <span
+                className="font-extrabold text-2xl ml-0.5"
+                style={{ color: "#45B1A0" }}
+              >
+                ARLAYER
               </span>
-              <span className="hidden sm:inline text-[#45B1A0]/40 text-[10px] font-mono border border-[#45B1A0]/20 px-1.5 py-0.5 rounded">
-                SOFTWARE
-              </span>
+              <span className='font-extrabold text-2xl text-white ml-2'>SOFTWARE</span>
             </Link>
 
             {/* Desktop nav */}
@@ -134,7 +132,7 @@ export default function SoftwareNavbar() {
             </div>
 
             {/* Desktop CTAs */}
-            <div className="hidden md:flex items-center gap-3">
+            <div className="hidden md:flex items-center gap-5">
               <Link
                 href="/software/case-studies"
                 className="text-white/50 hover:text-white text-sm font-medium transition-colors"

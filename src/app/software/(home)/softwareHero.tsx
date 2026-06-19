@@ -88,7 +88,7 @@ export default function SoftwareHero() {
           <div className="flex flex-col sm:flex-row gap-4 mb-16">
             <a
               href="/software/sme"
-              className="group inline-flex items-center justify-center gap-2 bg-[#45B1A0] hover:bg-[#359688] text-[#0D2B1E] font-bold text-base px-8 py-4 rounded-xl transition-all duration-200 hover:shadow-lg hover:shadow-[#45B1A0]/25"
+              className="group inline-flex items-center justify-center gap-2 bg-[#45B1A0] hover:bg-[#359688] text-primary font-bold text-base px-8 py-4 rounded-xl transition-all duration-200 hover:shadow-lg hover:shadow-[#45B1A0]/25"
             >
               I&apos;m a growing business
               <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">

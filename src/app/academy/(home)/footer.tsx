@@ -32,16 +32,22 @@ const Footer = () => {
           
           {/* Left Side: Brand Info */}
           <div className="flex flex-col gap-6 max-w-xs xl:max-w-sm">
-            <Link href="/" className="flex items-baseline">
-              <div className="">
-                <Image src="/images/marlayer-logo.svg" width={24} height={24} alt="Marlayer Logo" />
+            <Link href="/" className="flex items-center gap-1.5 group select-none">
+              <div className="relative flex items-center  gap-1.5 justify-center">
+                <Image
+                  src="/images/marlayer-logo.svg"
+                  width={26}
+                  height={26}
+                  alt="Marlayer Logo"
+                  className="object-contain"
+                />
+                <span
+                  className="font-extrabold text-2xl ml-0.5"
+                  style={{ color: '#45B1A0' }}
+                >
+                  ARLAYER
+                </span>
               </div>
-              <span
-                className="font-extrabold text-2xl ml-0.5"
-                style={{ color: '#45B1A0' }}
-              >
-                ARLAYER
-              </span>
             </Link>
             <p className="text-[15px] leading-relaxed font-light">
               Empowering the next generation of tech innovators through world-class education.
@@ -83,10 +89,7 @@ const Footer = () => {
                   <MapPinIcon className="w-5 h-5 text-white/50 shrink-0 mt-0.5" />
                   <span className="leading-snug">6 Oremeta Street Oregun, Ikeja, Lagos</span>
                 </li>
-                <li className="flex items-start gap-3">
-                  <MapPinIcon className="w-5 h-5 text-white/50 shrink-0 mt-0.5" />
-                  <span className="leading-snug">12 Jogunosimi Street Alausa, Ikeja, Lagos</span>
-                </li>
+                
                 <li className="flex items-center gap-3">
                   <EnvelopeIcon className="w-5 h-5 text-white/50 shrink-0" />
                   <a href="mailto:daniel.marlayer@gmail.com" className="hover:text-white transition-colors duration-200">
@@ -119,7 +122,7 @@ const Footer = () => {
               className=" rounded-full bg-white/5 flex items-center justify-center border border-white/10 hover:bg-white/20 hover:border-white/30 transition-all duration-300"
             >
               {/* Assuming x.svg is white/transparent. If not, you might need a CSS filter or a different icon */}
-              <Image src="/images/x.svg" width={36} height={36} alt="X (Twitter)" className="opacity-80 hover:opacity-100" />
+              <Image src="/images/x.svg" width={36} height={36} alt="X (Twitter)" className="opacity-80 hover:opacity-100" style={{ width: 'auto', height: 'auto' }} />
             </Link>
             <Link
               href="https://x.com/marlayer"
@@ -127,7 +130,7 @@ const Footer = () => {
               className=" rounded-full bg-white/5 flex items-center justify-center border border-white/10 hover:bg-white/20 hover:border-white/30 transition-all duration-300"
             >
               {/* Assuming x.svg is white/transparent. If not, you might need a CSS filter or a different icon */}
-              <Image src="/images/facebook.svg" width={36} height={36} alt="Facebook" className="opacity-80 hover:opacity-100" />
+              <Image src="/images/facebook.svg" width={36} height={36} alt="Facebook" className="opacity-80 hover:opacity-100" style={{ width: 'auto', height: 'auto' }} />
             </Link>
             <Link
               href="https://www.linkedin.com/company/marlayer/"
@@ -135,7 +138,7 @@ const Footer = () => {
               className=" rounded-full bg-white/5 flex items-center justify-center border border-white/10 hover:bg-white/20 hover:border-white/30 transition-all duration-300"
             >
               {/* Assuming x.svg is white/transparent. If not, you might need a CSS filter or a different icon */}
-              <Image src="/images/linkedIn.svg" width={36} height={36} alt="LinkedIn" className="opacity-80 hover:opacity-100" />
+              <Image src="/images/linkedIn.svg" width={36} height={36} alt="LinkedIn" className="opacity-80 hover:opacity-100" style={{ width: 'auto', height: 'auto' }} />
             </Link>
             <Link
               href="https://www.instagram.com/marlayers/s/"
@@ -143,7 +146,7 @@ const Footer = () => {
               className=" rounded-full bg-white/5 flex items-center justify-center border border-white/10 hover:bg-white/20 hover:border-white/30 transition-all duration-300"
             >
               {/* Assuming x.svg is white/transparent. If not, you might need a CSS filter or a different icon */}
-              <Image src="/images/instagram.svg" width={36} height={36} alt="Instagram" className="opacity-80 hover:opacity-100" />
+              <Image src="/images/instagram.svg" width={36} height={36} alt="Instagram" className="opacity-80 hover:opacity-100" style={{ width: 'auto', height: 'auto' }} />
             </Link>
           </div>
         </div>

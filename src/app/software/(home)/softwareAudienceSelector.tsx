@@ -55,7 +55,7 @@ export default function SoftwareAudienceSelector() {
           <h2 className="text-3xl md:text-4xl font-bold text-white leading-tight">
             Two types of businesses. Two tailored solutions.
           </h2>
-          <p className="text-[#7AADA4] mt-3 max-w-lg mx-auto text-base">
+          <p className="text-primary-2 mt-3 max-w-lg mx-auto">
             Choose the one that describes where you are. We&apos;ll show you
             exactly how Marlayer solves your specific problem.
           </p>

@@ -124,7 +124,7 @@ export default function SoftwareWhatWeBuild() {
               We don&apos;t just write code.
               <br />We build systems.
             </h2>
-            <p className="text-[#7AADA4] text-base leading-relaxed">
+            <p className="text-primary-2 leading-relaxed">
               Every engagement starts with understanding your business deeply.
               Then we build the right thing — not the easiest thing.
             </p>

@@ -87,6 +87,26 @@ const OurCoreValues: React.FC = () => {
   const [isPaused, setIsPaused] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
   const { ref: sectionRef, inView } = useInView(0.1);
+  const [numPills, setNumPills] = useState<number>(5);
+
+  useEffect(() => {
+    const update = () => {
+      const w = typeof window !== "undefined" ? window.innerWidth : 1024;
+      let numberOfPills = 5;
+      if (w > 880) {
+        numberOfPills = 4;
+      } else if (w >= 580) {
+        numberOfPills = 5;
+      } else {
+        numberOfPills = 5;
+      }
+      setNumPills(numberOfPills);
+    };
+
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, []);
 
   // Auto-scroll
   useEffect(() => {
@@ -177,7 +197,8 @@ const OurCoreValues: React.FC = () => {
               <div style={{ display: "flex", gap: 10, alignItems: "center" }}>
                 {/* Dots */}
                 <div style={{ display: "flex", gap: 6, marginRight: 8 }}>
-                  {values.map((_, i) => (
+                  {Array.from({ length: numPills }, (_, i) => {
+                    return (
                     <span
                       key={i}
                       style={{
@@ -189,7 +210,8 @@ const OurCoreValues: React.FC = () => {
                         display: "inline-block",
                       }}
                     />
-                  ))}
+                    )
+                  })}
                 </div>
                 {(["left", "right"] as const).map(dir => (
                   <button

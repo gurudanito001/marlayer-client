@@ -90,7 +90,7 @@ export default function RegistrationPage() {
   useEffect(() => {
     const fetchCountries = async () => {
       try {
-        const response = await fetch("https://restcountries.com/v3.1/all?fields=name,idd,cca2,flags");
+        const response = await fetch("https://pardomart-node-api-vaje.onrender.com/api/v1/auth/static-countries");
         const data = await response.json();
         
         const codes = data

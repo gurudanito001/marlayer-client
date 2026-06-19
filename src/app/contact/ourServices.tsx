@@ -8,9 +8,7 @@ export default function ContactServices() {
       
       {/* Header Content */}
       <div className="text-center px-6 mb-16 lg:mb-28 max-w-3xl mx-auto">
-        <span className="inline-block px-4 py-1.5 rounded-full bg-orange-50 text-orange-700 text-sm font-medium mb-6 border border-orange-100">
-          Divisions
-        </span>
+        
         <h2 className="text-4xl md:text-5xl font-bold text-[#11241E] mb-4 tracking-tight">
           Connect with Us <br className="hidden md:block" />
           Based on Your Needs

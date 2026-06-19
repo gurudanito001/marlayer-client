@@ -32,22 +32,23 @@ const NavBar = ({ darkTheme = false }: NavBarProps) => {
       <div className="container flex justify-between items-center mx-auto">
         
         <div className="flex items-center space-x-8">
-          <Link href="/" className="flex items-baseline ml-3 group">
-            <div className="">
-             <Image 
-                src="/images/marlayer-logo.svg" 
-                width={24} 
-                height={24} 
-                alt="Marlayer Logo" 
-                
-             />
-            </div>
-            <span 
-              className="font-extrabold text-2xl" style={{color: "#45B1A0"}}
-            >
-              ARLAYER
-            </span>
-          </Link>
+          <Link href="/" className="flex items-center gap-1.5 group select-none">
+              <div className="relative flex items-center  gap-1.5 justify-center">
+                <Image
+                  src="/images/marlayer-logo.svg"
+                  width={26}
+                  height={26}
+                  alt="Marlayer Logo"
+                  className="object-contain"
+                />
+                <span
+                  className="font-extrabold text-2xl ml-0.5"
+                  style={{ color: '#45B1A0' }}
+                >
+                  ARLAYER
+                </span>
+              </div>
+            </Link>
 
           <div className="hidden md:flex items-center space-x-8">
             <Link href="/academy" className={linkClasses}>
