@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useRouter, usePathname } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { Search, X } from "lucide-react";
 
 interface SearchModalProps {
@@ -10,9 +10,10 @@ interface SearchModalProps {
 }
 
 export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
-  const [searchTerm, setSearchTerm] = useState("");
   const router = useRouter();
-  const pathname = usePathname(); 
+  const searchParams = useSearchParams();
+
+  const [searchTerm, setSearchTerm] = useState(searchParams.get("search") || "");
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -26,18 +27,20 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
-    if (searchTerm.trim()) {
-      onClose();
-      
-      // Determine page category context dynamically
-      let categoryContext = "";
-      if (pathname.toLowerCase().includes("phones")) categoryContext = "phones";
-      if (pathname.toLowerCase().includes("laptops")) categoryContext = "laptops";
-      if (pathname.toLowerCase().includes("accessories")) categoryContext = "accessories";
+    if (!searchTerm.trim()) return;
 
-      const catParam = categoryContext ? `&cat=${categoryContext}` : "";
-      router.push(`/search?q=${encodeURIComponent(searchTerm.trim())}${catParam}`);
-    }
+    onClose();
+    
+    const targetParams = new URLSearchParams();
+    targetParams.set("search", searchTerm.trim());
+
+    router.push(`/search?${targetParams.toString()}`);
+  };
+
+  const handleTagClick = (tag: string) => {
+    setSearchTerm(tag);
+    onClose();
+    router.push(`/search?search=${encodeURIComponent(tag)}`);
   };
 
   return (
@@ -69,7 +72,7 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
               <button
                 key={tag}
                 type="button"
-                onClick={() => setSearchTerm(tag)}
+                onClick={() => handleTagClick(tag)}
                 className="text-sm text-[#0D2B1E] bg-white border border-[#E6F2F0] px-3 py-1.5 rounded-lg hover:border-[#45B1A0] transition-colors"
               >
                 {tag}

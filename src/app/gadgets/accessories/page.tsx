@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect, useCallback } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { ChevronRight, Cable, ShoppingCart } from "lucide-react";
 import Navbar from "../gadgetsNavbar";
 import Footer from "../gadgetsFooter";
@@ -175,10 +176,9 @@ export default function AccessoriesPage() {
           </div>
         </div>
 
-        {/* LOADING & ARCHITECTURE GRID */}
         {loading ? (
           <div className="flex flex-col justify-center items-center min-h-[400px] bg-white rounded-3xl border border-[#E2EFEB]">
-            <div className="w-8 h-8 border-2 border-[#45B1A0] border-t-transparent rounded-full animate-spin mb-4" />
+            <div className="w-8 h-8 border-4 border-[#45B1A0] border-t-transparent rounded-full animate-spin mb-4" />
             <p className="text-sm font-semibold text-[#416B5C] animate-pulse">Syncing matrix components...</p>
           </div>
         ) : accessories.length === 0 ? (
@@ -194,42 +194,48 @@ export default function AccessoriesPage() {
                   key={product.id} 
                   className="group flex flex-col bg-white rounded-2xl border border-[#E2EFEB] p-4 transition-all duration-200 hover:shadow-md hover:border-[#45B1A0]/40"
                 >
-                  {/* Visual Image Container Frame */}
-                  <div className="relative w-full aspect-square mb-4 bg-[#F4F9F8] rounded-xl overflow-hidden flex items-center justify-center border border-[#E2EFEB]/40 p-6">
-                    <Image 
-                      src={product.image} 
-                      alt={product.name} 
-                      fill 
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw" 
-                      className="object-contain p-4 group-hover:scale-[1.02] transition-transform duration-300"
-                      priority={false}
-                    />
-                    {product.brand && (
-                      <span className="absolute top-3 left-3 text-[10px] uppercase font-bold tracking-wider text-[#416B5C] bg-white border border-[#E2EFEB] px-2 py-0.5 rounded-md">
-                        {product.brand}
-                      </span>
-                    )}
-                  </div>
-
-                  {/* Information Card Body */}
-                  <div className="flex flex-col flex-grow px-1">
-                    <h2 className="text-sm font-bold text-[#0D2B1E] tracking-tight line-clamp-1 mb-1 group-hover:text-[#45B1A0] transition-colors">
-                      {product.name}
-                    </h2>
-                    <p className="text-xs text-[#416B5C] leading-relaxed line-clamp-2 min-h-[2.5rem] mb-4">
-                      {product.description || "No supplemental integration metrics specified for this peripheral layout connection."}
-                    </p>
-                    
-                    {/* Dynamic Pricing Matrix */}
-                    <div className="mt-auto pt-3 border-t border-[#F4F9F8] flex items-baseline justify-between">
-                      <span className="text-[10px] font-bold text-[#416B5C] uppercase tracking-wider">Acquisition</span>
-                      <span className="text-base font-extrabold text-[#0D2B1E]">
-                        ${Number(product.price).toLocaleString()}
-                      </span>
+                
+                  <Link 
+                    href={`/gadgets/accessories/${encodeURIComponent(product.name)}`}
+                    className="block cursor-pointer flex-grow"
+                  >
+                    {/* Visual Image Container Frame */}
+                    <div className="relative w-full aspect-square mb-4 bg-[#F4F9F8] rounded-xl overflow-hidden flex items-center justify-center border border-[#E2EFEB]/40 p-6">
+                      <Image 
+                        src={product.image} 
+                        alt={product.name} 
+                        fill 
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw" 
+                        className="object-contain p-4 group-hover:scale-[1.02] transition-transform duration-300"
+                        priority={false}
+                      />
+                      {product.brand && (
+                        <span className="absolute top-3 left-3 text-[10px] uppercase font-bold tracking-wider text-[#416B5C] bg-white border border-[#E2EFEB] px-2 py-0.5 rounded-md">
+                          {product.brand}
+                        </span>
+                      )}
                     </div>
-                  </div>
 
-                  {/* Interactive Base Links */}
+                    {/* Information Card Body */}
+                    <div className="flex flex-col flex-grow px-1">
+                      <h2 className="text-sm font-bold text-[#0D2B1E] tracking-tight line-clamp-1 mb-1 group-hover:text-[#45B1A0] transition-colors">
+                        {product.name}
+                      </h2>
+                      <p className="text-xs text-[#416B5C] leading-relaxed line-clamp-2 min-h-[2.5rem] mb-4">
+                        {product.description || "No supplemental integration metrics specified for this peripheral layout connection."}
+                      </p>
+                      
+                      {/* Dynamic Pricing Matrix */}
+                      <div className="mt-auto pt-3 border-t border-[#F4F9F8] flex items-baseline justify-between">
+                        <span className="text-[10px] font-bold text-[#416B5C] uppercase tracking-wider">Acquisition</span>
+                        <span className="text-base font-extrabold text-[#0D2B1E]">
+                          ${Number(product.price).toLocaleString()}
+                        </span>
+                      </div>
+                    </div>
+                  </Link>
+
+                  
                   <div className="grid grid-cols-2 gap-2 mt-4 pt-2">
                     <button
                       type="button"
@@ -275,7 +281,6 @@ export default function AccessoriesPage() {
         )}
       </main>
 
-      {/* Full-bleed footer boundary placement */}
       <Footer />
 
       <SpecsModal 

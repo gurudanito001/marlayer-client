@@ -3,6 +3,7 @@
 import { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import Image from "next/image";
+import Link from "next/link"; 
 import { ChevronRight, SearchX, Search as SearchIcon, ShoppingCart } from "lucide-react";
 import Navbar from "../gadgets/gadgetsNavbar"; 
 import Footer from "../gadgets/gadgetsFooter";
@@ -23,7 +24,8 @@ interface Product {
 
 function SearchContent() {
   const searchParams = useSearchParams();
-  const query = searchParams.get("q") || "";
+  
+  const query = searchParams.get("search") || searchParams.get("q") || "";
   const categoryLock = searchParams.get("cat") || undefined;
 
   const [results, setResults] = useState<Product[]>([]);
@@ -112,31 +114,39 @@ function SearchContent() {
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {results.map((product) => (
               <div key={product.id} className="group flex flex-col bg-white rounded-2xl border border-[#E2EFEB] p-4 transition-all duration-200 hover:shadow-md hover:border-[#45B1A0]/40">
-                <div className="relative w-full aspect-square mb-4 bg-[#F4F9F8] rounded-xl overflow-hidden flex items-center justify-center border border-[#E2EFEB]/40 p-6">
-                  <Image src={product.image} alt={product.name} fill sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw" className="object-contain p-4 group-hover:scale-[1.02] transition-transform duration-300" priority={false} />
-                  {product.brand && (
-                    <span className="absolute top-3 left-3 text-[10px] uppercase font-bold tracking-wider text-[#416B5C] bg-white border border-[#E2EFEB] px-2 py-0.5 rounded-md">
-                      {product.brand}
-                    </span>
-                  )}
-                </div>
-
-                <div className="flex flex-col flex-grow px-1">
-                  <h2 className="text-sm font-bold text-[#0D2B1E] tracking-tight line-clamp-1 mb-1 group-hover:text-[#45B1A0] transition-colors">
-                    {product.name}
-                  </h2>
-                  <p className="text-xs text-[#416B5C] leading-relaxed line-clamp-2 min-h-[2.5rem] mb-4">
-                    {product.description || "No layout configuration description specified for this terminal variant."}
-                  </p>
-                  
-                  <div className="mt-auto pt-3 border-t border-[#F4F9F8] flex items-baseline justify-between">
-                    <span className="text-[10px] font-bold text-[#416B5C] uppercase tracking-wider">Acquisition</span>
-                    <span className="text-base font-extrabold text-[#0D2B1E]">
-                      ${Number(product.price).toLocaleString()}
-                    </span>
+                
+                {/* Clickable Wrapper linking to dynamic product info sheet */}
+                <Link 
+                  href={`/gadgets/${product.category.toLowerCase()}/${encodeURIComponent(product.name)}`}
+                  className="block cursor-pointer flex-grow"
+                >
+                  <div className="relative w-full aspect-square mb-4 bg-[#F4F9F8] rounded-xl overflow-hidden flex items-center justify-center border border-[#E2EFEB]/40 p-6">
+                    <Image src={product.image} alt={product.name} fill sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw" className="object-contain p-4 group-hover:scale-[1.02] transition-transform duration-300" priority={false} />
+                    {product.brand && (
+                      <span className="absolute top-3 left-3 text-[10px] uppercase font-bold tracking-wider text-[#416B5C] bg-white border border-[#E2EFEB] px-2 py-0.5 rounded-md">
+                        {product.brand}
+                      </span>
+                    )}
                   </div>
-                </div>
 
+                  <div className="flex flex-col px-1">
+                    <h2 className="text-sm font-bold text-[#0D2B1E] tracking-tight line-clamp-1 mb-1 group-hover:text-[#45B1A0] transition-colors">
+                      {product.name}
+                    </h2>
+                    <p className="text-xs text-[#416B5C] leading-relaxed line-clamp-2 min-h-[2.5rem] mb-4">
+                      {product.description || "No layout configuration description specified for this terminal variant."}
+                    </p>
+                    
+                    <div className="mt-auto pt-3 border-t border-[#F4F9F8] flex items-baseline justify-between">
+                      <span className="text-[10px] font-bold text-[#416B5C] uppercase tracking-wider">Acquisition</span>
+                      <span className="text-base font-extrabold text-[#0D2B1E]">
+                        ${Number(product.price).toLocaleString()}
+                      </span>
+                    </div>
+                  </div>
+                </Link>
+
+                {/* Actions Row */}
                 <div className="grid grid-cols-2 gap-2 mt-4 pt-2">
                   <button type="button" onClick={() => { setSelectedProduct(product); setIsSpecsOpen(true); }} className="py-2 px-3 rounded-xl bg-[#F4F9F8] text-[#0D2B1E] font-bold text-xs text-center border border-[#E2EFEB] hover:bg-[#E2EFEB] transition-colors">
                     Specifications

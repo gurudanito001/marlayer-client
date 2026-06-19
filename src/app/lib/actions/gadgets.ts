@@ -3,14 +3,15 @@
 import { createClient } from '@/app/utils/supabase/server'
 import { revalidatePath } from 'next/cache'
 import { GadgetSchema } from '../../../../types/gadgets'
-import { z } from 'zod' // FIX 1: Imported z to prevent ReferenceError
+import { z } from 'zod'
 
-// 1. Fetch All Gadgets (Read)
-// Fetch all gadgets (with optional search and pagination) for Admin view
+
 export async function fetchGadgets(
   page: number = 1, 
   limit: number = 12, 
-  searchQuery?: string
+  searchQuery?: string,
+  category?: string,
+  subCategory?: string 
 ) {
   const supabase = await createClient()
   const from = (page - 1) * limit
@@ -22,6 +23,16 @@ export async function fetchGadgets(
   if (searchQuery && searchQuery.trim() !== "") {
     const term = searchQuery.trim()
     queryBuilder = queryBuilder.or(`product_name.ilike.%${term}%,brand.ilike.%${term}%,sku.ilike.%${term}%`)
+  }
+
+  // Apply category filter
+  if (category) {
+    queryBuilder = queryBuilder.eq('category', category.toLowerCase())
+  }
+
+  // Apply sub-category filter
+  if (subCategory && subCategory.toLowerCase() !== 'all products') {
+    queryBuilder = queryBuilder.eq('sub_category', subCategory.toLowerCase())
   }
 
   const { data, error, count } = await queryBuilder
@@ -111,7 +122,7 @@ export async function updateGadget(id: string, updateData: unknown) {
   
   revalidatePath('/gadgets')
   revalidatePath(`/gadgets/${id}`)
-  return { success: true, data } // Standardized the return object
+  return { success: true, data }
 }
 
 // 5. Delete a Gadget
@@ -142,7 +153,7 @@ export async function bulkUploadGadgets(rawArray: unknown[]) {
   }
 
   const validGadgets = validation.data;
-  const supabase = await createClient(); // FIX 4: Added missing 'await'
+  const supabase = await createClient();
 
   const { data, error } = await supabase
     .from('gadgets')
@@ -193,7 +204,7 @@ export async function fetchGadgetsByCategory(
   }
 }
 
-// 8. Advanced Search (Name, Description, Price Range)
+
 // 8. Advanced Search (Name, Category, Sub-category, Brand)
 export async function searchGadgets({
   searchTerm,
@@ -218,7 +229,6 @@ export async function searchGadgets({
 
   let queryBuilder = supabase.from('gadgets').select('*', { count: 'exact' })
 
-  // 1. Filter by price range if provided
   if (minPrice !== undefined) queryBuilder = queryBuilder.gte('selling_price', minPrice)
   if (maxPrice !== undefined) queryBuilder = queryBuilder.lte('selling_price', maxPrice)
   
@@ -240,24 +250,19 @@ export async function searchGadgets({
     }
   }
 
-  // 3. Apply Strict Category Boundaries
   if (activeCategory) queryBuilder = queryBuilder.eq('category', activeCategory.toLowerCase())
   if (activeSubCategory) queryBuilder = queryBuilder.eq('sub_category', activeSubCategory.toLowerCase())
 
-  // 4. Smart Text Search Logic (No description pollution, handles split keywords)
   if (searchTerm && searchTerm.trim() !== "") {
     const term = searchTerm.trim()
     
-    // Split by spaces to handle non-contiguous words (e.g., "Samsung S24" matches "Samsung Galaxy S24")
     const words = term.split(/\s+/).filter(word => word.length > 0)
     
     if (words.length > 1) {
-      // Every keyword typed must be present in either the product_name, brand, or sub_category
       words.forEach(word => {
         queryBuilder = queryBuilder.or(`product_name.ilike.%${word}%,brand.ilike.%${word}%,sub_category.ilike.%${word}%`)
       })
     } else {
-      // Single word match
       queryBuilder = queryBuilder.or(`product_name.ilike.%${term}%,brand.ilike.%${term}%,sub_category.ilike.%${term}%`)
     }
   }
@@ -282,7 +287,6 @@ export async function searchGadgets({
 
 // 8. Decrement Stock
 export async function decrementStock(id: string, quantityToDeduct: number) {
-  // FIX 5: Implemented the MVP logic so stock deduction actually works
   const supabase = await createClient();
   
   // First, fetch the current stock
@@ -309,4 +313,66 @@ export async function decrementStock(id: string, quantityToDeduct: number) {
   revalidatePath('/gadgets');
   revalidatePath(`/gadgets/${id}`);
   return { success: true, data };
+}
+
+// 9. Master Filter Function (For Boss's New Requirements)
+export async function fetchGadgetsWithFilters({
+  page = 1,
+  limit = 20,
+  category,
+  subCategory,
+  searchQuery
+}: {
+  page?: number
+  limit?: number
+  category?: string
+  subCategory?: string
+  searchQuery?: string
+}) {
+  const supabase = await createClient()
+  const from = (page - 1) * limit
+  const to = from + limit - 1
+
+  let queryBuilder = supabase.from('gadgets').select('*', { count: 'exact' })
+
+  if (category) {
+    queryBuilder = queryBuilder.eq('category', category.toLowerCase())
+  }
+
+  if (subCategory && subCategory.toLowerCase() !== 'all products') {
+    const tab = subCategory.toLowerCase()
+    
+    if (tab === 'iphone') {
+      queryBuilder = queryBuilder.or('brand.ilike.%apple%,product_name.ilike.%iphone%')
+    } else if (tab === 'android') {
+      queryBuilder = queryBuilder.not('brand', 'ilike', '%apple%').not('product_name', 'ilike', '%iphone%')
+    } else if (tab === 'macbook') {
+      // NEW: Laptops Logic
+      queryBuilder = queryBuilder.or('brand.ilike.%apple%,product_name.ilike.%macbook%')
+    } else if (tab === 'windows') {
+      // NEW: Laptops Logic
+      queryBuilder = queryBuilder.not('brand', 'ilike', '%apple%').not('product_name', 'ilike', '%macbook%')
+    } else {
+      queryBuilder = queryBuilder.eq('sub_category', tab)
+    }
+  }
+
+  if (searchQuery && searchQuery.trim() !== '') {
+    const term = searchQuery.trim()
+    queryBuilder = queryBuilder.or(`product_name.ilike.%${term}%,brand.ilike.%${term}%,sku.ilike.%${term}%`)
+  }
+
+  const { data, error, count } = await queryBuilder
+    .order('created_at', { ascending: false })
+    .range(from, to)
+
+  if (error) {
+    console.error('Database query failure:', error)
+    return { data: [], totalPages: 0, totalCount: 0 }
+  }
+
+  const totalCount = count || 0
+  const totalPages = Math.ceil(totalCount / limit)
+
+  return { data, totalPages, totalCount }
 }

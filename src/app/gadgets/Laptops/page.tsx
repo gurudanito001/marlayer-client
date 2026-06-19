@@ -2,10 +2,12 @@
 
 import { useState, useRef, useEffect, useCallback } from "react";
 import Image from "next/image";
+import Link from "next/link";
+import { useSearchParams } from "next/navigation"; 
 import { ChevronRight, Cpu, ShoppingCart } from "lucide-react";
 import Navbar from "../gadgetsNavbar";
 import Footer from "../gadgetsFooter";
-import { fetchGadgetsByCategory } from "@/app/lib/actions/gadgets";
+import { fetchGadgetsWithFilters } from "@/app/lib/actions/gadgets";
 import { useCartStore } from "@/app/store/cartStore"; 
 import SpecsModal from "@/app/components/specsModal";
 
@@ -24,11 +26,14 @@ interface Product {
 
 export default function LaptopsPage() {
   const [activeTab, setActiveTab] = useState("All products");
-  const [allLaptops, setAllLaptops] = useState<Product[]>([]);
-  const [displayedLaptops, setDisplayedLaptops] = useState<Product[]>([]);
+  const [laptops, setLaptops] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const [sliderStyle, setSliderStyle] = useState({});
   const tabsRef = useRef<(HTMLButtonElement | null)[]>([]);
+
+  // Search Param Hook Listener
+  const searchParams = useSearchParams();
+  const searchQuery = searchParams.get("search") || ""; 
 
   // Infinite Scroll Pagination States
   const [page, setPage] = useState(1);
@@ -45,8 +50,8 @@ export default function LaptopsPage() {
   // Zustand Store Action
   const addToCart = useCartStore((state) => state.addToCart);
 
-  // Core Data Fetcher Function
-  const loadLaptops = async (pageToFetch: number) => {
+  // Core Data Fetcher Function connected to Supabase
+  const loadLaptops = async (pageToFetch: number, tabToFetch: string, currentSearch: string) => {
     if (pageToFetch === 1) {
       setLoading(true);
     } else {
@@ -54,7 +59,14 @@ export default function LaptopsPage() {
     }
 
     try {
-      const response = await fetchGadgetsByCategory("laptops", undefined, pageToFetch, 20);
+      const response = await fetchGadgetsWithFilters({
+        category: "laptops",
+        subCategory: tabToFetch === "All products" ? undefined : tabToFetch,
+        searchQuery: currentSearch, 
+        page: pageToFetch,
+        limit: 20
+      });
+
       const fetchedData = response.data || [];
       
       const mappedProducts = fetchedData.map((item: any) => ({
@@ -69,37 +81,38 @@ export default function LaptopsPage() {
       }));
 
       if (pageToFetch === 1) {
-        setAllLaptops(mappedProducts);
+        setLaptops(mappedProducts);
       } else {
-        setAllLaptops((prev) => [...prev, ...mappedProducts]);
+        setLaptops((prev) => [...prev, ...mappedProducts]);
       }
 
-      if (fetchedData.length < 20) {
+      if (pageToFetch >= response.totalPages || fetchedData.length < 20) {
         setHasMore(false);
       } else {
         setHasMore(true);
       }
     } catch (error) {
-      console.error("Error fetching gadgets:", error);
+      console.error("Error fetching laptops via filters:", error);
     } finally {
       setLoading(false);
       setIsFetchingMore(false);
     }
   };
 
-  // Trigger initial mount page fetch
+  
   useEffect(() => {
-    loadLaptops(1);
-  }, []);
+    setPage(1);
+    setHasMore(true);
+    loadLaptops(1, activeTab, searchQuery);
+  }, [activeTab, searchQuery]);
 
-  // Trigger sequential page fetch when page state updates
+  // Trigger sequential pagination
   useEffect(() => {
     if (page > 1) {
-      loadLaptops(page);
+      loadLaptops(page, activeTab, searchQuery);
     }
   }, [page]);
 
-  
   const observer = useRef<IntersectionObserver | null>(null);
   
   const lastElementRef = useCallback(
@@ -110,37 +123,16 @@ export default function LaptopsPage() {
 
       observer.current = new IntersectionObserver((entries) => {
         if (entries[0].isIntersecting && hasMore) {
-          console.log("Bottom reached! Fetching page:", page + 1);
           setPage((prevPage) => prevPage + 1);
         }
       });
 
       if (node) observer.current.observe(node);
     },
-    [loading, isFetchingMore, hasMore, page]
+    [loading, isFetchingMore, hasMore, page, activeTab, searchQuery]
   );
-  // ------------------------------------------------------------------
 
-  useEffect(() => {
-    if (activeTab === "All products") {
-      setDisplayedLaptops(allLaptops);
-    } else if (activeTab === "MacBook") {
-      const macbooks = allLaptops.filter(
-        (laptop) => 
-          laptop.brand.toLowerCase() === "apple" || 
-          laptop.name.toLowerCase().includes("macbook")
-      );
-      setDisplayedLaptops(macbooks);
-    } else if (activeTab === "Windows") {
-      const windowsLaptops = allLaptops.filter(
-        (laptop) => 
-          laptop.brand.toLowerCase() !== "apple" && 
-          !laptop.name.toLowerCase().includes("macbook")
-      );
-      setDisplayedLaptops(windowsLaptops);
-    }
-  }, [activeTab, allLaptops]);
-
+  
   useEffect(() => {
     const activeTabIndex = tabs.indexOf(activeTab);
     const activeTabElement = tabsRef.current[activeTabIndex];
@@ -172,7 +164,7 @@ export default function LaptopsPage() {
           
           <div className="flex items-center gap-2 text-xs font-bold text-[#416B5C] bg-[#E2EFEB]/50 px-4 py-2 rounded-xl self-start sm:self-auto">
             <Cpu className="w-3.5 h-3.5 text-[#45B1A0]" />
-            <span>{displayedLaptops.length} Compute Nodes Indexed</span>
+            <span>{laptops.length} Compute Nodes Indexed</span>
           </div>
         </div>
 
@@ -198,61 +190,64 @@ export default function LaptopsPage() {
           </div>
         </div>
 
-        {/* LOADING & ARCHITECTURE GRID */}
         {loading ? (
           <div className="flex flex-col justify-center items-center min-h-[400px] bg-white rounded-3xl border border-[#E2EFEB]">
-            <div className="w-8 h-8 border-2 border-[#45B1A0] border-t-transparent rounded-full animate-spin mb-4" />
-            <p className="text-sm font-semibold text-[#416B5C] animate-pulse">Syncing workstation catalogs...</p>
+            <div className="w-8 h-8 border-4 border-[#E2EFEB] border-t-[#45B1A0] rounded-full animate-spin mb-4" />
+            <p className="text-sm font-semibold text-[#416B5C] animate-pulse">Querying database engine...</p>
           </div>
-        ) : displayedLaptops.length === 0 ? (
+        ) : laptops.length === 0 ? (
           <div className="flex flex-col justify-center items-center min-h-[400px] bg-white rounded-3xl border border-[#E2EFEB] p-8 text-center">
             <p className="text-sm font-bold text-[#0D2B1E] mb-1">No architecture variants isolated</p>
-            <p className="text-xs text-[#416B5C]">Adjust filters to inspect alternative deployment assets.</p>
+            <p className="text-xs text-[#416B5C]">Adjust filters or search parameters to inspect alternative assets.</p>
           </div>
         ) : (
           <>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-              {displayedLaptops.map((product) => (
+              {laptops.map((product) => (
                 <div 
                   key={product.id} 
                   className="group flex flex-col bg-white rounded-2xl border border-[#E2EFEB] p-4 transition-all duration-200 hover:shadow-md hover:border-[#45B1A0]/40"
                 >
-                  {/* Image Container Aspect Frame */}
-                  <div className="relative w-full aspect-square mb-4 bg-[#F4F9F8] rounded-xl overflow-hidden flex items-center justify-center border border-[#E2EFEB]/40 p-6">
-                    <Image 
-                      src={product.image} 
-                      alt={product.name} 
-                      fill 
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw" 
-                      className="object-contain p-4 group-hover:scale-[1.02] transition-transform duration-300"
-                      priority={false}
-                    />
-                    {product.brand && (
-                      <span className="absolute top-3 left-3 text-[10px] uppercase font-bold tracking-wider text-[#416B5C] bg-white border border-[#E2EFEB] px-2 py-0.5 rounded-md">
-                        {product.brand}
-                      </span>
-                    )}
-                  </div>
-
-                  {/* Information Card Body */}
-                  <div className="flex flex-col flex-grow px-1">
-                    <h2 className="text-sm font-bold text-[#0D2B1E] tracking-tight line-clamp-1 mb-1 group-hover:text-[#45B1A0] transition-colors">
-                      {product.name}
-                    </h2>
-                    <p className="text-xs text-[#416B5C] leading-relaxed line-clamp-2 min-h-[2.5rem] mb-4">
-                      {product.description || "No layout configuration description specified for this terminal variant."}
-                    </p>
-                    
-                    {/* Dynamic Pricing Matrix */}
-                    <div className="mt-auto pt-3 border-t border-[#F4F9F8] flex items-baseline justify-between">
-                      <span className="text-[10px] font-bold text-[#416B5C] uppercase tracking-wider">Acquisition</span>
-                      <span className="text-base font-extrabold text-[#0D2B1E]">
-                        ${Number(product.price).toLocaleString()}
-                      </span>
+                  <Link 
+                    href={`/gadgets/laptops/${encodeURIComponent(product.name)}`}
+                    className="block cursor-pointer flex-grow"
+                  >
+                    {/* Image Container */}
+                    <div className="relative w-full aspect-square mb-4 bg-[#F4F9F8] rounded-xl overflow-hidden flex items-center justify-center border border-[#E2EFEB]/40 p-6">
+                      <Image 
+                        src={product.image} 
+                        alt={product.name} 
+                        fill 
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw" 
+                        className="object-contain p-4 group-hover:scale-[1.02] transition-transform duration-300"
+                        priority={false}
+                      />
+                      {product.brand && (
+                        <span className="absolute top-3 left-3 text-[10px] uppercase font-bold tracking-wider text-[#416B5C] bg-white border border-[#E2EFEB] px-2 py-0.5 rounded-md">
+                          {product.brand}
+                        </span>
+                      )}
                     </div>
-                  </div>
 
-                  {/* Interactive Node Anchors */}
+                    {/* Information Card Body */}
+                    <div className="flex flex-col px-1">
+                      <h2 className="text-sm font-bold text-[#0D2B1E] tracking-tight line-clamp-1 mb-1 group-hover:text-[#45B1A0] transition-colors">
+                        {product.name}
+                      </h2>
+                      <p className="text-xs text-[#416B5C] leading-relaxed line-clamp-2 min-h-[2.5rem] mb-4">
+                        {product.description || "No layout configuration description specified for this terminal variant."}
+                      </p>
+                      
+                      <div className="pt-3 border-t border-[#F4F9F8] flex items-baseline justify-between">
+                        <span className="text-[10px] font-bold text-[#416B5C] uppercase tracking-wider">Acquisition</span>
+                        <span className="text-base font-extrabold text-[#0D2B1E]">
+                          ${Number(product.price).toLocaleString()}
+                        </span>
+                      </div>
+                    </div>
+                  </Link>
+
+                  {/* Actions Bar Footer Block */}
                   <div className="grid grid-cols-2 gap-2 mt-4 pt-2">
                     <button
                       type="button"
@@ -281,14 +276,15 @@ export default function LaptopsPage() {
               ))}
             </div>
 
+            {/* Pagination Loader */}
             <div ref={lastElementRef} className="w-full flex justify-center items-center py-8 mt-6 min-h-[40px]">
               {isFetchingMore && (
                 <div className="flex items-center gap-2 text-xs font-semibold text-[#416B5C]">
                   <div className="w-4 h-4 border-2 border-[#45B1A0] border-t-transparent rounded-full animate-spin" />
-                  <span>Loading more items...</span>
+                  <span>Loading additional assets...</span>
                 </div>
               )}
-              {!hasMore && allLaptops.length > 0 && (
+              {!hasMore && laptops.length > 0 && (
                 <p className="text-xs font-medium text-[#416B5C]/60 italic">
                   All active compute nodes cataloged.
                 </p>
@@ -298,7 +294,6 @@ export default function LaptopsPage() {
         )}
       </main>
 
-      {/* Full bleed rendering border anchor */}
       <Footer />
 
       <SpecsModal 

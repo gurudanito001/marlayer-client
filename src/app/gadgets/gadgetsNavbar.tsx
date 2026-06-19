@@ -6,10 +6,12 @@ import Image from "next/image";
 import { Search, ShoppingCart, Menu, X } from "lucide-react"; 
 import { useCartStore } from "../store/cartStore";
 import SearchModal from "../components/searchModal";
+import CartDrawer from "../components/cartDrawer";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isSearchOpen, setIsSearchOpen] = useState(false); // Search Modal State
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [isCartOpen, setIsCartOpen] = useState(false); 
 
   // Get total items in cart
   const cart = useCartStore((state) => state.cart);
@@ -60,7 +62,6 @@ export default function Navbar() {
             {/* --- Right Actions Utility Area --- */}
             <div className="flex items-center gap-4 sm:gap-6">
               
-              {/* Global Search Button */}
               <button 
                 onClick={() => setIsSearchOpen(true)}
                 className="p-2 text-[#235843] hover:text-[#45B1A0] hover:bg-[#E8F6F4] rounded-full transition-all duration-200"
@@ -69,13 +70,13 @@ export default function Navbar() {
                 <Search className="w-5 h-5 stroke-[2.5]" />
               </button>
 
-              {/* Shopping Cart Button with Dynamic Accent Badge */}
+              {/* 3. Attached the onClick handler to open the drawer */}
               <button 
+                onClick={() => setIsCartOpen(true)} 
                 className="p-2 text-[#235843] hover:text-[#45B1A0] hover:bg-[#E8F6F4] rounded-full transition-all duration-200 relative"
                 aria-label="View shopping cart"
               >
                 <ShoppingCart className="w-5 h-5 stroke-[2.5]" />
-                {/* Only show badge if items exist */}
                 {cartItemCount > 0 ? (
                   <span className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-[#D97706] text-[9px] font-bold text-white ring-2 ring-white">
                     {cartItemCount}
@@ -97,12 +98,45 @@ export default function Navbar() {
         </div>
 
         {/* --- Mobile Menu Drawout Overlay System --- */}
-        {/* ... (Keep your exact mobile menu code here) ... */}
+        {isMenuOpen && (
+          <div className="fixed inset-0 z-50 bg-[#0D2B1E]/40 backdrop-blur-sm lg:hidden">
+            <div className="fixed top-0 right-0 bottom-0 w-full max-w-xs bg-white p-6 shadow-xl flex flex-col gap-6">
+              <div className="flex items-center justify-between border-b border-[#E6F2F0] pb-4">
+                <span className="font-extrabold text-sm text-[#0D2B1E] uppercase tracking-wider">Navigation</span>
+                <button onClick={toggleMenu} className="p-1.5 rounded-lg hover:bg-[#F4F9F8]">
+                  <X className="w-5 h-5 text-[#0D2B1E]" />
+                </button>
+              </div>
+              <div className="flex flex-col gap-4">
+                {[
+                  { name: "Phones", href: "/gadgets/Phones" },
+                  { name: "Laptops", href: "/gadgets/Laptops" },
+                  { name: "Accessories", href: "/gadgets/accessories" }
+                ].map((link) => (
+                  <Link 
+                    key={link.name}
+                    href={link.href} 
+                    onClick={toggleMenu}
+                    className="text-base font-bold text-[#235843] hover:text-[#45B1A0] py-1 transition-colors"
+                  >
+                    {link.name}
+                  </Link>
+                ))}
+              </div>
+              <Link href="/contact" onClick={toggleMenu} className="mt-auto w-full text-center bg-[#0D2B1E] text-white text-xs font-bold tracking-wider uppercase py-3 rounded-xl shadow-sm">
+                Get Corporate Quote
+              </Link>
+            </div>
+          </div>
+        )}
         
       </nav>
 
-      {/* Render the Search Modal */}
+      {/* Overlays Rendered Here */}
       <SearchModal isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
+      
+      {/* 4. Placed the CartDrawer component */}
+      <CartDrawer isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
     </>
   );
 }
