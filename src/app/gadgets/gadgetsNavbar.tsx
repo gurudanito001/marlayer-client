@@ -25,6 +25,7 @@ export default function Navbar() {
         <div className="max-w-7xl mx-auto px-6 md:px-8 xl:px-12">
           <div className="h-20 flex items-center justify-between">
 
+<<<<<<< HEAD
           {/* --- Logo & Desktop Links --- */}
           <div className="flex items-center gap-10">
             <Link href="/" className="flex items-center gap-1.5 group select-none">
@@ -37,6 +38,39 @@ export default function Navbar() {
                   className="object-contain"
                   style={{ width: 'auto', height: 'auto' }}
                 />
+=======
+            {/* --- Logo & Desktop Links --- */}
+            <div className="flex items-center gap-10">
+              <Link href="/" className="flex items-center gap-1.5 group select-none">
+                <div className="relative flex items-center justify-center transform group-hover:scale-105 transition-transform duration-200">
+                  <Image 
+                    src="/images/marlayer-logo.svg" 
+                    width={26} 
+                    height={26} 
+                    alt="Marlayer Logo" 
+                    className="object-contain"
+                  />
+                </div>
+                <span className="font-black text-2xl tracking-tight text-[#45B1A0] flex items-baseline">
+                  <span className="text-[#0D2B1E] font-extrabold text-xl tracking-wide">ARLAYER</span>
+                </span>
+              </Link>
+              
+              <div className="hidden lg:flex items-center gap-8">
+                {[
+                  { name: "Phones", href: "/gadgets/Phones" },
+                  { name: "Laptops", href: "/gadgets/laptops" },
+                  { name: "Accessories", href: "/gadgets/accessories" }
+                ].map((link) => (
+                  <Link 
+                    key={link.name}
+                    href={link.href} 
+                    className="text-sm font-semibold text-[#235843] hover:text-[#45B1A0] tracking-wide transition-colors duration-150 relative py-2 after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-[#45B1A0] hover:after:w-full after:transition-all after:duration-200"
+                  >
+                    {link.name}
+                  </Link>
+                ))}
+>>>>>>> 56e48f6 (push after corrections)
               </div>
             </Link>
 
@@ -92,7 +126,7 @@ export default function Navbar() {
               <div className="flex flex-col gap-4">
                 {[
                   { name: "Phones", href: "/gadgets/Phones" },
-                  { name: "Laptops", href: "/gadgets/Laptops" },
+                  { name: "Laptops", href: "/gadgets/laptops" },
                   { name: "Accessories", href: "/gadgets/accessories" }
                 ].map((link) => (
                   <Link 
