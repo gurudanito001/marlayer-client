@@ -40,12 +40,12 @@ export default function Footer() {
             </h3>
             <ul className="space-y-3 text-xs font-medium">
               <li>
-                <a href="/gadgets/Laptops" className="hover:text-[#45B1A0] transition-colors duration-150">
+                <a href="/gadgets/laptops" className="hover:text-[#45B1A0] transition-colors duration-150">
                   Engineering Workstations
                 </a>
               </li>
               <li>
-                <a href="/gadgets/Phones" className="hover:text-[#45B1A0] transition-colors duration-150">
+                <a href="/gadgets/phones" className="hover:text-[#45B1A0] transition-colors duration-150">
                   Corporate Smartphones
                 </a>
               </li>

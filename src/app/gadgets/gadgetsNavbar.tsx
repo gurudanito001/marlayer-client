@@ -45,7 +45,7 @@ export default function Navbar() {
               <div className="hidden lg:flex items-center gap-8">
                 {[
                   { name: "Phones", href: "/gadgets/Phones" },
-                  { name: "Laptops", href: "/gadgets/Laptops" },
+                  { name: "Laptops", href: "/gadgets/laptops" },
                   { name: "Accessories", href: "/gadgets/accessories" }
                 ].map((link) => (
                   <Link 
@@ -110,7 +110,7 @@ export default function Navbar() {
               <div className="flex flex-col gap-4">
                 {[
                   { name: "Phones", href: "/gadgets/Phones" },
-                  { name: "Laptops", href: "/gadgets/Laptops" },
+                  { name: "Laptops", href: "/gadgets/laptops" },
                   { name: "Accessories", href: "/gadgets/accessories" }
                 ].map((link) => (
                   <Link 

@@ -11,7 +11,7 @@ const categories = [
     category: "Laptops & Workstations",
     description:
       "High-performance architecture optimized for developers, data scientists, and executives. Sourced cleanly, verified locally, and deployed fully pre-configured.",
-    href: "/gadgets/Laptops",
+    href: "/gadgets/laptops",
     image: "https://www.marlayer.com/_next/image?url=%2Fimages%2Flaptop.png&w=800&q=75",
     tag: "High Demand",
     tagColor: "bg-[#FEF3C7] text-[#D97706] border-[#FDE68A]",
@@ -23,7 +23,7 @@ const categories = [
     category: "Corporate Smartphones",
     description:
       "Premium, secure mobile endpoints for field ops and client-facing teams. Bulk supply ready with custom MDM profiling and asset tagging available.",
-    href: "/gadgets/Phones",
+    href: "/gadgets/phones",
     image: "https://www.marlayer.com/_next/image?url=%2Fimages%2Fphones.png&w=800&q=75",
     tag: "MDM Deployment Ready",
     tagColor: "bg-[#E8F6F4] text-[#45B1A0] border-[#C2DCD6]",
