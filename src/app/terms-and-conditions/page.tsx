@@ -20,6 +20,7 @@ const sections = [
   { id: "contact", label: "8. Contact Us" },
 ];
 
+const TEAL = "#45B1A0";
 export default function TermsAndConditions() {
   const [activeSection, setActiveSection] = useState("intro");
 
@@ -45,17 +46,88 @@ export default function TermsAndConditions() {
     <div className="bg-white min-h-screen font-sans text-gray-900 flex flex-col">
       {/* <Navbar /> */}
       <NavBar darkTheme/>
+      
+       
 
+       <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+ 
+        @keyframes marlayer-grid-pulse { 0%,100%{opacity:.6} 50%{opacity:1} }
+        @keyframes marlayer-line-grow { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+      `}</style>
 
       {/* --- HERO HEADER --- */}
-      <header className="bg-[#003C3C] text-white py-20 px-6">
-        <div className="container mx-auto max-w-[1400px]"> 
-           <h1 className="text-3xl md:text-6xl font-bold mb-6">
-             Terms of Service
-           </h1>
-           <p className="text-md md:text-xl text-teal-100/80 max-w-3xl">
-             Please read these terms carefully. They govern your use of Marlayer's software solutions, gadget sales, and educational services.
-           </p>
+      <header
+        className="relative w-full overflow-hidden"
+        style={{
+          background: "#020d0a",
+          padding: "200px 64px",
+          fontFamily: "'Space Grotesk', sans-serif",
+        }}
+      >
+        {/* Grid background */}
+        <div
+          className="absolute inset-0 z-0"
+          style={{
+            animation: "marlayer-grid-pulse 6s ease-in-out infinite",
+            backgroundImage: `
+              linear-gradient(rgba(69,177,160,0.07) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(69,177,160,0.07) 1px, transparent 1px)
+            `,
+            backgroundSize: "40px 40px",
+          }}
+        />
+ 
+        {/* Corner markers */}
+        <div className="absolute top-3 left-3 w-5 h-5 z-10 pointer-events-none" style={{ borderTop: "1.5px solid rgba(69,177,160,0.4)", borderLeft: "1.5px solid rgba(69,177,160,0.4)" }} />
+        <div className="absolute bottom-3 right-3 w-5 h-5 z-10 pointer-events-none" style={{ borderBottom: "1.5px solid rgba(69,177,160,0.4)", borderRight: "1.5px solid rgba(69,177,160,0.4)" }} />
+ 
+        {/* Soft glow, top-right — echoes the contact hero's orb without the heavy animation */}
+        <div
+          className="absolute z-0 pointer-events-none hidden md:block"
+          style={{
+            width: 360, height: 360, borderRadius: "50%",
+            background: "radial-gradient(circle, rgba(69,177,160,0.07) 0%, transparent 70%)",
+            right: "4%", top: "-10%",
+          }}
+        />
+ 
+        <div className="relative z-10 container mx-auto max-w-[1400px]">
+          {/* Tag */}
+          <div
+            className="inline-flex items-center gap-2 mb-6"
+            style={{ fontFamily: "'Space Mono', monospace", fontSize: 11, color: TEAL, letterSpacing: 2, textTransform: "uppercase" }}
+          >
+            <span style={{ display: "block", width: 20, height: 1, background: TEAL }} />
+            Legal
+          </div>
+ 
+          {/* Headline */}
+          <h1
+            className="mb-6"
+            style={{ fontSize: "clamp(32px, 5vw, 64px)", fontWeight: 700, color: "white", lineHeight: 1.05, letterSpacing: -1.5 }}
+          >
+            <span style={{ color: TEAL }}>Terms</span>{" "}
+            <span style={{ color: "rgba(255,255,255,0.35)" }}>of Service</span>
+          </h1>
+ 
+          {/* Subtext */}
+          <p
+            className="max-w-3xl"
+            style={{ fontSize: 15, color: "rgba(255,255,255,0.45)", lineHeight: 1.8 }}
+          >
+            Please read these terms carefully. They govern your use of Marlayer's software solutions, gadget sales, and educational services.
+          </p>
+ 
+          {/* Animated underline divider — same touch as the contact hero */}
+          <div
+            style={{
+              marginTop: 32, height: 1, width: 120,
+              background: `linear-gradient(90deg, ${TEAL}, transparent)`,
+              transformOrigin: "left",
+              animation: "marlayer-line-grow 1.2s ease-out",
+            }}
+          />
         </div>
       </header>
 
@@ -86,12 +158,12 @@ export default function TermsAndConditions() {
                 ))}
               </nav>
               
-              <div className="mt-10">
+              {/* <div className="mt-10">
                 <p className="text-sm font-semibold text-gray-900 mb-2">Have specific questions?</p>
                 <a href="mailto:legal@marlayer.com" className="text-sm font-bold text-[#003C3C] border-b border-[#003C3C] pb-0.5 hover:text-teal-700 hover:border-teal-700 transition-colors">
                   Contact Legal Team
                 </a>
-              </div>
+              </div> */}
             </div>
           </aside>
 
@@ -196,7 +268,7 @@ export default function TermsAndConditions() {
                           <strong className="text-gray-900">New Devices:</strong> Covered strictly by the manufacturer's global warranty policy. We assist with claims where possible.
                        </li>
                        <li>
-                          <strong className="text-gray-900">Pre-Owned(UK Used):</strong> Sold with a 2-week guarantee. This covers system faults only. It does not cover screens cracked after purchase or water damage.
+                          <strong className="text-gray-900">Pre-Owned(UK Used):</strong> Sold with a 2-month guarantee. This covers system faults only. It does not cover screens cracked after purchase, water damage or faults caused by misuse.
                        </li>
                     </ul>
                   </div>

@@ -57,7 +57,7 @@ export default function Navbar() {
                   </Link>
                 ))}
               </div>
-            </Link>
+            </div>
 
             {/* --- Right Actions Utility Area --- */}
             <div className="flex items-center gap-4 sm:gap-6">
@@ -96,7 +96,6 @@ export default function Navbar() {
             </div>
           </div>
         </div>
-      </div>
 
         {/* --- Mobile Menu Drawout Overlay System --- */}
         {isMenuOpen && (

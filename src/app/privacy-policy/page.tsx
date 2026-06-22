@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Footer from "../(home)/footer";
 import { Metadata } from 'next';
 import Image from 'next/image';
+import NavBar from "../(home)/navbar";
 
 /* export const metadata: Metadata = {
   title: 'Privacy Policy | Marlayer',
@@ -15,10 +16,11 @@ const PrivacyPolicy = () => {
 
 
   const logoTeal = "#45B1A0";
-    const [isScrolled, setIsScrolled] = useState(false);
-    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  
-    const phrases = ["Software Solutions", "Tech Education", "Flagship Gadgets"];
+  const TEAL = "#45B1A0";
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const phrases = ["Software Solutions", "Tech Education", "Flagship Gadgets"];
   
 
   
@@ -33,86 +35,88 @@ const PrivacyPolicy = () => {
 
   return (
     <main className="bg-white min-h-screen font-sans selection:bg-[#45B1A0]/30">
-      <nav className={`w-full left-0 top-0 z-[999] transition-all duration-300 ${isScrolled ? 'fixed bg-[#0E1F18]  backdrop-blur-lg shadow-lg py-2 lg:py-4' : 'absolute py-8'}`}>
-          <div className="w-full max-w-[1900px] mx-auto px-6 md:px-12 lg:px-16 xl:px-28 flex justify-between items-center relative">
-            
-            <div className="flex items-center">
-            <Link href="/" className="flex items-center gap-1.5 group select-none">
-              <div className="relative flex items-center  gap-1.5 justify-center">
-                <Image
-                  src="/images/marlayer-logo.svg"
-                  width={26}
-                  height={26}
-                  alt="Marlayer Logo"
-                  className="object-contain"
-                />
-                <span className="font-black text-2xl tracking-tight text-[#45B1A0] flex items-baseline mt-[2px]">
-                  <span className="text-[#45B1A0] font-extrabold text-xl tracking-wide leading-tight">ARLAYER</span>
-                </span>
-              </div>
-            </Link>
-            </div>
-
-            {/* Desktop Navigation Links - Centered */}
-            <div className="hidden md:flex items-center space-x-8 absolute left-1/2 transform -translate-x-1/2">
-                <Link 
-                  href="/academy" 
-                  className={`${navLinkClasses} font-medium transition-colors duration-200 py-1 text-[15px] border-b-2 border-transparent`}
-                >
-                  Tech Academy
-                </Link>
-      
-                <Link 
-                  href="/software" 
-                  className={`${navLinkClasses} font-medium transition-colors duration-200 py-1 text-[15px] border-b-2 border-transparent`}
-                >
-                  Software Solutions
-                </Link>
-      
-                <Link 
-                  href="/gadgets" 
-                  className={`${navLinkClasses} font-medium transition-colors duration-200 py-1 text-[15px] border-b-2 border-transparent`}
-                >
-                  Flagship Gadgets
-                </Link>
-            </div>
-            
-            <div className="flex items-center gap-4">
-              {/* Contact Us Button (Desktop) */}
-              <Link 
-                href="/contact" 
-                className={`hidden md:inline-flex items-center justify-center px-6 py-2.5 border rounded-full font-medium transition-colors duration-300 ${isScrolled ? 'border-[#45B1A0] text-[#45B1A0] hover:bg-[#45B1A0] hover:text-white' : 'border-gray-600 text-gray-600 hover:bg-gray-600 hover:text-white'}`}
-              >
-                Contact Us
-              </Link>
-
-              {/* Mobile Menu Button */}
-              <button 
-                onClick={() => setMobileMenuOpen(true)}
-                className={`md:hidden btn btn-ghost btn-circle ${isScrolled ? 'text-gray-300' : 'text-gray-600'}`}
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
-              </button>
-            </div>
-          </div>
-        </nav>
-      
-      {/* Hero Section */}
-      <section className="bg-[#FAFAFA] py-20 lg:py-32 px-6 md:px-12 lg:px-24 border-b border-gray-100">
-        <div className="max-w-4xl mx-auto text-center flex flex-col items-center">
-          <span className="inline-block px-4 py-1.5 rounded-full bg-[#E0ECE9] text-[#0A4731] text-sm font-semibold mb-6 border border-[#0A4731]/10">
+      <NavBar darkTheme/>
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+ 
+        @keyframes marlayer-grid-pulse { 0%,100%{opacity:.6} 50%{opacity:1} }
+        @keyframes marlayer-line-grow { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+      `}</style>
+ 
+      <header
+        className="relative w-full overflow-hidden"
+        style={{
+          background: "#020d0a",
+          padding: "200px 64px",
+          fontFamily: "'Space Grotesk', sans-serif",
+        }}
+      >
+        {/* Grid background */}
+        <div
+          className="absolute inset-0 z-0"
+          style={{
+            animation: "marlayer-grid-pulse 6s ease-in-out infinite",
+            backgroundImage: `
+              linear-gradient(rgba(69,177,160,0.07) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(69,177,160,0.07) 1px, transparent 1px)
+            `,
+            backgroundSize: "40px 40px",
+          }}
+        />
+ 
+        {/* Corner markers */}
+        <div className="absolute top-3 left-3 w-5 h-5 z-10 pointer-events-none" style={{ borderTop: "1.5px solid rgba(69,177,160,0.4)", borderLeft: "1.5px solid rgba(69,177,160,0.4)" }} />
+        <div className="absolute bottom-3 right-3 w-5 h-5 z-10 pointer-events-none" style={{ borderBottom: "1.5px solid rgba(69,177,160,0.4)", borderRight: "1.5px solid rgba(69,177,160,0.4)" }} />
+ 
+        {/* Soft glow */}
+        <div
+          className="absolute z-0 pointer-events-none hidden md:block"
+          style={{
+            width: 360, height: 360, borderRadius: "50%",
+            background: "radial-gradient(circle, rgba(69,177,160,0.07) 0%, transparent 70%)",
+            left: "50%", top: "-20%", transform: "translateX(-50%)",
+          }}
+        />
+ 
+        {/* Centered content — original design was center-aligned, so we preserve that here */}
+        <div className="relative z-10 max-w-3xl mx-auto text-center flex flex-col items-center">
+          {/* Tag — same teal pill style as before, restyled to match the dark system */}
+          <div
+            className="inline-flex items-center gap-2 mb-6"
+            style={{ fontFamily: "'Space Mono', monospace", fontSize: 11, color: TEAL, letterSpacing: 2, textTransform: "uppercase" }}
+          >
+            <span style={{ display: "block", width: 20, height: 1, background: TEAL }} />
             Legal & Compliance
-          </span>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-[#11241E] mb-6 tracking-tight">
-            Privacy Policy
+            <span style={{ display: "block", width: 20, height: 1, background: TEAL }} />
+          </div>
+ 
+          {/* Headline */}
+          <h1
+            className="mb-6"
+            style={{ fontSize: "clamp(32px, 5vw, 64px)", fontWeight: 700, color: "white", lineHeight: 1.05, letterSpacing: -1.5 }}
+          >
+            <span style={{ color: TEAL }}>Privacy</span>{" "}
+            <span style={{ color: "rgba(255,255,255,0.35)" }}>Policy</span>
           </h1>
-          <p className="text-lg md:text-xl text-gray-500 max-w-2xl leading-relaxed">
+ 
+          {/* Subtext */}
+          <p
+            className="max-w-2xl"
+            style={{ fontSize: 15, color: "rgba(255,255,255,0.45)", lineHeight: 1.8 }}
+          >
             Welcome to Marlayer. We are committed to protecting your privacy and ensuring the security of your personal information across our educational platforms, software services, and e-commerce stores.
           </p>
+ 
+          {/* Animated underline divider — centered this time */}
+          <div
+            style={{
+              marginTop: 32, height: 1, width: 120,
+              background: `linear-gradient(90deg, transparent, ${TEAL}, transparent)`,
+              animation: "marlayer-line-grow 1.2s ease-out",
+            }}
+          />
         </div>
-      </section>
+      </header>
 
       {/* Content Section */}
       <section className="px-6 md:px-12 lg:px-24 py-16 lg:py-24">
