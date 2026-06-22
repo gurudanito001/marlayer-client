@@ -1,14 +1,14 @@
 'use client'
 
-import { useState, useRef, useEffect, useCallback } from "react";
+import { useState, useRef, useEffect, useCallback, Suspense } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { useSearchParams } from "next/navigation"; 
+import { useSearchParams } from "next/navigation";
 import { ChevronRight, Cpu, ShoppingCart } from "lucide-react";
 import Navbar from "../gadgetsNavbar";
 import Footer from "../gadgetsFooter";
 import { fetchGadgetsWithFilters } from "@/app/lib/actions/gadgets";
-import { useCartStore } from "@/app/store/cartStore"; 
+import { useCartStore } from "@/app/store/cartStore";
 import SpecsModal from "@/app/components/specsModal";
 
 const tabs = ["All products", "MacBook", "Windows"];
@@ -24,7 +24,7 @@ interface Product {
   specifications: any;
 }
 
-export default function LaptopsPage() {
+function LaptopsClientContent() {
   const [activeTab, setActiveTab] = useState("All products");
   const [laptops, setLaptops] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
@@ -33,13 +33,13 @@ export default function LaptopsPage() {
 
   // Search Param Hook Listener
   const searchParams = useSearchParams();
-  const searchQuery = searchParams.get("search") || ""; 
+  const searchQuery = searchParams.get("search") || "";
 
   // Infinite Scroll Pagination States
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
   const [isFetchingMore, setIsFetchingMore] = useState(false);
-  
+
   // Specs Modal States
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [isSpecsOpen, setIsSpecsOpen] = useState(false);
@@ -62,22 +62,22 @@ export default function LaptopsPage() {
       const response = await fetchGadgetsWithFilters({
         category: "laptops",
         subCategory: tabToFetch === "All products" ? undefined : tabToFetch,
-        searchQuery: currentSearch, 
+        searchQuery: currentSearch,
         page: pageToFetch,
         limit: 20
       });
 
       const fetchedData = response.data || [];
-      
+
       const mappedProducts = fetchedData.map((item: any) => ({
         id: item.id,
-        name: item.product_name, 
+        name: item.product_name,
         category: item.category,
-        brand: item.brand || "", 
+        brand: item.brand || "",
         description: item.description || "",
-        price: item.selling_price, 
-        image: item.primary_image || "/images/placeholder.jpg", 
-        specifications: item.specifications || item.specs || {}, 
+        price: item.selling_price,
+        image: item.primary_image || "/images/placeholder.jpg",
+        specifications: item.specifications || item.specs || {},
       }));
 
       if (pageToFetch === 1) {
@@ -99,7 +99,7 @@ export default function LaptopsPage() {
     }
   };
 
-  
+
   useEffect(() => {
     setPage(1);
     setHasMore(true);
@@ -114,11 +114,11 @@ export default function LaptopsPage() {
   }, [page]);
 
   const observer = useRef<IntersectionObserver | null>(null);
-  
+
   const lastElementRef = useCallback(
     (node: HTMLDivElement | null) => {
       if (loading || isFetchingMore) return;
-      
+
       if (observer.current) observer.current.disconnect();
 
       observer.current = new IntersectionObserver((entries) => {
@@ -132,7 +132,7 @@ export default function LaptopsPage() {
     [loading, isFetchingMore, hasMore, page, activeTab, searchQuery]
   );
 
-  
+
   useEffect(() => {
     const activeTabIndex = tabs.indexOf(activeTab);
     const activeTabElement = tabsRef.current[activeTabIndex];
@@ -147,10 +147,12 @@ export default function LaptopsPage() {
 
   return (
     <div className="bg-[#FAFDFB] min-h-screen flex flex-col antialiased">
-      <Navbar />
-      
+      <Suspense fallback={null}>
+        <Navbar />
+      </Suspense>
+
       <main className="flex-grow max-w-7xl w-full mx-auto px-6 md:px-10 lg:px-12 py-12">
-        
+
         {/* Header Block */}
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6 mb-12 border-b border-[#E2EFEB] pb-8">
           <div>
@@ -161,7 +163,7 @@ export default function LaptopsPage() {
               High-throughput compute systems configured for developers, agencies, and core operations.
             </p>
           </div>
-          
+
           <div className="flex items-center gap-2 text-xs font-bold text-[#416B5C] bg-[#E2EFEB]/50 px-4 py-2 rounded-xl self-start sm:self-auto">
             <Cpu className="w-3.5 h-3.5 text-[#45B1A0]" />
             <span>{laptops.length} Compute Nodes Indexed</span>
@@ -180,9 +182,8 @@ export default function LaptopsPage() {
                 key={tab}
                 ref={(el) => { tabsRef.current[index] = el; }}
                 onClick={() => setActiveTab(tab)}
-                className={`relative z-10 px-5 py-2 text-xs font-bold rounded-lg transition-colors duration-200 ${
-                  activeTab === tab ? "text-white" : "text-[#416B5C] hover:text-[#0D2B1E]"
-                }`}
+                className={`relative z-10 px-5 py-2 text-xs font-bold rounded-lg transition-colors duration-200 ${activeTab === tab ? "text-white" : "text-[#416B5C] hover:text-[#0D2B1E]"
+                  }`}
               >
                 {tab}
               </button>
@@ -204,21 +205,21 @@ export default function LaptopsPage() {
           <>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
               {laptops.map((product) => (
-                <div 
-                  key={product.id} 
+                <div
+                  key={product.id}
                   className="group flex flex-col bg-white rounded-2xl border border-[#E2EFEB] p-4 transition-all duration-200 hover:shadow-md hover:border-[#45B1A0]/40"
                 >
-                  <Link 
+                  <Link
                     href={`/gadgets/laptops/${encodeURIComponent(product.name)}`}
                     className="block cursor-pointer flex-grow"
                   >
                     {/* Image Container */}
                     <div className="relative w-full aspect-square mb-4 bg-[#F4F9F8] rounded-xl overflow-hidden flex items-center justify-center border border-[#E2EFEB]/40 p-6">
-                      <Image 
-                        src={product.image} 
-                        alt={product.name} 
-                        fill 
-                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw" 
+                      <Image
+                        src={product.image}
+                        alt={product.name}
+                        fill
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                         className="object-contain p-4 group-hover:scale-[1.02] transition-transform duration-300"
                         priority={false}
                       />
@@ -237,7 +238,7 @@ export default function LaptopsPage() {
                       <p className="text-xs text-[#416B5C] leading-relaxed line-clamp-2 min-h-[2.5rem] mb-4">
                         {product.description || "No layout configuration description specified for this terminal variant."}
                       </p>
-                      
+
                       <div className="pt-3 border-t border-[#F4F9F8] flex items-baseline justify-between">
                         <span className="text-[10px] font-bold text-[#416B5C] uppercase tracking-wider">Acquisition</span>
                         <span className="text-base font-extrabold text-[#0D2B1E]">
@@ -259,7 +260,7 @@ export default function LaptopsPage() {
                     >
                       Specifications
                     </button>
-                    <button 
+                    <button
                       type="button"
                       onClick={() => {
                         addToCart(product);
@@ -296,20 +297,19 @@ export default function LaptopsPage() {
 
       <Footer />
 
-      <SpecsModal 
-        product={selectedProduct} 
-        isOpen={isSpecsOpen} 
+      <SpecsModal
+        product={selectedProduct}
+        isOpen={isSpecsOpen}
         onClose={() => {
           setIsSpecsOpen(false);
           setSelectedProduct(null);
-        }} 
+        }}
       />
 
       {/* Toast Notification */}
-      <div 
-        className={`fixed bottom-6 right-6 z-50 flex items-center gap-3 bg-[#0D2B1E] text-white px-5 py-3.5 rounded-xl shadow-2xl border border-[#1B4D3A] transition-all duration-300 transform ${
-          toastProduct ? "translate-y-0 opacity-100" : "translate-y-12 opacity-0 pointer-events-none"
-        }`}
+      <div
+        className={`fixed bottom-6 right-6 z-50 flex items-center gap-3 bg-[#0D2B1E] text-white px-5 py-3.5 rounded-xl shadow-2xl border border-[#1B4D3A] transition-all duration-300 transform ${toastProduct ? "translate-y-0 opacity-100" : "translate-y-12 opacity-0 pointer-events-none"
+          }`}
       >
         <div className="flex items-center justify-center w-8 h-8 rounded-full bg-[#45B1A0]/20 text-[#45B1A0]">
           <ShoppingCart size={16} />
@@ -320,5 +320,13 @@ export default function LaptopsPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function LaptopsPage() {
+  return (
+    <Suspense fallback={null}>
+      <LaptopsClientContent />
+    </Suspense>
   );
 }

@@ -7,13 +7,16 @@ import GadgetsWhatIsIncluded from "./gadgetsWhatIsIncluded";
 import GadgetsSocialProof from "./gadgetsSocialProof";
 import GadgetsCatalogue from "./gadgetsCatalogue";
 import GadgetsCTA from "./gadgetsCta";
+import { Suspense } from "react";
 
 
 
 export default function Home() {
     return(
         <div>
-            <Navbar/>
+            <Suspense fallback={null}>
+                <Navbar />
+            </Suspense>
             <HeroSection/>
             <GadgetsProblem/>
             <GadgetsHowItWorks/>

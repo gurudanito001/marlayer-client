@@ -1,13 +1,13 @@
 'use client'
 
-import { useState, useRef, useEffect, useCallback } from "react";
+import { useState, useRef, useEffect, useCallback, Suspense } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ChevronRight, Layers, ShoppingCart } from "lucide-react"; 
+import { ChevronRight, Layers, ShoppingCart } from "lucide-react";
 import Navbar from "../gadgetsNavbar";
 import Footer from "../gadgetsFooter";
-import { fetchGadgetsWithFilters } from "@/app/lib/actions/gadgets"; 
-import { useCartStore } from "@/app/store/cartStore"; 
+import { fetchGadgetsWithFilters } from "@/app/lib/actions/gadgets";
+import { useCartStore } from "@/app/store/cartStore";
 import SpecsModal from "@/app/components/specsModal";
 
 const tabs = ["All products", "iPhone", "Android"];
@@ -25,7 +25,7 @@ interface Product {
 
 export default function PhonesPage() {
   const [activeTab, setActiveTab] = useState("All products");
-  const [phones, setPhones] = useState<Product[]>([]); 
+  const [phones, setPhones] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const [sliderStyle, setSliderStyle] = useState({});
   const tabsRef = useRef<(HTMLButtonElement | null)[]>([]);
@@ -34,7 +34,7 @@ export default function PhonesPage() {
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
   const [isFetchingMore, setIsFetchingMore] = useState(false);
-  
+
   // Specs Modal States
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [isSpecsOpen, setIsSpecsOpen] = useState(false);
@@ -61,16 +61,16 @@ export default function PhonesPage() {
       });
 
       const fetchedData = response.data || [];
-      
+
       const mappedProducts = fetchedData.map((item: any) => ({
         id: item.id,
-        name: item.product_name, 
+        name: item.product_name,
         category: item.category,
-        brand: item.brand || "", 
+        brand: item.brand || "",
         description: item.description || "",
-        price: item.selling_price, 
-        image: item.primary_image || "/images/placeholder.jpg", 
-        specifications: item.specifications || item.specs || {}, 
+        price: item.selling_price,
+        image: item.primary_image || "/images/placeholder.jpg",
+        specifications: item.specifications || item.specs || {},
       }));
 
       if (pageToFetch === 1) {
@@ -107,11 +107,11 @@ export default function PhonesPage() {
   }, [page]);
 
   const observer = useRef<IntersectionObserver | null>(null);
-  
+
   const lastElementRef = useCallback(
     (node: HTMLDivElement | null) => {
       if (loading || isFetchingMore) return;
-      
+
       if (observer.current) observer.current.disconnect();
 
       observer.current = new IntersectionObserver((entries) => {
@@ -139,10 +139,12 @@ export default function PhonesPage() {
 
   return (
     <div className="bg-[#FAFDFB] min-h-screen flex flex-col antialiased">
-      <Navbar />
-      
+      <Suspense fallback={null}>
+        <Navbar />
+      </Suspense>
+
       <main className="flex-grow max-w-7xl w-full mx-auto px-6 md:px-10 lg:px-12 py-12">
-        
+
         {/* Header Block */}
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6 mb-12 border-b border-[#E2EFEB] pb-8">
           <div>
@@ -153,7 +155,7 @@ export default function PhonesPage() {
               Enterprise-grade hardware assets optimized for local ecosystem connectivity.
             </p>
           </div>
-          
+
           <div className="flex items-center gap-2 text-xs font-bold text-[#416B5C] bg-[#E2EFEB]/50 px-4 py-2 rounded-xl self-start sm:self-auto">
             <Layers className="w-3.5 h-3.5 text-[#45B1A0]" />
             <span>{phones.length} Nodes Indexed</span>
@@ -172,9 +174,8 @@ export default function PhonesPage() {
                 key={tab}
                 ref={(el) => { tabsRef.current[index] = el; }}
                 onClick={() => setActiveTab(tab)}
-                className={`relative z-10 px-5 py-2 text-xs font-bold rounded-lg transition-colors duration-200 ${
-                  activeTab === tab ? "text-white" : "text-[#416B5C] hover:text-[#0D2B1E]"
-                }`}
+                className={`relative z-10 px-5 py-2 text-xs font-bold rounded-lg transition-colors duration-200 ${activeTab === tab ? "text-white" : "text-[#416B5C] hover:text-[#0D2B1E]"
+                  }`}
               >
                 {tab}
               </button>
@@ -196,21 +197,21 @@ export default function PhonesPage() {
           <>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
               {phones.map((product) => (
-                <div 
-                  key={product.id} 
+                <div
+                  key={product.id}
                   className="group flex flex-col bg-white rounded-2xl border border-[#E2EFEB] p-4 transition-all duration-200 hover:shadow-md hover:border-[#45B1A0]/40"
                 >
-                  
-                  <Link 
+
+                  <Link
                     href={`/gadgets/phones/${encodeURIComponent(product.name)}`}
                     className="block cursor-pointer flex-grow"
                   >
                     <div className="relative w-full aspect-square mb-4 bg-[#F4F9F8] rounded-xl overflow-hidden flex items-center justify-center border border-[#E2EFEB]/40 p-6">
-                      <Image 
-                        src={product.image} 
-                        alt={product.name} 
-                        fill 
-                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw" 
+                      <Image
+                        src={product.image}
+                        alt={product.name}
+                        fill
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                         className="object-contain p-4 group-hover:scale-[1.02] transition-transform duration-300"
                         priority={false}
                       />
@@ -228,7 +229,7 @@ export default function PhonesPage() {
                       <p className="text-xs text-[#416B5C] leading-relaxed line-clamp-2 min-h-[2.5rem] mb-4">
                         {product.description || "No layout configuration description specified for this terminal variant."}
                       </p>
-                      
+
                       <div className="pt-3 border-t border-[#F4F9F8] flex items-baseline justify-between">
                         <span className="text-[10px] font-bold text-[#416B5C] uppercase tracking-wider">Acquisition</span>
                         <span className="text-base font-extrabold text-[#0D2B1E]">
@@ -249,8 +250,8 @@ export default function PhonesPage() {
                     >
                       Specifications
                     </button>
-                    
-                    <button 
+
+                    <button
                       type="button"
                       onClick={() => {
                         addToCart(product);
@@ -286,20 +287,19 @@ export default function PhonesPage() {
 
       <Footer />
 
-      <SpecsModal 
-        product={selectedProduct} 
-        isOpen={isSpecsOpen} 
+      <SpecsModal
+        product={selectedProduct}
+        isOpen={isSpecsOpen}
         onClose={() => {
           setIsSpecsOpen(false);
           setSelectedProduct(null);
-        }} 
+        }}
       />
 
       {/* Toast Notification HUD */}
-      <div 
-        className={`fixed bottom-6 right-6 z-50 flex items-center gap-3 bg-[#0D2B1E] text-white px-5 py-3.5 rounded-xl shadow-2xl border border-[#1B4D3A] transition-all duration-300 transform ${
-          toastProduct ? "translate-y-0 opacity-100" : "translate-y-12 opacity-0 pointer-events-none"
-        }`}
+      <div
+        className={`fixed bottom-6 right-6 z-50 flex items-center gap-3 bg-[#0D2B1E] text-white px-5 py-3.5 rounded-xl shadow-2xl border border-[#1B4D3A] transition-all duration-300 transform ${toastProduct ? "translate-y-0 opacity-100" : "translate-y-12 opacity-0 pointer-events-none"
+          }`}
       >
         <div className="flex items-center justify-center w-8 h-8 rounded-full bg-[#45B1A0]/20 text-[#45B1A0]">
           <ShoppingCart size={16} />
@@ -309,7 +309,7 @@ export default function PhonesPage() {
           <span className="text-xs text-white/70 line-clamp-1 max-w-[200px]">{toastProduct}</span>
         </div>
       </div>
-      
+
     </div>
   );
 }

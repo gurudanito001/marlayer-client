@@ -176,7 +176,9 @@ function SearchContent() {
 export default function SearchPage() {
   return (
     <div className="bg-[#FAFDFB] min-h-screen flex flex-col antialiased">
+      <Suspense fallback={null}>
       <Navbar />
+      </Suspense>
       <Suspense fallback={<div className="flex-grow flex items-center justify-center min-h-[50vh]"><div className="w-8 h-8 border-2 border-[#45B1A0] border-t-transparent rounded-full animate-spin" /></div>}>
         <SearchContent />
       </Suspense>
