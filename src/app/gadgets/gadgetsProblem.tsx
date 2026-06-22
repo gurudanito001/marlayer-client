@@ -69,7 +69,7 @@ export default function GadgetsProblem() {
                 </span>
                 
                 <div className="flex-1">
-                  <h3 className="text-[#0D2B1E] font-black text-base sm:text-lg mb-2.5 tracking-tight leading-snug group-hover:text-[#D97706] transition-colors duration-200">
+                  <h3 className="text-[#0D2B1E] font-black sm:text-lg mb-2.5 tracking-tight leading-snug group-hover:text-[#D97706] transition-colors duration-200">
                     {problem.headline}
                   </h3>
                   <p className="text-[#416B5C] text-sm leading-relaxed font-medium">

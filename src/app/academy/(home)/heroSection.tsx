@@ -39,7 +39,7 @@ const HeroSection = () => {
         <div className="w-full max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center">
           
           {/* Logo */}
-          <Link href="/" className="flex items-baseline">
+          <Link href="/academy" className="flex items-baseline">
             <div className="">
               <Image src="/images/marlayer-logo.svg" width={24} height={24} alt="Marlayer Logo" />
             </div>

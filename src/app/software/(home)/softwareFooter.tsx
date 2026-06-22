@@ -3,14 +3,14 @@
 // Includes: nav links, social links, legal, affiliate disclosure equivalent for software.
 
 import Link from "next/link";
+import Image from "next/image";
 
 const footerLinks = [
   {
     heading: "Software",
     links: [
-      { label: "Overview", href: "/software" },
-      { label: "For Growing Businesses", href: "/software/sme" },
-      { label: "For Enterprises", href: "/software/enterprise" },
+      { label: "Projects", href: "/software/projects" },
+      { label: "About Us", href: "/software/about" },
       { label: "Case Studies", href: "/software/case-studies" },
       { label: "Start a Project", href: "/contact" },
     ],
@@ -18,21 +18,17 @@ const footerLinks = [
   {
     heading: "Services",
     links: [
-      { label: "Brand & Web Systems", href: "/software#what-we-build" },
-      { label: "Web & Mobile Apps", href: "/software#what-we-build" },
-      { label: "Dashboards & Data", href: "/software#what-we-build" },
-      { label: "API & Integrations", href: "/software#what-we-build" },
-      { label: "Maintenance Retainers", href: "/software#what-we-build" },
+      { label: "For Growing Businesses", href: "/software/sme" },
+      { label: "For Enterprises", href: "/software/enterprise" },
+      { label: "Start a Project", href: "/contact" },
     ],
   },
   {
     heading: "Company",
     links: [
-      { label: "About Marlayer", href: "/about" },
-      { label: "Gadgets", href: "/gadgets" },
-      { label: "Tech Academy", href: "/academy" },
-      { label: "Contact Us", href: "/contact" },
       { label: "Privacy Policy", href: "/privacy-policy" },
+      { label: "Terms of Service", href: "/terms-of-service" },
+      { label: "Contact Us", href: "/contact" },
     ],
   },
 ];
@@ -119,13 +115,22 @@ export default function SoftwareFooter() {
 
           {/* Brand column */}
           <div className="col-span-2 md:col-span-1">
-            <Link href="/" className="flex items-center gap-2.5 mb-4 group">
-              <div className="w-7 h-7 rounded-lg bg-[#45B1A0] flex items-center justify-center">
-                <span className="text-[#0D2B1E] text-xs font-black font-mono">M</span>
+            <Link href="/" className="flex items-center gap-1.5 group select-none mb-2">
+              <div className="relative flex items-center  gap-1.5 justify-center">
+                <Image
+                  src="/images/marlayer-logo.svg"
+                  width={26}
+                  height={26}
+                  alt="Marlayer Logo"
+                  className="object-contain"
+                />
+                <span
+                  className="font-extrabold text-2xl ml-0.5"
+                  style={{ color: '#45B1A0' }}
+                >
+                  ARLAYER
+                </span>
               </div>
-              <span className="text-white font-bold tracking-tight group-hover:text-[#45B1A0] transition-colors">
-                MARLAYER
-              </span>
             </Link>
             <p className="text-white/30 text-sm leading-relaxed mb-5">
               The technology foundation businesses rely on — software solutions, premium gadgets, and world-class tech training.

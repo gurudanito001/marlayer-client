@@ -98,7 +98,7 @@ export default function GadgetsWhatIsIncluded() {
             <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0D2B1E] tracking-tight leading-tight mb-4">
               The infrastructure layer that isolates you from hardware procurement vulnerabilities.
             </h2>
-            <p className="text-[#235843] text-base sm:text-lg font-medium opacity-90 leading-relaxed">
+            <p className="text-[#235843] sm:text-lg font-medium opacity-90 leading-relaxed">
               We do not simply ship consumer electronics. We manage the operational life, reliability matrix, 
               and initial workspace configurations so your engineering force stays locked into core delivery goals.
             </p>
@@ -128,7 +128,7 @@ export default function GadgetsWhatIsIncluded() {
               </div>
 
               {/* Title & Technical Tagline */}
-              <h3 className="text-[#0D2B1E] font-black text-base sm:text-lg mb-1 tracking-tight">
+              <h3 className="text-[#0D2B1E] font-black sm:text-lg mb-1 tracking-tight">
                 {feature.title}
               </h3>
               <p className="text-[#45B1A0] text-xs font-bold tracking-wide mb-4 opacity-95">

@@ -66,7 +66,6 @@ const Footer = () => {
                 <li><Link href="/academy/courses/javascript" className="hover:text-white transition-colors duration-200">JavaScript</Link></li>
                 <li><Link href="/academy/courses/frontend-development-2" className="hover:text-white transition-colors duration-200">Frontend Development: 2</Link></li>
                 <li><Link href="/academy/courses/backend-development" className="hover:text-white transition-colors duration-200">Backend Development</Link></li>
-                <li><Link href="/academy/courses/c-sharp" className="hover:text-white transition-colors duration-200">C#</Link></li>
                 <li><Link href="/academy/courses/mobile-app-development" className="hover:text-white transition-colors duration-200">Mobile App Development</Link></li>
               </ul>
             </div>
@@ -75,9 +74,9 @@ const Footer = () => {
             <div className="flex flex-col gap-6">
               <h6 className="text-white text-base font-medium">Company</h6>
               <ul className="flex flex-col gap-5 text-[15px] font-light">
-                <li><Link href="/academy" className="hover:text-white transition-colors duration-200">Tech Academy</Link></li>
-                <li><Link href="/software" className="hover:text-white transition-colors duration-200">Software Solutions</Link></li>
-                <li><Link href="/gadgets" className="hover:text-white transition-colors duration-200">Flagship Gadgets</Link></li>
+                <li><Link href="/terms-of-service" className="hover:text-white transition-colors duration-200">Terms of Service</Link></li>
+                <li><Link href="/privacy-policy" className="hover:text-white transition-colors duration-200">Privacy Policy</Link></li>
+                <li><Link href="/contact" className="hover:text-white transition-colors duration-200">Contact Us</Link></li>
               </ul>
             </div>
 

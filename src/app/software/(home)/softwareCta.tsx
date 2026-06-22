@@ -112,7 +112,7 @@ export default function SoftwareCTA() {
 
 
             <Link
-              href="/contact"
+              href="/contact#bookMeeting"
               className="w-full bg-[#45B1A0] hover:bg-[#359688] text-primary font-bold py-4 rounded-xl transition-colors flex items-center justify-center gap-2 group"
             >
               Book a discovery session

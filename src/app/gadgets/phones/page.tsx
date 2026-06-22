@@ -149,16 +149,13 @@ export default function PhonesPage() {
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6 mb-12 border-b border-[#E2EFEB] pb-8">
           <div>
             <h1 className="text-3xl font-extrabold text-[#0D2B1E] tracking-tight mb-2">
-              Communications Desk
+              Smart Phones
             </h1>
-            <p className="text-sm text-[#416B5C]">
-              Enterprise-grade hardware assets optimized for local ecosystem connectivity.
-            </p>
           </div>
 
           <div className="flex items-center gap-2 text-xs font-bold text-[#416B5C] bg-[#E2EFEB]/50 px-4 py-2 rounded-xl self-start sm:self-auto">
             <Layers className="w-3.5 h-3.5 text-[#45B1A0]" />
-            <span>{phones.length} Nodes Indexed</span>
+            <span>{phones.length} items</span>
           </div>
         </div>
 

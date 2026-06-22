@@ -157,7 +157,7 @@ export default function SoftwareHowWeWork() {
             </p>
           </div>
           <a
-            href="/contact"
+            href="/contact#bookMeeting"
             className="flex-shrink-0 inline-flex items-center gap-2 bg-[#45B1A0] hover:bg-[#359688] text-[#0D2B1E] font-bold text-sm px-6 py-3 rounded-xl transition-colors"
           >
             Book a discovery call →

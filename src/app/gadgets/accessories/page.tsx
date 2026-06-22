@@ -143,16 +143,13 @@ export default function AccessoriesPage() {
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6 mb-12 border-b border-[#E2EFEB] pb-8">
           <div>
             <h1 className="text-3xl font-extrabold text-[#0D2B1E] tracking-tight mb-2">
-              Workspace Nodes
+              Accessories
             </h1>
-            <p className="text-sm text-[#416B5C]">
-              Critical peripheral interfaces and utility components calibrated for high-uptime execution environments.
-            </p>
           </div>
 
           <div className="flex items-center gap-2 text-xs font-bold text-[#416B5C] bg-[#E2EFEB]/50 px-4 py-2 rounded-xl self-start sm:self-auto">
             <Cable className="w-3.5 h-3.5 text-[#45B1A0]" />
-            <span>{accessories.length} Elements Linked</span>
+            <span>{accessories.length} Items</span>
           </div>
         </div>
 

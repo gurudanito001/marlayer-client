@@ -122,7 +122,7 @@ export default function GadgetsSocialProof() {
               <span className="text-[10px] font-bold text-[#45B1A0] uppercase tracking-widest block mb-1">
                 Deep-Dive Deployment Analysis
               </span>
-              <p className="text-[#0D2B1E] font-extrabold text-base tracking-tight leading-snug">
+              <p className="text-[#0D2B1E] font-extrabold tracking-tight leading-snug">
                 How a 20-person scaling workforce in Lagos completely initialized their local workspace hardware profile layer inside 72 hours.
               </p>
             </div>
