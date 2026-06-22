@@ -25,20 +25,6 @@ export default function Navbar() {
         <div className="max-w-7xl mx-auto px-6 md:px-8 xl:px-12">
           <div className="h-20 flex items-center justify-between">
 
-<<<<<<< HEAD
-          {/* --- Logo & Desktop Links --- */}
-          <div className="flex items-center gap-10">
-            <Link href="/" className="flex items-center gap-1.5 group select-none">
-              <div className="relative flex items-center justify-center transform group-hover:scale-105 transition-transform duration-200">
-                <Image 
-                  src="/images/marlayer-logo.svg" 
-                  width={26} 
-                  height={26} 
-                  alt="Marlayer Logo" 
-                  className="object-contain"
-                  style={{ width: 'auto', height: 'auto' }}
-                />
-=======
             {/* --- Logo & Desktop Links --- */}
             <div className="flex items-center gap-10">
               <Link href="/" className="flex items-center gap-1.5 group select-none">
@@ -70,7 +56,6 @@ export default function Navbar() {
                     {link.name}
                   </Link>
                 ))}
->>>>>>> 56e48f6 (push after corrections)
               </div>
             </Link>
 
