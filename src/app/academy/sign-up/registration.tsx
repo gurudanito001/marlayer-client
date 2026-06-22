@@ -93,18 +93,39 @@ export default function RegistrationPage() {
         const response = await fetch("https://pardomart-node-api-vaje.onrender.com/api/v1/auth/static-countries");
         const data = await response.json();
         
-        const codes = data
-          .filter((country: any) => country.idd?.root)
+        const codes = (data || [])
           .map((country: any) => {
-            const root = country.idd.root;
-            const suffix = country.idd.suffixes?.length === 1 ? country.idd.suffixes[0] : "";
+            // Handle multiple possible API shapes
+            const name = country?.name?.common || country?.name || country?.country || "";
+            const code = country?.cca2 || country?.iso2 || country?.code || country?.alpha2Code || "";
+
+            // Dial code: support idd.root/suffixes or dialCode / dial_code
+            let dial_code = "";
+            if (country?.idd?.root) {
+              const root = country.idd.root || "";
+              const suffix = country.idd.suffixes?.length === 1 ? country.idd.suffixes[0] : "";
+              dial_code = `${root}${suffix}`;
+            } else if (country?.dialCode) {
+              dial_code = country.dialCode;
+            } else if (country?.dial_code) {
+              dial_code = country.dial_code;
+            }
+
+            // Ensure leading + for dial code if it's numeric
+            if (dial_code && !/^\+/.test(dial_code)) {
+              if (/^\d+$/.test(dial_code)) dial_code = `+${dial_code}`;
+            }
+
+            const flag = country?.flagSvg || country?.flagPng || country?.flags?.svg || country?.flags?.png || country?.flag || "";
+
             return {
-              name: country.name.common,
-              code: country.cca2,
-              dial_code: `${root}${suffix}`,
-              flag: country.flags?.svg || country.flags?.png,
+              name,
+              code,
+              dial_code,
+              flag,
             };
           })
+          .filter((c: any) => c.name && c.code)
           .sort((a: any, b: any) => a.name.localeCompare(b.name));
 
         // Remove potential duplicates
@@ -318,10 +339,10 @@ export default function RegistrationPage() {
       {isModalOpen && (
         <div className="fixed inset-0 z-[1000] flex items-center justify-center p-4 sm:p-6">
           {/* Overlay Backdrop */}
-          <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={() => setIsModalOpen(false)}></div>
+          <div className="absolute inset-0 bg-black/60 backdrop-blur-sm z-0" onClick={() => setIsModalOpen(false)} />
           
           {/* Modal Content */}
-          <div className="relative w-full max-w-md bg-[#0B1A14] border border-white/10 rounded-2xl shadow-2xl flex flex-col max-h-[85vh] overflow-hidden animate-in fade-in zoom-in-95 duration-200">
+          <div className="relative z-10 w-full max-w-md bg-[#0B1A14] border border-white/10 rounded-2xl shadow-2xl flex flex-col max-h-[85vh] overflow-hidden animate-in fade-in zoom-in-95 duration-200">
             
             {/* Header */}
             <div className="p-5 border-b border-white/10 flex items-center justify-between">

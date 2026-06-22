@@ -1,4 +1,4 @@
-import { MapPinIcon, EnvelopeIcon } from "@heroicons/react/24/outline";
+import { MapPinIcon, EnvelopeIcon, PaperAirplaneIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -75,7 +75,7 @@ const Footer = () => {
             <div className="flex flex-col gap-6">
               <h6 className="text-white text-xs font-bold uppercase tracking-widest" style={{ fontFamily: "'Space Mono', monospace", color: TEAL }}>Company</h6>
               <ul className="flex flex-col gap-5 text-[15px] font-light">
-                <li><Link href="/software/about" className="hover:text-[#45B1A0] transition-colors duration-200">About Us</Link></li>
+                <li><Link href="/terms-of-service" className="hover:text-[#45B1A0] transition-colors duration-200">Terms of Service</Link></li>
                 <li><Link href="/privacy-policy" className="hover:text-[#45B1A0] transition-colors duration-200">Privacy Policy</Link></li>
                 <li><Link href="/contact" className="hover:text-[#45B1A0] transition-colors duration-200">Contact Us</Link></li>
               </ul>
@@ -94,6 +94,12 @@ const Footer = () => {
                   <a href="mailto:daniel.marlayer@gmail.com" className="hover:text-[#45B1A0] transition-colors duration-200">
                     daniel.marlayer@gmail.com
                   </a>
+                </li>
+                <li className="flex items-center gap-3">
+                  <PaperAirplaneIcon className="w-5 h-5 text-[#45B1A0]/60 shrink-0" />
+                  <Link href="/contact" className="hover:text-white transition-colors duration-200">
+                    Contact Sales Team
+                  </Link>
                 </li>
               </ul>
             </div>

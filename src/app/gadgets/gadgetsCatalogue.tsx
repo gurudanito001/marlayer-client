@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 
 // Section 6 — Product Catalogue (B2B framed)
 // Goal: Show products AFTER trust is built. Frame categories around business use cases.
@@ -61,33 +62,22 @@ export default function GadgetsCatalogue() {
             <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0D2B1E] tracking-tight leading-tight mb-4">
               Hardware provisioned specifically for active operational roles.
             </h2>
-            <p className="text-[#235843] text-base sm:text-lg font-medium opacity-90 leading-relaxed">
+            <p className="text-[#235843] sm:text-lg font-medium opacity-90 leading-relaxed">
               Every product node integrates seamlessly into Marlayer's managed deployment workflow—covering 
               stringent counterfeit intercept diagnostics, workspace profiling, and corporate warranty management.
             </p>
           </div>
-          
-          <a
-            href="/gadgets"
-            className="group flex-shrink-0 inline-flex items-center gap-2 bg-white border border-[#E2EFEB] text-[#0D2B1E] hover:border-[#45B1A0] hover:text-[#45B1A0] font-bold text-sm px-6 py-3.5 rounded-xl transition-all duration-200 shadow-sm"
-          >
-            Explore Complete Directory
-            <svg className="w-4 h-4 transition-transform group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-            </svg>
-          </a>
         </div>
 
         {/* Business-Framed Category Matrix Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 xl:gap-8 mb-16">
           {categories.map((cat) => (
-            <a
+            <li
               key={cat.id}
-              href={cat.href}
               className="group bg-white border border-[#E2EFEB] rounded-2xl overflow-hidden flex flex-col hover:border-[#45B1A0]/40 hover:shadow-xl hover:shadow-[#45B1A0]/5 transition-all duration-300 transform hover:-translate-y-1"
             >
               {/* Image Preview Container */}
-              <div className="relative bg-[#F4F9F8] h-48 w-full border-b border-[#E2EFEB]/60 flex items-center justify-center overflow-hidden">
+              {/* <div className="relative bg-[#F4F9F8] h-48 w-full border-b border-[#E2EFEB]/60 flex items-center justify-center overflow-hidden">
                 <img
                   src={cat.image}
                   alt={cat.category}
@@ -96,7 +86,7 @@ export default function GadgetsCatalogue() {
                 <span className={`absolute top-4 left-4 text-[10px] font-bold tracking-wider uppercase px-2.5 py-1.5 rounded-md border shadow-sm backdrop-blur-sm ${cat.tagColor}`}>
                   {cat.tag}
                 </span>
-              </div>
+              </div> */}
 
               {/* Card Meta Content Content */}
               <div className="p-6 xl:p-8 flex flex-col flex-1 justify-between">
@@ -125,14 +115,14 @@ export default function GadgetsCatalogue() {
                 </div>
 
                 {/* Inline Action Indicator */}
-                <div className="flex items-center gap-1.5 text-[#45B1A0] text-sm font-bold pt-4 border-t border-[#E2EFEB]/60 mt-auto">
-                  <span>Analyze {cat.category}</span>
+                <Link href="/contact" className="flex items-center gap-1.5 text-[#45B1A0] text-sm font-bold pt-4 border-t border-[#E2EFEB]/60 mt-auto">
+                  <span>Contact us for {cat.category}</span>
                   <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>
-                </div>
+                </Link>
               </div>
-            </a>
+            </li>
           ))}
         </div>
 
@@ -161,7 +151,7 @@ export default function GadgetsCatalogue() {
                 Request Custom Volume Pricing
               </a>
               <a
-                href="https://wa.me/2348000000000"
+                href="https://wa.me/2348140715723"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group inline-flex items-center justify-center gap-2 bg-white/10 border-2 border-white/20 text-white font-bold text-sm tracking-wide px-6 py-4 rounded-xl hover:bg-white/20 hover:border-white/30 transition-all duration-200 text-center"

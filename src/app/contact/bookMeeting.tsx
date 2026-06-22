@@ -21,7 +21,7 @@ export default function CtaSection() {
   }, []);
 
   return (
-    <section className="w-full bg-[#F2F8F6] py-24 md:py-32 px-6 flex flex-col items-center justify-center text-center">
+    <section id="bookMeeting" className="w-full bg-[#F2F8F6] py-24 md:py-32 px-6 flex flex-col items-center justify-center text-center">
       <div className="max-w-2xl mx-auto">
         
         {/* Heading */}

@@ -104,7 +104,7 @@ const BackgroundIcons = () => {
 const faqsData = [
   {
     question: "What is the primary focus of the academy?",
-    answer: "Our academy bridges the gap between having an idea and bringing it to life. We provide hands-on, beginner-friendly training in software development, design, and data analysis to help you build real-world products and launch a successful career in tech."
+    answer: "Our academy bridges the gap between having an idea and bringing it to life. We provide hands-on, beginner-friendly training in software development, design, and entrepreneurship to help you build real-world products and launch a successful career in tech."
   },
   {
     question: "Who are these courses designed for?",
@@ -116,7 +116,7 @@ const faqsData = [
   },
   {
     question: "What kind of support will I receive if I get stuck?",
-    answer: "You will never have to learn in isolation. Our academy offers a vibrant community platform, live Q&A sessions, and direct access to experienced mentors who are ready to help you debug code, review your projects, and guide your learning journey."
+    answer: "You will never have to learn in isolation. Our academy offers a vibrant community platform, live Q&A sessions, and direct access to experienced mentors who are ready to help you debug code, review your projects, and guide your learning journey. You will also have access to a workspace where you can collaborate with peers and share your progress."
   },
   {
     question: "What equipment do I need to get started?",
@@ -124,7 +124,7 @@ const faqsData = [
   },
   {
     question: "How long does it typically take to complete a course?",
-    answer: "Course durations vary depending on the specific learning path you choose, typically ranging from 4 to 24 weeks. We design our programs with flexibility in mind, allowing you to balance your tech education with your personal and professional schedule."
+    answer: "Course durations vary depending on the specific learning path you choose, typically ranging from 12 to 48 weeks. We design our programs with flexibility in mind, allowing you to balance your tech education with your personal and professional schedule."
   },
   {
     question: "Will I receive a certificate upon completion?",
@@ -132,7 +132,7 @@ const faqsData = [
   },
   {
     question: "What is the application and payment process?",
-    answer: "Simply submit your application through our enrollment page. Once reviewed, our admissions team will send you an email with your next steps and a secure payment link. We accept all major credit cards, PayPal, and direct bank transfers."
+    answer: "Simply submit your application through our enrollment page. Once reviewed, our admissions team will send you a message with your next steps and how to complete the payment. We offer flexible payment plans and scholarships for eligible students to ensure that financial constraints do not hinder your learning journey."
   }
 ];
 

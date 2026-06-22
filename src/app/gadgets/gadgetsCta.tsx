@@ -58,14 +58,14 @@ export default function GadgetsCTA() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           
           {/* Left Column — Value Pitch & Operational Steps */}
-          <div className="lg:col-span-5">
+          <div className="lg:col-span-6">
             <span className="text-[#45B1A0] text-xs font-bold tracking-widest uppercase mb-3 block">
               Initiate Onboarding
             </span>
             <h2 className="text-3xl sm:text-4xl font-black text-[#0D2B1E] tracking-tight leading-tight mb-5">
               Specify your hardware targets. We manage the operational layout.
             </h2>
-            <p className="text-[#416B5C] text-base font-medium leading-relaxed mb-10">
+            <p className="text-[#416B5C] font-medium leading-relaxed mb-10">
               Submit your workspace deployment requirements below. A dedicated systems manager will compile and route 
               a tailored, margin-optimized asset quotation to your team within 24 hours.
             </p>
@@ -101,15 +101,21 @@ export default function GadgetsCTA() {
               ))}
             </div>
 
+            
+          </div>
+
+          {/* Right Column — Enterprise Sourcing Form Panel */}
+          <div className="lg:col-span-6 w-full mt-auto">
+            
             {/* Direct Multi-Channel Escalation Array */}
-            <div className="border-t border-[#E2EFEB] pt-8 space-y-4">
+            <div className="pt-8 space-y-6 mb-12">
               <p className="text-[#0D2B1E] text-xs font-bold tracking-wider uppercase opacity-85">
                 Prefer to interface directly?
               </p>
 
               {/* WhatsApp Loop */}
               <a
-                href="https://wa.me/2348000000000"
+                href="https://wa.me/2348140715723"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-4 group bg-white border border-[#E2EFEB] p-3.5 rounded-2xl hover:border-[#2B7A6E]/30 hover:shadow-md transition-all duration-200 transform hover:-translate-y-0.5"
@@ -143,7 +149,7 @@ export default function GadgetsCTA() {
 
               {/* Sync Meeting Loop */}
               <a
-                href="/contact?intent=meeting"
+                href="/contact#bookMeeting"
                 className="flex items-center gap-4 group bg-white border border-[#E2EFEB] p-3.5 rounded-2xl hover:border-[#0D2B1E]/30 hover:shadow-md transition-all duration-200 transform hover:-translate-y-0.5"
               >
                 <div className="w-10 h-10 rounded-xl bg-[#F4F9F8] border border-[#E2EFEB] flex items-center justify-center flex-shrink-0">
@@ -157,174 +163,6 @@ export default function GadgetsCTA() {
                 </div>
               </a>
             </div>
-          </div>
-
-          {/* Right Column — Enterprise Sourcing Form Panel */}
-          <div className="lg:col-span-7 w-full">
-            {submitted ? (
-              <div className="bg-[#F4F9F8] border-2 border-dashed border-[#C2DCD6] rounded-3xl p-10 flex flex-col items-center justify-center text-center min-h-[500px] shadow-sm transform transition-all duration-300">
-                <div className="w-16 h-16 rounded-2xl bg-[#E6F7F0] border border-[#C2EDDA] flex items-center justify-center mb-6 shadow-sm">
-                  <svg className="w-7 h-7 text-[#2B7A6E]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                  </svg>
-                </div>
-                <h3 className="text-[#0D2B1E] font-black text-2xl tracking-tight mb-2">Specifications Tracked</h3>
-                <p className="text-[#416B5C] text-sm font-medium max-w-sm leading-relaxed">
-                  Your procurement metrics are safely logged. A deployment coordinator is cross-checking inventory layers and will follow up shortly.
-                </p>
-              </div>
-            ) : (
-              <form onSubmit={handleSubmit} className="bg-[#F4F9F8] border border-[#E2EFEB] rounded-3xl p-6 sm:p-8 lg:p-10 shadow-sm">
-                <h3 className="text-[#0D2B1E] font-black text-xl tracking-tight mb-1">Request Operational Quote</h3>
-                <p className="text-[#557D71] text-xs font-medium mb-8">Complimentary analysis · Transparent valuation · 24h SLA target</p>
-
-                <div className="space-y-5">
-                  {/* Grid Block Row 1 */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                    <div>
-                      <label className="block text-xs font-bold text-[#0D2B1E] tracking-wide uppercase mb-2">Company Name *</label>
-                      <input
-                        type="text"
-                        name="companyName"
-                        required
-                        value={formData.companyName}
-                        onChange={handleChange}
-                        placeholder="Acme Enterprise"
-                        className="w-full border border-[#E2EFEB] rounded-xl px-4 py-3 text-sm text-[#0D2B1E] bg-white outline-none focus:border-[#45B1A0] focus:ring-4 focus:ring-[#45B1A0]/10 placeholder:text-[#9FBDB4] transition-all"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-xs font-bold text-[#0D2B1E] tracking-wide uppercase mb-2">Your Name *</label>
-                      <input
-                        type="text"
-                        name="contactName"
-                        required
-                        value={formData.contactName}
-                        onChange={handleChange}
-                        placeholder="Lead Engineer / Admin Head"
-                        className="w-full border border-[#E2EFEB] rounded-xl px-4 py-3 text-sm text-[#0D2B1E] bg-white outline-none focus:border-[#45B1A0] focus:ring-4 focus:ring-[#45B1A0]/10 placeholder:text-[#9FBDB4] transition-all"
-                      />
-                    </div>
-                  </div>
-
-                  {/* Grid Block Row 2 */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                    <div>
-                      <label className="block text-xs font-bold text-[#0D2B1E] tracking-wide uppercase mb-2">Corporate Email *</label>
-                      <input
-                        type="email"
-                        name="email"
-                        required
-                        value={formData.email}
-                        onChange={handleChange}
-                        placeholder="procurement@company.com"
-                        className="w-full border border-[#E2EFEB] rounded-xl px-4 py-3 text-sm text-[#0D2B1E] bg-white outline-none focus:border-[#45B1A0] focus:ring-4 focus:ring-[#45B1A0]/10 placeholder:text-[#9FBDB4] transition-all"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-xs font-bold text-[#0D2B1E] tracking-wide uppercase mb-2">Phone / WhatsApp</label>
-                      <input
-                        type="tel"
-                        name="phone"
-                        value={formData.phone}
-                        onChange={handleChange}
-                        placeholder="+234 800 000 0000"
-                        className="w-full border border-[#E2EFEB] rounded-xl px-4 py-3 text-sm text-[#0D2B1E] bg-white outline-none focus:border-[#45B1A0] focus:ring-4 focus:ring-[#45B1A0]/10 placeholder:text-[#9FBDB4] transition-all"
-                      />
-                    </div>
-                  </div>
-
-                  {/* Asset Select Dropdown */}
-                  <div>
-                    <label className="block text-xs font-bold text-[#0D2B1E] tracking-wide uppercase mb-2">Target Asset Category *</label>
-                    <div className="relative">
-                      <select
-                        name="deviceType"
-                        required
-                        value={formData.deviceType}
-                        onChange={handleChange}
-                        className="w-full border border-[#E2EFEB] rounded-xl px-4 py-3 text-sm text-[#0D2B1E] bg-white outline-none focus:border-[#45B1A0] focus:ring-4 focus:ring-[#45B1A0]/10 appearance-none transition-all cursor-pointer"
-                      >
-                        <option value="" className="text-[#9FBDB4]">Select operational tier...</option>
-                        {deviceTypes.map((d) => (
-                          <option key={d} value={d}>{d}</option>
-                        ))}
-                      </select>
-                      <div className="absolute inset-y-0 right-4 flex items-center pointer-events-none text-[#557D71]">
-                        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Grid Block Row 3 */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                    <div>
-                      <label className="block text-xs font-bold text-[#0D2B1E] tracking-wide uppercase mb-2">Estimated Volume</label>
-                      <input
-                        type="number"
-                        name="quantity"
-                        value={formData.quantity}
-                        onChange={handleChange}
-                        placeholder="e.g. 15"
-                        min="1"
-                        className="w-full border border-[#E2EFEB] rounded-xl px-4 py-3 text-sm text-[#0D2B1E] bg-white outline-none focus:border-[#45B1A0] focus:ring-4 focus:ring-[#45B1A0]/10 placeholder:text-[#9FBDB4] transition-all"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-xs font-bold text-[#0D2B1E] tracking-wide uppercase mb-2">Fulfillment Timeline</label>
-                      <div className="relative">
-                        <select
-                          name="timeline"
-                          value={formData.timeline}
-                          onChange={handleChange}
-                          className="w-full border border-[#E2EFEB] rounded-xl px-4 py-3 text-sm text-[#0D2B1E] bg-white outline-none focus:border-[#45B1A0] focus:ring-4 focus:ring-[#45B1A0]/10 appearance-none transition-all cursor-pointer"
-                        >
-                          <option value="">Select horizon...</option>
-                          {timelines.map((t) => (
-                            <option key={t} value={t}>{t}</option>
-                          ))}
-                        </select>
-                        <div className="absolute inset-y-0 right-4 flex items-center pointer-events-none text-[#557D71]">
-                          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-                          </svg>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Infrastructure Blueprint Requirements Input */}
-                  <div>
-                    <label className="block text-xs font-bold text-[#0D2B1E] tracking-wide uppercase mb-2">Custom Initialization Parameters</label>
-                    <textarea
-                      name="notes"
-                      value={formData.notes}
-                      onChange={handleChange}
-                      rows={3}
-                      placeholder="Specify explicit models, target chipsets, profile provisioning systems, or local routing setups..."
-                      className="w-full border border-[#E2EFEB] rounded-xl px-4 py-3 text-sm text-[#0D2B1E] bg-white outline-none focus:border-[#45B1A0] focus:ring-4 focus:ring-[#45B1A0]/10 placeholder:text-[#9FBDB4] transition-all resize-none"
-                    />
-                  </div>
-
-                  {/* Primary Call Action Interaction Node */}
-                  <button
-                    type="submit"
-                    className="w-full bg-[#45B1A0] hover:bg-[#379485] text-white font-bold text-base py-4 rounded-xl shadow-md hover:shadow-xl hover:shadow-[#45B1A0]/10 transition-all duration-200 flex items-center justify-center gap-2 group transform hover:-translate-y-0.5 active:translate-y-0"
-                  >
-                    Route Blueprint Request
-                    <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                    </svg>
-                  </button>
-
-                  <p className="text-center text-[#557D71] text-[11px] font-medium leading-relaxed opacity-90">
-                    SLA window monitored closely. Corporate data handles stay local under encrypted protection rules.
-                  </p>
-                </div>
-              </form>
-            )}
           </div>
           
         </div>

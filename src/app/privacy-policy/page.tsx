@@ -79,7 +79,7 @@ const PrivacyPolicy = () => {
         />
  
         {/* Centered content — original design was center-aligned, so we preserve that here */}
-        <div className="relative z-10 max-w-3xl mx-auto text-center flex flex-col items-center">
+        <div className="relative z-10 container mx-auto max-w-[1400px]">
           {/* Tag — same teal pill style as before, restyled to match the dark system */}
           <div
             className="inline-flex items-center gap-2 mb-6"

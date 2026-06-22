@@ -44,7 +44,7 @@ export default function Navbar() {
               
               <div className="hidden lg:flex items-center gap-8">
                 {[
-                  { name: "Phones", href: "/gadgets/Phones" },
+                  { name: "Phones", href: "/gadgets/phones" },
                   { name: "Laptops", href: "/gadgets/laptops" },
                   { name: "Accessories", href: "/gadgets/accessories" }
                 ].map((link) => (
@@ -87,7 +87,7 @@ export default function Navbar() {
               </button>
 
               <Link href="/contact" className="hidden sm:inline-flex items-center bg-[#0D2B1E] hover:bg-[#1B4D3A] text-white text-xs font-bold tracking-wider uppercase px-5 py-2.5 rounded-lg transition-colors shadow-sm">
-                Get Corporate Quote
+                Request Corporate Quote
               </Link>
               
               <button onClick={toggleMenu} className="p-2 text-[#0D2B1E] hover:bg-[#E8F6F4] rounded-xl lg:hidden transition-colors">
@@ -109,7 +109,7 @@ export default function Navbar() {
               </div>
               <div className="flex flex-col gap-4">
                 {[
-                  { name: "Phones", href: "/gadgets/Phones" },
+                  { name: "Phones", href: "/gadgets/phones" },
                   { name: "Laptops", href: "/gadgets/laptops" },
                   { name: "Accessories", href: "/gadgets/accessories" }
                 ].map((link) => (

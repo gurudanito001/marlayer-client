@@ -69,12 +69,12 @@ export default function GadgetsHero() {
               </Link>
               
               <Link
-                href="/contact?intent=meeting"
-                className="inline-flex items-center justify-center gap-2 bg-white hover:bg-[#F4FAF9] text-[#0D2B1E] font-bold text-base px-8 py-4 rounded-xl border-2 border-[#D1E5E1] hover:border-[#45B1A0] transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 group"
+                href="/contact#bookMeeting"
+                className="inline-flex items-center justify-center gap-2 bg-white hover:bg-[#F4FAF9] text-primary-2 font-bold px-8 py-4 rounded-xl border-2 border-[#D1E5E1] hover:border-[#45B1A0] transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 group"
               >
                 Book a Consultation
                 <svg
-                  className="w-5 h-5 text-[#3D7A68] transition-transform group-hover:text-[#D97706]"
+                  className="w-5 h-5 text-primary-2 transition-transform group-hover:text-[#D97706]"
                   fill="none" viewBox="0 0 24 24" stroke="currentColor"
                 >
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />

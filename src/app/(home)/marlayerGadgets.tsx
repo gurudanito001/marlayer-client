@@ -251,7 +251,7 @@ const EcosystemSection: React.FC = () => {
 
               {/* CTA */}
               <Link
-                href="/gadgets"
+                href="/search?search=iPhone"
                 style={{
                   display: "inline-flex", alignItems: "center", gap: 8,
                   background: TEAL, color: "#020d0a",
