@@ -4,7 +4,6 @@ import Image from "next/image";
 import { useState, FormEvent } from "react";
 
 export default function ContactFormSection() {
-  // Add state to handle form submission UI
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
@@ -15,6 +14,7 @@ export default function ContactFormSection() {
     const data = {
       name: formData.get('name'),
       email: formData.get('email'),
+      phone: formData.get('phone'), 
       service: formData.get('service'),
       message: formData.get('message'),
     };
@@ -28,9 +28,7 @@ export default function ContactFormSection() {
 
       if (response.ok) {
         setStatus('success');
-        (e.target as HTMLFormElement).reset(); // Clear the form
-        
-        // Reset the success message after 5 seconds
+        (e.target as HTMLFormElement).reset(); 
         setTimeout(() => setStatus('idle'), 5000);
       } else {
         setStatus('error');
@@ -53,9 +51,11 @@ export default function ContactFormSection() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+        {/* 1. Changed items-center to items-stretch so both columns match height */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-stretch">
           
-          <div className="relative w-full h-[400px] md:h-[600px] rounded-[2rem] overflow-hidden shadow-sm">
+          {/* 2. Changed hardcoded height to lg:h-full so it perfectly matches the form */}
+          <div className="relative w-full h-[400px] lg:h-full rounded-[2rem] overflow-hidden shadow-sm">
             <Image 
               src="/images/contact/handshake.jpg" 
               alt="Business handshake" 
@@ -65,8 +65,7 @@ export default function ContactFormSection() {
             />
           </div>
 
-          <div className="bg-white rounded-[2rem] border border-gray-100 p-8 md:p-10 shadow-[0_4px_24px_rgba(0,0,0,0.02)]">
-            {/* Added onSubmit handler here */}
+          <div className="bg-white rounded-[2rem] border border-gray-100 p-8 md:p-10 shadow-[0_4px_24px_rgba(0,0,0,0.02)] flex flex-col justify-center">
             <form onSubmit={handleSubmit} className="flex flex-col gap-6">
               
               <div className="flex flex-col gap-2">
@@ -101,6 +100,25 @@ export default function ContactFormSection() {
                     id="email"
                     name="email"
                     placeholder="emily.carter@gmail.com" 
+                    required
+                    className="w-full bg-[#FAFAFA] border border-transparent text-gray-900 rounded-xl py-3 pl-11 pr-4 focus:outline-none focus:border-[#0A4731] focus:bg-white focus:ring-1 focus:ring-[#0A4731] transition-colors"
+                  />
+                </div>
+              </div>
+
+              <div className="flex flex-col gap-2">
+                <label htmlFor="phone" className="text-sm font-medium text-gray-700">Phone number</label>
+                <div className="relative">
+                  <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-gray-400">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.864-1.051l-3.21-.535a1.125 1.125 0 00-1.227.498l-1.599 2.56a15.21 15.21 0 01-6.136-6.136l2.56-1.599a1.125 1.125 0 00.498-1.227l-.535-3.21A1.125 1.125 0 006.872 4.5H5.5a2.25 2.25 0 00-2.25 2.25z" />
+                    </svg>
+                  </div>
+                  <input 
+                    type="tel" 
+                    id="phone"
+                    name="phone"
+                    placeholder="+234 800 000 0000" 
                     required
                     className="w-full bg-[#FAFAFA] border border-transparent text-gray-900 rounded-xl py-3 pl-11 pr-4 focus:outline-none focus:border-[#0A4731] focus:bg-white focus:ring-1 focus:ring-[#0A4731] transition-colors"
                   />
@@ -152,7 +170,6 @@ export default function ContactFormSection() {
                 </div>
               </div>
 
-              {/* Status Messages */}
               {status === 'success' && (
                 <div className="bg-green-50 text-green-700 p-4 rounded-xl text-sm flex items-center gap-2">
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5"><path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
@@ -167,7 +184,6 @@ export default function ContactFormSection() {
                 </div>
               )}
 
-              {/* Submit Button - Updates based on loading state */}
               <div className="pt-2">
                 <button 
                   type="submit" 

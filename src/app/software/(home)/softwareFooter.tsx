@@ -1,34 +1,35 @@
-// Footer — Software Page
-// Matches the dark brand aesthetic of the software landing page.
-// Includes: nav links, social links, legal, affiliate disclosure equivalent for software.
+"use client";
 
 import Link from "next/link";
 import Image from "next/image";
 
+// 1. Restructured & Professional Link Categories
 const footerLinks = [
   {
-    heading: "Software",
+    heading: "Expertise",
     links: [
-      { label: "Projects", href: "/software/projects" },
-      { label: "About Us", href: "/software/about" },
-      { label: "Case Studies", href: "/software/case-studies" },
-      { label: "Start a Project", href: "/contact" },
-    ],
-  },
-  {
-    heading: "Services",
-    links: [
-      { label: "For Growing Businesses", href: "/software/sme" },
-      { label: "For Enterprises", href: "/software/enterprise" },
-      { label: "Start a Project", href: "/contact" },
+      { label: "Software Development", href: "/software/development" },
+      { label: "Cloud Architecture", href: "/software/architecture" },
+      { label: "Mobile Ecosystems", href: "/software/mobile" },
+      { label: "UI/UX Engineering", href: "/software/design" },
     ],
   },
   {
     heading: "Company",
     links: [
+      { label: "About Marlayer", href: "/software/about" },
+      { label: "Case Studies", href: "/software/projects" },
+      { label: "Careers", href: "/software/careers" },
+      { label: "Tech Blog", href: "/software/blog" },
+    ],
+  },
+  {
+    heading: "Support & Legal",
+    links: [
+      { label: "Contact Us", href: "/contact" },
       { label: "Privacy Policy", href: "/privacy-policy" },
       { label: "Terms of Service", href: "/terms-of-service" },
-      { label: "Contact Us", href: "/contact" },
+      { label: "System Status", href: "/software/status" },
     ],
   },
 ];
@@ -73,12 +74,14 @@ const socialLinks = [
 ];
 
 export default function SoftwareFooter() {
+  const currentYear = new Date().getFullYear();
+
   return (
     <footer className="bg-[#071A10] border-t border-white/[0.07]">
 
       {/* Pre-footer CTA strip */}
       <div className="border-b border-white/[0.07]">
-        <div className="max-w-6xl mx-auto px-6 py-10 flex flex-col md:flex-row items-center justify-between gap-5">
+        <div className="max-w-[1400px] mx-auto px-6 md:px-12 lg:px-16 xl:px-28 py-10 flex flex-col md:flex-row items-center justify-between gap-5">
           <div>
             <p className="text-white font-bold text-lg">
               Ready to build something real?
@@ -109,14 +112,16 @@ export default function SoftwareFooter() {
         </div>
       </div>
 
-      {/* Main footer body */}
-      <div className="max-w-6xl mx-auto px-6 py-14">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-10 mb-14">
-
-          {/* Brand column */}
-          <div className="col-span-2 md:col-span-1">
-            <Link href="/" className="flex items-center gap-1.5 group select-none mb-2">
-              <div className="relative flex items-center  gap-1.5 justify-center">
+      {/* Main footer body (Academy Structure) */}
+      <div className="max-w-[1400px] mx-auto px-6 md:px-12 lg:px-16 xl:px-28 pt-16 pb-12 flex flex-col justify-between">
+        
+        {/* Top Section: Brand & Links */}
+        <div className="flex flex-col lg:flex-row justify-between gap-16 lg:gap-8 w-full mb-16">
+          
+          {/* Left Side: Brand Info */}
+          <div className="flex flex-col gap-6 max-w-xs xl:max-w-sm">
+            <Link href="/" className="flex items-center gap-1.5 group select-none">
+              <div className="relative flex items-center justify-center transform group-hover:scale-105 transition-transform duration-200">
                 <Image
                   src="/images/marlayer-logo.svg"
                   width={26}
@@ -124,20 +129,17 @@ export default function SoftwareFooter() {
                   alt="Marlayer Logo"
                   className="object-contain"
                 />
-                <span
-                  className="font-extrabold text-2xl ml-0.5"
-                  style={{ color: '#45B1A0' }}
-                >
-                  ARLAYER
+                <span className="font-black text-2xl tracking-tight flex items-baseline ml-1" style={{ color: '#45B1A0' }}>
+                  <span className="text-white font-extrabold text-xl tracking-wide">ARLAYER</span>
                 </span>
               </div>
             </Link>
-            <p className="text-white/30 text-sm leading-relaxed mb-5">
+            <p className="text-white/40 text-[14px] leading-relaxed font-medium">
               The technology foundation businesses rely on — software solutions, premium gadgets, and world-class tech training.
             </p>
 
             {/* Status indicator */}
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 mt-2">
               <span className="w-1.5 h-1.5 rounded-full bg-[#45B1A0] animate-pulse" />
               <span className="text-[#45B1A0]/60 text-[10px] font-mono tracking-widest uppercase">
                 SYSTEM_STATUS: ONLINE
@@ -145,45 +147,48 @@ export default function SoftwareFooter() {
             </div>
 
             {/* Address */}
-            <div className="mt-5 space-y-1.5">
+            <div className="mt-2 space-y-1.5">
               <p className="text-white/20 text-xs font-mono">6 Oremeta St, Oregun, Ikeja, Lagos</p>
               <a
                 href="mailto:daniel.marlayer@gmail.com"
-                className="text-[#45B1A0]/50 hover:text-[#45B1A0] text-xs font-mono transition-colors block mt-2"
+                className="text-[#45B1A0]/50 hover:text-[#45B1A0] text-xs font-mono transition-colors block"
               >
                 daniel.marlayer@gmail.com
               </a>
             </div>
           </div>
 
-          {/* Nav columns */}
-          {footerLinks.map((col) => (
-            <div key={col.heading}>
-              <p className="text-white/20 text-[10px] font-mono font-bold tracking-widest uppercase mb-5">
-                {col.heading}
-              </p>
-              <ul className="space-y-3">
-                {col.links.map((link) => (
-                  <li key={link.label}>
-                    <Link
-                      href={link.href}
-                      className="text-white/40 hover:text-white text-sm transition-colors"
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+          {/* Right Side: Columns Grid */}
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-8 md:gap-16 lg:gap-24 w-full lg:w-auto">
+            {footerLinks.map((col) => (
+              <div className="flex flex-col gap-6" key={col.heading}>
+                <h6 className="text-white/20 text-[10px] font-mono font-bold tracking-widest uppercase">
+                  {col.heading}
+                </h6>
+                <ul className="flex flex-col gap-4 text-[13px] font-medium">
+                  {col.links.map((link) => (
+                    <li key={link.label}>
+                      {/* 2. Added Translation & Teal Hover Effect */}
+                      <Link
+                        href={link.href}
+                        className="inline-block text-white/40 hover:text-[#45B1A0] hover:translate-x-1 transition-all duration-300"
+                      >
+                        {link.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
         </div>
 
-        {/* Bottom bar */}
-        <div className="border-t border-white/[0.07] pt-8 flex flex-col md:flex-row items-center justify-between gap-5">
+        <hr className="border-white/[0.07] mb-8" />
 
-          {/* Legal */}
+        {/* Bottom Section: Copyright, Legal & Socials */}
+        <div className="flex flex-col md:flex-row justify-between items-center gap-6">
           <p className="text-white/20 text-xs font-mono text-center md:text-left">
-            © {new Date().getFullYear()} Marlayer. All rights reserved.
+            © {currentYear} Marlayer. All rights reserved.
           </p>
 
           {/* Social links */}
@@ -208,11 +213,12 @@ export default function SoftwareFooter() {
               Privacy Policy
             </Link>
             <span className="text-white/10 text-xs">·</span>
-            <Link href="/contact" className="text-white/20 hover:text-white/50 text-xs font-mono transition-colors">
-              Contact
+            <Link href="/terms-of-service" className="text-white/20 hover:text-white/50 text-xs font-mono transition-colors">
+              Terms of Service
             </Link>
           </div>
         </div>
+
       </div>
     </footer>
   );
