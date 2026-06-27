@@ -3,7 +3,7 @@
 import { useEffect } from "react";
 import Image from "next/image";
 import { X, Trash2, ShoppingCart, ChevronRight, Plus, Minus } from "lucide-react";
-import { useCartStore } from "@/app/store/cartStore"; // Assumes you have a Zustand store with cart logic
+import { useCartStore } from "@/app/store/cartStore"; 
 
 interface CartDrawerProps {
   isOpen: boolean;
@@ -23,6 +23,32 @@ export default function CartDrawer({ isOpen, onClose }: CartDrawerProps) {
     }
     return () => { document.body.style.overflow = 'unset'; };
   }, [isOpen]);
+
+  // --- WHATSAPP CHECKOUT LOGIC ---
+  const handleWhatsAppCheckout = () => {
+    if (cart.length === 0) return;
+
+    // 1. Build the message intro
+    let message = "Hello Marlayer, I would like to place an order for the following items:\n\n";
+    
+    // 2. Loop through cart items and format them
+    cart.forEach((item) => {
+      const itemTotal = Number(item.price) * item.quantity;
+      message += `${item.quantity}x ${item.name} - $${itemTotal.toLocaleString()}\n`;
+    });
+
+    // 3. Add the grand total
+    message += `\n*Grand Total: $${getCartTotal().toLocaleString()}*`;
+
+    // 4. Encode the text so it is safe for URLs (converts spaces to %20, newlines to %0A, etc.)
+    const encodedMessage = encodeURIComponent(message);
+
+    // 5. Build the wa.me link with your phone number and the pre-filled text
+    const whatsappUrl = `https://wa.me/2348140715723?text=${encodedMessage}`;
+    
+    // 6. Open WhatsApp in a new tab
+    window.open(whatsappUrl, '_blank');
+  };
 
   return (
     <>
@@ -102,7 +128,12 @@ export default function CartDrawer({ isOpen, onClose }: CartDrawerProps) {
               <span className="text-2xl font-black text-[#0D2B1E]">${getCartTotal().toLocaleString()}</span>
             </div>
             <p className="text-[10px] text-[#416B5C] text-center mb-2">Taxes and logistics calculated at checkout.</p>
-            <button className="w-full flex items-center justify-between bg-[#0D2B1E] text-white py-4 px-6 rounded-xl font-bold hover:bg-[#45B1A0] transition-colors shadow-lg">
+            
+            {/* Added onClick handler to trigger WhatsApp flow */}
+            <button 
+              onClick={handleWhatsAppCheckout}
+              className="w-full flex items-center justify-between bg-[#0D2B1E] text-white py-4 px-6 rounded-xl font-bold hover:bg-[#45B1A0] transition-colors shadow-lg"
+            >
               <span>Proceed to Checkout</span>
               <ChevronRight size={18} />
             </button>
